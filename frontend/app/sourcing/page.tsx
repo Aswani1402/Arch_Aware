@@ -418,7 +418,7 @@ function SourcingContent() {
                   <div className="space-y-2">
                     <div className="relative aspect-4/3 rounded-xl bg-white overflow-hidden flex items-center justify-center border border-stone-100">
                       {prod.image_url ? (
-                        <img
+                        <img referrerPolicy="no-referrer"
                           src={prod.image_url}
                           alt={prod.title || prod.product_name}
                           className="w-full h-full object-contain p-2"

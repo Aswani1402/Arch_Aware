@@ -337,7 +337,7 @@ export default function MaterialsCataloguePage() {
                     <div key={item.id || idx} className="bg-stone-950 rounded-2xl border border-stone-800 overflow-hidden flex flex-col justify-between group hover:border-amber-500/50 transition-all">
                       <div className="relative aspect-4/5 bg-stone-900 overflow-hidden">
                         {item.image_url ? (
-                          <img
+                          <img referrerPolicy="no-referrer"
                             src={item.image_url}
                             alt={item.title || "Inspiration"}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -398,7 +398,7 @@ export default function MaterialsCataloguePage() {
                       <div className="space-y-3">
                         <div className="relative aspect-4/3 rounded-xl bg-stone-900 overflow-hidden flex items-center justify-center">
                           {prod.image_url ? (
-                            <img
+                            <img referrerPolicy="no-referrer"
                               src={prod.image_url}
                               alt={prod.title || prod.product_name}
                               className="w-full h-full object-contain"

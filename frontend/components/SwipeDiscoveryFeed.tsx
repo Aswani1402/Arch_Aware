@@ -466,7 +466,7 @@ export const SwipeDiscoveryFeed: React.FC<SwipeDiscoveryFeedProps> = ({
                         />
 
                         {/* Foreground Architectural Photograph: Uncropped with Natural Aspect Ratio */}
-                        <img
+                        <img referrerPolicy="no-referrer"
                           src={imgUrl}
                           alt={ref.title}
                           loading={idx <= 2 ? "eager" : "lazy"}
@@ -813,7 +813,7 @@ export const SwipeDiscoveryFeed: React.FC<SwipeDiscoveryFeedProps> = ({
                           {/* Material Detail Crop Image if available */}
                           {mat.detail_image_url && (
                             <div className="w-16 h-16 rounded-xl overflow-hidden bg-stone-200 border border-stone-300 shrink-0">
-                              <img
+                              <img referrerPolicy="no-referrer"
                                 src={mat.detail_image_url}
                                 alt={mat.name}
                                 className="w-full h-full object-cover"
@@ -870,7 +870,7 @@ export const SwipeDiscoveryFeed: React.FC<SwipeDiscoveryFeedProps> = ({
                         <span>Isolated Technical Spec</span>
                       </div>
                       <div className="aspect-[16/9] w-full overflow-hidden rounded-lg bg-stone-100 border border-stone-200">
-                        <img
+                        <img referrerPolicy="no-referrer"
                           src={selectedProduct.image_url}
                           alt={selectedProduct.name}
                           className="w-full h-full object-cover"

@@ -462,7 +462,7 @@ export const PinterestDiscoverySection: React.FC<PinterestDiscoverySectionProps>
                 >
                   {/* Pin Image Container */}
                   <div className={`relative w-full ${aspectClass} overflow-hidden bg-stone-950`}>
-                    <img
+                    <img referrerPolicy="no-referrer"
                       src={pin.image_url}
                       alt={pin.title || `Pinterest Inspiration ${index + 1}`}
                       loading={index < 4 ? "eager" : "lazy"}

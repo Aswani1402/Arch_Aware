@@ -323,7 +323,7 @@ export default function SavedPage() {
                     >
                       {/* Media Image Container */}
                       <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-950">
-                        <img
+                        <img referrerPolicy="no-referrer"
                           src={imageUrl || ""}
                           alt={d.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -471,7 +471,7 @@ export default function SavedPage() {
 
                         {d.image_url && (
                           <div className="relative aspect-video rounded-xl overflow-hidden bg-stone-950 mb-2">
-                            <img
+                            <img referrerPolicy="no-referrer"
                               src={d.image_url}
                               alt={d.name}
                               className="w-full h-full object-cover"

@@ -23,6 +23,7 @@ import re
 import time
 import uuid
 import asyncio
+import urllib.parse
 from typing import Dict, List, Any, Optional, Set, Tuple, Union
 
 from app.schemas.discovery import (
@@ -613,19 +614,63 @@ class SearchOrchestrationService:
                     context["variants"] = items[0].get("variants", [])[:5]
         return context
 
+    @staticmethod
+    def normalize_canonical_url(url: str) -> str:
+        """
+        Stage 5 URL Normalization:
+        - Key on YouTube 11-character video ID across watch?v=ID, youtu.be/ID, /shorts/ID, embed/ID
+        - Normalize Pinterest CDN size paths (/236x/, /474x/, /564x/, /736x/, /originals/) to /originals/
+        - Strip tracking query parameters only (utm_*, ref, fbclid, gclid, srsltid, etc.) while preserving substantive parameters.
+        """
+        if not url or not str(url).strip():
+            return ""
+        clean_url = str(url).strip()
+
+        # YouTube video ID normalization
+        yt_match = re.search(r"(?:v=|\/shorts\/|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})", clean_url)
+        if yt_match:
+            return f"https://www.youtube.com/watch?v={yt_match.group(1)}"
+
+        # Pinterest CDN size normalization
+        clean_url = re.sub(r"/(236x|474x|564x|736x|originals)/", "/originals/", clean_url)
+
+        # Parse URL and strip tracking parameters only
+        try:
+            parsed = urllib.parse.urlparse(clean_url)
+            query_params = urllib.parse.parse_qs(parsed.query, keep_blank_values=True)
+            tracking_keys = {
+                "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
+                "ref", "ref_src", "fbclid", "gclid", "srsltid", "igsh", "feature"
+            }
+            filtered_params = {k: v for k, v in query_params.items() if k.lower() not in tracking_keys}
+            new_query = urllib.parse.urlencode(filtered_params, doseq=True)
+            normalized = urllib.parse.urlunparse((
+                parsed.scheme.lower(),
+                parsed.netloc.lower().rstrip(":80").rstrip(":443"),
+                parsed.path.rstrip("/"),
+                parsed.params,
+                new_query,
+                ""  # strip fragments
+            ))
+            return normalized.lower()
+        except Exception:
+            return re.sub(r"[#].*$", "", clean_url).rstrip("/").lower()
+
     def deduplicate_results(
         self,
         results: List[NormalizedDiscoveryResult]
     ) -> Tuple[List[NormalizedDiscoveryResult], int]:
         """
-        Deduplicates across sources:
-        - URL normalization (stripping tracking query params and hashes).
-        - Source Result ID tracking within the same source.
-        - Composite image + title token hashing.
-        - Preserves distinct products sharing catalog imagery (different product titles/specs).
+        Stage 5 Deterministic Multi-Source Deduplication Order:
+        1. Platform + media ID (e.g. youtube::VIDEO_ID, pinterest::PIN_ID, platform::SOURCE_RESULT_ID)
+        2. Canonical URL (strip tracking params only; normalize YouTube to watch?v=ID and Pinterest CDN sizes to /originals/)
+        3. Normalized title + author (norm_title::norm_author)
+        4. Composite image hash / perceptual check: only merge near-identical copies of the exact same image;
+           never remove merely similar buildings (if different images or titles, both are kept).
         """
-        seen_urls: Set[str] = set()
-        seen_source_ids: Set[str] = set()
+        seen_media_ids: Set[str] = set()
+        seen_canonical_urls: Set[str] = set()
+        seen_title_authors: Set[str] = set()
         seen_image_subjects: Dict[str, List[Set[str]]] = {}
         deduped: List[NormalizedDiscoveryResult] = []
         duplicate_count = 0
@@ -633,49 +678,63 @@ class SearchOrchestrationService:
         for item in results:
             is_dup = False
 
-            # 1. Check source-specific ID
-            if item.source and item.source_result_id:
-                src_key = f"{item.source}::{item.source_result_id}"
-                if src_key in seen_source_ids:
+            # 1. Platform + Media ID
+            url_to_check = item.canonical_url or item.original_url or ""
+            yt_match = re.search(r"(?:v=|\/shorts\/|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})", url_to_check)
+            if yt_match:
+                yt_id = yt_match.group(1)
+                media_key = f"youtube::{yt_id}"
+                if media_key in seen_media_ids:
                     is_dup = True
                 else:
-                    seen_source_ids.add(src_key)
-
-            # 2. Check canonical URL & Media Identifiers
-            url_to_check = item.canonical_url or item.original_url
-            if url_to_check and not is_dup:
-                # Specific YouTube video ID normalization to prevent false duplicates across watch/shorts/youtu.be
-                yt_match = re.search(r"(?:v=|\/shorts\/|youtu\.be\/)([a-zA-Z0-9_-]{11})", url_to_check)
-                if yt_match:
-                    norm_url = f"https://www.youtube.com/watch?v={yt_match.group(1)}"
+                    seen_media_ids.add(media_key)
+            elif item.source and item.source_result_id:
+                src_key = f"{item.source}::{str(item.source_result_id).strip()}"
+                if src_key in seen_media_ids:
+                    is_dup = True
                 else:
-                    norm_url = re.sub(r"[?#].*$", "", url_to_check).rstrip("/").lower()
+                    seen_media_ids.add(src_key)
 
+            # 2. Canonical URL (tracking stripped only, YouTube normalized, Pinterest CDN sizes normalized)
+            if not is_dup and url_to_check:
+                norm_url = self.normalize_canonical_url(url_to_check)
                 if norm_url:
-                    if norm_url in seen_urls:
+                    if norm_url in seen_canonical_urls:
                         is_dup = True
                     else:
-                        seen_urls.add(norm_url)
+                        seen_canonical_urls.add(norm_url)
 
-            # 3. Composite image + title similarity check
+            # 3. Normalized Title + Author
+            if not is_dup and item.title and item.creator_name:
+                norm_title = " ".join(re.findall(r"\w+", item.title.lower()))
+                norm_author = " ".join(re.findall(r"\w+", item.creator_name.lower()))
+                if norm_title and norm_author:
+                    ta_key = f"{norm_title}::{norm_author}"
+                    if ta_key in seen_title_authors:
+                        is_dup = True
+                    else:
+                        seen_title_authors.add(ta_key)
+
+            # 4. Composite image + near-identical title check
             if not is_dup and item.image_url:
-                img_norm = item.image_url.strip().split("?")[0].lower()
+                norm_img = self.normalize_canonical_url(item.image_url)
                 title_tokens = set(re.findall(r"\w+", (item.title or "").lower()))
-                meaningful_tokens = {t for t in title_tokens if len(t) > 2 and t not in {"the", "and", "for", "with"}}
+                meaningful_tokens = {t for t in title_tokens if len(t) > 2 and t not in {"the", "and", "for", "with", "house", "building"}}
 
-                if img_norm in seen_image_subjects:
-                    for existing_token_set in seen_image_subjects[img_norm]:
+                if norm_img in seen_image_subjects:
+                    for existing_token_set in seen_image_subjects[norm_img]:
                         if meaningful_tokens and existing_token_set:
                             intersection = len(meaningful_tokens & existing_token_set)
                             union = len(meaningful_tokens | existing_token_set)
                             sim = intersection / union if union > 0 else 0
-                            if sim > 0.80:
+                            # Only merge near-identical copies of the exact same image
+                            if sim >= 0.85:
                                 is_dup = True
                                 break
                     if not is_dup:
-                        seen_image_subjects[img_norm].append(meaningful_tokens)
+                        seen_image_subjects[norm_img].append(meaningful_tokens)
                 else:
-                    seen_image_subjects[img_norm] = [meaningful_tokens]
+                    seen_image_subjects[norm_img] = [meaningful_tokens]
 
             if is_dup:
                 duplicate_count += 1

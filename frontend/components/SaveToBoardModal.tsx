@@ -171,7 +171,7 @@ export const SaveToBoardModal: React.FC<SaveToBoardModalProps> = ({
         {/* Item Preview Strip */}
         <div className="flex items-center gap-3 px-6 py-3 bg-stone-950/60 border-b border-stone-800/80">
           {item.imageUrl ? (
-            <img
+            <img referrerPolicy="no-referrer"
               src={item.imageUrl}
               alt={item.title}
               className="w-12 h-12 rounded-lg object-cover border border-stone-800 shrink-0"

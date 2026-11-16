@@ -97,7 +97,7 @@ export const ReferenceModal: React.FC<ReferenceModalProps> = ({ referenceId, onC
                         <p className="text-xs text-stone-400">Source attribution is preserved below</p>
                       </div>
                     ) : (
-                      <img
+                      <img referrerPolicy="no-referrer"
                         src={detail.inspiration_image_url || detail.thumbnail_url || detail.media_url || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"}
                         alt={detail.title}
                         onError={() => setImgError(true)}

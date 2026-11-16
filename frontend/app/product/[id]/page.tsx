@@ -74,7 +74,7 @@ export default function ProductDetailPage() {
         <div className="bg-white rounded-3xl border border-arch-border p-6 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Image */}
           <div className="relative rounded-2xl overflow-hidden bg-stone-100 aspect-square max-h-[460px] border border-stone-200">
-            <img
+            <img referrerPolicy="no-referrer"
               src={product.image_url || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"}
               alt={product.name}
               className="w-full h-full object-cover"
@@ -463,7 +463,7 @@ export default function ProductDetailPage() {
                   className="group bg-white rounded-2xl border border-arch-border overflow-hidden hover:shadow-md transition-all flex flex-col"
                 >
                   <div className="relative aspect-video overflow-hidden bg-stone-100">
-                    <img
+                    <img referrerPolicy="no-referrer"
                       src={ref.thumbnail_url}
                       alt={ref.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

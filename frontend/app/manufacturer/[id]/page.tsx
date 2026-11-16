@@ -216,7 +216,7 @@ export default function ManufacturerProfilePage() {
                 className="bg-white rounded-2xl border border-arch-border overflow-hidden hover:shadow-md transition-shadow flex flex-col justify-between"
               >
                 <div className="relative aspect-video bg-stone-100 overflow-hidden">
-                  <img
+                  <img referrerPolicy="no-referrer"
                     src={p.image_url}
                     alt={p.name}
                     className="w-full h-full object-cover"

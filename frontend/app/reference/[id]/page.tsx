@@ -191,7 +191,7 @@ export default function ProjectDetailPage() {
             </div>
           ) : (
             <div className="relative rounded-2xl overflow-hidden max-w-4xl mx-auto shadow-sm bg-stone-200">
-              <img
+              <img referrerPolicy="no-referrer"
                 src={detail.inspiration_image_url || detail.thumbnail_url || detail.media_url || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"}
                 alt={detail.title}
                 className="w-full h-auto max-h-[500px] object-cover"

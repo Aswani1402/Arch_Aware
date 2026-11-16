@@ -217,7 +217,7 @@ export const SavedItemsDrawer: React.FC<SavedItemsDrawerProps> = ({
                   {/* Thumbnail / Icon */}
                   {isRef && data.image_url ? (
                     <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-stone-200 dark:bg-stone-800">
-                      <img 
+                      <img referrerPolicy="no-referrer" 
                         src={data.image_url} 
                         alt={data.title || "Reference"} 
                         className="w-full h-full object-cover"
