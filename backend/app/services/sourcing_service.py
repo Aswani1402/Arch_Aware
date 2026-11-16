@@ -4,7 +4,8 @@ from typing import List, Dict, Any, Optional, Set, Tuple
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 
-from app.models.models import Supplier, SupplierProduct, Product, MaterialCategory
+from app.models.models import Supplier, SupplierProduct, Product, MaterialCategory, SupplierMaterialEvidence
+from app.services.relevance_service import APPROVED_MATERIAL_ALIASES
 from app.services.distance_service import (
     calculate_haversine_distance,
     normalize_location_name,
@@ -198,85 +199,89 @@ def resolve_location(city: Optional[str], lat: Optional[float], lon: Optional[fl
     return None, None, None, None
 
 
+def normalize_business_type_label(raw_type: Optional[str]) -> str:
+    """
+    Stage 7 Business Type Normalization:
+    manufacturer, authorized_distributor, distributor, dealer, retailer, supplier, contractor_service.
+    Never label a dealer a manufacturer.
+    """
+    clean = (raw_type or "").strip().lower()
+    if "manufacturer" in clean or "factory" in clean or "quarry" in clean:
+        return "Manufacturer"
+    if "authorized_distributor" in clean:
+        return "Authorized Distributor"
+    if "distributor" in clean or "wholesaler" in clean or "importer" in clean:
+        return "Distributor"
+    if "retailer" in clean:
+        return "Retailer"
+    if "contractor" in clean or "fabricator" in clean or "installer" in clean or "service" in clean:
+        return "Contractor / Service"
+    if "dealer" in clean or "store" in clean or "shop" in clean:
+        return "Dealer"
+    return "Supplier"
+
+
 def classify_supplier_match(
     sup: Supplier,
     query_text: Optional[str],
-    matched_products_links: List[SupplierProduct]
+    matched_products_links: List[SupplierProduct],
+    evidence_row: Optional[Any] = None
 ) -> Tuple[str, str, str, str]:
     """
-    Classifies supplier match type, human-readable label, honest explanation, and category name.
-    Strictly distinguishes exact matches from category matches as required by Part 16.
+    Stage 7: Replaces token-splitting matching entirely.
+    Matches full material name or approved alias against evidence rows.
+    Never labels a dealer a manufacturer.
+    A verified supplier without evidence for the selected material is NOT listed for it.
     """
+    b_label = normalize_business_type_label(sup.business_type)
+
     if not query_text:
-        b_type = (sup.business_type or "authorized_dealer").lower()
-        if "manufacturer" in b_type or "quarry" in b_type:
-            return "manufacturer", "Direct Manufacturer", "Direct material manufacturer & factory", "Building Materials"
-        if "distributor" in b_type or "importer" in b_type:
-            return "distributor", "Distributor / Wholesaler", "Authorized regional distributor & bulk stockist", "Building Materials"
-        if "fabricator" in b_type or "installer" in b_type:
-            return "installer", "Fabricator / Contractor", "On-site fabrication & installation contractor", "Building Materials"
-        return "category_match", "Verified Dealer", "Verified architectural trade supplier", "Building Materials"
+        return (
+            "general_supplier",
+            b_label,
+            f"Verified {b_label.lower()} in architectural materials network",
+            "Building Materials"
+        )
 
-    q_lower = query_text.lower().strip()
-    sup_text = f"{sup.name} {sup.materials_sold or ''} {sup.brands_distributed or ''} {sup.business_type or ''}".lower()
-
-    # 1. Check exact product matches in catalog
+    # 1. Direct Catalog Product Link (Confirmed Inventory)
     if matched_products_links:
-        for sp in matched_products_links:
-            if sp.product and (q_lower in sp.product.name.lower() or any(w in sp.product.name.lower() for w in q_lower.split() if len(w) > 3)):
-                p_name = sp.product.name
-                return (
-                    "exact_product",
-                    "Exact Product Match",
-                    f"Confirmed product in supplier inventory: {p_name}",
-                    sp.product.category.name if sp.product.category else "Building Materials"
-                )
+        prod = matched_products_links[0].product
+        p_name = prod.name if prod else query_text
+        cat_name = prod.category.name if prod and prod.category else "Building Materials"
+        return (
+            "exact_product",
+            b_label,
+            f"Confirmed product in supplier catalog: {p_name}",
+            cat_name
+        )
 
-    # 2. Match against Category Rules
-    for rule in CATEGORY_SUPPLIER_RULES:
-        is_rule_trigger = any(tw in q_lower for tw in rule["trigger_words"])
-        if is_rule_trigger:
-            cat_title = rule["category_title"]
-            supplier_matches_cat = any(bool(re.search(rf"\b{re.escape(term)}\b", sup_text)) for term in rule["supplier_category_terms"])
-            b_type = (sup.business_type or "").lower()
+    # 2. Material Evidence Row (supplier_material_evidence)
+    if evidence_row:
+        ev_type = getattr(evidence_row, "evidence_type", "listing_text").replace("_", " ").title()
+        ev_text = getattr(evidence_row, "evidence_text", query_text)
+        return (
+            "verified_evidence",
+            b_label,
+            f"Verified material evidence ({ev_type}): {ev_text}",
+            "Verified Materials"
+        )
 
-            if supplier_matches_cat:
-                if "manufacturer" in b_type or "quarry" in b_type:
-                    return (
-                        "manufacturer",
-                        "Direct Manufacturer",
-                        f"Direct manufacturer of {cat_title}",
-                        cat_title
-                    )
-                if "distributor" in b_type or "importer" in b_type:
-                    return (
-                        "distributor",
-                        "Distributor / Wholesaler",
-                        f"Authorized regional distributor & stockist for {cat_title}",
-                        cat_title
-                    )
-                if "fabricator" in b_type or "installer" in b_type or "contractor" in b_type:
-                    return (
-                        "installer",
-                        "Fabricator / Contractor",
-                        f"Specialist fabrication & contractor for {cat_title}",
-                        cat_title
-                    )
+    # 3. Declared Material Stock (Full Name / Alias in materials_sold)
+    q_lower = query_text.lower().strip()
+    sup_mats = [m.strip().lower() for m in (sup.materials_sold or "").replace(";", ",").split(",") if m.strip()]
+    if any(q_lower == m or q_lower in m for m in sup_mats):
+        return (
+            "verified_evidence",
+            b_label,
+            f"Verified material in supplier declared stock: {query_text}",
+            "Verified Materials"
+        )
 
-                # Honest Part 16 label: "Pipe supplier — CPVC availability not confirmed"
-                return (
-                    "category_match",
-                    "Category Match",
-                    f"{cat_title} dealer — exact {query_text} stock not confirmed",
-                    cat_title
-                )
-
-    # 3. Fallback to Related Supplier
     return (
-        "related_supplier",
-        "Related Supplier",
-        f"Adjacent architectural materials supplier — check with vendor for {query_text}",
-        "Architectural Materials"
+        "unconfirmed",
+        b_label,
+        f"{b_label} stock for {query_text} not confirmed",
+        "Building Materials"
     )
 
 
@@ -306,79 +311,64 @@ def execute_hierarchical_sourcing(
     filtered_supplier_data: List[Dict[str, Any]] = []
 
     for sup in all_suppliers:
+        # Stage 7 Strict Material Evidence Matching (no token splitting, no any(word) fallback)
         matched_products_links = []
         is_relevant = False
+        evidence_item = None
 
         if not query_text and not search_query.product_id and not search_query.category_slug:
-            # General supplier search
+            # General supplier browsing when no query is provided
             is_relevant = True
         else:
-            # 1. Check linked products
-            for sp in sup.product_links:
-                prod = sp.product
-                if not prod:
-                    continue
+            q_clean = query_text.strip().lower() if query_text else ""
+            aliases_to_check = [q_clean]
+            if q_clean in APPROVED_MATERIAL_ALIASES:
+                aliases_to_check.append(APPROVED_MATERIAL_ALIASES[q_clean]["canonical"].lower())
+            for a_phrase, a_info in APPROVED_MATERIAL_ALIASES.items():
+                if a_info.get("canonical", "").lower() == q_clean:
+                    aliases_to_check.append(a_phrase.lower())
 
-                if search_query.product_id and prod.id == search_query.product_id:
-                    is_relevant = True
-                    matched_products_links.append(sp)
-                    continue
-
-                if search_query.category_slug:
-                    cat = prod.category
-                    if cat and cat.slug.lower() == search_query.category_slug.lower():
+            # 1. Check additive supplier_material_evidence rows (Stage 7 Primary Evidence)
+            evidence_rows = getattr(sup, "material_evidence", []) or []
+            for ev in evidence_rows:
+                ev_text = (ev.evidence_text or "").lower()
+                for ak in aliases_to_check:
+                    if ak in ev_text:
                         is_relevant = True
-                        matched_products_links.append(sp)
+                        evidence_item = ev
+                        break
+                if is_relevant:
+                    break
+
+            # 2. Check linked catalog products by exact full name or approved alias
+            if not is_relevant:
+                for sp in sup.product_links:
+                    prod = sp.product
+                    if not prod:
                         continue
-
-                if query_text:
+                    if search_query.product_id and prod.id == search_query.product_id:
+                        is_relevant = True
+                        matched_products_links.append(sp)
+                        break
                     p_name = prod.name.lower()
-                    mat_type = prod.material_type.lower() if prod.material_type else ""
-                    cat_name = prod.category.name.lower() if prod.category else ""
-                    q_words = [w for w in query_text.split() if len(w) > 2 and w not in ["for", "and", "the", "with"]]
-                    s_words = [w for w in q_words if w not in {"brick", "bricks", "stone", "stones", "block", "blocks", "tile", "tiles", "material", "materials", "building", "slab", "slabs", "wood", "glass", "steel", "cement", "pipe", "pipes"}]
-                    if query_text in p_name or query_text in mat_type:
-                        is_relevant = True
-                        matched_products_links.append(sp)
-                    elif s_words and any(w in p_name or w in mat_type for w in s_words):
-                        is_relevant = True
-                        matched_products_links.append(sp)
-                    elif not s_words and any(w in p_name for w in q_words if len(w) > 3):
-                        is_relevant = True
-                        matched_products_links.append(sp)
+                    for ak in aliases_to_check:
+                        if ak == p_name or ak in p_name:
+                            is_relevant = True
+                            matched_products_links.append(sp)
+                            break
+                    if is_relevant:
+                        break
 
-            # 2. Check supplier profile text (materials_sold, brands_distributed, business_type, name)
-            if not is_relevant and query_text:
-                sup_corpus = f"{sup.name} {sup.materials_sold or ''} {sup.brands_distributed or ''} {sup.business_type or ''}".lower()
-                
-                GENERIC_MATERIAL_WORDS = {
-                    "brick", "bricks", "stone", "stones", "block", "blocks",
-                    "tile", "tiles", "material", "materials", "building", "slab", "slabs",
-                    "wood", "glass", "steel", "cement", "pipe", "pipes"
-                }
-
-                # Check direct whole-word match of query words (avoiding false positives like 'bar' in 'malabar')
-                query_words = [w for w in query_text.split() if len(w) > 2 and w not in ["for", "and", "the", "with", "bar", "bars", "types", "best"]]
-                specific_words = [w for w in query_words if w not in GENERIC_MATERIAL_WORDS]
-
-                # Requirement 5: Do not match suppliers based only on generic words (brick, stone, blocks, tiles)
-                # If specific qualifiers exist (e.g. 'kota', 'aac', 'wirecut', 'laterite', 'porotherm'), require specific match
-                if specific_words:
-                    if (query_text in sup_corpus or 
-                        any(bool(re.search(rf"\b{re.escape(w)}\b", sup_corpus)) for w in specific_words) or
-                        any(query_text in (p.product.name.lower() or "") for p in sup.product_links if p.product)):
-                        is_relevant = True
-                else:
-                    # Query was solely a generic noun; match whole-word or category terms
-                    if any(bool(re.search(rf"\b{re.escape(w)}\b", sup_corpus)) for w in (query_words or query_text.split())):
-                        is_relevant = True
-
-                    # Check category rule match (Part 16: Category-based supplier discovery)
-                    if not is_relevant and active_category_rules:
-                        for rule in active_category_rules:
-                            if any(bool(re.search(rf"\b{re.escape(term)}\b", sup_corpus)) for term in rule["supplier_category_terms"]):
-                                is_relevant = True
-                                break
+            # 3. Check declared materials_sold by full material name or approved alias (NO token splitting)
+            if not is_relevant and sup.materials_sold and q_clean:
+                sup_mats = [m.strip().lower() for m in sup.materials_sold.replace(";", ",").split(",") if m.strip()]
+                for mat in sup_mats:
+                    for ak in aliases_to_check:
+                        if ak == mat or ak in mat:
+                            is_relevant = True
+                            break
+                    if is_relevant:
+                        break
 
         if is_relevant:
             user_canonical = normalize_location_name(user_city)
@@ -425,7 +415,7 @@ def execute_hierarchical_sourcing(
                     )
 
             match_type, match_label, match_explanation, category_name = classify_supplier_match(
-                sup, query_text, matched_products_links
+                sup, query_text, matched_products_links, evidence_item
             )
 
             filtered_supplier_data.append({
@@ -460,10 +450,18 @@ def execute_hierarchical_sourcing(
 
         is_international = sup.country != "India"
 
+        # Stage 7 WhatsApp verification: Only expose WhatsApp if valid 10+ digit number exists
+        clean_wa = re.sub(r"[^\d+]", "", sup.whatsapp or "") if getattr(sup, "whatsapp", None) else ""
+        digits_wa = re.sub(r"[^\d]", "", clean_wa)
+        valid_whatsapp = clean_wa if len(digits_wa) >= 10 else None
+
+        # Stage 7 Business type: Never label a dealer a manufacturer
+        norm_btype = normalize_business_type_label(sup.business_type)
+
         return SourcingSupplierResult(
             supplier_id=sup.id,
             supplier_name=sup.name,
-            business_type=sup.business_type,
+            business_type=norm_btype,
             contact_person=sup.contact_person,
             address=sup.address,
             city=sup.city,
@@ -476,7 +474,7 @@ def execute_hierarchical_sourcing(
             verification_status=sup.verification_status,
             is_potential=sup.is_potential,
             phone=sup.phone,
-            whatsapp=getattr(sup, "whatsapp", None),
+            whatsapp=valid_whatsapp,
             email=sup.email,
             website=sup.website,
             google_maps_url=maps_url,

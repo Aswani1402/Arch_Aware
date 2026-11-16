@@ -145,6 +145,7 @@ class Supplier(Base):
     # Relationships
     owner = relationship("User", back_populates="managed_suppliers")
     product_links = relationship("SupplierProduct", back_populates="supplier", cascade="all, delete-orphan")
+    material_evidence = relationship("SupplierMaterialEvidence", back_populates="supplier", cascade="all, delete-orphan")
     quotation_requests = relationship("QuotationRequest", back_populates="supplier")
     quotation_responses = relationship("QuotationResponse", back_populates="supplier")
 
@@ -176,6 +177,28 @@ class SupplierProduct(Base):
     # Relationships
     supplier = relationship("Supplier", back_populates="product_links")
     product = relationship("Product", back_populates="supplier_links")
+
+
+class SupplierMaterialEvidence(Base):
+    """
+    Stage 7 Additive Evidence Table:
+    Tracks verified material supply evidence per supplier with source text, provenance, and confidence strength.
+    """
+    __tablename__ = "supplier_material_evidence"
+
+    id = Column(Integer, primary_key=True, index=True)
+    supplier_id = Column(Integer, ForeignKey("suppliers.id"), nullable=False, index=True)
+    material_id = Column(Integer, ForeignKey("catalogue_materials.id"), nullable=True, index=True)
+    evidence_type = Column(String(50), nullable=False)  # supplier_declared, product_list, listing_text, website, manual_review
+    evidence_text = Column(Text, nullable=False)
+    source_url = Column(String(500), nullable=True)
+    checked_at = Column(DateTime, default=utcnow)
+    strength = Column(Float, default=1.0)  # 0.0 to 1.0 confidence strength
+
+    # Relationships
+    supplier = relationship("Supplier", back_populates="material_evidence")
+    material = relationship("CatalogueMaterial")
+
 
 
 class ArchitecturalReference(Base):
