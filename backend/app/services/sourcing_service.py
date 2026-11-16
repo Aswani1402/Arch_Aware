@@ -501,6 +501,7 @@ def execute_hierarchical_sourcing(
             geographic_scope=scope_label,
             verification_status=sup.verification_status,
             is_potential=sup.is_potential,
+            is_demo=bool(getattr(sup, "is_demo", False)),
             phone=sup.phone,
             whatsapp=valid_whatsapp,
             email=sup.email,

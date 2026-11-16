@@ -80,8 +80,9 @@ class Settings(BaseSettings):
     def get_socialcrawl_api_key(self) -> str:
         return os.environ.get("SOCIALCRAWL_API_KEY") or self.SOCIALCRAWL_API_KEY or ""
 
-    # Global Discovery Kill Switch
+    # Global Discovery & AI Kill Switches
     DISCOVERY_KILL_SWITCH: bool = False
+    VISION_KILL_SWITCH: bool = False
 
     # Sourcing Settings
     DEFAULT_SEARCH_RADIUS_KM: float = 25.0

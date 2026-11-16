@@ -138,6 +138,7 @@ class Supplier(Base):
     verification_method = Column(String(100), nullable=True)
     verification_notes = Column(Text, nullable=True)
     is_potential = Column(Boolean, default=False)
+    is_demo = Column(Boolean, default=False, index=True)
     delivery_radius_km = Column(Float, default=100.0)
     last_updated_at = Column(DateTime, default=utcnow)
     created_at = Column(DateTime, default=utcnow)

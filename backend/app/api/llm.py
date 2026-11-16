@@ -68,3 +68,29 @@ async def get_llm_status():
         "model": "gemini-1.5-flash / openai-compatible",
         "has_key": bool(architectural_llm_service.api_key)
     }
+
+class VisionIdentifyRequest(BaseModel):
+    image_url: str
+    title: str = ""
+
+class VideoAnalyzeRequest(BaseModel):
+    video_url: str
+    title: str = ""
+    duration_seconds: int = 180
+
+@router.post("/vision/identify")
+def identify_image_materials(req: VisionIdentifyRequest):
+    """
+    Stage 10 Vision AI: Identifies architectural materials from an image,
+    strictly categorized into observed, inferred (Tier 4), and uncertain (Tier 5).
+    """
+    from app.services.vision_service import identify_materials_from_image
+    return identify_materials_from_image(image_url=req.image_url, title=req.title)
+
+@router.post("/video/analyze")
+def analyze_video_materials(req: VideoAnalyzeRequest):
+    """
+    Stage 11 Video Analysis: Extracts 6-8 keyframes and correlates scene materials.
+    """
+    from app.services.vision_service import analyze_video_keyframes
+    return analyze_video_keyframes(video_url=req.video_url, title=req.title, duration_seconds=req.duration_seconds)

@@ -192,6 +192,7 @@ class SupplierBase(BaseModel):
     verification_method: Optional[str] = None
     verification_notes: Optional[str] = None
     is_potential: bool = False
+    is_demo: bool = False
     delivery_radius_km: float = 100.0
 
 class SupplierCreate(SupplierBase):
@@ -389,6 +390,7 @@ class SourcingSupplierResult(BaseModel):
     geographic_scope: str  # Local (<25km), Extended (25-50km), Regional (50-100km), State-wide, Neighbouring State, South India, National, International
     verification_status: str
     is_potential: bool
+    is_demo: bool = False
     phone: Optional[str] = None
     whatsapp: Optional[str] = None
     email: Optional[str] = None
