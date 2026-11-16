@@ -322,11 +322,20 @@ def execute_hierarchical_sourcing(
         else:
             q_clean = query_text.strip().lower() if query_text else ""
             aliases_to_check = [q_clean]
+            if q_clean.endswith("s"):
+                aliases_to_check.append(q_clean[:-1])
             if q_clean in APPROVED_MATERIAL_ALIASES:
                 aliases_to_check.append(APPROVED_MATERIAL_ALIASES[q_clean]["canonical"].lower())
             for a_phrase, a_info in APPROVED_MATERIAL_ALIASES.items():
                 if a_info.get("canonical", "").lower() == q_clean:
                     aliases_to_check.append(a_phrase.lower())
+            for rule in active_category_rules:
+                for kw in rule.get("exact_keywords", []) + rule.get("trigger_words", []):
+                    kw_lower = kw.lower().strip()
+                    if len(kw_lower) >= 4 and kw_lower in q_clean:
+                        aliases_to_check.append(kw_lower)
+                        if kw_lower.endswith("s"):
+                            aliases_to_check.append(kw_lower[:-1])
 
             # 1. Check additive supplier_material_evidence rows (Stage 7 Primary Evidence)
             evidence_rows = getattr(sup, "material_evidence", []) or []
@@ -381,13 +390,27 @@ def execute_hierarchical_sourcing(
 
             if user_lat is not None and user_lon is not None and sup.latitude is not None and sup.longitude is not None:
                 dist = calculate_haversine_distance(user_lat, user_lon, sup.latitude, sup.longitude)
-                if user_canonical == "thiruvananthapuram":
+                sup_city_norm = normalize_location_name(sup.city)
+                if user_canonical in ("thiruvananthapuram", "trivandrum"):
                     in_buf, b_dist, b_label = is_in_district_or_buffer(
                         sup.latitude, sup.longitude, "thiruvananthapuram", buffer_km=60.0
                     )
                     in_district_buffer = in_buf
                     boundary_dist = b_dist
                     scope_note = b_label
+                elif user_canonical in ("kanyakumari", "nagercoil", "marthandam"):
+                    # Adjacent border district corridor (Kanyakumari <-> Thiruvananthapuram within 60km)
+                    user_in_tvm_buf, b_dist, _ = is_in_district_or_buffer(
+                        user_lat, user_lon, "thiruvananthapuram", buffer_km=60.0
+                    )
+                    if user_in_tvm_buf and sup_city_norm in ("thiruvananthapuram", "trivandrum"):
+                        in_district_buffer = True
+                        boundary_dist = b_dist
+                        scope_note = f"Adjacent Border District (Thiruvananthapuram, {dist} km)"
+                    elif dist <= 60.0:
+                        in_district_buffer = True
+                        boundary_dist = dist
+                        scope_note = f"Border Buffer ({dist} km)"
             else:
                 dist = None
 
@@ -433,15 +456,20 @@ def execute_hierarchical_sourcing(
 
     seen_supplier_ids: Set[int] = set()
 
-    def make_supplier_result(item: Dict[str, Any], scope_label: str) -> SourcingSupplierResult:
+    def make_supplier_result(item: Dict[str, Any], scope_label: str, level_num: int = 0) -> SourcingSupplierResult:
         sup = item["supplier"]
         dist = item["distance_km"]
-        if item.get("scope_note"):
-            dist_display = item["scope_note"]
-        elif dist is not None:
-            dist_display = f"{dist} km"
+
+        # Stage 8 distance display: actual km for Levels 0-1; scope label for Level 2+
+        if level_num in (0, 1):
+            if dist is not None:
+                dist_display = f"{dist} km"
+            elif item.get("scope_note"):
+                dist_display = item["scope_note"]
+            else:
+                dist_display = f"Local Match ({sup.city}, {sup.state})"
         else:
-            dist_display = f"Location Match ({sup.city}, {sup.state})"
+            dist_display = scope_label
 
         maps_url = sup.google_maps_url
         if not maps_url:
@@ -494,7 +522,9 @@ def execute_hierarchical_sourcing(
 
     levels: List[FallbackLevelResult] = []
 
-    # Level 0: Immediate Project Area / Local City
+    # ============================================================
+    # Level 0: Immediate Local Radius
+    # ============================================================
     lvl0_suppliers = []
     user_norm = normalize_location_name(user_city)
     for item in filtered_supplier_data:
@@ -513,7 +543,7 @@ def execute_hierarchical_sourcing(
             if is_local:
                 seen_supplier_ids.add(sup_id)
                 label = f"Local ({item['distance_km']} km)" if item["distance_km"] is not None else f"Local City ({sup.city})"
-                lvl0_suppliers.append(make_supplier_result(item, label))
+                lvl0_suppliers.append(make_supplier_result(item, label, 0))
 
     lvl0_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
     levels.append(FallbackLevelResult(
@@ -525,7 +555,9 @@ def execute_hierarchical_sourcing(
         searched=True
     ))
 
-    # Level 1: Extended Local Region (distance <= 50km or district boundary + 60km buffer or same district)
+    # ============================================================
+    # Level 1: District Buffer Corridor (include adjacent border districts within 60km)
+    # ============================================================
     lvl1_suppliers = []
     for item in filtered_supplier_data:
         sup = item["supplier"]
@@ -535,7 +567,7 @@ def execute_hierarchical_sourcing(
             if item.get("in_district_buffer"):
                 is_extended = True
             elif item["distance_km"] is not None:
-                is_extended = item["distance_km"] <= 50.0
+                is_extended = item["distance_km"] <= 60.0
             elif user_norm:
                 sup_city_norm = normalize_location_name(sup.city)
                 sup_dist_norm = normalize_location_name(sup.district)
@@ -544,130 +576,74 @@ def execute_hierarchical_sourcing(
 
             if is_extended:
                 seen_supplier_ids.add(sup_id)
-                label = item.get("scope_note") or (f"Sub-Regional ({item['distance_km']} km)" if item["distance_km"] is not None else f"District Corridor ({sup.city})")
-                lvl1_suppliers.append(make_supplier_result(item, label))
+                label = item.get("scope_note") or (f"District Corridor ({item['distance_km']} km)" if item["distance_km"] is not None else f"District Corridor ({sup.city})")
+                lvl1_suppliers.append(make_supplier_result(item, label, 1))
 
     lvl1_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
     levels.append(FallbackLevelResult(
         level=1,
-        level_name="Extended Local Region",
-        radius_desc="Within 50 km radius or district perimeter buffer (~60 km)",
-        explanation=f"Found {len(lvl1_suppliers)} sub-regional supplier(s)." if lvl1_suppliers else "No suppliers in extended 50 km perimeter; searching regional hubs.",
+        level_name="District Buffer Corridor",
+        radius_desc="Within 50-60 km radius or district perimeter buffer (~60 km)",
+        explanation=f"Found {len(lvl1_suppliers)} sub-regional supplier(s)." if lvl1_suppliers else "No suppliers in extended district buffer corridor.",
         suppliers=lvl1_suppliers,
         searched=True
     ))
 
-    # Level 2: Regional Hubs (distance <= 100km)
+    # ============================================================
+    # Level 2: Neighbouring Interstate Hubs
+    # ============================================================
+    neighbours = NEIGHBOURING_STATES.get(user_state, []) if user_state else []
     lvl2_suppliers = []
     for item in filtered_supplier_data:
-        sup_id = item["supplier"].id
+        sup = item["supplier"]
+        sup_id = sup.id
         if sup_id not in seen_supplier_ids:
-            is_reg = False
-            if item["distance_km"] is not None:
-                is_reg = item["distance_km"] <= 100.0
+            is_neighbour = False
+            scope_str = None
+            if sup.country == "India":
+                if sup.state in neighbours:
+                    is_neighbour = True
+                    scope_str = f"Neighbouring State: {sup.state}"
+                elif user_state and sup.state == user_state:
+                    is_neighbour = True
+                    scope_str = f"State-wide: {sup.state}"
 
-            if is_reg:
+            if is_neighbour:
                 seen_supplier_ids.add(sup_id)
-                lvl2_suppliers.append(make_supplier_result(item, f"Regional ({item['distance_km']} km)"))
+                lvl2_suppliers.append(make_supplier_result(item, scope_str, 2))
 
     lvl2_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
     levels.append(FallbackLevelResult(
         level=2,
-        level_name="Regional Hubs & Transit Corridors",
-        radius_desc="Within 100 km radius of project location",
-        explanation=f"Found {len(lvl2_suppliers)} regional supplier(s)." if lvl2_suppliers else "No regional suppliers within 100 km; searching state-wide network.",
+        level_name="Neighbouring Interstate Hubs",
+        radius_desc=f"Adjacent states ({', '.join(neighbours) if neighbours else 'Nearby'}) and statewide network",
+        explanation=f"Found {len(lvl2_suppliers)} supplier(s) in neighbouring interstate corridors." if lvl2_suppliers else "No suppliers in neighbouring states; searching Pan-India & international network.",
         suppliers=lvl2_suppliers,
         searched=True
     ))
 
-    # Level 3: State-wide
+    # ============================================================
+    # Level 3: National & International Network
+    # ============================================================
     lvl3_suppliers = []
     for item in filtered_supplier_data:
         sup = item["supplier"]
-        if sup.id not in seen_supplier_ids and user_state and sup.state == user_state and sup.country == "India":
-            seen_supplier_ids.add(sup.id)
-            lvl3_suppliers.append(make_supplier_result(item, f"State-wide ({sup.state})"))
+        sup_id = sup.id
+        if sup_id not in seen_supplier_ids:
+            if sup.country != "India":
+                scope_str = f"International: {sup.country}"
+            else:
+                scope_str = f"National: {sup.city}, {sup.state}"
+            seen_supplier_ids.add(sup_id)
+            lvl3_suppliers.append(make_supplier_result(item, scope_str, 3))
 
     lvl3_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
     levels.append(FallbackLevelResult(
         level=3,
-        level_name="State-wide Logistics Network",
-        radius_desc=f"Suppliers across {user_state}" if user_state else "State-wide logistics network",
-        explanation=f"Found {len(lvl3_suppliers)} state-wide supplier(s) in {user_state}." if lvl3_suppliers else (f"No suppliers in {user_state}; searching neighbouring states." if user_state else "Browsing regional & national trade network."),
+        level_name="National & International Network",
+        radius_desc="Pan-India commercial states & international export ateliers (Japan, Italy, etc.)",
+        explanation=f"Found {len(lvl3_suppliers)} national and international supplier(s)." if lvl3_suppliers else "Search completed.",
         suppliers=lvl3_suppliers,
-        searched=True
-    ))
-
-    # Level 4: Neighbouring States
-    neighbours = NEIGHBOURING_STATES.get(user_state, []) if user_state else []
-    lvl4_suppliers = []
-    for item in filtered_supplier_data:
-        sup = item["supplier"]
-        if sup.id not in seen_supplier_ids and sup.state in neighbours and sup.country == "India":
-            seen_supplier_ids.add(sup.id)
-            lvl4_suppliers.append(make_supplier_result(item, f"Neighbouring ({sup.state})"))
-
-    lvl4_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
-    levels.append(FallbackLevelResult(
-        level=4,
-        level_name="Neighbouring Interstate Hubs",
-        radius_desc=f"Adjacent states ({', '.join(neighbours) if neighbours else 'Nearby'})",
-        explanation=f"Found {len(lvl4_suppliers)} supplier(s) in neighbouring interstate corridors." if lvl4_suppliers else "No suppliers in neighbouring states; searching Pan-India network.",
-        suppliers=lvl4_suppliers,
-        searched=True
-    ))
-
-    # Level 5: South India / Zonal Commercial Corridors
-    lvl5_suppliers = []
-    for item in filtered_supplier_data:
-        sup = item["supplier"]
-        if sup.id not in seen_supplier_ids and sup.state in SOUTH_INDIA_STATES and sup.country == "India":
-            seen_supplier_ids.add(sup.id)
-            lvl5_suppliers.append(make_supplier_result(item, f"Zonal / South India ({sup.city}, {sup.state})"))
-
-    lvl5_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
-    levels.append(FallbackLevelResult(
-        level=5,
-        level_name="Zonal Commercial Corridors",
-        radius_desc="South India & macro-regional trade corridors",
-        explanation=f"Found {len(lvl5_suppliers)} zonal vendor(s)." if lvl5_suppliers else "No further zonal suppliers found; searching Pan-India network.",
-        suppliers=lvl5_suppliers,
-        searched=True
-    ))
-
-    # Level 6: Pan-India Authorized Stockists & Mill Rolling Centers
-    lvl6_suppliers = []
-    for item in filtered_supplier_data:
-        sup = item["supplier"]
-        if sup.id not in seen_supplier_ids and sup.country == "India":
-            seen_supplier_ids.add(sup.id)
-            lvl6_suppliers.append(make_supplier_result(item, f"National ({sup.city}, {sup.state})"))
-
-    lvl6_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
-    levels.append(FallbackLevelResult(
-        level=6,
-        level_name="Pan-India Authorized Stockists & Mill Rolling Centers",
-        radius_desc="All Indian commercial states & manufacturing clusters",
-        explanation=f"Found {len(lvl6_suppliers)} national vendor(s)." if lvl6_suppliers else "No further domestic suppliers found.",
-        suppliers=lvl6_suppliers,
-        searched=True
-    ))
-
-    # Level 7: International Exporters & Manufacturers
-    lvl7_suppliers = []
-    for item in filtered_supplier_data:
-        sup = item["supplier"]
-        if sup.id not in seen_supplier_ids and sup.country != "India":
-            seen_supplier_ids.add(sup.id)
-            lvl7_suppliers.append(make_supplier_result(item, f"International ({sup.country})"))
-
-    lvl7_suppliers.sort(key=lambda s: (0 if s.match_type == "exact_product" else 1, s.distance_km if s.distance_km is not None else 999999.0))
-    levels.append(FallbackLevelResult(
-        level=7,
-        level_name="International Sourcing & Exporters",
-        radius_desc="Overseas manufacturers & export ateliers (Japan, Italy, Germany, etc.)",
-        explanation=f"Found {len(lvl7_suppliers)} international exporter(s) with documentation support." if lvl7_suppliers else "Search completed.",
-        suppliers=lvl7_suppliers,
         searched=True
     ))
 
@@ -687,26 +663,26 @@ def execute_hierarchical_sourcing(
         SourcingTierResult(
             tier=2,
             tier_name="Nearby",
-            description=f"Suppliers in surrounding districts (<100 km)" if user_city else "Nearby district suppliers (<100 km)",
-            suppliers=lvl1_suppliers + lvl2_suppliers
+            description="Suppliers in extended district boundary buffer (<60 km)",
+            suppliers=lvl1_suppliers
         ),
         SourcingTierResult(
             tier=3,
             tier_name="Regional & Interstate",
             description=f"Suppliers across {user_state} and neighbouring states" if user_state else "Suppliers across regional trade corridors",
-            suppliers=lvl3_suppliers + lvl4_suppliers
+            suppliers=lvl2_suppliers
         ),
         SourcingTierResult(
             tier=4,
             tier_name="India",
             description="Pan-India manufacturers and national freight suppliers",
-            suppliers=lvl5_suppliers + lvl6_suppliers
+            suppliers=[s for s in lvl3_suppliers if s.country == "India"]
         ),
         SourcingTierResult(
             tier=5,
             tier_name="International",
             description="Verified overseas manufacturers and export ateliers",
-            suppliers=lvl7_suppliers
+            suppliers=[s for s in lvl3_suppliers if s.country != "India"]
         ),
     ]
 
