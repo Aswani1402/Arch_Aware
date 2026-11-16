@@ -1,0 +1,56 @@
+material_id,material_name,category,subcategory,suggested_alias,alias_type,standard_or_source,status
+4,Laterite soil,Exterior,Site preparation and earthworks,Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+77,Granite,Exterior,"Stone, sand and aggregates",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+78,Black granite,Exterior,"Stone, sand and aggregates",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+79,Kashmir white granite,Exterior,"Stone, sand and aggregates",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+80,Kota stone,Exterior,"Stone, sand and aggregates",Kota Brown / Kota Blue Limestone,regional_variety,Rajasthan Mining Bureau,PENDING_APPROVAL
+87,Teakwood sandstone,Exterior,"Stone, sand and aggregates",Nilambur Teak / Malabar Teak,gi_tagged_regional,GI Tag No. 574 (Nilambur),PENDING_APPROVAL
+92,Laterite stone,Exterior,"Stone, sand and aggregates",Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+165,Red clay brick,Exterior,"Bricks, blocks and masonry",Chengal,vernacular_malayalam,South India traditional masonry,PENDING_APPROVAL
+168,Fly ash brick,Exterior,"Bricks, blocks and masonry",Pulverized Fuel Ash Bricks / PFA,technical_standard,IS 3812 / IS 12894,PENDING_APPROVAL
+171,AAC block,Exterior,"Bricks, blocks and masonry",Autoclaved Aerated Lightweight Concrete,expansion,IS 2185 Part 3,PENDING_APPROVAL
+174,Laterite block,Exterior,"Bricks, blocks and masonry",Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+310,Granite facade panel,Exterior,"Exterior walls, cladding and facades",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+350,Teakwood entrance door,Exterior,"Doors, gates and windows – exterior",Nilambur Teak / Malabar Teak,gi_tagged_regional,GI Tag No. 574 (Nilambur),PENDING_APPROVAL
+476,Granite cobblestone,Exterior,"Roads, pavements and transport infrastructure",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+582,Laterite compound wall,Exterior,"Boundary, landscape and outdoor works",Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+587,Granite cobble paving,Exterior,"Boundary, landscape and outdoor works",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+643,Granite texture coating,Exterior,"Exterior paint, finishes and accessories",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+1224,Athangudi cement tile,Exterior,Traditional and regional materials,Chettinad Handmade Tiles,trade_craft,Chettinad Heritage Craft,PENDING_APPROVAL
+1247,Lime-surkhi mortar,Exterior,Traditional and regional materials,Pounded Clay Poindexter Mortar,traditional_spec,Historic Lime-Surkhi Mortar,PENDING_APPROVAL
+1248,Laterite masonry block,Exterior,Traditional and regional materials,Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+1277,AAC partition block,Interior,Interior partitions and wall systems,Autoclaved Aerated Lightweight Concrete,expansion,IS 2185 Part 3,PENDING_APPROVAL
+1335,Terrazzo wall panel,Interior,"Interior plaster, wall preparation and finishes",Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+1349,Kota stone flooring,Interior,Flooring – natural stone,Kota Brown / Kota Blue Limestone,regional_variety,Rajasthan Mining Bureau,PENDING_APPROVAL
+1355,Granite flooring,Interior,Flooring – natural stone,Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+1356,Black galaxy granite flooring,Interior,Flooring – natural stone,Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+1357,Leathered granite flooring,Interior,Flooring – natural stone,Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+1365,Laterite stone flooring,Interior,Flooring – natural stone,Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+1369,Flamed granite flooring,Interior,Flooring – natural stone,Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+1373,Athangudi handmade tile,Interior,Flooring – tiles and traditional surfaces,Chettinad Handmade Tiles,trade_craft,Chettinad Heritage Craft,PENDING_APPROVAL
+1378,Terrazzo tile,Interior,Flooring – tiles and traditional surfaces,Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+1437,Kota stone inlay flooring,Interior,"Flooring – timber, resilient and specialist",Kota Brown / Kota Blue Limestone,regional_variety,Rajasthan Mining Bureau,PENDING_APPROVAL
+1438,Terrazzo poured flooring,Interior,"Flooring – timber, resilient and specialist",Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+1498,Teakwood door,Interior,Doors – interior,Nilambur Teak / Malabar Teak,gi_tagged_regional,GI Tag No. 574 (Nilambur),PENDING_APPROVAL
+1634,Granite kitchen countertop,Interior,"Kitchen cabinets, counters and accessories",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+1641,Terrazzo countertop,Interior,"Kitchen cabinets, counters and accessories",Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+2060,Athangudi tile,Interior,Traditional Indian and regional interiors,Chettinad Handmade Tiles,trade_craft,Chettinad Heritage Craft,PENDING_APPROVAL
+2090,Athangudi cement tile,Interior,Traditional Indian and regional interiors,Chettinad Handmade Tiles,trade_craft,Chettinad Heritage Craft,PENDING_APPROVAL
+2167,Athangudi tile flooring,Interior,Flooring and floor finishes,Chettinad Handmade Tiles,trade_craft,Chettinad Heritage Craft,PENDING_APPROVAL
+2170,Terrazzo flooring,Interior,Flooring and floor finishes,Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+2206,Granite wall cladding,Interior,Wall finishes and cladding,Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+2260,Terrazzo staircase,Interior,"Staircases, balustrades and internal metalwork",Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+2318,Granite worktop,Interior,"Kitchen furniture, fittings and equipment",Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+2343,Terrazzo basin,Interior,"Bathroom, sanitaryware and wellness",Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+2420,Terrazzo inlay,Interior,Decorative and specialist finishes,Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL
+2782,Fly ash silo,Machinery & Tools,Concrete and cement machinery,Pulverized Fuel Ash Bricks / PFA,technical_standard,IS 3812 / IS 12894,PENDING_APPROVAL
+2787,AAC block plant,Machinery & Tools,Concrete and cement machinery,Autoclaved Aerated Lightweight Concrete,expansion,IS 2185 Part 3,PENDING_APPROVAL
+4911,Fly ash,"Materials, Metals, Timber & Chemicals",Concrete and cementitious materials,Pulverized Fuel Ash Bricks / PFA,technical_standard,IS 3812 / IS 12894,PENDING_APPROVAL
+4946,Laterite block,"Materials, Metals, Timber & Chemicals",Aggregates and masonry units,Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+4956,AAC block,"Materials, Metals, Timber & Chemicals",Aggregates and masonry units,Autoclaved Aerated Lightweight Concrete,expansion,IS 2185 Part 3,PENDING_APPROVAL
+4964,Laterite stone block,"Materials, Metals, Timber & Chemicals",Aggregates and masonry units,Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+5024,Teak timber,"Materials, Metals, Timber & Chemicals",Timber and engineered wood,Nilambur Teak / Malabar Teak,gi_tagged_regional,GI Tag No. 574 (Nilambur),PENDING_APPROVAL
+5129,Granite,"Materials, Metals, Timber & Chemicals",Stone and natural materials,Black Galaxy / Steel Grey,commercial_trade_name,Indian Natural Stone Guild,PENDING_APPROVAL
+5135,Laterite,"Materials, Metals, Timber & Chemicals",Stone and natural materials,Vettukallu / Chira,vernacular_malayalam,Kerala PWD Red Laterite Spec,PENDING_APPROVAL
+5144,Kota stone,"Materials, Metals, Timber & Chemicals",Stone and natural materials,Kota Brown / Kota Blue Limestone,regional_variety,Rajasthan Mining Bureau,PENDING_APPROVAL
+5156,Terrazzo aggregate,"Materials, Metals, Timber & Chemicals",Stone and natural materials,Mosaic / Chip Flooring,trade_historical,IS 2114:1984,PENDING_APPROVAL

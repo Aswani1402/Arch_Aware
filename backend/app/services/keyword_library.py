@@ -1,0 +1,4582 @@
+"""
+Nivora — Complete 14 Master Categories Keyword Library & Taxonomy (Phase 5)
+Consolidated architectural, construction, interior, exterior, material,
+product, professional, and supplier discovery taxonomy with 4-level progressive disclosure:
+Category -> Subcategory -> Individual Item -> Variant.
+"""
+
+from typing import List, Dict, Any, Optional
+
+# ==============================================================================
+# 14 CONSOLIDATED MASTER ARCHITECTURAL DISCOVERY CATEGORIES
+# ==============================================================================
+
+MASTER_KEYWORD_CATEGORIES: List[Dict[str, Any]] = [
+    {
+        "id": 1,
+        "name": "Architecture",
+        "slug": "architecture",
+        "icon": "🏛️",
+        "description": "Architectural typologies, vernacular traditions, residential & commercial master designs, and documentation.",
+        "supplier_category": "Architectural Design & Turnkey Planning",
+        "subcategories": [
+            {
+                "name": "Residential Architecture",
+                "items": [
+                    {
+                        "name": "Modern Villas",
+                        "variants": [
+                            "Minimalist Flat Roof Villa",
+                            "Cantilevered Luxury Villa",
+                            "Tropical Courtyard Villa",
+                            "Double-Height Glass Villa",
+                            "Biophilic Garden Villa",
+                            "Contemporary White Box Villa"
+                        ]
+                    },
+                    {
+                        "name": "Bungalows & Single Storey",
+                        "variants": [
+                            "Single-Storey Contemporary Bungalow",
+                            "Colonial Wrap-Around Porch Bungalow",
+                            "Sloped Roof Timber Bungalow",
+                            "L-Shaped Courtyard Bungalow",
+                            "Raised Stilt Bungalow"
+                        ]
+                    },
+                    {
+                        "name": "Duplex Houses",
+                        "variants": [
+                            "Open Plan Duplex Residence",
+                            "Mezzanine Floor Duplex",
+                            "Corner Plot Duplex House",
+                            "Split-Level Contemporary Duplex",
+                            "Double-Height Living Duplex"
+                        ]
+                    },
+                    {
+                        "name": "Compact Homes",
+                        "variants": [
+                            "Small House Designs Under 1200 sqft",
+                            "Narrow Plot Townhouse",
+                            "Micro-Living Urban House",
+                            "Low-Cost Sustainable Cottage",
+                            "Modular Prefab Compact Home"
+                        ]
+                    },
+                    {
+                        "name": "Apartments & Penthouses",
+                        "variants": [
+                            "Penthouse with Sky Terrace",
+                            "Duplex Luxury Apartment",
+                            "High-Rise Glass Balcony Residence",
+                            "Loft Style Open Studio Apartment"
+                        ]
+                    },
+                    {
+                        "name": "Farmhouse Designs",
+                        "variants": [
+                            "Rustic Timber Farmhouse",
+                            "Courtyard Retreat Farmhouse",
+                            "Modern Barn House",
+                            "Stone Clad Country Retreat"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Modern Villas",
+                    "Minimalist Flat Roof Villa",
+                    "Cantilevered Luxury Villa",
+                    "Tropical Courtyard Villa",
+                    "Double-Height Glass Villa",
+                    "Biophilic Garden Villa",
+                    "Contemporary White Box Villa",
+                    "Bungalows & Single Storey",
+                    "Single-Storey Contemporary Bungalow",
+                    "Colonial Wrap-Around Porch Bungalow",
+                    "Sloped Roof Timber Bungalow",
+                    "L-Shaped Courtyard Bungalow",
+                    "Raised Stilt Bungalow",
+                    "Duplex Houses",
+                    "Open Plan Duplex Residence",
+                    "Mezzanine Floor Duplex",
+                    "Corner Plot Duplex House",
+                    "Split-Level Contemporary Duplex",
+                    "Double-Height Living Duplex",
+                    "Compact Homes",
+                    "Small House Designs Under 1200 sqft",
+                    "Narrow Plot Townhouse",
+                    "Micro-Living Urban House",
+                    "Low-Cost Sustainable Cottage",
+                    "Modular Prefab Compact Home",
+                    "Apartments & Penthouses",
+                    "Penthouse with Sky Terrace",
+                    "Duplex Luxury Apartment",
+                    "High-Rise Glass Balcony Residence",
+                    "Loft Style Open Studio Apartment",
+                    "Farmhouse Designs",
+                    "Rustic Timber Farmhouse",
+                    "Courtyard Retreat Farmhouse",
+                    "Modern Barn House",
+                    "Stone Clad Country Retreat"
+                ]
+            },
+            {
+                "name": "Traditional & Vernacular Architecture",
+                "items": [
+                    {
+                        "name": "Kerala Traditional Architecture",
+                        "variants": [
+                            "Nalukettu Traditional Courtyard House",
+                            "Ettukettu Heritage Residence",
+                            "Tharavadu Ancestral Home",
+                            "Charupady Built-in Wooden Verandah Benches",
+                            "Padippura Entrance Gateway",
+                            "Sloped Clay Tile Roof Architecture",
+                            "Machu Wooden Ceiling Attic",
+                            "Aattu Thottil Indoor Swing"
+                        ]
+                    },
+                    {
+                        "name": "Chettinad Architecture",
+                        "variants": [
+                            "Chettinad Courtyard Mansion",
+                            "Athangudi Tiled Living Hall",
+                            "Burma Teak Pillar Verandahs",
+                            "Lime Plastered Egg-White Walls",
+                            "Intricate Stucco Cornice Facades"
+                        ]
+                    },
+                    {
+                        "name": "Regional Heritage Typologies",
+                        "variants": [
+                            "Rajasthani Jharokha Haveli",
+                            "Goan Portuguese Heritage Villa",
+                            "Kath-Kuni Himalayan Timber Architecture",
+                            "Assam Type Bamboo House"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Kerala Traditional Architecture",
+                    "Nalukettu Traditional Courtyard House",
+                    "Ettukettu Heritage Residence",
+                    "Tharavadu Ancestral Home",
+                    "Charupady Built-in Wooden Verandah Benches",
+                    "Padippura Entrance Gateway",
+                    "Sloped Clay Tile Roof Architecture",
+                    "Machu Wooden Ceiling Attic",
+                    "Aattu Thottil Indoor Swing",
+                    "Chettinad Architecture",
+                    "Chettinad Courtyard Mansion",
+                    "Athangudi Tiled Living Hall",
+                    "Burma Teak Pillar Verandahs",
+                    "Lime Plastered Egg-White Walls",
+                    "Intricate Stucco Cornice Facades",
+                    "Regional Heritage Typologies",
+                    "Rajasthani Jharokha Haveli",
+                    "Goan Portuguese Heritage Villa",
+                    "Kath-Kuni Himalayan Timber Architecture",
+                    "Assam Type Bamboo House"
+                ]
+            },
+            {
+                "name": "Commercial & Institutional Architecture",
+                "items": [
+                    {
+                        "name": "Office & Commercial Buildings",
+                        "variants": [
+                            "Corporate Headquarters Glass Tower",
+                            "Low-Rise Tech Park Campus",
+                            "Adaptive Reuse Co-Working Space",
+                            "Boutique Commercial Studio"
+                        ]
+                    },
+                    {
+                        "name": "Hospitality & Resort Architecture",
+                        "variants": [
+                            "Eco-Resort Stilt Cottages",
+                            "Heritage Boutique Hotel",
+                            "Luxury Cliffside Resort",
+                            "Tropical Pool Villa Resort"
+                        ]
+                    },
+                    {
+                        "name": "Retail & Public Buildings",
+                        "variants": [
+                            "Modern Retail Showroom",
+                            "Museum & Cultural Center",
+                            "Community Center & Club House",
+                            "Public Library & Auditorium"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Office & Commercial Buildings",
+                    "Corporate Headquarters Glass Tower",
+                    "Low-Rise Tech Park Campus",
+                    "Adaptive Reuse Co-Working Space",
+                    "Boutique Commercial Studio",
+                    "Hospitality & Resort Architecture",
+                    "Eco-Resort Stilt Cottages",
+                    "Heritage Boutique Hotel",
+                    "Luxury Cliffside Resort",
+                    "Tropical Pool Villa Resort",
+                    "Retail & Public Buildings",
+                    "Modern Retail Showroom",
+                    "Museum & Cultural Center",
+                    "Community Center & Club House",
+                    "Public Library & Auditorium"
+                ]
+            },
+            {
+                "name": "Architectural Drawings & Documentation",
+                "items": [
+                    {
+                        "name": "Floor Plans & Master Layouts",
+                        "variants": [
+                            "Architectural Working Floor Plans",
+                            "Conceptual Space Layouts",
+                            "Measured Site Plans",
+                            "Master Layout Plans",
+                            "Zoning & Setback Compliance Plans"
+                        ]
+                    },
+                    {
+                        "name": "Elevations, Sections & Joinery Details",
+                        "variants": [
+                            "Front & Side Elevation Drawings",
+                            "Structural Cross-Sections",
+                            "Door and Window Schedules",
+                            "Joinery & Staircase Detail Drawings",
+                            "Reflected Ceiling Plans RCP"
+                        ]
+                    },
+                    {
+                        "name": "CAD, BIM & 3D Visualisations",
+                        "variants": [
+                            "Standard 2D CAD Blocks & Symbols",
+                            "Revit BIM Families & Objects",
+                            "SketchUp 3D Architectural Models",
+                            "High-Resolution 3D Architectural Renders",
+                            "Virtual Reality Architectural Walkthroughs"
+                        ]
+                    },
+                    {
+                        "name": "BOQ, Cost Estimation & Specification Sheets",
+                        "variants": [
+                            "Bill of Quantities BOQ",
+                            "Detailed Construction Cost Estimates",
+                            "Technical Specification Sheets",
+                            "Material Test Reports & Standards",
+                            "Bar Bending Schedules BBS"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Floor Plans & Master Layouts",
+                    "Architectural Working Floor Plans",
+                    "Conceptual Space Layouts",
+                    "Measured Site Plans",
+                    "Master Layout Plans",
+                    "Zoning & Setback Compliance Plans",
+                    "Elevations, Sections & Joinery Details",
+                    "Front & Side Elevation Drawings",
+                    "Structural Cross-Sections",
+                    "Door and Window Schedules",
+                    "Joinery & Staircase Detail Drawings",
+                    "Reflected Ceiling Plans RCP",
+                    "CAD, BIM & 3D Visualisations",
+                    "Standard 2D CAD Blocks & Symbols",
+                    "Revit BIM Families & Objects",
+                    "SketchUp 3D Architectural Models",
+                    "High-Resolution 3D Architectural Renders",
+                    "Virtual Reality Architectural Walkthroughs",
+                    "BOQ, Cost Estimation & Specification Sheets",
+                    "Bill of Quantities BOQ",
+                    "Detailed Construction Cost Estimates",
+                    "Technical Specification Sheets",
+                    "Material Test Reports & Standards",
+                    "Bar Bending Schedules BBS"
+                ]
+            },
+            {
+                "name": "Sustainable Architecture & Passive Design",
+                "items": [
+                    {
+                        "name": "Passive Climate Design",
+                        "variants": [
+                            "Courtyard Stack Ventilation",
+                            "Solar Shading & Sun Path Orientation",
+                            "Thermal Mass Wall Systems",
+                            "Wind-Catcher Ventilation Towers",
+                            "Climatic Microclimate Courtyards"
+                        ]
+                    },
+                    {
+                        "name": "Green Building Systems",
+                        "variants": [
+                            "Net-Zero Energy Homes",
+                            "Living Green Roof Buildings",
+                            "Earth-Sheltered Structures",
+                            "Rainwater Harvesting Master Design",
+                            "GRIHA & IGBC Certified Green Designs"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Passive Climate Design",
+                    "Courtyard Stack Ventilation",
+                    "Solar Shading & Sun Path Orientation",
+                    "Thermal Mass Wall Systems",
+                    "Wind-Catcher Ventilation Towers",
+                    "Climatic Microclimate Courtyards",
+                    "Green Building Systems",
+                    "Net-Zero Energy Homes",
+                    "Living Green Roof Buildings",
+                    "Earth-Sheltered Structures",
+                    "Rainwater Harvesting Master Design",
+                    "GRIHA & IGBC Certified Green Designs"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Exterior & Facade",
+        "slug": "exterior-facade",
+        "icon": "🏢",
+        "description": "Building envelopes, exterior elevations, cladding systems, sun-control louvers, and roofing.",
+        "supplier_category": "Facade & Exterior Cladding Contractors",
+        "subcategories": [
+            {
+                "name": "Elevation & Facade Systems",
+                "items": [
+                    {
+                        "name": "Modern House Elevations",
+                        "variants": [
+                            "Contemporary Geometric Front Elevation",
+                            "Minimalist Box Elevation",
+                            "Double-Height Entrance Portico",
+                            "Cantilevered Canopy Elevation",
+                            "Kerala Contemporary Style Elevation",
+                            "Kerala Traditional House Elevation",
+                            "Kerala Contemporary House Elevation",
+                            "Sloped Roof Contemporary Elevation"
+                        ]
+                    },
+                    {
+                        "name": "Double-Skin & Commercial Facades",
+                        "variants": [
+                            "Double-Skin Ventilated Curtain Wall",
+                            "Dynamic Motorized Kinetic Facade",
+                            "Structural Glazed Curtain Wall",
+                            "Precast Concrete Facade Panels",
+                            "Parametric Perforated Metal Facade"
+                        ]
+                    },
+                    {
+                        "name": "Parametric & Heritage Elevations",
+                        "variants": [
+                            "Parametric Voronoi Screen Elevation",
+                            "Traditional Kerala Gabled Elevation",
+                            "Colonial Arched Facade Design",
+                            "Modern Tropical Wooden Screen Elevation"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Modern House Elevations",
+                    "Contemporary Geometric Front Elevation",
+                    "Minimalist Box Elevation",
+                    "Double-Height Entrance Portico",
+                    "Cantilevered Canopy Elevation",
+                    "Kerala Contemporary Style Elevation",
+                    "Kerala Traditional House Elevation",
+                    "Kerala Contemporary House Elevation",
+                    "Sloped Roof Contemporary Elevation",
+                    "Double-Skin & Commercial Facades",
+                    "Double-Skin Ventilated Curtain Wall",
+                    "Dynamic Motorized Kinetic Facade",
+                    "Structural Glazed Curtain Wall",
+                    "Precast Concrete Facade Panels",
+                    "Parametric Perforated Metal Facade",
+                    "Parametric & Heritage Elevations",
+                    "Parametric Voronoi Screen Elevation",
+                    "Traditional Kerala Gabled Elevation",
+                    "Colonial Arched Facade Design",
+                    "Modern Tropical Wooden Screen Elevation"
+                ]
+            },
+            {
+                "name": "Exterior Wall Cladding",
+                "items": [
+                    {
+                        "name": "Natural Stone Cladding",
+                        "variants": [
+                            "Exposed Laterite Stone Wall Cladding",
+                            "Split-Face Granite Elevation Strips",
+                            "Stacked Slate Stone Feature Wall",
+                            "Travertine Stone Exterior Panels",
+                            "Deoli Green Quartzite Cladding"
+                        ]
+                    },
+                    {
+                        "name": "Engineered & Composite Cladding",
+                        "variants": [
+                            "Aluminium Composite Panels ACP",
+                            "High Pressure Laminate HPL Panels",
+                            "High-Density Fiber Cement Board FRC",
+                            "Sintered Stone Large Format Facade Slabs",
+                            "Porcelain Ventilated Facade Tiles"
+                        ]
+                    },
+                    {
+                        "name": "Exposed Brick & Traditional Facades",
+                        "variants": [
+                            "Wirecut Exposed Brick Facade",
+                            "Terracotta Tile Facade Cladding",
+                            "Extruded Terracotta Louver Tiles",
+                            "Fair-Faced Architectural Concrete Facade"
+                        ]
+                    },
+                    {
+                        "name": "Metal & Corten Steel Cladding",
+                        "variants": [
+                            "Weathering Corten Steel Wall Sheets",
+                            "Zinc Standing Seam Facade Panels",
+                            "Copper Shingle Architectural Cladding",
+                            "Anodized Dark Bronze Aluminium Cassettes"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Natural Stone Cladding",
+                    "Exposed Laterite Stone Wall Cladding",
+                    "Split-Face Granite Elevation Strips",
+                    "Stacked Slate Stone Feature Wall",
+                    "Travertine Stone Exterior Panels",
+                    "Deoli Green Quartzite Cladding",
+                    "Engineered & Composite Cladding",
+                    "Aluminium Composite Panels ACP",
+                    "High Pressure Laminate HPL Panels",
+                    "High-Density Fiber Cement Board FRC",
+                    "Sintered Stone Large Format Facade Slabs",
+                    "Porcelain Ventilated Facade Tiles",
+                    "Exposed Brick & Traditional Facades",
+                    "Wirecut Exposed Brick Facade",
+                    "Terracotta Tile Facade Cladding",
+                    "Extruded Terracotta Louver Tiles",
+                    "Fair-Faced Architectural Concrete Facade",
+                    "Metal & Corten Steel Cladding",
+                    "Weathering Corten Steel Wall Sheets",
+                    "Zinc Standing Seam Facade Panels",
+                    "Copper Shingle Architectural Cladding",
+                    "Anodized Dark Bronze Aluminium Cassettes"
+                ]
+            },
+            {
+                "name": "Sun Shading, Louvers & Metalwork",
+                "items": [
+                    {
+                        "name": "Architectural Louver Systems",
+                        "variants": [
+                            "Motorized Aerofoil Aluminium Louvers",
+                            "Vertical Wood-Polymer Composite WPC Louvers",
+                            "Extruded Aluminium Box Louvers",
+                            "Fixed Angled Solar Shading Fins"
+                        ]
+                    },
+                    {
+                        "name": "Decorative Screens & Jali",
+                        "variants": [
+                            "Terracotta Breeze Blocks & Clay Jali",
+                            "CNC Cut Corten Steel Privacy Screens",
+                            "Cast Concrete Architectural Jali",
+                            "Laser-Cut Aluminium Perforated Screens"
+                        ]
+                    },
+                    {
+                        "name": "Metal Canopies & Trellises",
+                        "variants": [
+                            "Cantilevered MS Steel & Glass Canopies",
+                            "Tensile Fabric Architectural Trellises",
+                            "Decorative Wrought Iron Entry Porticos"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Architectural Louver Systems",
+                    "Motorized Aerofoil Aluminium Louvers",
+                    "Vertical Wood-Polymer Composite WPC Louvers",
+                    "Extruded Aluminium Box Louvers",
+                    "Fixed Angled Solar Shading Fins",
+                    "Decorative Screens & Jali",
+                    "Terracotta Breeze Blocks & Clay Jali",
+                    "CNC Cut Corten Steel Privacy Screens",
+                    "Cast Concrete Architectural Jali",
+                    "Laser-Cut Aluminium Perforated Screens",
+                    "Metal Canopies & Trellises",
+                    "Cantilevered MS Steel & Glass Canopies",
+                    "Tensile Fabric Architectural Trellises",
+                    "Decorative Wrought Iron Entry Porticos"
+                ]
+            },
+            {
+                "name": "Balcony, Porch & Terrace Features",
+                "items": [
+                    {
+                        "name": "Balcony Railings & Barriers",
+                        "variants": [
+                            "Frameless Toughened Glass Balcony Railing",
+                            "Stainless Steel SS 316 Railing with Spigots",
+                            "Aluminium Channel Glass Railing",
+                            "Wrought Iron Balcony Grille",
+                            "Stainless Steel Invisible Safety Grilles"
+                        ]
+                    },
+                    {
+                        "name": "Terrace & Balcony Drainage",
+                        "variants": [
+                            "Stainless Steel Linear Trench Drains",
+                            "Balcony Parapet Rainwater Scuppers",
+                            "Concealed Drip Mold Profiles",
+                            "Weep Hole Drainage Channels"
+                        ]
+                    },
+                    {
+                        "name": "Sit-outs, Verandahs & Canopies",
+                        "variants": [
+                            "Cantilevered Glass & Steel Portico Canopy",
+                            "Traditional Charupady Timber Sit-out",
+                            "WPC Decking Covered Verandah",
+                            "Tensile Fabric Entrance Canopy"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Balcony Railings & Barriers",
+                    "Frameless Toughened Glass Balcony Railing",
+                    "Stainless Steel SS 316 Railing with Spigots",
+                    "Aluminium Channel Glass Railing",
+                    "Wrought Iron Balcony Grille",
+                    "Stainless Steel Invisible Safety Grilles",
+                    "Terrace & Balcony Drainage",
+                    "Stainless Steel Linear Trench Drains",
+                    "Balcony Parapet Rainwater Scuppers",
+                    "Concealed Drip Mold Profiles",
+                    "Weep Hole Drainage Channels",
+                    "Sit-outs, Verandahs & Canopies",
+                    "Cantilevered Glass & Steel Portico Canopy",
+                    "Traditional Charupady Timber Sit-out",
+                    "WPC Decking Covered Verandah",
+                    "Tensile Fabric Entrance Canopy"
+                ]
+            },
+            {
+                "name": "Roofing Systems & Rainwater Drainage",
+                "items": [
+                    {
+                        "name": "Traditional & Pitched Roofing",
+                        "variants": [
+                            "Mangalore Clay Roof Tiles",
+                            "Glazed Ceramic Sloped Roof Tiles",
+                            "Natural Stone Roof Slates",
+                            "Concrete Interlocking Roof Shingles",
+                            "Traditional Kerala Sloped Truss Roofing"
+                        ]
+                    },
+                    {
+                        "name": "Metal & Polycarbonate Roofing",
+                        "variants": [
+                            "Standing Seam Zinc Roofing",
+                            "Colour-Coated Galvalume Trapezoidal Sheets",
+                            "Multiwall Polycarbonate Skylight Sheets",
+                            "Insulated Sandwich PUF Roofing Panels"
+                        ]
+                    },
+                    {
+                        "name": "Roof Drainage Accessories",
+                        "variants": [
+                            "Seamless Aluminium Rainwater Gutters",
+                            "PVC Half-Round Rainwater Downspouts",
+                            "Cast Iron Roof Drain Outlets",
+                            "Rainwater Leaf Guards & First Flush Diverters"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Traditional & Pitched Roofing",
+                    "Mangalore Clay Roof Tiles",
+                    "Glazed Ceramic Sloped Roof Tiles",
+                    "Natural Stone Roof Slates",
+                    "Concrete Interlocking Roof Shingles",
+                    "Traditional Kerala Sloped Truss Roofing",
+                    "Metal & Polycarbonate Roofing",
+                    "Standing Seam Zinc Roofing",
+                    "Colour-Coated Galvalume Trapezoidal Sheets",
+                    "Multiwall Polycarbonate Skylight Sheets",
+                    "Insulated Sandwich PUF Roofing Panels",
+                    "Roof Drainage Accessories",
+                    "Seamless Aluminium Rainwater Gutters",
+                    "PVC Half-Round Rainwater Downspouts",
+                    "Cast Iron Roof Drain Outlets",
+                    "Rainwater Leaf Guards & First Flush Diverters"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Interior Spaces",
+        "slug": "interior-spaces",
+        "icon": "🛋️",
+        "description": "Living areas, modular kitchens, luxury bedrooms, spa bathrooms, staircases, and custom residential joinery.",
+        "supplier_category": "Interior Design & Fit-Out Contractors",
+        "subcategories": [
+            {
+                "name": "Living & Dining Spaces",
+                "items": [
+                    {
+                        "name": "Living Room Spaces",
+                        "variants": [
+                            "Double-Height Open Living Room",
+                            "Sunken Living Room Conversation Pit",
+                            "Contemporary Minimalist Living Room",
+                            "Scandinavian Warm Timber Living Room",
+                            "Industrial Loft Living Space"
+                        ]
+                    },
+                    {
+                        "name": "Dining & Entertaining Spaces",
+                        "variants": [
+                            "Open Concept Dining Room with Island",
+                            "Formal 10-Seater Dining Hall",
+                            "Courtyard Adjacent Dining Area",
+                            "Breakfast Nook with Bay Window",
+                            "Indoor Wet Bar & Wine Cellar"
+                        ]
+                    },
+                    {
+                        "name": "Foyer & Entrance Spaces",
+                        "variants": [
+                            "Double-Height Foyer with Chandelier",
+                            "Padippura Traditional Entry Foyer",
+                            "Minimalist Console Foyer with Mirror",
+                            "Shoe & Coat Storage Entryway"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Living Room Spaces",
+                    "Double-Height Open Living Room",
+                    "Sunken Living Room Conversation Pit",
+                    "Contemporary Minimalist Living Room",
+                    "Scandinavian Warm Timber Living Room",
+                    "Industrial Loft Living Space",
+                    "Dining & Entertaining Spaces",
+                    "Open Concept Dining Room with Island",
+                    "Formal 10-Seater Dining Hall",
+                    "Courtyard Adjacent Dining Area",
+                    "Breakfast Nook with Bay Window",
+                    "Indoor Wet Bar & Wine Cellar",
+                    "Foyer & Entrance Spaces",
+                    "Double-Height Foyer with Chandelier",
+                    "Padippura Traditional Entry Foyer",
+                    "Minimalist Console Foyer with Mirror",
+                    "Shoe & Coat Storage Entryway"
+                ]
+            },
+            {
+                "name": "Kitchens & Utility Areas",
+                "items": [
+                    {
+                        "name": "Modular Kitchen Spaces",
+                        "variants": [
+                            "Island Modular Kitchen with Breakfast Counter",
+                            "L-Shaped Handleless Acrylic Kitchen",
+                            "Parallel Galley Stainless Steel Commercial Kitchen",
+                            "U-Shaped Classic Shaker Style Kitchen",
+                            "Open Dry & Wet Dual Kitchen Layout"
+                        ]
+                    },
+                    {
+                        "name": "Utility & Laundry Rooms",
+                        "variants": [
+                            "Integrated Washer-Dryer Utility Room",
+                            "Heavy-Duty Stainless Steel Scrub Sink Counter",
+                            "Retractable Ceiling-Mounted Drying Racks",
+                            "Broom & Cleaning Utility Cupboards",
+                            "Built-in Ironing Board Storage Cabinet"
+                        ]
+                    },
+                    {
+                        "name": "Pantry & Food Storage",
+                        "variants": [
+                            "Walk-in Butler Pantry with Wire Baskets",
+                            "Tall Floor-to-Ceiling Pull-out Larder",
+                            "Corner Carousel & Magic Corner Pull-outs",
+                            "Under-Counter Spice & Bottle Racks"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Modular Kitchen Spaces",
+                    "Island Modular Kitchen with Breakfast Counter",
+                    "L-Shaped Handleless Acrylic Kitchen",
+                    "Parallel Galley Stainless Steel Commercial Kitchen",
+                    "U-Shaped Classic Shaker Style Kitchen",
+                    "Open Dry & Wet Dual Kitchen Layout",
+                    "Utility & Laundry Rooms",
+                    "Integrated Washer-Dryer Utility Room",
+                    "Heavy-Duty Stainless Steel Scrub Sink Counter",
+                    "Retractable Ceiling-Mounted Drying Racks",
+                    "Broom & Cleaning Utility Cupboards",
+                    "Built-in Ironing Board Storage Cabinet",
+                    "Pantry & Food Storage",
+                    "Walk-in Butler Pantry with Wire Baskets",
+                    "Tall Floor-to-Ceiling Pull-out Larder",
+                    "Corner Carousel & Magic Corner Pull-outs",
+                    "Under-Counter Spice & Bottle Racks"
+                ]
+            },
+            {
+                "name": "Bedrooms & Dressing Suites",
+                "items": [
+                    {
+                        "name": "Master Bedrooms",
+                        "variants": [
+                            "Master Bedroom with Ensuite & Balcony",
+                            "Platform Bed Minimalist Master Suite",
+                            "Acoustic Wall Padded Master Bedroom",
+                            "Panoramic Corner Window Bedroom"
+                        ]
+                    },
+                    {
+                        "name": "Wardrobes & Dressing Areas",
+                        "variants": [
+                            "Walk-in Closet with Island Jewelry Drawers",
+                            "Floor-to-Ceiling Tinted Glass Sliding Wardrobe",
+                            "Integrated Vanity Counter with LED Mirror",
+                            "Lacquer Finish Shutter Wardrobes",
+                            "Hydraulic Lift Wardrobe Clothes Hangers"
+                        ]
+                    },
+                    {
+                        "name": "Kids & Guest Bedrooms",
+                        "variants": [
+                            "Bunk Bed Study Room for Kids",
+                            "Space-Saving Murphy Bed Guest Room",
+                            "Montessori Low-Floor Bed Bedroom",
+                            "Twin Bed Contemporary Guest Suite"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Master Bedrooms",
+                    "Master Bedroom with Ensuite & Balcony",
+                    "Platform Bed Minimalist Master Suite",
+                    "Acoustic Wall Padded Master Bedroom",
+                    "Panoramic Corner Window Bedroom",
+                    "Wardrobes & Dressing Areas",
+                    "Walk-in Closet with Island Jewelry Drawers",
+                    "Floor-to-Ceiling Tinted Glass Sliding Wardrobe",
+                    "Integrated Vanity Counter with LED Mirror",
+                    "Lacquer Finish Shutter Wardrobes",
+                    "Hydraulic Lift Wardrobe Clothes Hangers",
+                    "Kids & Guest Bedrooms",
+                    "Bunk Bed Study Room for Kids",
+                    "Space-Saving Murphy Bed Guest Room",
+                    "Montessori Low-Floor Bed Bedroom",
+                    "Twin Bed Contemporary Guest Suite"
+                ]
+            },
+            {
+                "name": "Bathrooms & Powder Rooms",
+                "items": [
+                    {
+                        "name": "Ensuite Bathrooms",
+                        "variants": [
+                            "Luxury Master Bath with Freestanding Tub",
+                            "Walk-in Rain Shower with Glass Partition",
+                            "Floating Double Vanity Bathroom",
+                            "Open-to-Sky Courtyard Bathroom",
+                            "Recessed Wall Niche Shower Space"
+                        ]
+                    },
+                    {
+                        "name": "Powder Rooms & Restrooms",
+                        "variants": [
+                            "Guest Powder Room with Onyx Countertop",
+                            "Monolithic Pedestal Basin Powder Room",
+                            "Backlit Mirror Accent Powder Room",
+                            "Concealed Cistern Minimalist Restroom"
+                        ]
+                    },
+                    {
+                        "name": "Spa & Wet Areas",
+                        "variants": [
+                            "Steam Shower Cubicle with Built-in Seating",
+                            "Sunken Terrazzo Bath Tub",
+                            "Pebble Inlay Open Shower Floor"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Ensuite Bathrooms",
+                    "Luxury Master Bath with Freestanding Tub",
+                    "Walk-in Rain Shower with Glass Partition",
+                    "Floating Double Vanity Bathroom",
+                    "Open-to-Sky Courtyard Bathroom",
+                    "Recessed Wall Niche Shower Space",
+                    "Powder Rooms & Restrooms",
+                    "Guest Powder Room with Onyx Countertop",
+                    "Monolithic Pedestal Basin Powder Room",
+                    "Backlit Mirror Accent Powder Room",
+                    "Concealed Cistern Minimalist Restroom",
+                    "Spa & Wet Areas",
+                    "Steam Shower Cubicle with Built-in Seating",
+                    "Sunken Terrazzo Bath Tub",
+                    "Pebble Inlay Open Shower Floor"
+                ]
+            },
+            {
+                "name": "Staircases & Vertical Circulation",
+                "items": [
+                    {
+                        "name": "Staircase Architectural Types & Layouts",
+                        "variants": [
+                            "Cantilevered Floating Wood Staircase",
+                            "Curved Helical Concrete Staircase",
+                            "Cast Iron & Timber Spiral Staircase",
+                            "Dog-Legged RCC Staircase with Granite Treads",
+                            "Open-Riser Steel Stringer Modern Staircase",
+                            "Double-Height Grand Foyer Staircase"
+                        ]
+                    },
+                    {
+                        "name": "Staircase Treads, Risers & Step Materials",
+                        "variants": [
+                            "Solid Teak Wood Stair Treads",
+                            "Beveled Italian Marble Stair Treads",
+                            "Grooved Flamed Granite Anti-Skid Treads",
+                            "Full-Body Porcelain Slab Stair Steps",
+                            "Perforated Metal Industrial Stair Treads"
+                        ]
+                    },
+                    {
+                        "name": "Staircase Railings & Balustrades",
+                        "variants": [
+                            "Frameless Toughened Glass Stair Railing",
+                            "Stainless Steel SS 316 Post & Railing System",
+                            "Hand-Forged Wrought Iron Scroll Railing",
+                            "Turned Teak Wood Classical Balustrade",
+                            "Tensioned Stainless Steel Wire Cable Railing",
+                            "Concealed Base Channel Glass Balustrade"
+                        ]
+                    },
+                    {
+                        "name": "Staircase Structural Hardware & Step Lighting",
+                        "variants": [
+                            "Wall-Mounted Recessed Step Lights",
+                            "Under-Tread Continuous LED Strip Lighting",
+                            "Heavy-Duty Stainless Steel Glass Spigots",
+                            "Staircase Central Steel Spine Beam",
+                            "Wall Handrail Stainless Steel Brackets"
+                        ]
+                    },
+                    {
+                        "name": "Elevators, Lifts & Specialized Access",
+                        "variants": [
+                            "Hydraulic Residential Home Lift",
+                            "Panoramic Glass Capsule Elevator",
+                            "Machine Room-Less MRL Passenger Elevator",
+                            "Kitchen Dumbwaiter Food Lift",
+                            "Attic Fold-Down Retractable Ladder"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Staircase Architectural Types & Layouts",
+                    "Cantilevered Floating Wood Staircase",
+                    "Curved Helical Concrete Staircase",
+                    "Cast Iron & Timber Spiral Staircase",
+                    "Dog-Legged RCC Staircase with Granite Treads",
+                    "Open-Riser Steel Stringer Modern Staircase",
+                    "Double-Height Grand Foyer Staircase",
+                    "Staircase Treads, Risers & Step Materials",
+                    "Solid Teak Wood Stair Treads",
+                    "Beveled Italian Marble Stair Treads",
+                    "Grooved Flamed Granite Anti-Skid Treads",
+                    "Full-Body Porcelain Slab Stair Steps",
+                    "Perforated Metal Industrial Stair Treads",
+                    "Staircase Railings & Balustrades",
+                    "Frameless Toughened Glass Stair Railing",
+                    "Stainless Steel SS 316 Post & Railing System",
+                    "Hand-Forged Wrought Iron Scroll Railing",
+                    "Turned Teak Wood Classical Balustrade",
+                    "Tensioned Stainless Steel Wire Cable Railing",
+                    "Concealed Base Channel Glass Balustrade",
+                    "Staircase Structural Hardware & Step Lighting",
+                    "Wall-Mounted Recessed Step Lights",
+                    "Under-Tread Continuous LED Strip Lighting",
+                    "Heavy-Duty Stainless Steel Glass Spigots",
+                    "Staircase Central Steel Spine Beam",
+                    "Wall Handrail Stainless Steel Brackets",
+                    "Elevators, Lifts & Specialized Access",
+                    "Hydraulic Residential Home Lift",
+                    "Panoramic Glass Capsule Elevator",
+                    "Machine Room-Less MRL Passenger Elevator",
+                    "Kitchen Dumbwaiter Food Lift",
+                    "Attic Fold-Down Retractable Ladder"
+                ]
+            },
+            {
+                "name": "Specialized Residential Spaces",
+                "items": [
+                    {
+                        "name": "Spiritual & Cultural Spaces",
+                        "variants": [
+                            "Traditional Teak Wood Pooja Mandir",
+                            "Marble Clad Prayer Room with CNC Jali",
+                            "Zen Meditation Room with Bamboo Mats",
+                            "Courtyard Tulsi Thara Shrine"
+                        ]
+                    },
+                    {
+                        "name": "Leisure, Entertainment & Wellness",
+                        "variants": [
+                            "Acoustic Home Theater with Recliners",
+                            "Home Gym with Rubber Flooring & Mirrors",
+                            "Indoor Cedarwood Sauna & Steam Room",
+                            "Library & Home Office Reading Lounge"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Spiritual & Cultural Spaces",
+                    "Traditional Teak Wood Pooja Mandir",
+                    "Marble Clad Prayer Room with CNC Jali",
+                    "Zen Meditation Room with Bamboo Mats",
+                    "Courtyard Tulsi Thara Shrine",
+                    "Leisure, Entertainment & Wellness",
+                    "Acoustic Home Theater with Recliners",
+                    "Home Gym with Rubber Flooring & Mirrors",
+                    "Indoor Cedarwood Sauna & Steam Room",
+                    "Library & Home Office Reading Lounge"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Construction Materials",
+        "slug": "construction-materials",
+        "icon": "🧱",
+        "description": "Structural steel, cement, aggregates, masonry blocks, precast systems, and heavy site supplies.",
+        "supplier_category": "Building Material Dealers & Stockists",
+        "subcategories": [
+            {
+                "name": "Structural Steel & Rebar",
+                "items": [
+                    {
+                        "name": "TMT Steel Rebar",
+                        "variants": [
+                            "TMT 6mm Rebar Fe500D",
+                            "TMT 8mm Rebar Fe500D / Fe550D",
+                            "TMT 10mm Rebar Fe500D / Fe550D",
+                            "TMT 12mm Rebar Fe500D / Fe550D",
+                            "TMT 16mm Rebar Fe500D / Fe550D",
+                            "TMT 20mm Rebar Fe500D / Fe550D",
+                            "TMT 25mm Rebar Fe500D / Fe550D",
+                            "TMT 32mm Heavy Structural Rebar",
+                            "Corrosion Resistant CRS TMT Bars"
+                        ]
+                    },
+                    {
+                        "name": "Structural Steel Sections",
+                        "variants": [
+                            "Universal Steel I-Beams & Columns",
+                            "Structural Steel Channels ISMC",
+                            "Mild Steel Equal Angles ISA",
+                            "Square Hollow Sections SHS",
+                            "Rectangular Hollow Sections RHS",
+                            "Hot-Rolled Structural Plates"
+                        ]
+                    },
+                    {
+                        "name": "Steel Reinforcement Accessories",
+                        "variants": [
+                            "Galvanized GI Binding Wire",
+                            "Concrete Rebar Cover Blocks",
+                            "Mechanical Rebar Couplers",
+                            "Welded Wire Mesh Reinforcement BRC"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "TMT Steel Rebar",
+                    "TMT 6mm Rebar Fe500D",
+                    "TMT 8mm Rebar Fe500D / Fe550D",
+                    "TMT 10mm Rebar Fe500D / Fe550D",
+                    "TMT 12mm Rebar Fe500D / Fe550D",
+                    "TMT 16mm Rebar Fe500D / Fe550D",
+                    "TMT 20mm Rebar Fe500D / Fe550D",
+                    "TMT 25mm Rebar Fe500D / Fe550D",
+                    "TMT 32mm Heavy Structural Rebar",
+                    "Corrosion Resistant CRS TMT Bars",
+                    "Structural Steel Sections",
+                    "Universal Steel I-Beams & Columns",
+                    "Structural Steel Channels ISMC",
+                    "Mild Steel Equal Angles ISA",
+                    "Square Hollow Sections SHS",
+                    "Rectangular Hollow Sections RHS",
+                    "Hot-Rolled Structural Plates",
+                    "Steel Reinforcement Accessories",
+                    "Galvanized GI Binding Wire",
+                    "Concrete Rebar Cover Blocks",
+                    "Mechanical Rebar Couplers",
+                    "Welded Wire Mesh Reinforcement BRC"
+                ]
+            },
+            {
+                "name": "Cement, Concrete & Mortar",
+                "items": [
+                    {
+                        "name": "Standard Bagged Cement",
+                        "variants": [
+                            "Ordinary Portland Cement OPC 43 Grade",
+                            "Ordinary Portland Cement OPC 53 Grade",
+                            "Portland Pozzolana Cement PPC",
+                            "Portland Slag Cement PSC",
+                            "White Portland Cement"
+                        ]
+                    },
+                    {
+                        "name": "Ready-Mix & Specialized Concrete",
+                        "variants": [
+                            "Ready-Mix Concrete M20 / M25 Grade",
+                            "High-Strength Design Mix M30 / M40",
+                            "Self-Compacting Concrete SCC",
+                            "Fibre-Reinforced Concrete FRC",
+                            "Micro-Concrete Repair Mortar"
+                        ]
+                    },
+                    {
+                        "name": "Sustainable & Low-Carbon Cements",
+                        "variants": [
+                            "Ground Granulated Blast-Furnace Slag GGBS",
+                            "Fly Ash Blended Eco-Cement",
+                            "Geopolymer Concrete Mix",
+                            "Calcined Clay Limestone Cement LC3"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Standard Bagged Cement",
+                    "Ordinary Portland Cement OPC 43 Grade",
+                    "Ordinary Portland Cement OPC 53 Grade",
+                    "Portland Pozzolana Cement PPC",
+                    "Portland Slag Cement PSC",
+                    "White Portland Cement",
+                    "Ready-Mix & Specialized Concrete",
+                    "Ready-Mix Concrete M20 / M25 Grade",
+                    "High-Strength Design Mix M30 / M40",
+                    "Self-Compacting Concrete SCC",
+                    "Fibre-Reinforced Concrete FRC",
+                    "Micro-Concrete Repair Mortar",
+                    "Sustainable & Low-Carbon Cements",
+                    "Ground Granulated Blast-Furnace Slag GGBS",
+                    "Fly Ash Blended Eco-Cement",
+                    "Geopolymer Concrete Mix",
+                    "Calcined Clay Limestone Cement LC3"
+                ]
+            },
+            {
+                "name": "Bricks, Blocks & Masonry",
+                "items": [
+                    {
+                        "name": "Clay Bricks & Masonry Units",
+                        "variants": [
+                            "Kiln-Fired Wirecut Red Clay Bricks",
+                            "Perforated Terracotta Acoustic Bricks",
+                            "Handmade Country Mud Bricks",
+                            "Refractory Fire Clay Bricks"
+                        ]
+                    },
+                    {
+                        "name": "Lightweight & Concrete Blocks",
+                        "variants": [
+                            "Autoclaved Aerated Concrete AAC Blocks",
+                            "Solid High-Density Concrete Blocks",
+                            "Hollow Concrete Masonry Blocks",
+                            "Cellular Lightweight Concrete CLC Blocks"
+                        ]
+                    },
+                    {
+                        "name": "Natural Stone Masonry Units",
+                        "variants": [
+                            "Chira Natural Dressed Laterite Stone",
+                            "Granite Random Rubble Masonry Stones",
+                            "Interlocking Soil Stabilized Blocks CSEB",
+                            "Sandstone Ashlar Masonry Blocks"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Clay Bricks & Masonry Units",
+                    "Kiln-Fired Wirecut Red Clay Bricks",
+                    "Perforated Terracotta Acoustic Bricks",
+                    "Handmade Country Mud Bricks",
+                    "Refractory Fire Clay Bricks",
+                    "Lightweight & Concrete Blocks",
+                    "Autoclaved Aerated Concrete AAC Blocks",
+                    "Solid High-Density Concrete Blocks",
+                    "Hollow Concrete Masonry Blocks",
+                    "Cellular Lightweight Concrete CLC Blocks",
+                    "Natural Stone Masonry Units",
+                    "Chira Natural Dressed Laterite Stone",
+                    "Granite Random Rubble Masonry Stones",
+                    "Interlocking Soil Stabilized Blocks CSEB",
+                    "Sandstone Ashlar Masonry Blocks"
+                ]
+            },
+            {
+                "name": "Precast, Prefabrication & Civil Engineering",
+                "items": [
+                    {
+                        "name": "Precast Concrete Structural Elements",
+                        "variants": [
+                            "Precast Prestressed Hollowcore Slabs",
+                            "Precast Concrete Columns & Beams",
+                            "Precast RCC Staircase Flights",
+                            "Precast Boundary Wall Panels & Posts",
+                            "Precast Box Culverts & U-Drains"
+                        ]
+                    },
+                    {
+                        "name": "Prefabricated Building Systems",
+                        "variants": [
+                            "Pre-Engineered Building PEB Steel Frames",
+                            "Light Gauge Steel Framing LGSF",
+                            "Insulated PUF Sandwich Wall Panels",
+                            "Prefabricated Modular Bathroom Pods"
+                        ]
+                    },
+                    {
+                        "name": "Foundations & Geotechnical Systems",
+                        "variants": [
+                            "Bored Cast-in-Situ Concrete Piles",
+                            "Micropiles & Under-Reamed Piles",
+                            "Woven & Non-Woven Geotextile Membranes",
+                            "Biaxial Geogrids for Soil Stabilization",
+                            "Wire Mesh Gabion Retaining Baskets"
+                        ]
+                    },
+                    {
+                        "name": "Civil Infrastructure & Drainage Products",
+                        "variants": [
+                            "Heavy-Duty RCC Spun Pipes NP3 / NP4",
+                            "Precast Inspection Chambers & Manholes",
+                            "Cast Iron & Ductile Iron Manhole Covers",
+                            "Trench Drains with Galvanized Grating"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Precast Concrete Structural Elements",
+                    "Precast Prestressed Hollowcore Slabs",
+                    "Precast Concrete Columns & Beams",
+                    "Precast RCC Staircase Flights",
+                    "Precast Boundary Wall Panels & Posts",
+                    "Precast Box Culverts & U-Drains",
+                    "Prefabricated Building Systems",
+                    "Pre-Engineered Building PEB Steel Frames",
+                    "Light Gauge Steel Framing LGSF",
+                    "Insulated PUF Sandwich Wall Panels",
+                    "Prefabricated Modular Bathroom Pods",
+                    "Foundations & Geotechnical Systems",
+                    "Bored Cast-in-Situ Concrete Piles",
+                    "Micropiles & Under-Reamed Piles",
+                    "Woven & Non-Woven Geotextile Membranes",
+                    "Biaxial Geogrids for Soil Stabilization",
+                    "Wire Mesh Gabion Retaining Baskets",
+                    "Civil Infrastructure & Drainage Products",
+                    "Heavy-Duty RCC Spun Pipes NP3 / NP4",
+                    "Precast Inspection Chambers & Manholes",
+                    "Cast Iron & Ductile Iron Manhole Covers",
+                    "Trench Drains with Galvanized Grating"
+                ]
+            },
+            {
+                "name": "Construction Tools, Machinery & Site Supplies",
+                "items": [
+                    {
+                        "name": "Hand Construction Tools",
+                        "variants": [
+                            "Masonry Trowels & Floats",
+                            "Spirit Levels & Plumb Bobs",
+                            "Heavy-Duty Sledgehammers & Chisels",
+                            "Bar Bending Hand Keys & Benches"
+                        ]
+                    },
+                    {
+                        "name": "Power Tools & Cutting Equipment",
+                        "variants": [
+                            "Concrete Needle Vibrators Petrol & Electric",
+                            "Diamond Blade Concrete Floor Cutters",
+                            "Heavy Rotary Demolition Breakers",
+                            "Automatic Rebar Bending & Cutting Machines",
+                            "Diamond Core Drilling Machines",
+                            "Rotary Self-Leveling Laser Levels"
+                        ]
+                    },
+                    {
+                        "name": "Heavy Construction Machinery",
+                        "variants": [
+                            "Hydraulic Crawler Excavators",
+                            "Backhoe Loaders JCB",
+                            "Transit Concrete Mixers RMC Truck",
+                            "Stationary Concrete Trailer Pumps",
+                            "Tandem Vibratory Soil Rollers",
+                            "Tower Cranes & Material Hoists"
+                        ]
+                    },
+                    {
+                        "name": "Formwork & Scaffolding Systems",
+                        "variants": [
+                            "Aluminium Mivan Formwork System",
+                            "Cuplock System Scaffolding",
+                            "Adjustable Heavy-Duty Steel Props Acrow",
+                            "H-20 Timber Formwork Beams",
+                            "Shuttering Waterproof Film-Faced Plywood"
+                        ]
+                    },
+                    {
+                        "name": "Fasteners, Anchors & PPE Safety",
+                        "variants": [
+                            "Chemical Epoxy Injection Anchors",
+                            "Heavy-Duty Expansion Anchor Bolts",
+                            "Self-Drilling Metal Screws",
+                            "ISI Marked Hard Hat Safety Helmets",
+                            "High-Visibility Reflective Safety Vests",
+                            "Steel-Toe Anti-Puncture Work Boots",
+                            "Full Body Fall-Arrest Harness"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Hand Construction Tools",
+                    "Masonry Trowels & Floats",
+                    "Spirit Levels & Plumb Bobs",
+                    "Heavy-Duty Sledgehammers & Chisels",
+                    "Bar Bending Hand Keys & Benches",
+                    "Power Tools & Cutting Equipment",
+                    "Concrete Needle Vibrators Petrol & Electric",
+                    "Diamond Blade Concrete Floor Cutters",
+                    "Heavy Rotary Demolition Breakers",
+                    "Automatic Rebar Bending & Cutting Machines",
+                    "Diamond Core Drilling Machines",
+                    "Rotary Self-Leveling Laser Levels",
+                    "Heavy Construction Machinery",
+                    "Hydraulic Crawler Excavators",
+                    "Backhoe Loaders JCB",
+                    "Transit Concrete Mixers RMC Truck",
+                    "Stationary Concrete Trailer Pumps",
+                    "Tandem Vibratory Soil Rollers",
+                    "Tower Cranes & Material Hoists",
+                    "Formwork & Scaffolding Systems",
+                    "Aluminium Mivan Formwork System",
+                    "Cuplock System Scaffolding",
+                    "Adjustable Heavy-Duty Steel Props Acrow",
+                    "H-20 Timber Formwork Beams",
+                    "Shuttering Waterproof Film-Faced Plywood",
+                    "Fasteners, Anchors & PPE Safety",
+                    "Chemical Epoxy Injection Anchors",
+                    "Heavy-Duty Expansion Anchor Bolts",
+                    "Self-Drilling Metal Screws",
+                    "ISI Marked Hard Hat Safety Helmets",
+                    "High-Visibility Reflective Safety Vests",
+                    "Steel-Toe Anti-Puncture Work Boots",
+                    "Full Body Fall-Arrest Harness"
+                ]
+            },
+            {
+                "name": "Sustainable, Eco-Friendly & Alternative Materials",
+                "items": [
+                    {
+                        "name": "Bio-Based Structural Materials",
+                        "variants": [
+                            "Treated Structural Bamboo Poles",
+                            "Cross-Laminated Timber CLT Panels",
+                            "Hempcrete Biocomposite Blocks",
+                            "Engineered Glulam Beams"
+                        ]
+                    },
+                    {
+                        "name": "Earth & Natural Wall Construction",
+                        "variants": [
+                            "Stabilized Rammed Earth Walls",
+                            "Compressed Earth Blocks CSEB",
+                            "Straw Bale Insulation Wall Infill",
+                            "Natural Cob Wall Construction"
+                        ]
+                    },
+                    {
+                        "name": "Eco-Insulation & Coatings",
+                        "variants": [
+                            "Expanded Natural Cork Slabs",
+                            "Recycled Cellulose Fiber Insulation",
+                            "Mineral Rockwool Thermal Insulation",
+                            "Reflective Radiant Barrier Aluminum Foil"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Bio-Based Structural Materials",
+                    "Treated Structural Bamboo Poles",
+                    "Cross-Laminated Timber CLT Panels",
+                    "Hempcrete Biocomposite Blocks",
+                    "Engineered Glulam Beams",
+                    "Earth & Natural Wall Construction",
+                    "Stabilized Rammed Earth Walls",
+                    "Compressed Earth Blocks CSEB",
+                    "Straw Bale Insulation Wall Infill",
+                    "Natural Cob Wall Construction",
+                    "Eco-Insulation & Coatings",
+                    "Expanded Natural Cork Slabs",
+                    "Recycled Cellulose Fiber Insulation",
+                    "Mineral Rockwool Thermal Insulation",
+                    "Reflective Radiant Barrier Aluminum Foil"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Plumbing & Sanitaryware",
+        "slug": "plumbing-sanitaryware",
+        "icon": "🚿",
+        "description": "Piping networks, water supply, modern toilets, washbasins, premium showers, pumps, and water purification.",
+        "supplier_category": "Plumbing & Sanitaryware Wholesalers",
+        "subcategories": [
+            {
+                "name": "Pipes, Fittings & Drainage Systems",
+                "items": [
+                    {
+                        "name": "Potable Water Supply Piping",
+                        "variants": [
+                            "CPVC SDR 11 Hot & Cold Water Pipes",
+                            "UPVC Class 1/2/3 Pressure Pipes",
+                            "PPR Polypropylene Hot Water Pipes",
+                            "Multilayer Composite PEX-AL-PEX Pipes",
+                            "Seamless Copper Plumbing Pipes"
+                        ]
+                    },
+                    {
+                        "name": "Drainage, Soil & Waste Piping",
+                        "variants": [
+                            "PVC SWR Ring-Fit Drainage Pipes",
+                            "Cast Iron Soil & Waste Pipes",
+                            "High-Density Polyethylene HDPE Drainage Pipes",
+                            "Acoustic Triple-Layer Silent Drainage Pipes"
+                        ]
+                    },
+                    {
+                        "name": "Floor Drains & Traps",
+                        "variants": [
+                            "Stainless Steel Tile-Insert Floor Drains",
+                            "Multi-Trap Deep Seal Floor Traps",
+                            "Anti-Foul Cockroach Traps",
+                            "Linear Shower Floor Drainage Channels"
+                        ]
+                    },
+                    {
+                        "name": "Valves & Flow Regulators",
+                        "variants": [
+                            "Full Bore Brass Ball Valves",
+                            "Non-Return Check Valves NRV",
+                            "Pressure Reducing Valves PRV",
+                            "Cast Iron Sluice & Butterfly Valves"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Potable Water Supply Piping",
+                    "CPVC SDR 11 Hot & Cold Water Pipes",
+                    "UPVC Class 1/2/3 Pressure Pipes",
+                    "PPR Polypropylene Hot Water Pipes",
+                    "Multilayer Composite PEX-AL-PEX Pipes",
+                    "Seamless Copper Plumbing Pipes",
+                    "Drainage, Soil & Waste Piping",
+                    "PVC SWR Ring-Fit Drainage Pipes",
+                    "Cast Iron Soil & Waste Pipes",
+                    "High-Density Polyethylene HDPE Drainage Pipes",
+                    "Acoustic Triple-Layer Silent Drainage Pipes",
+                    "Floor Drains & Traps",
+                    "Stainless Steel Tile-Insert Floor Drains",
+                    "Multi-Trap Deep Seal Floor Traps",
+                    "Anti-Foul Cockroach Traps",
+                    "Linear Shower Floor Drainage Channels",
+                    "Valves & Flow Regulators",
+                    "Full Bore Brass Ball Valves",
+                    "Non-Return Check Valves NRV",
+                    "Pressure Reducing Valves PRV",
+                    "Cast Iron Sluice & Butterfly Valves"
+                ]
+            },
+            {
+                "name": "Sanitaryware & Toilets",
+                "items": [
+                    {
+                        "name": "Water Closets & Commodes",
+                        "variants": [
+                            "Rimless Wall-Hung Water Closet",
+                            "Floor-Mounted Single-Piece EWC",
+                            "Smart Electronic Bidet Toilet with Heated Seat",
+                            "Concealed Dual-Flush Cistern Tanks",
+                            "Commercial Wall-Hung Urinals with Sensors"
+                        ]
+                    },
+                    {
+                        "name": "Washbasins & Vanities",
+                        "variants": [
+                            "Countertop Ceramic Washbasin",
+                            "Under-Counter Seamless Basin",
+                            "Freestanding Monolithic Stone Basin",
+                            "Solid Teak Wood Vanity Counter with Basin",
+                            "Wall-Hung Corner Powder Room Basin"
+                        ]
+                    },
+                    {
+                        "name": "Bathtubs & Shower Enclosures",
+                        "variants": [
+                            "Freestanding Acrylic Soaking Bathtub",
+                            "Cast Iron Enamelled Classical Bathtub",
+                            "Hydromassage Whirlpool Jacuzzi Tub",
+                            "10mm Toughened Glass Shower Cubicle",
+                            "Sliding Shower Door Enclosure with Matte Black Hardware"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Water Closets & Commodes",
+                    "Rimless Wall-Hung Water Closet",
+                    "Floor-Mounted Single-Piece EWC",
+                    "Smart Electronic Bidet Toilet with Heated Seat",
+                    "Concealed Dual-Flush Cistern Tanks",
+                    "Commercial Wall-Hung Urinals with Sensors",
+                    "Washbasins & Vanities",
+                    "Countertop Ceramic Washbasin",
+                    "Under-Counter Seamless Basin",
+                    "Freestanding Monolithic Stone Basin",
+                    "Solid Teak Wood Vanity Counter with Basin",
+                    "Wall-Hung Corner Powder Room Basin",
+                    "Bathtubs & Shower Enclosures",
+                    "Freestanding Acrylic Soaking Bathtub",
+                    "Cast Iron Enamelled Classical Bathtub",
+                    "Hydromassage Whirlpool Jacuzzi Tub",
+                    "10mm Toughened Glass Shower Cubicle",
+                    "Sliding Shower Door Enclosure with Matte Black Hardware"
+                ]
+            },
+            {
+                "name": "Bath Fittings, Faucets & Showers",
+                "items": [
+                    {
+                        "name": "Mixers & Diverters",
+                        "variants": [
+                            "Thermostatic Concealed 3-Outlet Diverter",
+                            "Single-Lever Basin Mixer High Neck",
+                            "Wall-Mounted Concealed Basin Tap",
+                            "Floor-Mounted Freestanding Bathtub Mixer",
+                            "Pull-Out Spray Kitchen Sink Mixer"
+                        ]
+                    },
+                    {
+                        "name": "Showers & Handsets",
+                        "variants": [
+                            "Ceiling-Mounted Rain Shower Head 12x12 inch",
+                            "Waterfall & Mist Multifunction Overhead Shower",
+                            "Multifunction Handheld Shower with Hose",
+                            "Concealed Body Jets for Spa Shower",
+                            "Thermostatic Temperature Display Shower Column"
+                        ]
+                    },
+                    {
+                        "name": "Bathroom Accessories & Hardware",
+                        "variants": [
+                            "Solid Brass Matte Black Towel Rails",
+                            "Corner Glass Bathroom Shelves",
+                            "Concealed Soap Dispensers & Robe Hooks",
+                            "Brass Health Faucets & Jet Sprays"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Mixers & Diverters",
+                    "Thermostatic Concealed 3-Outlet Diverter",
+                    "Single-Lever Basin Mixer High Neck",
+                    "Wall-Mounted Concealed Basin Tap",
+                    "Floor-Mounted Freestanding Bathtub Mixer",
+                    "Pull-Out Spray Kitchen Sink Mixer",
+                    "Showers & Handsets",
+                    "Ceiling-Mounted Rain Shower Head 12x12 inch",
+                    "Waterfall & Mist Multifunction Overhead Shower",
+                    "Multifunction Handheld Shower with Hose",
+                    "Concealed Body Jets for Spa Shower",
+                    "Thermostatic Temperature Display Shower Column",
+                    "Bathroom Accessories & Hardware",
+                    "Solid Brass Matte Black Towel Rails",
+                    "Corner Glass Bathroom Shelves",
+                    "Concealed Soap Dispensers & Robe Hooks",
+                    "Brass Health Faucets & Jet Sprays"
+                ]
+            },
+            {
+                "name": "Water Storage, Pumps & Treatment",
+                "items": [
+                    {
+                        "name": "Water Storage Tanks",
+                        "variants": [
+                            "Triple-Layer Anti-Bacterial Roto-Molded Water Tanks",
+                            "Food Grade Stainless Steel SS 304 Overhead Tanks",
+                            "Underground Reinforced Concrete Sump Liners",
+                            "Commercial Loft Tanks for Apartments"
+                        ]
+                    },
+                    {
+                        "name": "Pumps & Water Automation",
+                        "variants": [
+                            "Submersible Openwell Borehole Pumps",
+                            "Automatic Constant-Pressure Booster Pump System",
+                            "Heavy-Duty Sewage & Drainage Submersible Pumps",
+                            "Automatic Water Level Controller Sensors"
+                        ]
+                    },
+                    {
+                        "name": "Water Treatment & Purification",
+                        "variants": [
+                            "Centralized Automatic Water Softener Plant",
+                            "Domestic Multi-Stage RO + UV + UF Water Purifiers",
+                            "Activated Carbon & Iron Removal Sand Filters",
+                            "Packaged Sewage Treatment Plant STP for Villas"
+                        ]
+                    },
+                    {
+                        "name": "Water Heaters & Geysers",
+                        "variants": [
+                            "Evacuated Tube Solar Water Heater System",
+                            "Energy-Saving Heat Pump Water Heaters",
+                            "Instant Electric Tankless Geysers",
+                            "Glass-Lined Electric Storage Geysers 25L"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Water Storage Tanks",
+                    "Triple-Layer Anti-Bacterial Roto-Molded Water Tanks",
+                    "Food Grade Stainless Steel SS 304 Overhead Tanks",
+                    "Underground Reinforced Concrete Sump Liners",
+                    "Commercial Loft Tanks for Apartments",
+                    "Pumps & Water Automation",
+                    "Submersible Openwell Borehole Pumps",
+                    "Automatic Constant-Pressure Booster Pump System",
+                    "Heavy-Duty Sewage & Drainage Submersible Pumps",
+                    "Automatic Water Level Controller Sensors",
+                    "Water Treatment & Purification",
+                    "Centralized Automatic Water Softener Plant",
+                    "Domestic Multi-Stage RO + UV + UF Water Purifiers",
+                    "Activated Carbon & Iron Removal Sand Filters",
+                    "Packaged Sewage Treatment Plant STP for Villas",
+                    "Water Heaters & Geysers",
+                    "Evacuated Tube Solar Water Heater System",
+                    "Energy-Saving Heat Pump Water Heaters",
+                    "Instant Electric Tankless Geysers",
+                    "Glass-Lined Electric Storage Geysers 25L"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Electrical & Lighting",
+        "slug": "electrical-lighting",
+        "icon": "💡",
+        "description": "Architectural luminaires, luxury chandeliers, modular switchgear, home automation, HVAC, fire safety, and solar PV.",
+        "supplier_category": "Electrical & Lighting Distributors",
+        "subcategories": [
+            {
+                "name": "Architectural & Feature Lighting",
+                "items": [
+                    {
+                        "name": "Recessed & Track Systems",
+                        "variants": [
+                            "Magnetic Low-Voltage Track Light System",
+                            "Anti-Glare Deep Recessed COB Downlights",
+                            "Trimless Plaster-in LED Profile Downlights",
+                            "Gimbal Adjustable Spotlights"
+                        ]
+                    },
+                    {
+                        "name": "Decorative Chandeliers & Pendants",
+                        "variants": [
+                            "K9 Crystal Waterfall Chandelier",
+                            "Modern Linear Dining Table Pendant Light",
+                            "Hand-Blown Tinted Glass Cluster Pendants",
+                            "Brushed Brass Multi-Arm Sputnik Chandelier",
+                            "Traditional Brass Hanging Deepam Bell Lamps"
+                        ]
+                    },
+                    {
+                        "name": "Linear, Strip & Accent Lighting",
+                        "variants": [
+                            "High-CRI Continuous COB LED Strip Lights",
+                            "Concealed False Ceiling Cove Lighting Profiles",
+                            "Flexible Silicon Neon LED Light Strips",
+                            "Art & Picture Frame Accent Wall Lights"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Recessed & Track Systems",
+                    "Magnetic Low-Voltage Track Light System",
+                    "Anti-Glare Deep Recessed COB Downlights",
+                    "Trimless Plaster-in LED Profile Downlights",
+                    "Gimbal Adjustable Spotlights",
+                    "Decorative Chandeliers & Pendants",
+                    "K9 Crystal Waterfall Chandelier",
+                    "Modern Linear Dining Table Pendant Light",
+                    "Hand-Blown Tinted Glass Cluster Pendants",
+                    "Brushed Brass Multi-Arm Sputnik Chandelier",
+                    "Traditional Brass Hanging Deepam Bell Lamps",
+                    "Linear, Strip & Accent Lighting",
+                    "High-CRI Continuous COB LED Strip Lights",
+                    "Concealed False Ceiling Cove Lighting Profiles",
+                    "Flexible Silicon Neon LED Light Strips",
+                    "Art & Picture Frame Accent Wall Lights"
+                ]
+            },
+            {
+                "name": "Outdoor, Landscape & Facade Lighting",
+                "items": [
+                    {
+                        "name": "Landscape Luminaires",
+                        "variants": [
+                            "Garden Spike Adjustable Spotlights",
+                            "Architectural Pathway Bollard Lights",
+                            "In-Ground Uplights for Trees & Pillars",
+                            "Underwater IP68 LED Swimming Pool Lights",
+                            "Solar Powered Pathway Post Lights"
+                        ]
+                    },
+                    {
+                        "name": "Facade Lighting",
+                        "variants": [
+                            "High-Power Exterior LED Wall Washers",
+                            "Narrow Beam Column Grazing Lights",
+                            "Recessed Step & Boundary Wall Footlights",
+                            "Architectural Facade Linear Profiles"
+                        ]
+                    },
+                    {
+                        "name": "Outdoor Security Lighting",
+                        "variants": [
+                            "PIR Motion Sensor Exterior Floodlights",
+                            "Dusk-to-Dawn Photocell Gate Lights",
+                            "High-Mast Commercial Yard Lights"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Landscape Luminaires",
+                    "Garden Spike Adjustable Spotlights",
+                    "Architectural Pathway Bollard Lights",
+                    "In-Ground Uplights for Trees & Pillars",
+                    "Underwater IP68 LED Swimming Pool Lights",
+                    "Solar Powered Pathway Post Lights",
+                    "Facade Lighting",
+                    "High-Power Exterior LED Wall Washers",
+                    "Narrow Beam Column Grazing Lights",
+                    "Recessed Step & Boundary Wall Footlights",
+                    "Architectural Facade Linear Profiles",
+                    "Outdoor Security Lighting",
+                    "PIR Motion Sensor Exterior Floodlights",
+                    "Dusk-to-Dawn Photocell Gate Lights",
+                    "High-Mast Commercial Yard Lights"
+                ]
+            },
+            {
+                "name": "Wiring, Cables & Power Distribution",
+                "items": [
+                    {
+                        "name": "Conductors & Conduits",
+                        "variants": [
+                            "Flame Retardant Low Smoke FRLS Copper Wires",
+                            "Heavy Duty Armoured Underground Power Cables",
+                            "Rigid PVC Electrical Conduit Pipes & Fittings",
+                            "Flexible Metal Shielded Conduit Pipes"
+                        ]
+                    },
+                    {
+                        "name": "Distribution Boards & Switchgear",
+                        "variants": [
+                            "Double Door MCB Distribution Boards",
+                            "Miniature Circuit Breakers MCB B & C Curves",
+                            "Residual Current Circuit Breakers RCCB",
+                            "Moulded Case Circuit Breakers MCCB",
+                            "Automatic Phase Changeover Isolator Switches"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Conductors & Conduits",
+                    "Flame Retardant Low Smoke FRLS Copper Wires",
+                    "Heavy Duty Armoured Underground Power Cables",
+                    "Rigid PVC Electrical Conduit Pipes & Fittings",
+                    "Flexible Metal Shielded Conduit Pipes",
+                    "Distribution Boards & Switchgear",
+                    "Double Door MCB Distribution Boards",
+                    "Miniature Circuit Breakers MCB B & C Curves",
+                    "Residual Current Circuit Breakers RCCB",
+                    "Moulded Case Circuit Breakers MCCB",
+                    "Automatic Phase Changeover Isolator Switches"
+                ]
+            },
+            {
+                "name": "Modular Switches & Smart Home Automation",
+                "items": [
+                    {
+                        "name": "Switches & Sockets",
+                        "variants": [
+                            "Toughened Glass Plate Modular Switches",
+                            "Brushed Aluminium Minimalist Modular Faceplates",
+                            "Capacitive Feather Touch Smart Switches",
+                            "Universal Power Sockets with Dual Type-C USB"
+                        ]
+                    },
+                    {
+                        "name": "Smart Home Automation",
+                        "variants": [
+                            "Zigbee / WiFi Smart Automation Controller Hub",
+                            "Smart Motorized Curtain & Blind Modules",
+                            "Smart Dimmer & Lighting Scene Keypads",
+                            "Smart Video Doorbell with Two-Way Audio",
+                            "Occupancy & PIR Motion Sensor Switches"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Switches & Sockets",
+                    "Toughened Glass Plate Modular Switches",
+                    "Brushed Aluminium Minimalist Modular Faceplates",
+                    "Capacitive Feather Touch Smart Switches",
+                    "Universal Power Sockets with Dual Type-C USB",
+                    "Smart Home Automation",
+                    "Zigbee / WiFi Smart Automation Controller Hub",
+                    "Smart Motorized Curtain & Blind Modules",
+                    "Smart Dimmer & Lighting Scene Keypads",
+                    "Smart Video Doorbell with Two-Way Audio",
+                    "Occupancy & PIR Motion Sensor Switches"
+                ]
+            },
+            {
+                "name": "HVAC, Climate Control & Ventilation",
+                "items": [
+                    {
+                        "name": "Air Conditioning Systems",
+                        "variants": [
+                            "Variable Refrigerant Volume VRV / VRF Systems",
+                            "Concealed Ductable Split Air Conditioners",
+                            "4-Way Ceiling Cassette Inverter AC Units",
+                            "High-Efficiency 5-Star Inverter Split ACs",
+                            "Central Chilled Water Air Handling Units AHU"
+                        ]
+                    },
+                    {
+                        "name": "Ventilation & Fresh-Air Systems",
+                        "variants": [
+                            "Energy Recovery Ventilators ERV / HRV",
+                            "Inline Acoustic Duct Silent Exhaust Fans",
+                            "Centrifugal Kitchen Chimney Blowers",
+                            "Heavy-Duty Industrial Axial Exhaust Fans"
+                        ]
+                    },
+                    {
+                        "name": "Air Quality & Accessories",
+                        "variants": [
+                            "Commercial Whole-House HEPA Air Purifiers",
+                            "Whole-House Refrigerant Dehumidifiers",
+                            "Smart Touchscreen WiFi Thermostats",
+                            "Linear Continuous Slot Air Diffusers & Grilles"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Air Conditioning Systems",
+                    "Variable Refrigerant Volume VRV / VRF Systems",
+                    "Concealed Ductable Split Air Conditioners",
+                    "4-Way Ceiling Cassette Inverter AC Units",
+                    "High-Efficiency 5-Star Inverter Split ACs",
+                    "Central Chilled Water Air Handling Units AHU",
+                    "Ventilation & Fresh-Air Systems",
+                    "Energy Recovery Ventilators ERV / HRV",
+                    "Inline Acoustic Duct Silent Exhaust Fans",
+                    "Centrifugal Kitchen Chimney Blowers",
+                    "Heavy-Duty Industrial Axial Exhaust Fans",
+                    "Air Quality & Accessories",
+                    "Commercial Whole-House HEPA Air Purifiers",
+                    "Whole-House Refrigerant Dehumidifiers",
+                    "Smart Touchscreen WiFi Thermostats",
+                    "Linear Continuous Slot Air Diffusers & Grilles"
+                ]
+            },
+            {
+                "name": "Fire Safety & Building Security Systems",
+                "items": [
+                    {
+                        "name": "Fire Protection Equipment",
+                        "variants": [
+                            "Addressable Fire Alarm Control Panels",
+                            "Photoelectric Optical Smoke Detectors",
+                            "Automatic Wet Pipe Fire Sprinkler Heads",
+                            "First-Aid Fire Hose Reels with Nozzles",
+                            "Class ABC Dry Powder & CO2 Fire Extinguishers",
+                            "Clean Agent Gas Fire Suppression Systems"
+                        ]
+                    },
+                    {
+                        "name": "Security & Access Control",
+                        "variants": [
+                            "IP CCTV Surveillance Cameras 4K",
+                            "Motorized Pan-Tilt-Zoom PTZ Dome Cameras",
+                            "Network Video Recorders NVR with Cloud Sync",
+                            "Biometric Fingerprint & Facial Recognition Access Control",
+                            "RFID Smart Card Door Access Locks",
+                            "Intruder Perimeter Infrared Beam Detectors"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Fire Protection Equipment",
+                    "Addressable Fire Alarm Control Panels",
+                    "Photoelectric Optical Smoke Detectors",
+                    "Automatic Wet Pipe Fire Sprinkler Heads",
+                    "First-Aid Fire Hose Reels with Nozzles",
+                    "Class ABC Dry Powder & CO2 Fire Extinguishers",
+                    "Clean Agent Gas Fire Suppression Systems",
+                    "Security & Access Control",
+                    "IP CCTV Surveillance Cameras 4K",
+                    "Motorized Pan-Tilt-Zoom PTZ Dome Cameras",
+                    "Network Video Recorders NVR with Cloud Sync",
+                    "Biometric Fingerprint & Facial Recognition Access Control",
+                    "RFID Smart Card Door Access Locks",
+                    "Intruder Perimeter Infrared Beam Detectors"
+                ]
+            },
+            {
+                "name": "Solar PV & Clean Energy Systems",
+                "items": [
+                    {
+                        "name": "Solar Power Generation",
+                        "variants": [
+                            "Monocrystalline Half-Cut Solar PV Panels",
+                            "On-Grid String Solar Inverters with Net Metering",
+                            "Hybrid Solar Inverter with Lithium Battery Storage",
+                            "Rooftop Solar Aluminium Mounting Structures"
+                        ]
+                    },
+                    {
+                        "name": "Electric Vehicle Charging",
+                        "variants": [
+                            "AC Type-2 7.4kW Residential Wallbox EV Charger",
+                            "Commercial Fast 22kW AC EV Charging Station",
+                            "Dedicated EV Charger Sub-Distribution Panel"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Solar Power Generation",
+                    "Monocrystalline Half-Cut Solar PV Panels",
+                    "On-Grid String Solar Inverters with Net Metering",
+                    "Hybrid Solar Inverter with Lithium Battery Storage",
+                    "Rooftop Solar Aluminium Mounting Structures",
+                    "Electric Vehicle Charging",
+                    "AC Type-2 7.4kW Residential Wallbox EV Charger",
+                    "Commercial Fast 22kW AC EV Charging Station",
+                    "Dedicated EV Charger Sub-Distribution Panel"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Flooring & Stone",
+        "slug": "flooring-stone",
+        "icon": "💎",
+        "description": "Italian marble, polished granites, vitrified porcelain slabs, handcrafted Athangudi tiles, and wood flooring.",
+        "supplier_category": "Marble, Granite & Tile Showrooms",
+        "subcategories": [
+            {
+                "name": "Natural Marble & Translucent Stones",
+                "items": [
+                    {
+                        "name": "Imported Italian Marble",
+                        "variants": [
+                            "Statuario White Italian Marble",
+                            "Botticino Classic Beige Marble",
+                            "Carrara Gioia Italian Marble",
+                            "Michelangelo Gold Veined Marble",
+                            "Grey Flurry Imported Marble"
+                        ]
+                    },
+                    {
+                        "name": "Indian Marble & Translucent Onyx",
+                        "variants": [
+                            "Makrana Pure White Marble",
+                            "Udaipur Green Marble Slabs",
+                            "Backlit Honey Onyx Translucent Stone",
+                            "Albeta White Marble Flooring"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Imported Italian Marble",
+                    "Statuario White Italian Marble",
+                    "Botticino Classic Beige Marble",
+                    "Carrara Gioia Italian Marble",
+                    "Michelangelo Gold Veined Marble",
+                    "Grey Flurry Imported Marble",
+                    "Indian Marble & Translucent Onyx",
+                    "Makrana Pure White Marble",
+                    "Udaipur Green Marble Slabs",
+                    "Backlit Honey Onyx Translucent Stone",
+                    "Albeta White Marble Flooring"
+                ]
+            },
+            {
+                "name": "Granite & Regional Building Stones",
+                "items": [
+                    {
+                        "name": "Polished & Flamed Granite",
+                        "variants": [
+                            "Black Galaxy Golden Speckled Granite",
+                            "Jet Black Absolute Granite Kitchen Slabs",
+                            "Tan Brown Flamed Non-Slip Granite",
+                            "Kashmir White Granite Flooring"
+                        ]
+                    },
+                    {
+                        "name": "Heritage Limestones & Sandstone",
+                        "variants": [
+                            "Kota Stone Blue & Brown Hand-Cut Slabs",
+                            "Jaisalmer Golden Yellow Limestone",
+                            "Dholpur Beige Natural Sandstone",
+                            "Kandla Grey Calibrated Sandstone",
+                            "Natural Multi-Colour Slate Stone"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Polished & Flamed Granite",
+                    "Black Galaxy Golden Speckled Granite",
+                    "Jet Black Absolute Granite Kitchen Slabs",
+                    "Tan Brown Flamed Non-Slip Granite",
+                    "Kashmir White Granite Flooring",
+                    "Heritage Limestones & Sandstone",
+                    "Kota Stone Blue & Brown Hand-Cut Slabs",
+                    "Jaisalmer Golden Yellow Limestone",
+                    "Dholpur Beige Natural Sandstone",
+                    "Kandla Grey Calibrated Sandstone",
+                    "Natural Multi-Colour Slate Stone"
+                ]
+            },
+            {
+                "name": "Vitrified & Ceramic Tile Slabs",
+                "items": [
+                    {
+                        "name": "Large Format Porcelain Slabs",
+                        "variants": [
+                            "Continuous Vein Bookmatch Porcelain Slabs",
+                            "1200x2400mm Glazed Vitrified Tile GVT Slabs",
+                            "800x1600mm Carving Finish Vitrified Tiles",
+                            "Matte Finish Concrete Look Large Porcelain Tiles"
+                        ]
+                    },
+                    {
+                        "name": "Specialized Flooring Tiles",
+                        "variants": [
+                            "Full Body Heavy Duty Vitrified Tiles",
+                            "Anti-Skid Matte Bathroom Floor Tiles",
+                            "Interlocking Heavy Duty Parking Tiles",
+                            "Double Charged High-Traffic Vitrified Tiles"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Large Format Porcelain Slabs",
+                    "Continuous Vein Bookmatch Porcelain Slabs",
+                    "1200x2400mm Glazed Vitrified Tile GVT Slabs",
+                    "800x1600mm Carving Finish Vitrified Tiles",
+                    "Matte Finish Concrete Look Large Porcelain Tiles",
+                    "Specialized Flooring Tiles",
+                    "Full Body Heavy Duty Vitrified Tiles",
+                    "Anti-Skid Matte Bathroom Floor Tiles",
+                    "Interlocking Heavy Duty Parking Tiles",
+                    "Double Charged High-Traffic Vitrified Tiles"
+                ]
+            },
+            {
+                "name": "Heritage & Handcrafted Tiles",
+                "items": [
+                    {
+                        "name": "Artisanal Cement & Terrazzo",
+                        "variants": [
+                            "Authentic Athangudi Handmade Cement Tiles",
+                            "Chettinad Floral Pattern Cement Tiles",
+                            "Precast Terrazzo Tiles with Marble Chips",
+                            "Cast-in-Situ Brass Strip Mosaic Terrazzo Floor",
+                            "Encaustic Geometric Moroccan Tiles"
+                        ]
+                    },
+                    {
+                        "name": "Terracotta & Clay Flooring Tiles",
+                        "variants": [
+                            "Handmade Terracotta Floor Tiles",
+                            "Hexagonal Clay Flooring Pavers",
+                            "Unglazed Terracotta Stepping Tiles"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Artisanal Cement & Terrazzo",
+                    "Authentic Athangudi Handmade Cement Tiles",
+                    "Chettinad Floral Pattern Cement Tiles",
+                    "Precast Terrazzo Tiles with Marble Chips",
+                    "Cast-in-Situ Brass Strip Mosaic Terrazzo Floor",
+                    "Encaustic Geometric Moroccan Tiles",
+                    "Terracotta & Clay Flooring Tiles",
+                    "Handmade Terracotta Floor Tiles",
+                    "Hexagonal Clay Flooring Pavers",
+                    "Unglazed Terracotta Stepping Tiles"
+                ]
+            },
+            {
+                "name": "Wood, Laminate & Resilient Flooring",
+                "items": [
+                    {
+                        "name": "Hardwood & Engineered Wood",
+                        "variants": [
+                            "Solid Burma Teak Wood Plank Flooring",
+                            "Engineered White Oak Wood Flooring",
+                            "Herringbone Pattern Hardwood Parquet",
+                            "Walnut Finish High-Density Laminate Flooring"
+                        ]
+                    },
+                    {
+                        "name": "Resilient Waterproof Flooring",
+                        "variants": [
+                            "Stone Plastic Composite SPC Rigid Core Flooring",
+                            "Luxury Vinyl Tiles LVT Wood Finish",
+                            "Heavy Duty Commercial Vinyl Sheet Flooring"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Hardwood & Engineered Wood",
+                    "Solid Burma Teak Wood Plank Flooring",
+                    "Engineered White Oak Wood Flooring",
+                    "Herringbone Pattern Hardwood Parquet",
+                    "Walnut Finish High-Density Laminate Flooring",
+                    "Resilient Waterproof Flooring",
+                    "Stone Plastic Composite SPC Rigid Core Flooring",
+                    "Luxury Vinyl Tiles LVT Wood Finish",
+                    "Heavy Duty Commercial Vinyl Sheet Flooring"
+                ]
+            },
+            {
+                "name": "Outdoor Pavers & Landscape Stone",
+                "items": [
+                    {
+                        "name": "Driveway & Pathway Pavers",
+                        "variants": [
+                            "Heavy-Duty Interlocking Concrete Zigzag Pavers",
+                            "Shot-Blasted Concrete Cobblestone Pavers",
+                            "Grass Paver Cellular Hollow Blocks",
+                            "Natural Granite Basalt Setts"
+                        ]
+                    },
+                    {
+                        "name": "Decorative Landscape Stones",
+                        "variants": [
+                            "Polished Black River Pebbles",
+                            "Snow White Marble Landscape Chips",
+                            "Volcanic Red Lava Rock Mulch",
+                            "Granite Stepping Stone Slabs"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Driveway & Pathway Pavers",
+                    "Heavy-Duty Interlocking Concrete Zigzag Pavers",
+                    "Shot-Blasted Concrete Cobblestone Pavers",
+                    "Grass Paver Cellular Hollow Blocks",
+                    "Natural Granite Basalt Setts",
+                    "Decorative Landscape Stones",
+                    "Polished Black River Pebbles",
+                    "Snow White Marble Landscape Chips",
+                    "Volcanic Red Lava Rock Mulch",
+                    "Granite Stepping Stone Slabs"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Doors, Windows & Glass",
+        "slug": "doors-windows-glass",
+        "icon": "🚪",
+        "description": "Solid timber doors, UPVC/aluminium fenestration, architectural glass, hardware, and motorized shutters.",
+        "supplier_category": "Door & Window Fabricators",
+        "subcategories": [
+            {
+                "name": "Doors & Entryway Systems",
+                "items": [
+                    {
+                        "name": "Solid Timber & Veneer Doors",
+                        "variants": [
+                            "Solid Teak Wood Carved Main Entrance Door",
+                            "Solid Teak Wooden Doors",
+                            "Carved Double Wooden Doors",
+                            "Natural Teak Veneer Flush Doors",
+                            "Mahogany Classical Paneled Bedroom Doors",
+                            "Rosewood Double Entry Heritage Doors"
+                        ]
+                    },
+                    {
+                        "name": "Waterproof & Security Doors",
+                        "variants": [
+                            "Wood Polymer Composite WPC Waterproof Doors",
+                            "High-Security Multi-Point Steel Entrance Doors",
+                            "Factory Laminated High Pressure Internal Doors",
+                            "2-Hour Fire-Rated Steel Doors with Panic Bar"
+                        ]
+                    },
+                    {
+                        "name": "Modern Architectural Door Systems",
+                        "variants": [
+                            "Oversized Pivot Main Door with Brass Accents",
+                            "Concealed Frame Flush Wall Doors",
+                            "Pocket Sliding Doors with Soft Close",
+                            "Industrial Steel Frame Glass Partition Doors"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Solid Timber & Veneer Doors",
+                    "Solid Teak Wood Carved Main Entrance Door",
+                    "Solid Teak Wooden Doors",
+                    "Carved Double Wooden Doors",
+                    "Natural Teak Veneer Flush Doors",
+                    "Mahogany Classical Paneled Bedroom Doors",
+                    "Rosewood Double Entry Heritage Doors",
+                    "Waterproof & Security Doors",
+                    "Wood Polymer Composite WPC Waterproof Doors",
+                    "High-Security Multi-Point Steel Entrance Doors",
+                    "Factory Laminated High Pressure Internal Doors",
+                    "2-Hour Fire-Rated Steel Doors with Panic Bar",
+                    "Modern Architectural Door Systems",
+                    "Oversized Pivot Main Door with Brass Accents",
+                    "Concealed Frame Flush Wall Doors",
+                    "Pocket Sliding Doors with Soft Close",
+                    "Industrial Steel Frame Glass Partition Doors"
+                ]
+            },
+            {
+                "name": "Windows & Fenestration Systems",
+                "items": [
+                    {
+                        "name": "UPVC Window Systems",
+                        "variants": [
+                            "UPVC Multi-Chamber Sliding Windows with Bug Mesh",
+                            "UPVC Casement Tilt-and-Turn Windows",
+                            "UPVC Fixed Glass Panoramic Picture Windows",
+                            "UPVC Woodgrain Laminated Finish Windows"
+                        ]
+                    },
+                    {
+                        "name": "Aluminium Window Systems",
+                        "variants": [
+                            "Slim Profile Thermal Break Aluminium Windows",
+                            "Heavy Duty Aluminium Sliding Folding Doors",
+                            "Minimalist Frame Glass Sliding Patio Doors",
+                            "Anodized Black Matt Casement Windows"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "UPVC Window Systems",
+                    "UPVC Multi-Chamber Sliding Windows with Bug Mesh",
+                    "UPVC Casement Tilt-and-Turn Windows",
+                    "UPVC Fixed Glass Panoramic Picture Windows",
+                    "UPVC Woodgrain Laminated Finish Windows",
+                    "Aluminium Window Systems",
+                    "Slim Profile Thermal Break Aluminium Windows",
+                    "Heavy Duty Aluminium Sliding Folding Doors",
+                    "Minimalist Frame Glass Sliding Patio Doors",
+                    "Anodized Black Matt Casement Windows"
+                ]
+            },
+            {
+                "name": "Architectural Glass & Glazing",
+                "items": [
+                    {
+                        "name": "Safety & Performance Glass",
+                        "variants": [
+                            "Toughened Tempered Safety Glass 10mm / 12mm",
+                            "Laminated Acoustic PVB Safety Glass",
+                            "Double Glazed Insulated Glass Units DGU",
+                            "Low-Emissivity Solar Control Glass"
+                        ]
+                    },
+                    {
+                        "name": "Decorative & Patterned Glass",
+                        "variants": [
+                            "Fluted Reeded Privacy Glass",
+                            "Frosted Acid-Etched Translucent Glass",
+                            "Tinted Bronze & Grey Float Glass",
+                            "Coloured Lacquered Glass Wall Panels"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Safety & Performance Glass",
+                    "Toughened Tempered Safety Glass 10mm / 12mm",
+                    "Laminated Acoustic PVB Safety Glass",
+                    "Double Glazed Insulated Glass Units DGU",
+                    "Low-Emissivity Solar Control Glass",
+                    "Decorative & Patterned Glass",
+                    "Fluted Reeded Privacy Glass",
+                    "Frosted Acid-Etched Translucent Glass",
+                    "Tinted Bronze & Grey Float Glass",
+                    "Coloured Lacquered Glass Wall Panels"
+                ]
+            },
+            {
+                "name": "Hardware, Locks & Architectural Fittings",
+                "items": [
+                    {
+                        "name": "Door Locks & Latches",
+                        "variants": [
+                            "Biometric Smart Digital Door Mortise Locks",
+                            "Heavy Duty Euro-Profile Brass Mortise Locks",
+                            "Magnetic Silent Latch Mechanisms",
+                            "Designer Solid Brass Long Pull Handles"
+                        ]
+                    },
+                    {
+                        "name": "Hinges & Precision Runners",
+                        "variants": [
+                            "3D Adjustable Concealed Door Hinges",
+                            "Ball Bearing Stainless Steel SS 304 Hinges",
+                            "Soft-Closing Hydraulic Concealed Hinges",
+                            "Heavy Duty Bottom-Mounted Floor Springs"
+                        ]
+                    },
+                    {
+                        "name": "Glass Hardware & Accessories",
+                        "variants": [
+                            "Stainless Steel Glass Patch Fittings",
+                            "Point-Fixed Glass Spider Fittings",
+                            "Frameless Glass Shower Hinges & Clamps",
+                            "Brushed Gold Glass Connector Brackets"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Door Locks & Latches",
+                    "Biometric Smart Digital Door Mortise Locks",
+                    "Heavy Duty Euro-Profile Brass Mortise Locks",
+                    "Magnetic Silent Latch Mechanisms",
+                    "Designer Solid Brass Long Pull Handles",
+                    "Hinges & Precision Runners",
+                    "3D Adjustable Concealed Door Hinges",
+                    "Ball Bearing Stainless Steel SS 304 Hinges",
+                    "Soft-Closing Hydraulic Concealed Hinges",
+                    "Heavy Duty Bottom-Mounted Floor Springs",
+                    "Glass Hardware & Accessories",
+                    "Stainless Steel Glass Patch Fittings",
+                    "Point-Fixed Glass Spider Fittings",
+                    "Frameless Glass Shower Hinges & Clamps",
+                    "Brushed Gold Glass Connector Brackets"
+                ]
+            },
+            {
+                "name": "Specialty Shutters & Movable Partitions",
+                "items": [
+                    {
+                        "name": "Industrial & Garage Shutters",
+                        "variants": [
+                            "Motorized Overhead Sectional Garage Doors",
+                            "Perforated Aluminium Rolling Security Shutters",
+                            "Insulated Polyurethane Foam Rolling Shutters"
+                        ]
+                    },
+                    {
+                        "name": "Movable Walls & Inspection Access",
+                        "variants": [
+                            "Acoustic Operable Sliding Wall Partitions",
+                            "Flush Magnetic Gypsum Ceiling Inspection Hatches",
+                            "Frameless Glass Folding Room Dividers"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Industrial & Garage Shutters",
+                    "Motorized Overhead Sectional Garage Doors",
+                    "Perforated Aluminium Rolling Security Shutters",
+                    "Insulated Polyurethane Foam Rolling Shutters",
+                    "Movable Walls & Inspection Access",
+                    "Acoustic Operable Sliding Wall Partitions",
+                    "Flush Magnetic Gypsum Ceiling Inspection Hatches",
+                    "Frameless Glass Folding Room Dividers"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Furniture",
+        "slug": "furniture",
+        "icon": "🪑",
+        "description": "Modular beds, luxury sofas, solid wood dining sets, ergonomic workstations, and outdoor patio lounges.",
+        "supplier_category": "Furniture Manufacturers & Showrooms",
+        "subcategories": [
+            {
+                "name": "Bedroom Furniture",
+                "items": [
+                    {
+                        "name": "Beds & Sleep Systems",
+                        "variants": [
+                            "King Size Hydraulic Storage Bed",
+                            "Solid Teak Wood Low-Floor Platform Bed",
+                            "Upholstered Designer Wingback Headboard Bed",
+                            "Solid Wood Canopy Four-Poster Bed",
+                            "Modular Bunk Bed with Integrated Study"
+                        ]
+                    },
+                    {
+                        "name": "Wardrobes & Closet Storage",
+                        "variants": [
+                            "Modular Sliding Door Wardrobe with Tinted Glass",
+                            "Floor-to-Ceiling Walk-In Closet Organizer",
+                            "Solid Wood Hinged Shaker Style Wardrobe",
+                            "Corner Wardrobe with Internal LED Strip Lighting"
+                        ]
+                    },
+                    {
+                        "name": "Bedroom Storage & Accents",
+                        "variants": [
+                            "Floating Bedside Nightstand Tables",
+                            "Vanity Dressing Table with Mirror & Drawer Dividers",
+                            "Upholstered Bed End Storage Bench Ottoman"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Beds & Sleep Systems",
+                    "King Size Hydraulic Storage Bed",
+                    "Solid Teak Wood Low-Floor Platform Bed",
+                    "Upholstered Designer Wingback Headboard Bed",
+                    "Solid Wood Canopy Four-Poster Bed",
+                    "Modular Bunk Bed with Integrated Study",
+                    "Wardrobes & Closet Storage",
+                    "Modular Sliding Door Wardrobe with Tinted Glass",
+                    "Floor-to-Ceiling Walk-In Closet Organizer",
+                    "Solid Wood Hinged Shaker Style Wardrobe",
+                    "Corner Wardrobe with Internal LED Strip Lighting",
+                    "Bedroom Storage & Accents",
+                    "Floating Bedside Nightstand Tables",
+                    "Vanity Dressing Table with Mirror & Drawer Dividers",
+                    "Upholstered Bed End Storage Bench Ottoman"
+                ]
+            },
+            {
+                "name": "Dining Room Furniture",
+                "items": [
+                    {
+                        "name": "Dining Tables",
+                        "variants": [
+                            "Italian White Statuario Marble Dining Table",
+                            "Solid Live-Edge Wood Slab Dining Table",
+                            "Extendable Tempered Glass Dining Table 8-Seater",
+                            "Round Wooden Dining Table with Lazy Susan"
+                        ]
+                    },
+                    {
+                        "name": "Dining Chairs & Benches",
+                        "variants": [
+                            "Velvet Upholstered Ergonomic Dining Chairs",
+                            "Solid Oak Wood Dining Bench",
+                            "Natural Cane Woven Back Dining Chairs",
+                            "Swivel Leather Counter Bar Stools"
+                        ]
+                    },
+                    {
+                        "name": "Dining Cabinets & Storage",
+                        "variants": [
+                            "Glass Crockery Display Unit with Warm Lighting",
+                            "Mid-Century Modern Wooden Credenza Sideboard",
+                            "Integrated Bar Cabinet with Wine Rack"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Dining Tables",
+                    "Italian White Statuario Marble Dining Table",
+                    "Solid Live-Edge Wood Slab Dining Table",
+                    "Extendable Tempered Glass Dining Table 8-Seater",
+                    "Round Wooden Dining Table with Lazy Susan",
+                    "Dining Chairs & Benches",
+                    "Velvet Upholstered Ergonomic Dining Chairs",
+                    "Solid Oak Wood Dining Bench",
+                    "Natural Cane Woven Back Dining Chairs",
+                    "Swivel Leather Counter Bar Stools",
+                    "Dining Cabinets & Storage",
+                    "Glass Crockery Display Unit with Warm Lighting",
+                    "Mid-Century Modern Wooden Credenza Sideboard",
+                    "Integrated Bar Cabinet with Wine Rack"
+                ]
+            },
+            {
+                "name": "Living Room Furniture",
+                "items": [
+                    {
+                        "name": "Sofas & Seating",
+                        "variants": [
+                            "L-Shaped Sectional Fabric Sofa",
+                            "Classic Deep-Buttoned Chesterfield Leather Sofa",
+                            "Motorized Recliner Lounge Chair",
+                            "Bouclé Fabric Curved Designer Accent Chair",
+                            "Compact Folding Sofa Bed Cum Bed"
+                        ]
+                    },
+                    {
+                        "name": "Living Room Tables & Media Units",
+                        "variants": [
+                            "Set of Round Nesting Marble Center Tables",
+                            "Floating Wall-Mounted TV Console Unit",
+                            "Solid Teak Fluted Side Table",
+                            "Minimalist Slim Metal Console Table"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Sofas & Seating",
+                    "L-Shaped Sectional Fabric Sofa",
+                    "Classic Deep-Buttoned Chesterfield Leather Sofa",
+                    "Motorized Recliner Lounge Chair",
+                    "Bouclé Fabric Curved Designer Accent Chair",
+                    "Compact Folding Sofa Bed Cum Bed",
+                    "Living Room Tables & Media Units",
+                    "Set of Round Nesting Marble Center Tables",
+                    "Floating Wall-Mounted TV Console Unit",
+                    "Solid Teak Fluted Side Table",
+                    "Minimalist Slim Metal Console Table"
+                ]
+            },
+            {
+                "name": "Kitchen Furniture & Modular Cabinetry",
+                "items": [
+                    {
+                        "name": "Kitchen Cabinets & Units",
+                        "variants": [
+                            "Handleless Soft-Close Modular Base Cabinets",
+                            "Hydraulic Bi-Fold Overhead Wall Cabinets",
+                            "Full-Height Tall Pantry Unit with Tandem Drawers",
+                            "Freestanding Kitchen Island with Butcher Block Top",
+                            "Under-Sink Waste Segregation Pull-Out Units"
+                        ]
+                    },
+                    {
+                        "name": "Kitchen Hardware & Organization",
+                        "variants": [
+                            "Stainless Steel Tandem Drawer Runners",
+                            "Magic Corner & Blind Corner Swivel Trays",
+                            "Tall Larder Pantry Pull-Out Racks"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Kitchen Cabinets & Units",
+                    "Handleless Soft-Close Modular Base Cabinets",
+                    "Hydraulic Bi-Fold Overhead Wall Cabinets",
+                    "Full-Height Tall Pantry Unit with Tandem Drawers",
+                    "Freestanding Kitchen Island with Butcher Block Top",
+                    "Under-Sink Waste Segregation Pull-Out Units",
+                    "Kitchen Hardware & Organization",
+                    "Stainless Steel Tandem Drawer Runners",
+                    "Magic Corner & Blind Corner Swivel Trays",
+                    "Tall Larder Pantry Pull-Out Racks"
+                ]
+            },
+            {
+                "name": "Office & Commercial Furniture",
+                "items": [
+                    {
+                        "name": "Workstations & Desks",
+                        "variants": [
+                            "Executive Wooden Veneer Office Desk",
+                            "Dual-Motor Height-Adjustable Standing Desk",
+                            "Modular Open-Plan 4-Person Benching Workstation",
+                            "Compact Floating Study Table with Bookshelf"
+                        ]
+                    },
+                    {
+                        "name": "Office Seating & Storage",
+                        "variants": [
+                            "High-Back Ergonomic Mesh Task Chair",
+                            "Acoustic Privacy Phone Booth Pod",
+                            "Heavy Duty Metal Lateral Filing Cabinet",
+                            "Conference Room 10-Person Boardroom Table"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Workstations & Desks",
+                    "Executive Wooden Veneer Office Desk",
+                    "Dual-Motor Height-Adjustable Standing Desk",
+                    "Modular Open-Plan 4-Person Benching Workstation",
+                    "Compact Floating Study Table with Bookshelf",
+                    "Office Seating & Storage",
+                    "High-Back Ergonomic Mesh Task Chair",
+                    "Acoustic Privacy Phone Booth Pod",
+                    "Heavy Duty Metal Lateral Filing Cabinet",
+                    "Conference Room 10-Person Boardroom Table"
+                ]
+            },
+            {
+                "name": "Outdoor & Patio Furniture",
+                "items": [
+                    {
+                        "name": "All-Weather Garden Furniture",
+                        "variants": [
+                            "Synthetic Wicker Rattan Outdoor Sofa Set",
+                            "Teak Wood Weatherproof Outdoor Dining Set",
+                            "Adjustable Poolside Sun Lounger Daybed",
+                            "Suspended Garden Hanging Pod Swing Chair Jhula",
+                            "Large Cantilever Offset Patio Umbrella"
+                        ]
+                    },
+                    {
+                        "name": "Garden Benches & Verandah Seating",
+                        "variants": [
+                            "Cast Iron & Teak Garden Benches",
+                            "Traditional Kerala Wooden Charupady Benches",
+                            "Woven Rope Outdoor Armchairs"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "All-Weather Garden Furniture",
+                    "Synthetic Wicker Rattan Outdoor Sofa Set",
+                    "Teak Wood Weatherproof Outdoor Dining Set",
+                    "Adjustable Poolside Sun Lounger Daybed",
+                    "Suspended Garden Hanging Pod Swing Chair Jhula",
+                    "Large Cantilever Offset Patio Umbrella",
+                    "Garden Benches & Verandah Seating",
+                    "Cast Iron & Teak Garden Benches",
+                    "Traditional Kerala Wooden Charupady Benches",
+                    "Woven Rope Outdoor Armchairs"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Decor & Furnishings",
+        "slug": "decor-furnishings",
+        "icon": "🖼️",
+        "description": "Textiles, curtains, artisanal rugs, mirrors, wall art, sculptures, cushions, and indoor planters.",
+        "supplier_category": "Home Decor & Soft Furnishing Boutiques",
+        "subcategories": [
+            {
+                "name": "Window Coverings & Blinds",
+                "items": [
+                    {
+                        "name": "Curtains & Drapes",
+                        "variants": [
+                            "Pure Linen Sheer Translucent Curtains",
+                            "Triple-Weave Total Blackout Pinch Pleat Drapes",
+                            "Motorized Smart Track Velvet Curtains",
+                            "Floor-to-Ceiling Thermal Insulated Drapes"
+                        ]
+                    },
+                    {
+                        "name": "Window Blinds",
+                        "variants": [
+                            "Natural Basswood Venetian Slat Blinds",
+                            "Fabric Roman Blinds with Chain Control",
+                            "Motorized Dual Zebra Roller Blinds",
+                            "Acoustic Honeycomb Cellular Shades"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Curtains & Drapes",
+                    "Pure Linen Sheer Translucent Curtains",
+                    "Triple-Weave Total Blackout Pinch Pleat Drapes",
+                    "Motorized Smart Track Velvet Curtains",
+                    "Floor-to-Ceiling Thermal Insulated Drapes",
+                    "Window Blinds",
+                    "Natural Basswood Venetian Slat Blinds",
+                    "Fabric Roman Blinds with Chain Control",
+                    "Motorized Dual Zebra Roller Blinds",
+                    "Acoustic Honeycomb Cellular Shades"
+                ]
+            },
+            {
+                "name": "Rugs, Carpets & Floor Textiles",
+                "items": [
+                    {
+                        "name": "Handmade & Area Rugs",
+                        "variants": [
+                            "Hand-Tufted Pure New Zealand Wool Rug",
+                            "Braided Natural Jute & Sisal Eco-Rugs",
+                            "Authentic Hand-Knotted Kashmiri Silk Carpet",
+                            "Modern Geometric Abstract Flatweave Kilim"
+                        ]
+                    },
+                    {
+                        "name": "Commercial Carpeting",
+                        "variants": [
+                            "Modular Nylon Cut-Pile Carpet Tiles",
+                            "Acoustic Cushion-Backed Wall-to-Wall Carpet"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Handmade & Area Rugs",
+                    "Hand-Tufted Pure New Zealand Wool Rug",
+                    "Braided Natural Jute & Sisal Eco-Rugs",
+                    "Authentic Hand-Knotted Kashmiri Silk Carpet",
+                    "Modern Geometric Abstract Flatweave Kilim",
+                    "Commercial Carpeting",
+                    "Modular Nylon Cut-Pile Carpet Tiles",
+                    "Acoustic Cushion-Backed Wall-to-Wall Carpet"
+                ]
+            },
+            {
+                "name": "Soft Furnishings & Bedding",
+                "items": [
+                    {
+                        "name": "Cushions & Throws",
+                        "variants": [
+                            "Hand-Embroidered Zari Silk Cushion Covers",
+                            "Textured Chunky Knit Cotton Throw Blankets",
+                            "Organic Linen Decorative Pillow Sham Sets"
+                        ]
+                    },
+                    {
+                        "name": "Bedding & Linens",
+                        "variants": [
+                            "400-Thread-Count Egyptian Cotton Bed Sheets",
+                            "Microfiber Down-Alternative Duvet Comforters",
+                            "Quilted Kantha Hand-Stitched Bed Runners"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Cushions & Throws",
+                    "Hand-Embroidered Zari Silk Cushion Covers",
+                    "Textured Chunky Knit Cotton Throw Blankets",
+                    "Organic Linen Decorative Pillow Sham Sets",
+                    "Bedding & Linens",
+                    "400-Thread-Count Egyptian Cotton Bed Sheets",
+                    "Microfiber Down-Alternative Duvet Comforters",
+                    "Quilted Kantha Hand-Stitched Bed Runners"
+                ]
+            },
+            {
+                "name": "Wall Art, Mirrors & Sculptures",
+                "items": [
+                    {
+                        "name": "Wall Art & Prints",
+                        "variants": [
+                            "Large Textured Abstract Canvas Paintings",
+                            "Architectural Monochrome Framed Photography",
+                            "Laser-Cut 3D Metal Geometric Wall Relief",
+                            "Traditional Kerala Mural Paintings on Canvas"
+                        ]
+                    },
+                    {
+                        "name": "Mirrors",
+                        "variants": [
+                            "Backlit LED Halo Touch Vanity Mirror",
+                            "Full-Length Arched Brass Floor Mirror",
+                            "Antique Beveled Edge Wall Accent Mirror"
+                        ]
+                    },
+                    {
+                        "name": "Sculptures & Table Artifacts",
+                        "variants": [
+                            "Cast Bronze Architectural Figurines",
+                            "Monolithic Hand-Carved White Marble Sculptures",
+                            "Artisanal Terracotta Traditional Artifacts"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Wall Art & Prints",
+                    "Large Textured Abstract Canvas Paintings",
+                    "Architectural Monochrome Framed Photography",
+                    "Laser-Cut 3D Metal Geometric Wall Relief",
+                    "Traditional Kerala Mural Paintings on Canvas",
+                    "Mirrors",
+                    "Backlit LED Halo Touch Vanity Mirror",
+                    "Full-Length Arched Brass Floor Mirror",
+                    "Antique Beveled Edge Wall Accent Mirror",
+                    "Sculptures & Table Artifacts",
+                    "Cast Bronze Architectural Figurines",
+                    "Monolithic Hand-Carved White Marble Sculptures",
+                    "Artisanal Terracotta Traditional Artifacts"
+                ]
+            },
+            {
+                "name": "Decorative Accessories & Planters",
+                "items": [
+                    {
+                        "name": "Tabletop & Shelf Accents",
+                        "variants": [
+                            "Solid Marble Fluted Decorative Bowls",
+                            "Brushed Brass Hurricane Candle Lanterns",
+                            "Handcrafted Ceramic Vases & Vessels",
+                            "Heavy Travertine Bookends"
+                        ]
+                    },
+                    {
+                        "name": "Indoor Planters & Botanical Decor",
+                        "variants": [
+                            "Fluted Fiberstone Standing Floor Planters",
+                            "Hammered Brass Indoor Plant Pots with Tripod Stands",
+                            "Sub-Irrigation Self-Watering Planters",
+                            "Preserved Reindeer Moss Wall Art Frames"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Tabletop & Shelf Accents",
+                    "Solid Marble Fluted Decorative Bowls",
+                    "Brushed Brass Hurricane Candle Lanterns",
+                    "Handcrafted Ceramic Vases & Vessels",
+                    "Heavy Travertine Bookends",
+                    "Indoor Planters & Botanical Decor",
+                    "Fluted Fiberstone Standing Floor Planters",
+                    "Hammered Brass Indoor Plant Pots with Tripod Stands",
+                    "Sub-Irrigation Self-Watering Planters",
+                    "Preserved Reindeer Moss Wall Art Frames"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Ceiling, Walls & Finishes",
+        "slug": "ceiling-walls-finishes",
+        "icon": "🎨",
+        "description": "False ceilings, decorative wall panels, acoustic treatments, designer paints, and specialized waterproofing chemicals.",
+        "supplier_category": "Wall Paneling & False Ceiling Contractors",
+        "subcategories": [
+            {
+                "name": "False Ceiling Systems",
+                "items": [
+                    {
+                        "name": "Gypsum & Plaster Ceilings",
+                        "variants": [
+                            "Moisture-Resistant Gypsum Board False Ceiling",
+                            "Plaster of Paris POP Decorative Cornices & Trims",
+                            "Recessed Shadowline Groove Ceiling Details",
+                            "Coffered Grid Ceiling with Wood Inlays"
+                        ]
+                    },
+                    {
+                        "name": "Modular & Baffle Ceilings",
+                        "variants": [
+                            "Aluminium Linear Baffle Acoustic Ceilings",
+                            "Natural Wood Slatted Open Ceiling System",
+                            "Mineral Fiber Acoustic Drop Ceiling Tiles 600x600",
+                            "Open-Cell Metal Grid Ceilings"
+                        ]
+                    },
+                    {
+                        "name": "Stretch & Fabric Ceilings",
+                        "variants": [
+                            "Backlit Translucent Stretch Ceilings",
+                            "Acoustic Micro-Perforated Fabric Ceilings",
+                            "Printed Graphic Architectural Ceilings"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Gypsum & Plaster Ceilings",
+                    "Moisture-Resistant Gypsum Board False Ceiling",
+                    "Plaster of Paris POP Decorative Cornices & Trims",
+                    "Recessed Shadowline Groove Ceiling Details",
+                    "Coffered Grid Ceiling with Wood Inlays",
+                    "Modular & Baffle Ceilings",
+                    "Aluminium Linear Baffle Acoustic Ceilings",
+                    "Natural Wood Slatted Open Ceiling System",
+                    "Mineral Fiber Acoustic Drop Ceiling Tiles 600x600",
+                    "Open-Cell Metal Grid Ceilings",
+                    "Stretch & Fabric Ceilings",
+                    "Backlit Translucent Stretch Ceilings",
+                    "Acoustic Micro-Perforated Fabric Ceilings",
+                    "Printed Graphic Architectural Ceilings"
+                ]
+            },
+            {
+                "name": "Wall Paneling & Cladding",
+                "items": [
+                    {
+                        "name": "Decorative Wall Panels",
+                        "variants": [
+                            "Fluted Charcoal Decorative Wall Panels",
+                            "3D Textured Decorative Wall Panels",
+                            "Veneer Inlaid Decorative Wall Panels",
+                            "Fabric Upholstered Decorative Wall Panels",
+                            "Lightweight PU Stone Decorative Wall Panels"
+                        ]
+                    },
+                    {
+                        "name": "Decorative Louvers & Veneer",
+                        "variants": [
+                            "Charcoal Fluted Wall Louver Panels",
+                            "Natural Reconstituted Wood Veneer Sheets",
+                            "3D Embossed PVC Interior Wall Panels",
+                            "Fabric Upholstered Acoustic Wall Panels"
+                        ]
+                    },
+                    {
+                        "name": "Acoustic Wall Systems",
+                        "variants": [
+                            "Perforated Wooden Acoustic Absorption Panels",
+                            "Fabric-Wrapped High-Density Fiberglass Wall Panels",
+                            "Natural Acoustic Cork Wall Tiles"
+                        ]
+                    },
+                    {
+                        "name": "Stone Veneer & Decorative Boards",
+                        "variants": [
+                            "Flexible Thin Slate Stone Veneer Sheets",
+                            "Exposed Concrete Effect Wall Panels",
+                            "Fluted MDF Pre-Primed Wall Battens"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Decorative Wall Panels",
+                    "Fluted Charcoal Decorative Wall Panels",
+                    "3D Textured Decorative Wall Panels",
+                    "Veneer Inlaid Decorative Wall Panels",
+                    "Fabric Upholstered Decorative Wall Panels",
+                    "Lightweight PU Stone Decorative Wall Panels",
+                    "Decorative Louvers & Veneer",
+                    "Charcoal Fluted Wall Louver Panels",
+                    "Natural Reconstituted Wood Veneer Sheets",
+                    "3D Embossed PVC Interior Wall Panels",
+                    "Fabric Upholstered Acoustic Wall Panels",
+                    "Acoustic Wall Systems",
+                    "Perforated Wooden Acoustic Absorption Panels",
+                    "Fabric-Wrapped High-Density Fiberglass Wall Panels",
+                    "Natural Acoustic Cork Wall Tiles",
+                    "Stone Veneer & Decorative Boards",
+                    "Flexible Thin Slate Stone Veneer Sheets",
+                    "Exposed Concrete Effect Wall Panels",
+                    "Fluted MDF Pre-Primed Wall Battens"
+                ]
+            },
+            {
+                "name": "Interior & Exterior Paints & Textures",
+                "items": [
+                    {
+                        "name": "Interior Paints",
+                        "variants": [
+                            "Luxury Sheen Acrylic Interior Emulsion",
+                            "Odourless Low-VOC Zero-Emission Eco Paints",
+                            "Italian Lime Plaster Venetian Stucco Finish",
+                            "Rustic Concrete Look Wall Texture"
+                        ]
+                    },
+                    {
+                        "name": "Exterior Paints & Stucco",
+                        "variants": [
+                            "All-Weather Silicone Waterproof Exterior Emulsion",
+                            "Elastomeric Crack-Bridging Exterior Coating",
+                            "Granite Grain Textured Exterior Stucco Finish"
+                        ]
+                    },
+                    {
+                        "name": "Specialty Finishes & Floor Epoxy",
+                        "variants": [
+                            "Self-Leveling Seamless Epoxy Floor Coating",
+                            "Metallic Antique Copper Wall Glaze",
+                            "Chalky Matt Heritage Furniture Paints"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Interior Paints",
+                    "Luxury Sheen Acrylic Interior Emulsion",
+                    "Odourless Low-VOC Zero-Emission Eco Paints",
+                    "Italian Lime Plaster Venetian Stucco Finish",
+                    "Rustic Concrete Look Wall Texture",
+                    "Exterior Paints & Stucco",
+                    "All-Weather Silicone Waterproof Exterior Emulsion",
+                    "Elastomeric Crack-Bridging Exterior Coating",
+                    "Granite Grain Textured Exterior Stucco Finish",
+                    "Specialty Finishes & Floor Epoxy",
+                    "Self-Leveling Seamless Epoxy Floor Coating",
+                    "Metallic Antique Copper Wall Glaze",
+                    "Chalky Matt Heritage Furniture Paints"
+                ]
+            },
+            {
+                "name": "Waterproofing & Protective Chemicals",
+                "items": [
+                    {
+                        "name": "Surface Waterproofing",
+                        "variants": [
+                            "Liquid Applied Polyurethane PU Waterproofing Membrane",
+                            "Two-Component Acrylic Polymer Cementitious Coating",
+                            "SBS Modified Bituminous Waterproofing Torch-On Felt",
+                            "Crystalline Capillary Waterproofing Slurry"
+                        ]
+                    },
+                    {
+                        "name": "Construction Chemicals & Additives",
+                        "variants": [
+                            "Polymer-Modified High-Polymer Tile Adhesives Type 2/4",
+                            "Stain-Proof 3-Part Epoxy Tile Grout",
+                            "Concrete Integral Waterproofing Liquid Admixtures",
+                            "High-Strength Non-Shrink Precision Grout"
+                        ]
+                    },
+                    {
+                        "name": "Joint Sealants & Damp Proofing",
+                        "variants": [
+                            "Polyurethane PU Construction Joint Sealants",
+                            "Neutral Cure Silicone Sanitary Sealants",
+                            "Damp Proof Injection Chemicals for Rising Damp"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Surface Waterproofing",
+                    "Liquid Applied Polyurethane PU Waterproofing Membrane",
+                    "Two-Component Acrylic Polymer Cementitious Coating",
+                    "SBS Modified Bituminous Waterproofing Torch-On Felt",
+                    "Crystalline Capillary Waterproofing Slurry",
+                    "Construction Chemicals & Additives",
+                    "Polymer-Modified High-Polymer Tile Adhesives Type 2/4",
+                    "Stain-Proof 3-Part Epoxy Tile Grout",
+                    "Concrete Integral Waterproofing Liquid Admixtures",
+                    "High-Strength Non-Shrink Precision Grout",
+                    "Joint Sealants & Damp Proofing",
+                    "Polyurethane PU Construction Joint Sealants",
+                    "Neutral Cure Silicone Sanitary Sealants",
+                    "Damp Proof Injection Chemicals for Rising Damp"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Landscape & Outdoor",
+        "slug": "landscape-outdoor",
+        "icon": "🌿",
+        "description": "Garden architecture, water bodies, swimming pools, outdoor pergolas, decking, and landscape greenery.",
+        "supplier_category": "Landscape Contractors & Garden Nurseries",
+        "subcategories": [
+            {
+                "name": "Landscape Typologies & Garden Design",
+                "items": [
+                    {
+                        "name": "Garden Styles",
+                        "variants": [
+                            "Tropical Lush Courtyard Garden",
+                            "Japanese Zen Dry Rock Garden",
+                            "Mediterranean Drought-Tolerant Xeriscape",
+                            "English Cottage Flower Garden",
+                            "Terrace & Rooftop Green Garden",
+                            "Vertical Living Green Wall Bio-Fassade"
+                        ]
+                    },
+                    {
+                        "name": "Courtyard & Water Body Gardens",
+                        "variants": [
+                            "Kerala Nalukettu Open Central Courtyard",
+                            "Chettinad Rain-Court with Granite Basin",
+                            "Stepped Terrace Garden with Planter Beds"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Garden Styles",
+                    "Tropical Lush Courtyard Garden",
+                    "Japanese Zen Dry Rock Garden",
+                    "Mediterranean Drought-Tolerant Xeriscape",
+                    "English Cottage Flower Garden",
+                    "Terrace & Rooftop Green Garden",
+                    "Vertical Living Green Wall Bio-Fassade",
+                    "Courtyard & Water Body Gardens",
+                    "Kerala Nalukettu Open Central Courtyard",
+                    "Chettinad Rain-Court with Granite Basin",
+                    "Stepped Terrace Garden with Planter Beds"
+                ]
+            },
+            {
+                "name": "Natural & Decorative Landscape Stones",
+                "items": [
+                    {
+                        "name": "Pebbles & Aggregates",
+                        "variants": [
+                            "Black Polished River Garden Pebbles",
+                            "White Quartz Landscape Chippings",
+                            "Red Lava Rock Volcanic Mulch Stones"
+                        ]
+                    },
+                    {
+                        "name": "Boulders & Stepping Stones",
+                        "variants": [
+                            "Natural Weathered Granite Garden Boulders",
+                            "Rustic Slate Flagstone Stepping Pathways",
+                            "Rough Dressed Basalt Kerbstones"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Pebbles & Aggregates",
+                    "Black Polished River Garden Pebbles",
+                    "White Quartz Landscape Chippings",
+                    "Red Lava Rock Volcanic Mulch Stones",
+                    "Boulders & Stepping Stones",
+                    "Natural Weathered Granite Garden Boulders",
+                    "Rustic Slate Flagstone Stepping Pathways",
+                    "Rough Dressed Basalt Kerbstones"
+                ]
+            },
+            {
+                "name": "Outdoor Decking, Pergolas & Structures",
+                "items": [
+                    {
+                        "name": "Decking Systems",
+                        "variants": [
+                            "Wood Polymer Composite WPC Anti-Rot Decking",
+                            "Natural Burmese Teak Wood Poolside Decking",
+                            "Interlocking Modular Thermowood Deck Tiles"
+                        ]
+                    },
+                    {
+                        "name": "Outdoor Shelters & Structures",
+                        "variants": [
+                            "Bioclimatic Motorized Aluminium Louvered Pergola",
+                            "Solid Pressure-Treated Pine Wood Gazebo",
+                            "Tensile Fabric Architectural Canopy Shelter",
+                            "Garden Outdoor Kitchen Counter with BBQ Grill"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Decking Systems",
+                    "Wood Polymer Composite WPC Anti-Rot Decking",
+                    "Natural Burmese Teak Wood Poolside Decking",
+                    "Interlocking Modular Thermowood Deck Tiles",
+                    "Outdoor Shelters & Structures",
+                    "Bioclimatic Motorized Aluminium Louvered Pergola",
+                    "Solid Pressure-Treated Pine Wood Gazebo",
+                    "Tensile Fabric Architectural Canopy Shelter",
+                    "Garden Outdoor Kitchen Counter with BBQ Grill"
+                ]
+            },
+            {
+                "name": "Water Features & Swimming Pools",
+                "items": [
+                    {
+                        "name": "Garden Water Features",
+                        "variants": [
+                            "Stainless Steel Sheer Descent Waterfall Blade",
+                            "Stepped Granite Cascade Water Fountain",
+                            "Natural Ecological Koi Pond with Bio-Filters",
+                            "Self-Contained Bubbling Stone Pot Fountain"
+                        ]
+                    },
+                    {
+                        "name": "Swimming Pool Systems",
+                        "variants": [
+                            "Vanishing Infinity Edge Swimming Pool",
+                            "Skimmer Swimming Pool with Glass Mosaic Tiles",
+                            "Outdoor Heated Hydrotherapy Jacuzzi Spa Pool",
+                            "High-Efficiency Pool Sand Filter & Salt Chlorinator"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Garden Water Features",
+                    "Stainless Steel Sheer Descent Waterfall Blade",
+                    "Stepped Granite Cascade Water Fountain",
+                    "Natural Ecological Koi Pond with Bio-Filters",
+                    "Self-Contained Bubbling Stone Pot Fountain",
+                    "Swimming Pool Systems",
+                    "Vanishing Infinity Edge Swimming Pool",
+                    "Skimmer Swimming Pool with Glass Mosaic Tiles",
+                    "Outdoor Heated Hydrotherapy Jacuzzi Spa Pool",
+                    "High-Efficiency Pool Sand Filter & Salt Chlorinator"
+                ]
+            },
+            {
+                "name": "Turf, Soil & Irrigation Systems",
+                "items": [
+                    {
+                        "name": "Lawns & Groundcover",
+                        "variants": [
+                            "Natural Mexican Carpet Grass Sod Turf",
+                            "Bermuda Drought-Resistant Lawn Grass",
+                            "UV-Stabilized High-Density Artificial Turf 40mm",
+                            "Shade-Tolerant Mondo Grass Groundcover"
+                        ]
+                    },
+                    {
+                        "name": "Automated Irrigation",
+                        "variants": [
+                            "Subsurface Pressure-Compensating Drip Irrigation",
+                            "Pop-Up Gear-Driven Rotor Lawn Sprinklers",
+                            "Smart WiFi Weather-Sensing Irrigation Controllers"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Lawns & Groundcover",
+                    "Natural Mexican Carpet Grass Sod Turf",
+                    "Bermuda Drought-Resistant Lawn Grass",
+                    "UV-Stabilized High-Density Artificial Turf 40mm",
+                    "Shade-Tolerant Mondo Grass Groundcover",
+                    "Automated Irrigation",
+                    "Subsurface Pressure-Compensating Drip Irrigation",
+                    "Pop-Up Gear-Driven Rotor Lawn Sprinklers",
+                    "Smart WiFi Weather-Sensing Irrigation Controllers"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Manufacturers & Suppliers",
+        "slug": "manufacturers-suppliers",
+        "icon": "🏭",
+        "description": "Direct manufacturing plants, wholesale distributors, specialized fabricators, and architectural professionals.",
+        "supplier_category": "Direct Manufacturers & Primary Distributors",
+        "subcategories": [
+            {
+                "name": "Material Manufacturers & Factories",
+                "items": [
+                    {
+                        "name": "Heavy Material Factories",
+                        "variants": [
+                            "Primary Cement Manufacturing Plants",
+                            "Integrated TMT Steel Rebar Rolling Mills",
+                            "Automated Clay Brick & Block Kilns"
+                        ]
+                    },
+                    {
+                        "name": "Processing & Finishing Plants",
+                        "variants": [
+                            "Granite Gangsaw & Slab Polishing Units",
+                            "High-Capacity Vitrified Tile Manufacturing Plants",
+                            "Architectural Glass Toughening & Glazing Plants"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Heavy Material Factories",
+                    "Primary Cement Manufacturing Plants",
+                    "Integrated TMT Steel Rebar Rolling Mills",
+                    "Automated Clay Brick & Block Kilns",
+                    "Processing & Finishing Plants",
+                    "Granite Gangsaw & Slab Polishing Units",
+                    "High-Capacity Vitrified Tile Manufacturing Plants",
+                    "Architectural Glass Toughening & Glazing Plants"
+                ]
+            },
+            {
+                "name": "Distributors, Stockists & Wholesalers",
+                "items": [
+                    {
+                        "name": "Bulk Trade Stockyards",
+                        "variants": [
+                            "Regional TMT Rebar & Structural Steel Stockyards",
+                            "Wholesale Ceramic Tile & Sanitaryware Depots",
+                            "Timber, Plywood & Veneer Central Stockists",
+                            "Plumbing Pipes & Electrical Cables Central Warehouse"
+                        ]
+                    },
+                    {
+                        "name": "Specialist Material Stockists",
+                        "variants": [
+                            "Imported Italian Marble Yard Stockists",
+                            "Commercial Hardware & Fastener Distributors",
+                            "HVAC & Fire Fighting Wholesalers"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Bulk Trade Stockyards",
+                    "Regional TMT Rebar & Structural Steel Stockyards",
+                    "Wholesale Ceramic Tile & Sanitaryware Depots",
+                    "Timber, Plywood & Veneer Central Stockists",
+                    "Plumbing Pipes & Electrical Cables Central Warehouse",
+                    "Specialist Material Stockists",
+                    "Imported Italian Marble Yard Stockists",
+                    "Commercial Hardware & Fastener Distributors",
+                    "HVAC & Fire Fighting Wholesalers"
+                ]
+            },
+            {
+                "name": "Showrooms & Design Studios",
+                "items": [
+                    {
+                        "name": "Experience Centers",
+                        "variants": [
+                            "Flagship Sanitaryware & Bath Fixtures Experience Centers",
+                            "Brand Modular Kitchen & Wardrobe Display Studios",
+                            "Architectural Lighting Design Galleries",
+                            "Imported Italian Marble & Natural Stone Display Yards"
+                        ]
+                    },
+                    {
+                        "name": "Boutique Design Showrooms",
+                        "variants": [
+                            "Luxury Wooden Flooring Boutiques",
+                            "Designer Wallpaper & Soft Furnishings Studios",
+                            "Smart Home Automation Experience Centers"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Experience Centers",
+                    "Flagship Sanitaryware & Bath Fixtures Experience Centers",
+                    "Brand Modular Kitchen & Wardrobe Display Studios",
+                    "Architectural Lighting Design Galleries",
+                    "Imported Italian Marble & Natural Stone Display Yards",
+                    "Boutique Design Showrooms",
+                    "Luxury Wooden Flooring Boutiques",
+                    "Designer Wallpaper & Soft Furnishings Studios",
+                    "Smart Home Automation Experience Centers"
+                ]
+            },
+            {
+                "name": "Architects & Design Studios",
+                "items": [
+                    {
+                        "name": "Architecture Firms",
+                        "variants": [
+                            "Contemporary Residential Villa Architects",
+                            "Commercial & Institutional Architectural Practices",
+                            "Heritage Restoration & Conservation Architects",
+                            "Landscape Architecture & Master Planning Studios"
+                        ]
+                    },
+                    {
+                        "name": "Interior Design Studios",
+                        "variants": [
+                            "Luxury Residential Interior Design Firms",
+                            "Commercial Workplace & Office Interior Designers",
+                            "Hospitality & Restaurant Interior Consultants"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Architecture Firms",
+                    "Contemporary Residential Villa Architects",
+                    "Commercial & Institutional Architectural Practices",
+                    "Heritage Restoration & Conservation Architects",
+                    "Landscape Architecture & Master Planning Studios",
+                    "Interior Design Studios",
+                    "Luxury Residential Interior Design Firms",
+                    "Commercial Workplace & Office Interior Designers",
+                    "Hospitality & Restaurant Interior Consultants"
+                ]
+            },
+            {
+                "name": "Builders & General Contractors",
+                "items": [
+                    {
+                        "name": "Residential Builders",
+                        "variants": [
+                            "Turnkey Luxury Villa Construction Companies",
+                            "Sustainable Green Home Building Contractors",
+                            "Home Renovation & Structural Remodeling Contractors"
+                        ]
+                    },
+                    {
+                        "name": "Engineering Contractors",
+                        "variants": [
+                            "Civil Structural Concrete Contractors",
+                            "MEP Mechanical Electrical Plumbing Contractors",
+                            "Commercial Interior Fitout Contractors"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Residential Builders",
+                    "Turnkey Luxury Villa Construction Companies",
+                    "Sustainable Green Home Building Contractors",
+                    "Home Renovation & Structural Remodeling Contractors",
+                    "Engineering Contractors",
+                    "Civil Structural Concrete Contractors",
+                    "MEP Mechanical Electrical Plumbing Contractors",
+                    "Commercial Interior Fitout Contractors"
+                ]
+            },
+            {
+                "name": "Specialized Fabricators & Skilled Trades",
+                "items": [
+                    {
+                        "name": "Fabricators",
+                        "variants": [
+                            "Structural Steel PEB Fabricators",
+                            "Custom Aluminium & UPVC Window Fabricators",
+                            "Architectural Metal & Glass Canopy Fabricators",
+                            "Cast & Wrought Iron Ornamental Fabricators"
+                        ]
+                    },
+                    {
+                        "name": "Skilled Trade Artisans",
+                        "variants": [
+                            "Master Joinery & Custom Teak Wood Carpentry",
+                            "Athangudi Tile Casting & Installation Artisans",
+                            "Italian Marble Bookmatch Laying & Diamond Polishing Specialists"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Fabricators",
+                    "Structural Steel PEB Fabricators",
+                    "Custom Aluminium & UPVC Window Fabricators",
+                    "Architectural Metal & Glass Canopy Fabricators",
+                    "Cast & Wrought Iron Ornamental Fabricators",
+                    "Skilled Trade Artisans",
+                    "Master Joinery & Custom Teak Wood Carpentry",
+                    "Athangudi Tile Casting & Installation Artisans",
+                    "Italian Marble Bookmatch Laying & Diamond Polishing Specialists"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Brands",
+        "slug": "brands",
+        "icon": "🏷️",
+        "description": "Verified national & international building product manufacturers, cement, steel, sanitaryware, and tile brands.",
+        "supplier_category": "Authorized Brand Dealerships",
+        "subcategories": [
+            {
+                "name": "Cement & Structural Steel Brands",
+                "items": [
+                    {
+                        "name": "Cement Brands",
+                        "variants": [
+                            "UltraTech Cement",
+                            "ACC Cement",
+                            "Ambuja Cements",
+                            "Dalmia Bharat Cement",
+                            "Ramco Cements",
+                            "JSW Cement",
+                            "Penna Cement",
+                            "Birla Super Cement"
+                        ]
+                    },
+                    {
+                        "name": "Steel Brands",
+                        "variants": [
+                            "Tata Tiscon TMT",
+                            "JSW Neosteel TMT",
+                            "Jindal Panther TMT",
+                            "SAIL TMT Rebar",
+                            "Vizag Steel RINL",
+                            "Kamdhenu TMT",
+                            "Shyam Steel"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Cement Brands",
+                    "UltraTech Cement",
+                    "ACC Cement",
+                    "Ambuja Cements",
+                    "Dalmia Bharat Cement",
+                    "Ramco Cements",
+                    "JSW Cement",
+                    "Penna Cement",
+                    "Birla Super Cement",
+                    "Steel Brands",
+                    "Tata Tiscon TMT",
+                    "JSW Neosteel TMT",
+                    "Jindal Panther TMT",
+                    "SAIL TMT Rebar",
+                    "Vizag Steel RINL",
+                    "Kamdhenu TMT",
+                    "Shyam Steel"
+                ]
+            },
+            {
+                "name": "Sanitaryware, Bath & Plumbing Brands",
+                "items": [
+                    {
+                        "name": "Bath & Sanitaryware Brands",
+                        "variants": [
+                            "Kohler India",
+                            "Jaquar Bath Fittings",
+                            "Hindware Sanitaryware",
+                            "Cera Sanitaryware",
+                            "Grohe Bath Systems",
+                            "Toto Sanitaryware",
+                            "Roca Bathrooms",
+                            "Duravit",
+                            "Parryware"
+                        ]
+                    },
+                    {
+                        "name": "Pipes & Water Systems Brands",
+                        "variants": [
+                            "Supreme Industries Pipes",
+                            "Astral Pipes",
+                            "Finolex Pipes",
+                            "Ashirvad CPVC Pipes",
+                            "Prince Pipes & Fittings",
+                            "Sintex Water Tanks"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Bath & Sanitaryware Brands",
+                    "Kohler India",
+                    "Jaquar Bath Fittings",
+                    "Hindware Sanitaryware",
+                    "Cera Sanitaryware",
+                    "Grohe Bath Systems",
+                    "Toto Sanitaryware",
+                    "Roca Bathrooms",
+                    "Duravit",
+                    "Parryware",
+                    "Pipes & Water Systems Brands",
+                    "Supreme Industries Pipes",
+                    "Astral Pipes",
+                    "Finolex Pipes",
+                    "Ashirvad CPVC Pipes",
+                    "Prince Pipes & Fittings",
+                    "Sintex Water Tanks"
+                ]
+            },
+            {
+                "name": "Tiles, Marble & Surface Brands",
+                "items": [
+                    {
+                        "name": "Ceramic & Vitrified Tile Brands",
+                        "variants": [
+                            "Kajaria Ceramics",
+                            "Somany Ceramics",
+                            "Nitco Tiles & Marble",
+                            "Simpolo Ceramics",
+                            "Orientbell Tiles",
+                            "RAK Ceramics",
+                            "Qutone Ceramic Slabs"
+                        ]
+                    },
+                    {
+                        "name": "Engineered Stone & Quartz Brands",
+                        "variants": [
+                            "Caesarstone Quartz Surfaces",
+                            "Silestone by Cosentino",
+                            "Ascale Sintered Stone",
+                            "Laminam Large Porcelain Slabs"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Ceramic & Vitrified Tile Brands",
+                    "Kajaria Ceramics",
+                    "Somany Ceramics",
+                    "Nitco Tiles & Marble",
+                    "Simpolo Ceramics",
+                    "Orientbell Tiles",
+                    "RAK Ceramics",
+                    "Qutone Ceramic Slabs",
+                    "Engineered Stone & Quartz Brands",
+                    "Caesarstone Quartz Surfaces",
+                    "Silestone by Cosentino",
+                    "Ascale Sintered Stone",
+                    "Laminam Large Porcelain Slabs"
+                ]
+            },
+            {
+                "name": "Paints, Textures & Waterproofing Brands",
+                "items": [
+                    {
+                        "name": "Coatings & Chemicals Brands",
+                        "variants": [
+                            "Asian Paints",
+                            "Berger Paints India",
+                            "Kansai Nerolac",
+                            "Dulux Paints AkzoNobel",
+                            "Dr. Fixit Pidilite",
+                            "Fosroc Construction Chemicals",
+                            "Sika Construction Chemicals"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Coatings & Chemicals Brands",
+                    "Asian Paints",
+                    "Berger Paints India",
+                    "Kansai Nerolac",
+                    "Dulux Paints AkzoNobel",
+                    "Dr. Fixit Pidilite",
+                    "Fosroc Construction Chemicals",
+                    "Sika Construction Chemicals"
+                ]
+            },
+            {
+                "name": "Electrical, Lighting & Automation Brands",
+                "items": [
+                    {
+                        "name": "Electrical & Smart Brands",
+                        "variants": [
+                            "Legrand India",
+                            "Schneider Electric",
+                            "Havells India",
+                            "Philips Lighting Signify",
+                            "Wipro Consumer Lighting",
+                            "Anchor by Panasonic",
+                            "Polycab Wires & Cables",
+                            "L&T Electrical & Automation"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Electrical & Smart Brands",
+                    "Legrand India",
+                    "Schneider Electric",
+                    "Havells India",
+                    "Philips Lighting Signify",
+                    "Wipro Consumer Lighting",
+                    "Anchor by Panasonic",
+                    "Polycab Wires & Cables",
+                    "L&T Electrical & Automation"
+                ]
+            },
+            {
+                "name": "Architectural Hardware, Wood & Glass Brands",
+                "items": [
+                    {
+                        "name": "Hardware, Wood & Glass Brands",
+                        "variants": [
+                            "Häfele India Hardware",
+                            "Hettich India Hardware",
+                            "Godrej Locking Solutions",
+                            "Dormakaba Architectural Hardware",
+                            "Saint-Gobain Glass India",
+                            "Greenply Industries Plywood",
+                            "CenturyPly Plywood & Veneer",
+                            "Ozone Architectural Hardware",
+                            "Blum Furniture Fittings"
+                        ]
+                    }
+                ],
+                "keywords": [
+                    "Hardware, Wood & Glass Brands",
+                    "Häfele India Hardware",
+                    "Hettich India Hardware",
+                    "Godrej Locking Solutions",
+                    "Dormakaba Architectural Hardware",
+                    "Saint-Gobain Glass India",
+                    "Greenply Industries Plywood",
+                    "CenturyPly Plywood & Veneer",
+                    "Ozone Architectural Hardware",
+                    "Blum Furniture Fittings"
+                ]
+            }
+        ]
+    }
+]
+
+# ==============================================================================
+# ENRICHED ARCHITECTURAL SYNONYMS & KEYWORD ALIASES
+# ==============================================================================
+
+SYNONYM_DICT: Dict[str, List[str]] = {
+    "staircase": [
+        "stair",
+        "stairs",
+        "flight of stairs",
+        "steps",
+        "spiral staircase",
+        "cantilever staircase",
+        "floating staircase",
+        "stairway",
+        "railing"
+    ],
+    "stairs": [
+        "staircase",
+        "stair",
+        "steps",
+        "stairway",
+        "treads",
+        "risers"
+    ],
+    "stair": [
+        "staircase",
+        "stairs",
+        "steps",
+        "stairway"
+    ],
+    "chandelier": [
+        "chandeliers",
+        "crystal chandelier",
+        "pendant light",
+        "hanging lamp",
+        "ceiling light",
+        "statement light"
+    ],
+    "chandeliers": [
+        "chandelier",
+        "crystal chandelier",
+        "pendant lights",
+        "statement lighting"
+    ],
+    "kerala": [
+        "nalukettu",
+        "tharavadu",
+        "kerala traditional",
+        "traditional house",
+        "charupady",
+        "padippura",
+        "sloped roof"
+    ],
+    "elevation": [
+        "front elevation",
+        "house elevation",
+        "building facade",
+        "exterior elevation",
+        "facade design",
+        "3d elevation"
+    ],
+    "elevations": [
+        "elevation",
+        "front elevation",
+        "facade design",
+        "house elevation"
+    ],
+    "marble": [
+        "marble flooring",
+        "italian marble",
+        "statuario marble",
+        "makrana marble",
+        "botticino marble",
+        "white marble"
+    ],
+    "kitchen": [
+        "modular kitchen",
+        "kitchen cabinets",
+        "pantry",
+        "kitchen storage",
+        "island kitchen",
+        "galley kitchen"
+    ],
+    "modular": [
+        "modular kitchen",
+        "modular wardrobe",
+        "modular furniture",
+        "prefabricated"
+    ],
+    "tmt": [
+        "tmt bar",
+        "tmt steel",
+        "rebar",
+        "reinforcement bar",
+        "steel rod",
+        "fe500d",
+        "fe550d",
+        "tata tiscon",
+        "jsw neosteel"
+    ],
+    "rebar": [
+        "tmt bar",
+        "tmt steel",
+        "reinforcement steel",
+        "steel rod",
+        "rebar couplers"
+    ],
+    "athangudi": [
+        "athangudi tiles",
+        "chettinad handmade tiles",
+        "cement tiles",
+        "heritage tiles",
+        "floral tiles"
+    ],
+    "stone": [
+        "natural stone",
+        "granite",
+        "marble",
+        "kota stone",
+        "slate stone",
+        "sandstone",
+        "landscape stones"
+    ],
+    "stones": [
+        "stone",
+        "natural stone",
+        "landscape stones",
+        "pebbles",
+        "boulders"
+    ],
+    "door": [
+        "doors",
+        "wooden door",
+        "panel door",
+        "flush door",
+        "teak door",
+        "main door"
+    ],
+    "doors": [
+        "door",
+        "wooden doors",
+        "teak wood doors",
+        "pivot doors",
+        "sliding doors"
+    ],
+    "panel": [
+        "panels",
+        "wall panels",
+        "wall paneling",
+        "decorative panels",
+        "fluted panel",
+        "acoustic panel"
+    ],
+    "panels": [
+        "panel",
+        "wall panels",
+        "decorative wall panels",
+        "fluted panels",
+        "wpc louvers"
+    ],
+    "hvac": [
+        "air conditioning",
+        "ventilation",
+        "vrf",
+        "vrv",
+        "ductable ac",
+        "chiller",
+        "cooling",
+        "exhaust fan"
+    ],
+    "cctv": [
+        "security camera",
+        "surveillance",
+        "ip camera",
+        "ptz camera",
+        "nvr",
+        "security cameras"
+    ],
+    "fire": [
+        "fire safety",
+        "fire extinguisher",
+        "fire alarm",
+        "smoke detector",
+        "fire sprinkler",
+        "fire rated door"
+    ],
+    "safety": [
+        "ppe",
+        "safety helmet",
+        "safety shoes",
+        "safety harness",
+        "fire safety",
+        "invisible grilles"
+    ],
+    "pump": [
+        "pumps",
+        "water pump",
+        "submersible pump",
+        "booster pump",
+        "sewage pump"
+    ],
+    "pumps": [
+        "pump",
+        "water pumps",
+        "submersible pumps",
+        "booster pumps"
+    ],
+    "tank": [
+        "tanks",
+        "water tank",
+        "storage tank",
+        "sintex tank",
+        "ss water tank"
+    ],
+    "tanks": [
+        "tank",
+        "water tanks",
+        "storage tanks",
+        "overhead tank"
+    ],
+    "pipe": [
+        "pipes",
+        "plumbing pipe",
+        "cpvc pipe",
+        "upvc pipe",
+        "swr pipe",
+        "drainage pipe"
+    ],
+    "pipes": [
+        "pipe",
+        "plumbing pipes",
+        "cpvc",
+        "upvc",
+        "swr",
+        "drainage pipes"
+    ],
+    "cement": [
+        "concrete",
+        "mortar",
+        "portland cement",
+        "opc",
+        "ppc",
+        "ultratech",
+        "acc",
+        "ambuja"
+    ],
+    "steel": [
+        "tmt steel",
+        "tmt bar",
+        "structural steel",
+        "rebar",
+        "tata tiscon",
+        "jsw neosteel",
+        "sail"
+    ],
+    "furniture": [
+        "sofa",
+        "bed",
+        "dining table",
+        "chair",
+        "wardrobe",
+        "desk",
+        "outdoor furniture"
+    ],
+    "sofa": [
+        "sofas",
+        "couch",
+        "sectional sofa",
+        "chesterfield sofa",
+        "living room seating"
+    ],
+    "bed": [
+        "beds",
+        "king size bed",
+        "queen size bed",
+        "hydraulic bed",
+        "platform bed"
+    ],
+    "wardrobe": [
+        "wardrobes",
+        "closet",
+        "walk-in closet",
+        "cupboard",
+        "almirah",
+        "sliding wardrobe"
+    ],
+    "curtain": [
+        "curtains",
+        "drapes",
+        "blinds",
+        "sheer curtains",
+        "blackout curtains"
+    ],
+    "curtains": [
+        "curtain",
+        "drapes",
+        "window blinds",
+        "blackout curtains"
+    ],
+    "rug": [
+        "rugs",
+        "carpet",
+        "carpets",
+        "area rug",
+        "wool rug",
+        "jute rug"
+    ],
+    "rugs": [
+        "rug",
+        "carpets",
+        "area rugs",
+        "jute rugs"
+    ],
+    "decor": [
+        "home decor",
+        "accessories",
+        "planters",
+        "wall art",
+        "sculptures",
+        "vases"
+    ],
+    "drawing": [
+        "drawings",
+        "architectural drawings",
+        "floor plan",
+        "elevation drawing",
+        "cad",
+        "bim"
+    ],
+    "drawings": [
+        "drawing",
+        "architectural plans",
+        "blueprints",
+        "floor plans",
+        "working drawings"
+    ],
+    "plan": [
+        "plans",
+        "floor plan",
+        "layout",
+        "site plan",
+        "house plan",
+        "blueprints"
+    ],
+    "plans": [
+        "plan",
+        "floor plans",
+        "house plans",
+        "architectural plans"
+    ],
+    "excavator": [
+        "excavators",
+        "jcb",
+        "backhoe loader",
+        "earthmover",
+        "construction machinery"
+    ],
+    "concrete": [
+        "cement",
+        "rcc",
+        "ready-mix concrete",
+        "precast concrete",
+        "m25 concrete"
+    ],
+    "precast": [
+        "precast concrete",
+        "hollowcore slab",
+        "precast wall",
+        "precast stairs",
+        "prefab"
+    ],
+    "solar": [
+        "solar panel",
+        "solar pv",
+        "solar inverter",
+        "solar water heater",
+        "clean energy"
+    ],
+    "railing": [
+        "railings",
+        "balustrade",
+        "glass railing",
+        "stair railing",
+        "balcony railing",
+        "handrail"
+    ],
+    "railings": [
+        "railing",
+        "balustrades",
+        "glass railings",
+        "staircase railings",
+        "handrails"
+    ],
+    "glass": [
+        "toughened glass",
+        "tempered glass",
+        "laminated glass",
+        "dgu glass",
+        "fluted glass"
+    ],
+    "tile": [
+        "tiles",
+        "vitrified tile",
+        "ceramic tile",
+        "porcelain tile",
+        "floor tile",
+        "wall tile"
+    ],
+    "tiles": [
+        "tile",
+        "vitrified tiles",
+        "ceramic tiles",
+        "porcelain tiles",
+        "floor tiles"
+    ],
+    "granite": [
+        "granite slab",
+        "black galaxy granite",
+        "flamed granite",
+        "jet black granite"
+    ],
+    "paint": [
+        "paints",
+        "emulsion",
+        "exterior paint",
+        "asian paints",
+        "berger paints",
+        "wall paint"
+    ],
+    "paints": [
+        "paint",
+        "interior paint",
+        "exterior paint",
+        "wall paints",
+        "coatings"
+    ],
+    "switch": [
+        "switches",
+        "modular switch",
+        "switchboard",
+        "legrand",
+        "schneider"
+    ],
+    "switches": [
+        "switch",
+        "modular switches",
+        "smart switches",
+        "switchboard"
+    ],
+    "lighting": [
+        "architectural lighting",
+        "lights",
+        "light fixtures",
+        "led lights",
+        "downlights"
+    ],
+    "light": [
+        "lighting",
+        "lights",
+        "luminaires",
+        "lamp",
+        "lamps"
+    ],
+    "bathroom": [
+        "washroom",
+        "restroom",
+        "powder room",
+        "ensuite",
+        "sanitaryware",
+        "toilet"
+    ],
+    "bathroom fittings": [
+        "bath fittings",
+        "faucets",
+        "showers",
+        "bathroom accessories",
+        "sanitaryware"
+    ],
+    "bath fittings": [
+        "bathroom fittings",
+        "faucets",
+        "showers",
+        "sanitaryware"
+    ],
+    "faucets": [
+        "bath fittings",
+        "bathroom fittings",
+        "taps",
+        "mixers",
+        "spouts"
+    ],
+    "showers": [
+        "rain shower",
+        "hand shower",
+        "bath fittings",
+        "shower enclosures"
+    ],
+    "toilet": [
+        "toilets",
+        "water closet",
+        "commode",
+        "wall hung toilet",
+        "ewc",
+        "bidet"
+    ],
+    "sanitaryware": [
+        "toilets",
+        "washbasins",
+        "faucets",
+        "kohler",
+        "jaquar",
+        "cera",
+        "hindware"
+    ],
+    "utility": [
+        "utility and laundry",
+        "laundry room",
+        "service area",
+        "washing machine",
+        "scrub sink"
+    ],
+    "laundry": [
+        "utility and laundry",
+        "laundry room",
+        "washing machine",
+        "drying rack"
+    ],
+    "paver": [
+        "pavers",
+        "interlocking concrete pavers",
+        "stepping stone",
+        "pathway",
+        "cobblestones"
+    ],
+    "pavers": [
+        "interlocking pavers",
+        "paver",
+        "concrete pavers",
+        "stepping stones"
+    ],
+    "garage": [
+        "garage doors",
+        "car parking",
+        "motorized sectional doors",
+        "trench drain"
+    ],
+    "ev": [
+        "ev charging",
+        "ev charging stations",
+        "wallbox",
+        "electric vehicle charger"
+    ],
+    "facade": [
+        "exterior facade",
+        "building elevation",
+        "cladding",
+        "curtain wall",
+        "louvers"
+    ],
+    "pergola": [
+        "pergolas",
+        "gazebo",
+        "canopy",
+        "outdoor shelter",
+        "louvered pergola"
+    ],
+    "pool": [
+        "pools",
+        "swimming pool",
+        "infinity pool",
+        "jacuzzi",
+        "plunge pool"
+    ],
+    "waterproofing": [
+        "dr fixit",
+        "waterproof membrane",
+        "pu coating",
+        "damp proofing",
+        "sealant"
+    ]
+}
+
+# ==============================================================================
+# CONTENT CLASSIFICATIONS & METADATA SCHEMAS
+# ==============================================================================
+
+CONTENT_CLASSIFICATIONS: List[Dict[str, str]] = [
+    {
+        "code": "architectural_project",
+        "name": "Architectural Project",
+        "description": "Completed or under-construction architectural building project"
+    },
+    {
+        "code": "interior_design",
+        "name": "Interior Design",
+        "description": "Indoor spaces, staging, furniture layouts, and spatial styling"
+    },
+    {
+        "code": "construction_progress",
+        "name": "Construction Progress",
+        "description": "Active site walkthroughs, excavation, RCC framing, and masonry"
+    },
+    {
+        "code": "detail_drawing",
+        "name": "Detail Drawing & Plans",
+        "description": "Architectural CAD drawings, floor plans, sections, and joinery details"
+    },
+    {
+        "code": "material_specification",
+        "name": "Material Specification",
+        "description": "Physical material swatches, technical specs, finishes, and tests"
+    },
+    {
+        "code": "product_catalog",
+        "name": "Product Catalog",
+        "description": "Manufacturer product sheets, fixtures, sanitaryware, and hardware models"
+    },
+    {
+        "code": "installation_guide",
+        "name": "Installation & Method Statement",
+        "description": "Step-by-step assembly, contractor installation techniques, and tolerances"
+    },
+    {
+        "code": "supplier_profile",
+        "name": "Supplier & Stockyard Profile",
+        "description": "Wholesale yard, stone quarry, manufacturing factory, or showroom"
+    },
+    {
+        "code": "cost_breakdown",
+        "name": "Cost Breakdown & BOQ",
+        "description": "Material takeoffs, square foot construction rates, and BOQ estimates"
+    },
+    {
+        "code": "structural_engineering",
+        "name": "Structural Engineering",
+        "description": "Rebar detailing, beam-column junctions, foundation piling, and load calcs"
+    },
+    {
+        "code": "mep_system",
+        "name": "MEP & Building Services",
+        "description": "Plumbing layouts, electrical conduits, HVAC ductwork, and fire piping"
+    },
+    {
+        "code": "landscape_design",
+        "name": "Landscape & Outdoor Living",
+        "description": "Hardscaping, planting schemes, garden water features, and outdoor decks"
+    },
+    {
+        "code": "facade_detail",
+        "name": "Facade & Cladding Detail",
+        "description": "Louver brackets, curtain wall sections, ACP/HPL fixing, and stone anchors"
+    },
+    {
+        "code": "sustainable_building",
+        "name": "Sustainable & Passive Design",
+        "description": "Green rating compliance, solar integration, rammed earth, and passive cooling"
+    },
+    {
+        "code": "renovation_before_after",
+        "name": "Renovation Transformation",
+        "description": "Before and after remodeling, heritage retrofit, and structural repairs"
+    },
+    {
+        "code": "artisan_craft",
+        "name": "Artisan Craft & Vernacular Trades",
+        "description": "Athangudi tile casting, wood carving, hand-cut stone, and traditional stucco"
+    },
+    {
+        "code": "smart_home_tech",
+        "name": "Smart Home & Automation",
+        "description": "IoT lighting scenes, motorized shades, security sensors, and central hubs"
+    }
+]
+
+SEARCH_EXPANSION_DIMENSIONS: Dict[str, List[str]] = {
+    "styles": [
+        "Modern",
+        "Minimalist",
+        "Kerala Traditional",
+        "Chettinad",
+        "Colonial",
+        "Tropical Modern",
+        "Brutalist",
+        "Contemporary",
+        "Industrial",
+        "Scandinavian"
+    ],
+    "spaces": [
+        "Living Room",
+        "Modular Kitchen",
+        "Master Bedroom",
+        "Ensuite Bathroom",
+        "Dining Room",
+        "Home Office",
+        "Powder Room",
+        "Balcony",
+        "Terrace",
+        "Foyer"
+    ],
+    "materials": [
+        "Italian Marble",
+        "Granite",
+        "Solid Teak Wood",
+        "Toughened Glass",
+        "Corten Steel",
+        "Exposed Brick",
+        "Concrete",
+        "Terrazzo",
+        "Brass",
+        "UPVC"
+    ],
+    "stages": [
+        "Site Preparation",
+        "Foundation & Piling",
+        "RCC Framing",
+        "Brick Masonry",
+        "Plastering",
+        "MEP Rough-in",
+        "Flooring & Tiling",
+        "Painting",
+        "Finishing",
+        "Handover"
+    ]
+}
+
+INSTAGRAM_DISCOVERY_INTENTS: List[str] = [
+    "Visual inspiration & aesthetic discovery",
+    "Material texture & finish closeups",
+    "Before & after renovation transformation",
+    "Construction site execution & site walk",
+    "Artisan craftsmanship & fabrication process",
+    "Architectural photography & spatial lighting",
+    "Compact home & small space space-saving solutions",
+    "Luxury villa walkthroughs & drone aerial views"
+]
+
+SOURCE_SPECIFIC_QUERY_TEMPLATES: Dict[str, str] = {
+    "google_search": "{keyword} architectural design specifications supplier",
+    "google_places": "{keyword} suppliers near {city} {state}",
+    "socialcrawl_instagram": "#{keyword_hashtag} #architecture #interiordesign #construction",
+    "catalog_lookup": "{keyword} manufacturer product specifications data sheet"
+}
+
+FILTER_METADATA_GROUPS: Dict[str, List[str]] = {
+    "location_scopes": [
+        "Local City",
+        "District",
+        "State Hub",
+        "National"
+    ],
+    "material_classes": [
+        "Natural Stone",
+        "Ceramic & Vitrified",
+        "Structural Steel & Metal",
+        "Engineered Wood & Timber",
+        "Glass & Glazing",
+        "Polymers & Composites"
+    ],
+    "project_typologies": [
+        "Residential Villa",
+        "Apartment",
+        "Commercial Office",
+        "Hospitality Resort",
+        "Retail Showroom",
+        "Industrial Warehouse"
+    ],
+    "price_tiers": [
+        "Budget Economy",
+        "Mid-Range Trade",
+        "Premium Spec",
+        "Ultra-Luxury Bespoke"
+    ]
+}
+
+STOCK_INVENTORY_SPECS: Dict[str, Any] = {
+    "tmt_rebar_sizes_mm": [
+        6,
+        8,
+        10,
+        12,
+        16,
+        20,
+        25,
+        32
+    ],
+    "tmt_grades": [
+        "Fe500D",
+        "Fe550D",
+        "CRS"
+    ],
+    "cement_grades": [
+        "OPC 43",
+        "OPC 53",
+        "PPC",
+        "PSC",
+        "White Cement"
+    ],
+    "pipe_classes": [
+        "CPVC SDR 11",
+        "UPVC Class 2/3",
+        "SWR Ring-Fit",
+        "HDPE PE100"
+    ]
+}
+
+
+# ==============================================================================
+# CORE SERVICE FUNCTIONS
+# ==============================================================================
+
+def get_all_keyword_groups() -> List[Dict[str, Any]]:
+    """
+    Returns the consolidated 14 master categories with name, icon, slug, subcategories,
+    flattened keyword list, count, and mapped supplier category.
+    """
+    enriched = []
+    for cat in MASTER_KEYWORD_CATEGORIES:
+        all_kws = []
+        subcat_names = []
+        for sub in cat.get("subcategories", []):
+            subcat_names.append(sub.get("name", ""))
+            all_kws.extend(sub.get("keywords", []))
+
+        enriched.append({
+            "id": cat["id"],
+            "name": cat["name"],
+            "title": cat["name"],
+            "slug": cat["slug"],
+            "icon": cat.get("icon", "🏛️"),
+            "description": cat.get("description", ""),
+            "supplier_category": cat.get("supplier_category", "Architectural Suppliers"),
+            "count": len(all_kws),
+            "subcategories": subcat_names,
+            "subcategory_objects": cat.get("subcategories", []),
+            "keywords": all_kws
+        })
+    return enriched
+
+
+def token_matches(tok: str, text: str) -> bool:
+    if tok in text:
+        return True
+    # Normalize bath and bathroom
+    if (tok in ("bathroom", "bathrooms") or tok.startswith("bathroom")) and "bath" in text:
+        return True
+    if (tok in ("bath", "baths") or tok.startswith("bath")) and "bathroom" in text:
+        return True
+    if tok.endswith("s") and len(tok) > 3 and tok[:-1] in text:
+        return True
+    if tok.endswith("es") and len(tok) > 4 and tok[:-2] in text:
+        return True
+    if (tok + "s") in text or (tok + "es") in text:
+        return True
+    if tok.endswith("en") and len(tok) > 4 and tok[:-2] in text:
+        return True
+    if tok.endswith("ing") and len(tok) > 5 and tok[:-3] in text:
+        return True
+    if tok.endswith("ed") and len(tok) > 4 and tok[:-2] in text:
+        return True
+    return False
+
+
+def all_tokens_match(tokens: List[str], text: str) -> bool:
+    return all(token_matches(t, text) for t in tokens)
+
+
+def search_keyword_library(query: str, max_results: int = 50) -> List[Dict[str, Any]]:
+    """
+    Searches across all 14 master categories, subcategories, items, and variants.
+    Supports exact matching, plural/singular normalization, and token matching.
+    Returns categorized matching hits.
+    """
+    clean_q = query.strip().lower()
+    if not clean_q:
+        return []
+
+    tokens = [t for t in clean_q.split() if len(t) >= 2]
+
+    results = []
+    for cat in MASTER_KEYWORD_CATEGORIES:
+        matching_subcats = []
+        for sub in cat.get("subcategories", []):
+            matched_kws = []
+            matched_items = []
+
+            # 1. Check subcategory keywords
+            for k in sub.get("keywords", []):
+                k_lower = k.lower()
+                if clean_q in k_lower or (tokens and all_tokens_match(tokens, k_lower)):
+                    if k not in matched_kws:
+                        matched_kws.append(k)
+
+            # 2. Check structured items and variants
+            for it in sub.get("items", []):
+                it_name = it.get("name", "")
+                it_desc = it.get("description", "")
+                it_vars = it.get("variants", [])
+
+                it_matched = False
+                matched_vars = []
+
+                combined_it_text = f"{it_name} {it_desc}".lower()
+                if clean_q in combined_it_text or (tokens and all_tokens_match(tokens, combined_it_text)):
+                    it_matched = True
+
+                for v in it_vars:
+                    v_lower = v.lower()
+                    combined_var_text = f"{it_name} {v}".lower()
+                    if clean_q in combined_var_text or (tokens and all_tokens_match(tokens, combined_var_text)):
+                        matched_vars.append(v)
+                        if v not in matched_kws:
+                            matched_kws.append(v)
+
+                if it_matched or matched_vars:
+                    matched_items.append({
+                        "name": it_name,
+                        "description": it_desc,
+                        "variants": matched_vars or it_vars
+                    })
+
+            # 3. Check if subcategory name matches
+            sub_name_lower = sub.get("name", "").lower()
+            sub_matched = clean_q in sub_name_lower or (tokens and all_tokens_match(tokens, sub_name_lower))
+
+            if matched_kws or matched_items or sub_matched:
+                matching_subcats.append({
+                    "subcategory": sub.get("name", ""),
+                    "keywords": matched_kws or sub.get("keywords", [])[:6],
+                    "items": matched_items
+                })
+
+        cat_name_lower = cat["name"].lower()
+        cat_matched = clean_q in cat_name_lower or (tokens and all_tokens_match(tokens, cat_name_lower))
+
+        if matching_subcats or cat_matched:
+            results.append({
+                "category_id": cat["id"],
+                "category_name": cat["name"],
+                "icon": cat["icon"],
+                "slug": cat["slug"],
+                "supplier_category": cat.get("supplier_category", ""),
+                "matches": matching_subcats
+            })
+
+    return results[:max_results]
+
+
+def expand_search_query_with_synonyms(query: str) -> List[str]:
+    """
+    Returns expanded architectural synonyms and related queries.
+    """
+    clean = query.strip().lower()
+    expanded = [clean]
+
+    if clean in SYNONYM_DICT:
+        for s in SYNONYM_DICT[clean]:
+            if s not in expanded:
+                expanded.append(s)
+
+    for word in clean.split():
+        if word in SYNONYM_DICT:
+            for s in SYNONYM_DICT[word]:
+                if s not in expanded:
+                    expanded.append(s)
+
+    return expanded[:10]
+
+
+# Backwards compatibility alias
+KEYWORD_GROUPS = get_all_keyword_groups()

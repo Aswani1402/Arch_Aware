@@ -1,0 +1,491 @@
+[
+  {
+    "term": "Staircase",
+    "is_recognized": true,
+    "categories_count": 3,
+    "categories": [
+      "Architecture",
+      "Interior Spaces",
+      "Construction Materials"
+    ],
+    "subcategories_count": 3,
+    "subcategories": [
+      "Architectural Drawings & Documentation",
+      "Staircases & Vertical Circulation",
+      "Precast, Prefabrication & Civil Engineering"
+    ],
+    "items_count": 6,
+    "items": [
+      "Elevations, Sections & Joinery Details",
+      "Staircase Architectural Types & Layouts",
+      "Staircase Treads, Risers & Step Materials",
+      "Staircase Railings & Balustrades",
+      "Staircase Structural Hardware & Step Lighting",
+      "Precast Concrete Structural Elements"
+    ],
+    "variants_count": 24,
+    "variants": [
+      "Joinery & Staircase Detail Drawings",
+      "Cantilevered Floating Wood Staircase",
+      "Curved Helical Concrete Staircase",
+      "Cast Iron & Timber Spiral Staircase",
+      "Dog-Legged RCC Staircase with Granite Treads",
+      "Open-Riser Steel Stringer Modern Staircase"
+    ],
+    "synonyms_count": 10,
+    "synonyms": [
+      "staircase",
+      "stair",
+      "stairs",
+      "flight of stairs",
+      "steps",
+      "spiral staircase"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 4,
+    "feed_sample_titles": [
+      "12 Red Marble Floor Ideas - Why We Love This Fluted Red Marble Console",
+      "Luxury Dream House \ud83c\udfe1\u2728 | Modern House Design with Stunning Night Lighting \ud83c\udf19",
+      "From raw concrete to a lush luxury retreat. \ud83c\udf3f\u2728"
+    ]
+  },
+  {
+    "term": "Kitchen",
+    "is_recognized": true,
+    "categories_count": 7,
+    "categories": [
+      "Interior Spaces",
+      "Plumbing & Sanitaryware",
+      "Electrical & Lighting",
+      "Flooring & Stone",
+      "Furniture",
+      "Landscape & Outdoor",
+      "Manufacturers & Suppliers"
+    ],
+    "subcategories_count": 8,
+    "subcategories": [
+      "Kitchens & Utility Areas",
+      "Staircases & Vertical Circulation",
+      "Bath Fittings, Faucets & Showers",
+      "HVAC, Climate Control & Ventilation",
+      "Granite & Regional Building Stones",
+      "Kitchen Furniture & Modular Cabinetry",
+      "Outdoor Decking, Pergolas & Structures",
+      "Showrooms & Design Studios"
+    ],
+    "items_count": 9,
+    "items": [
+      "Modular Kitchen Spaces",
+      "Elevators, Lifts & Specialized Access",
+      "Mixers & Diverters",
+      "Ventilation & Fresh-Air Systems",
+      "Polished & Flamed Granite",
+      "Kitchen Cabinets & Units",
+      "Kitchen Hardware & Organization",
+      "Outdoor Shelters & Structures",
+      "Experience Centers"
+    ],
+    "variants_count": 19,
+    "variants": [
+      "Island Modular Kitchen with Breakfast Counter",
+      "L-Shaped Handleless Acrylic Kitchen",
+      "Parallel Galley Stainless Steel Commercial Kitchen",
+      "U-Shaped Classic Shaker Style Kitchen",
+      "Open Dry & Wet Dual Kitchen Layout",
+      "Kitchen Dumbwaiter Food Lift"
+    ],
+    "synonyms_count": 7,
+    "synonyms": [
+      "kitchen",
+      "modular kitchen",
+      "kitchen cabinets",
+      "pantry",
+      "kitchen storage",
+      "island kitchen"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Open-Concept Living & Kitchen Space with Porcelain Tile Floors",
+      "Kitchen Renovation & Modular Cabinet Transformation Walkthrough",
+      "Minimalist Charcoal Kitchen: Honed Italian Nero Marquina marble with fluted smoked oak joinery."
+    ]
+  },
+  {
+    "term": "Wardrobe",
+    "is_recognized": true,
+    "categories_count": 3,
+    "categories": [
+      "Interior Spaces",
+      "Furniture",
+      "Manufacturers & Suppliers"
+    ],
+    "subcategories_count": 3,
+    "subcategories": [
+      "Bedrooms & Dressing Suites",
+      "Bedroom Furniture",
+      "Showrooms & Design Studios"
+    ],
+    "items_count": 3,
+    "items": [
+      "Wardrobes & Dressing Areas",
+      "Wardrobes & Closet Storage",
+      "Experience Centers"
+    ],
+    "variants_count": 10,
+    "variants": [
+      "Walk-in Closet with Island Jewelry Drawers",
+      "Floor-to-Ceiling Tinted Glass Sliding Wardrobe",
+      "Integrated Vanity Counter with LED Mirror",
+      "Lacquer Finish Shutter Wardrobes",
+      "Hydraulic Lift Wardrobe Clothes Hangers",
+      "Modular Sliding Door Wardrobe with Tinted Glass"
+    ],
+    "synonyms_count": 7,
+    "synonyms": [
+      "wardrobe",
+      "wardrobes",
+      "closet",
+      "walk-in closet",
+      "cupboard",
+      "almirah"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Minimalist Master Bedroom with Natural Oak Wood Flooring & Cove Lighting",
+      "3 Interior Designers Transform The Same Loft Bedroom | Architectural Digest",
+      "Master Bedroom \ud83e\udd0e"
+    ]
+  },
+  {
+    "term": "Landscaping",
+    "is_recognized": true,
+    "categories_count": 4,
+    "categories": [
+      "Electrical & Lighting",
+      "Flooring & Stone",
+      "Landscape & Outdoor",
+      "Manufacturers & Suppliers"
+    ],
+    "subcategories_count": 5,
+    "subcategories": [
+      "Outdoor, Landscape & Facade Lighting",
+      "Outdoor Pavers & Landscape Stone",
+      "Landscape Typologies & Garden Design",
+      "Natural & Decorative Landscape Stones",
+      "Architects & Design Studios"
+    ],
+    "items_count": 4,
+    "items": [
+      "Landscape Luminaires",
+      "Decorative Landscape Stones",
+      "Pebbles & Aggregates",
+      "Architecture Firms"
+    ],
+    "variants_count": 11,
+    "variants": [
+      "Garden Spike Adjustable Spotlights",
+      "Architectural Pathway Bollard Lights",
+      "In-Ground Uplights for Trees & Pillars",
+      "Underwater IP68 LED Swimming Pool Lights",
+      "Solar Powered Pathway Post Lights",
+      "Polished Black River Pebbles"
+    ],
+    "synonyms_count": 1,
+    "synonyms": [
+      "landscaping"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Japanese Dry Landscape (Karesansui) with Shirakawa Granite & Moss Boulders",
+      "Contemporary Luxury Residential House with Timber Accents & Landscaping",
+      "Contemporary Two-Storey Residence with Brick & Timber Balcony"
+    ]
+  },
+  {
+    "term": "Exterior Facade",
+    "is_recognized": true,
+    "categories_count": 2,
+    "categories": [
+      "Exterior & Facade",
+      "Electrical & Lighting"
+    ],
+    "subcategories_count": 1,
+    "subcategories": [
+      "Outdoor, Landscape & Facade Lighting"
+    ],
+    "items_count": 1,
+    "items": [
+      "Facade Lighting"
+    ],
+    "variants_count": 1,
+    "variants": [
+      "High-Power Exterior LED Wall Washers"
+    ],
+    "synonyms_count": 5,
+    "synonyms": [
+      "exterior facade",
+      "building elevation",
+      "cladding",
+      "curtain wall",
+      "louvers"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Exterior Facade Architectural Lighting & Linear Grazing Illumination",
+      "Tropical Residential Facade with Integrated Planters",
+      "Exposed Wirecut Brick Cladding & Terracotta Jali Facade"
+    ]
+  },
+  {
+    "term": "Brick",
+    "is_recognized": true,
+    "categories_count": 3,
+    "categories": [
+      "Exterior & Facade",
+      "Construction Materials",
+      "Manufacturers & Suppliers"
+    ],
+    "subcategories_count": 3,
+    "subcategories": [
+      "Exterior Wall Cladding",
+      "Bricks, Blocks & Masonry",
+      "Material Manufacturers & Factories"
+    ],
+    "items_count": 3,
+    "items": [
+      "Exposed Brick & Traditional Facades",
+      "Clay Bricks & Masonry Units",
+      "Heavy Material Factories"
+    ],
+    "variants_count": 9,
+    "variants": [
+      "Wirecut Exposed Brick Facade",
+      "Terracotta Tile Facade Cladding",
+      "Extruded Terracotta Louver Tiles",
+      "Fair-Faced Architectural Concrete Facade",
+      "Kiln-Fired Wirecut Red Clay Bricks",
+      "Perforated Terracotta Acoustic Bricks"
+    ],
+    "synonyms_count": 1,
+    "synonyms": [
+      "brick"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Wire-Cut Exposed Clay Brickwork with Raked Mortar Joints",
+      "Modern Residential Architecture with Curved Exposed Brickwork in Mysore",
+      "Contemporary Two-Storey Residence with Brick & Timber Balcony"
+    ]
+  },
+  {
+    "term": "TMT Steel",
+    "is_recognized": true,
+    "categories_count": 3,
+    "categories": [
+      "Construction Materials",
+      "Manufacturers & Suppliers",
+      "Brands"
+    ],
+    "subcategories_count": 4,
+    "subcategories": [
+      "Structural Steel & Rebar",
+      "Material Manufacturers & Factories",
+      "Distributors, Stockists & Wholesalers",
+      "Cement & Structural Steel Brands"
+    ],
+    "items_count": 4,
+    "items": [
+      "TMT Steel Rebar",
+      "Heavy Material Factories",
+      "Bulk Trade Stockyards",
+      "Steel Brands"
+    ],
+    "variants_count": 16,
+    "variants": [
+      "TMT 6mm Rebar Fe500D",
+      "TMT 8mm Rebar Fe500D / Fe550D",
+      "TMT 10mm Rebar Fe500D / Fe550D",
+      "TMT 12mm Rebar Fe500D / Fe550D",
+      "TMT 16mm Rebar Fe500D / Fe550D",
+      "TMT 20mm Rebar Fe500D / Fe550D"
+    ],
+    "synonyms_count": 10,
+    "synonyms": [
+      "tmt steel",
+      "tmt bar",
+      "rebar",
+      "reinforcement bar",
+      "steel rod",
+      "fe500d"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 8,
+    "feed_sample_titles": [
+      "Tata Tiscon 550D TMT Reinforcement Steel & Foundation Splicing",
+      "Tiscon ReadyBuild Construction Solution (Rebar Bending & Coupler)",
+      "Tata Tiscon 550D Super Ductile TMT Rebar (12mm & 16mm Bundle)"
+    ]
+  },
+  {
+    "term": "Athangudi Tiles",
+    "is_recognized": true,
+    "categories_count": 3,
+    "categories": [
+      "Architecture",
+      "Flooring & Stone",
+      "Manufacturers & Suppliers"
+    ],
+    "subcategories_count": 3,
+    "subcategories": [
+      "Traditional & Vernacular Architecture",
+      "Heritage & Handcrafted Tiles",
+      "Specialized Fabricators & Skilled Trades"
+    ],
+    "items_count": 3,
+    "items": [
+      "Chettinad Architecture",
+      "Artisanal Cement & Terrazzo",
+      "Skilled Trade Artisans"
+    ],
+    "variants_count": 3,
+    "variants": [
+      "Athangudi Tiled Living Hall",
+      "Authentic Athangudi Handmade Cement Tiles",
+      "Athangudi Tile Casting & Installation Artisans"
+    ],
+    "synonyms_count": 10,
+    "synonyms": [
+      "athangudi tiles",
+      "chettinad handmade tiles",
+      "cement tiles",
+      "heritage tiles",
+      "floral tiles",
+      "tile"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Heritage Chettinad Mansion Architecture with Athangudi Tiles & Teak Pillars",
+      "Handcrafted Athangudi Traditional Floral Cement Tiles Flooring",
+      "Large-Format Matt Glazed Vitrified Porcelain Floor Tiles"
+    ]
+  },
+  {
+    "term": "Bathroom Fittings",
+    "is_recognized": true,
+    "categories_count": 2,
+    "categories": [
+      "Plumbing & Sanitaryware",
+      "Brands"
+    ],
+    "subcategories_count": 2,
+    "subcategories": [
+      "Bath Fittings, Faucets & Showers",
+      "Sanitaryware, Bath & Plumbing Brands"
+    ],
+    "items_count": 1,
+    "items": [
+      "Bath & Sanitaryware Brands"
+    ],
+    "variants_count": 1,
+    "variants": [
+      "Jaquar Bath Fittings"
+    ],
+    "synonyms_count": 10,
+    "synonyms": [
+      "bathroom fittings",
+      "bath fittings",
+      "faucets",
+      "showers",
+      "bathroom accessories",
+      "sanitaryware"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Modern Master Bathroom Renovation with Large-Format Tiles & Floating Vanity",
+      "Kohler Veil Wall-Hung Intelligent Rimless Toilet with Concealed Cistern",
+      "Jaquar Kubix Prime Thermostatic Rain Shower System & Diverter"
+    ]
+  },
+  {
+    "term": "Lighting",
+    "is_recognized": true,
+    "categories_count": 8,
+    "categories": [
+      "Exterior & Facade",
+      "Interior Spaces",
+      "Construction Materials",
+      "Electrical & Lighting",
+      "Furniture",
+      "Ceiling, Walls & Finishes",
+      "Manufacturers & Suppliers",
+      "Brands"
+    ],
+    "subcategories_count": 12,
+    "subcategories": [
+      "Roofing Systems & Rainwater Drainage",
+      "Staircases & Vertical Circulation",
+      "Bricks, Blocks & Masonry",
+      "Precast, Prefabrication & Civil Engineering",
+      "Architectural & Feature Lighting",
+      "Outdoor, Landscape & Facade Lighting",
+      "Modular Switches & Smart Home Automation",
+      "Bedroom Furniture",
+      "Dining Room Furniture",
+      "Wall Paneling & Cladding",
+      "Showrooms & Design Studios",
+      "Electrical, Lighting & Automation Brands"
+    ],
+    "items_count": 17,
+    "items": [
+      "Metal & Polycarbonate Roofing",
+      "Staircase Structural Hardware & Step Lighting",
+      "Lightweight & Concrete Blocks",
+      "Precast Concrete Structural Elements",
+      "Prefabricated Building Systems",
+      "Recessed & Track Systems",
+      "Decorative Chandeliers & Pendants",
+      "Linear, Strip & Accent Lighting",
+      "Landscape Luminaires",
+      "Facade Lighting",
+      "Outdoor Security Lighting",
+      "Smart Home Automation",
+      "Wardrobes & Closet Storage",
+      "Dining Cabinets & Storage",
+      "Decorative Wall Panels",
+      "Experience Centers",
+      "Electrical & Smart Brands"
+    ],
+    "variants_count": 40,
+    "variants": [
+      "Multiwall Polycarbonate Skylight Sheets",
+      "Wall-Mounted Recessed Step Lights",
+      "Under-Tread Continuous LED Strip Lighting",
+      "Heavy-Duty Stainless Steel Glass Spigots",
+      "Staircase Central Steel Spine Beam",
+      "Wall Handrail Stainless Steel Brackets"
+    ],
+    "synonyms_count": 6,
+    "synonyms": [
+      "lighting",
+      "architectural lighting",
+      "lights",
+      "light fixtures",
+      "led lights",
+      "downlights"
+    ],
+    "feed_status_code": 200,
+    "feed_total_results": 10,
+    "feed_sample_titles": [
+      "Minimalist Bedroom Interior with Natural Oak Flooring & Linen Textiles",
+      "25 Premium Interior Lighting Choices for Indian Living Rooms",
+      "Warm Architectural Wall Sconce & Ambient Accent Lighting"
+    ]
+  }
+]

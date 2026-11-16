@@ -1,0 +1,120 @@
+{
+  "status": "VERIFIED",
+  "total_categories": 15,
+  "total_subcategories": 58,
+  "total_items": 153,
+  "total_variants": 526,
+  "breakdown": [
+    {
+      "id": 1,
+      "name": "Architecture & Building Designs",
+      "subcategories": 4,
+      "items": 18,
+      "variants": 62
+    },
+    {
+      "id": 2,
+      "name": "Exterior & Facade",
+      "subcategories": 4,
+      "items": 14,
+      "variants": 46
+    },
+    {
+      "id": 3,
+      "name": "Interior Spaces",
+      "subcategories": 4,
+      "items": 15,
+      "variants": 52
+    },
+    {
+      "id": 4,
+      "name": "Staircase & Railing Systems",
+      "subcategories": 4,
+      "items": 12,
+      "variants": 36
+    },
+    {
+      "id": 5,
+      "name": "Construction Materials",
+      "subcategories": 4,
+      "items": 10,
+      "variants": 40
+    },
+    {
+      "id": 6,
+      "name": "Flooring, Tiles & Natural Stone",
+      "subcategories": 4,
+      "items": 12,
+      "variants": 41
+    },
+    {
+      "id": 7,
+      "name": "Lighting & Electrical",
+      "subcategories": 4,
+      "items": 11,
+      "variants": 41
+    },
+    {
+      "id": 8,
+      "name": "Doors, Windows & Glass",
+      "subcategories": 4,
+      "items": 10,
+      "variants": 33
+    },
+    {
+      "id": 9,
+      "name": "Furniture & Modular Systems",
+      "subcategories": 4,
+      "items": 8,
+      "variants": 27
+    },
+    {
+      "id": 10,
+      "name": "Ceiling, Walls & Finishes",
+      "subcategories": 4,
+      "items": 8,
+      "variants": 24
+    },
+    {
+      "id": 11,
+      "name": "Landscaping & Outdoor Design",
+      "subcategories": 4,
+      "items": 9,
+      "variants": 31
+    },
+    {
+      "id": 12,
+      "name": "Plumbing & Sanitaryware",
+      "subcategories": 4,
+      "items": 12,
+      "variants": 44
+    },
+    {
+      "id": 13,
+      "name": "Decor, Art & Furnishings",
+      "subcategories": 3,
+      "items": 6,
+      "variants": 18
+    },
+    {
+      "id": 14,
+      "name": "Manufacturers, Vendors & Professionals",
+      "subcategories": 3,
+      "items": 3,
+      "variants": 12
+    },
+    {
+      "id": 15,
+      "name": "Construction Techniques & Work",
+      "subcategories": 4,
+      "items": 5,
+      "variants": 19
+    }
+  ],
+  "database": {
+    "references": 504,
+    "instagram_references": 121,
+    "suppliers": 78,
+    "saved_items": 2
+  }
+}

@@ -1,0 +1,254 @@
+[
+  {
+    "file": "backend/app/tests/test_final_fixes.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.22,
+    "summary": "13 passed in 0.33s",
+    "stdout": ".............                                                            [100%]\n13 passed in 0.33s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_discovery_stage2_1.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.87,
+    "summary": "38 passed, 12 warnings in 0.81s",
+    "stdout": "......................................                                   [100%]\n============================== warnings summary ===============================\nbackend\\app\\tests\\test_discovery_stage2_1.py:306\n  C:\\Users\\Aswini_Ayappan\\OneDrive\\Desktop\\Architect_AI\\backend\\app\\tests\\test_discovery_stage2_1.py:306: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_discovery_orchestration.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.25,
+    "summary": "22 passed in 0.31s",
+    "stdout": "......................                                                   [100%]\n22 passed in 0.31s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_discovery_schemas.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.17,
+    "summary": "14 passed in 0.24s",
+    "stdout": "..............                                                           [100%]\n14 passed in 0.24s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_socialcrawl_integration.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.39,
+    "summary": "23 passed in 0.33s",
+    "stdout": ".......................                                                  [100%]\n23 passed in 0.33s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_catalogue_import.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 4.07,
+    "summary": "3 passed in 1.83s",
+    "stdout": "...                                                                      [100%]\n3 passed in 1.83s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_auth_and_quotations.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.42,
+    "summary": "3 passed in 0.33s",
+    "stdout": "...                                                                      [100%]\n3 passed in 0.33s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_bathroom_fittings_regression.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.48,
+    "summary": "5 passed in 0.47s",
+    "stdout": ".....                                                                    [100%]\n5 passed in 0.47s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_discovery_api.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.9,
+    "summary": "5 passed in 0.91s",
+    "stdout": ".....                                                                    [100%]\n5 passed in 0.91s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_feed.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.32,
+    "summary": "4 passed in 0.32s",
+    "stdout": "....                                                                     [100%]\n4 passed in 0.32s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_feed_personalization_regression.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.61,
+    "summary": "8 passed in 0.65s",
+    "stdout": "........                                                                 [100%]\n8 passed in 0.65s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_image_search_and_mixed_feed.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 4.01,
+    "summary": "5 passed in 1.88s",
+    "stdout": ".....                                                                    [100%]\n5 passed in 1.88s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_live_apis_and_llm.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 7.32,
+    "summary": "4 passed in 5.19s",
+    "stdout": "....                                                                     [100%]\n4 passed in 5.19s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_master_prompt_features.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.78,
+    "summary": "5 passed in 0.67s",
+    "stdout": ".....                                                                    [100%]\n5 passed in 0.67s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase2_trustworthy_catalogs.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.5,
+    "summary": "8 passed in 0.39s",
+    "stdout": "........                                                                 [100%]\n8 passed in 0.39s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase3_location_and_navigation.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 3.45,
+    "summary": "6 passed in 1.31s",
+    "stdout": "......                                                                   [100%]\n6 passed in 1.31s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase4_saved_vendors_and_sourcing.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.37,
+    "summary": "6 passed in 0.35s",
+    "stdout": "......                                                                   [100%]\n6 passed in 0.35s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase4_source_integrations.py",
+    "status": "FAIL",
+    "code": 1,
+    "elapsed": 2.4,
+    "summary": "2 failed, 5 passed in 0.47s",
+    "stdout": "...F..F                                                                  [100%]\n================================== FAILURES ===================================\n_______________ test_reddit_adapter_preserves_discussion_fields _______________\n\n    def test_reddit_adapter_preserves_discussion_fields():\n        adapter = RedditAdapter()\n        mock_payload = {\n            \"items\": [\n                {\n                    \"post_id\": \"rd_101\",\n                    \"title\": \"AAC block vs red brick cost c",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase5_keyword_explorer.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 3.59,
+    "summary": "3 passed in 1.43s",
+    "stdout": "...                                                                      [100%]\n3 passed in 1.43s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase5_taxonomy_consolidation.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.41,
+    "summary": "6 passed in 0.41s",
+    "stdout": "......                                                                   [100%]\n6 passed in 0.41s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase6_7_materials_and_suppliers.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.84,
+    "summary": "2 passed in 0.84s",
+    "stdout": "..                                                                       [100%]\n2 passed in 0.84s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_phase9_cache_and_scheduler.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.19,
+    "summary": "4 passed in 0.25s",
+    "stdout": "....                                                                     [100%]\n4 passed in 0.25s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_pinterest_integration.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.23,
+    "summary": "12 passed in 0.31s",
+    "stdout": "............                                                             [100%]\n12 passed in 0.31s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_places_and_integrations.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 3.47,
+    "summary": "5 passed in 1.44s",
+    "stdout": ".....                                                                    [100%]\n5 passed in 1.44s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_search_relevance_rigorous.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.36,
+    "summary": "13 passed in 0.45s",
+    "stdout": ".............                                                            [100%]\n13 passed in 0.45s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_sourcing_fallback.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.25,
+    "summary": "4 passed in 0.32s",
+    "stdout": "....                                                                     [100%]\n4 passed in 0.32s\n",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_youtube_and_provenance.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 5.42,
+    "summary": "5 passed, 2 warnings in 3.30s",
+    "stdout": ".....                                                                    [100%]\n============================== warnings summary ===============================\nbackend\\app\\tests\\test_youtube_and_provenance.py:66\n  C:\\Users\\Aswini_Ayappan\\OneDrive\\Desktop\\Architect_AI\\backend\\app\\tests\\test_youtube_and_provenance.py:66: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/h",
+    "stderr": ""
+  },
+  {
+    "file": "backend/app/tests/test_audit_18_queries.py",
+    "status": "PASS",
+    "code": 0,
+    "elapsed": 2.57,
+    "summary": "18 passed in 0.56s",
+    "stdout": "..................                                                       [100%]\n18 passed in 0.56s\n",
+    "stderr": ""
+  }
+]

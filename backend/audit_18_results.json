@@ -1,0 +1,408 @@
+[
+  {
+    "query": "Different types of bricks for a house",
+    "count": 7,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Wire-Cut Exposed Clay Brickwork with Raked Mortar Joints",
+        "platform": "curated",
+        "tags": "Exposed Brick, Wire Cut Brick, Flemish Bond, Raked Mortar, Brick Masonry",
+        "media_url": "https://images.unsplash.com/photo-1584467541268-b040f83be3fd?auto=format&fit=crop&w=1200&q=80",
+        "source_url": "https://unsplash.com/photos/exposed-brick-masonry-texture"
+      },
+      {
+        "rank": 2,
+        "title": "The Process of Building a Brick Arch | Traditional Masonry Techniques",
+        "platform": "youtube",
+        "tags": "brick_masonry, brick_arch, traditional_masonry, pointing",
+        "media_url": "https://i.ytimg.com/vi/gRyMZv_o4uU/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=gRyMZv_o4uU"
+      },
+      {
+        "rank": 3,
+        "title": "Perforated Terracotta Screen Wall (Jaali Brick Masonry)",
+        "platform": "curated",
+        "tags": "Terracotta Jaali, Breeze Block, Brick Screen, Solar Shading, Passive Cooling",
+        "media_url": "https://images.unsplash.com/photo-1508873696983-2df5703bc20d?auto=format&fit=crop&w=1200&q=80",
+        "source_url": "https://unsplash.com/photos/terracotta-jaali-screen-brick"
+      },
+      {
+        "rank": 4,
+        "title": "Exposed Wire-Cut Brick Boundary Wall with Reinforced Concrete Coping",
+        "platform": "youtube",
+        "tags": "Boundary Wall, Brick Masonry, Compound Wall, Concrete Coping, Foundation Plinth, Retaining Wall",
+        "media_url": "https://i.ytimg.com/vi/FjY74u9E1b0/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=FjY74u9E1b0"
+      },
+      {
+        "rank": 5,
+        "title": "Contemporary Two-Storey Residence with Brick & Timber Balcony",
+        "platform": "unsplash",
+        "tags": "Exposed Brick, Contemporary House, Cantilevered Balcony, Residential Design, Timber Louvers",
+        "media_url": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+        "source_url": "https://unsplash.com/photos/white-concrete-building-under-blue-sky-during-daytime-mR1CIDduGLc"
+      },
+      {
+        "rank": 6,
+        "title": "Modern Residential Architecture with Curved Exposed Brickwork in Mysore",
+        "platform": "wikimedia",
+        "tags": "Exposed Brick, Curved Brickwork, Mysore Architecture, Red Brick Facade, Brick Masonry",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Modern_residential_architecture_with_curved_design_and_exposed_brick_in_Mysore%2C_India.jpg",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Modern_residential_architecture_with_curved_design_and_exposed_brick_in_Mysore,_India.jpg"
+      },
+      {
+        "rank": 7,
+        "title": "Laurie Baker Cost-Effective Architecture & Exposed Brickwork Philosophy",
+        "platform": "youtube",
+        "tags": "Laurie Baker, Exposed Brick, Cost-Effective Architecture, Rat-Trap Bond, Jaali",
+        "media_url": "https://i.ytimg.com/vi/VfG8kZ9v3e0/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=VfG8kZ9v3e0"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Exposed brick wall",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Exposed Wire-Cut Brick Boundary Wall with Reinforced Concrete Coping",
+        "platform": "youtube",
+        "tags": "Boundary Wall, Brick Masonry, Compound Wall, Concrete Coping, Foundation Plinth, Retaining Wall",
+        "media_url": "https://i.ytimg.com/vi/FjY74u9E1b0/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=FjY74u9E1b0"
+      },
+      {
+        "rank": 2,
+        "title": "Modern Residential Architecture with Curved Exposed Brickwork in Mysore",
+        "platform": "wikimedia",
+        "tags": "Exposed Brick, Curved Brickwork, Mysore Architecture, Red Brick Facade, Brick Masonry",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Modern_residential_architecture_with_curved_design_and_exposed_brick_in_Mysore%2C_India.jpg",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Modern_residential_architecture_with_curved_design_and_exposed_brick_in_Mysore,_India.jpg"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "AAC block wall",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "AAC Blocks Wall Construction & Thin-Bed Adhesive Laying",
+        "platform": "youtube",
+        "tags": "aac_blocks, thin_bed_mortar, blockwork, wall_construction",
+        "media_url": "https://i.ytimg.com/vi/sHH01vdgf0E/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=sHH01vdgf0E"
+      },
+      {
+        "rank": 2,
+        "title": "AAC Blocks Wall Construction with Thin-Bed Polymer Mortar",
+        "platform": "youtube",
+        "tags": "AAC Blocks, Wall Construction, Boundary Walls, Lightweight Blocks, Mortar and Plaster, IS 2185",
+        "media_url": "https://i.ytimg.com/vi/7uV8rQ_Yh8A/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=7uV8rQ_Yh8A"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Laterite wall",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Heritage Kerala Nalukettu with Central Nadumuttam Courtyard",
+        "platform": "wikimedia",
+        "tags": "Kerala Nalukettu, Nadumuttam, Clay Roof Tiles, Laterite Masonry, Vernacular Architecture",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Nalukettu_House_of_Kunnappully_family.jpg",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Nalukettu_House_of_Kunnappully_family.jpg"
+      },
+      {
+        "rank": 2,
+        "title": "Natural Laterite Stone Cladding & Wall Tiles Installation (Kerala & Tamil Nadu)",
+        "platform": "youtube",
+        "tags": "YouTube Walkthrough, Installation Technique, Laterite facade installation",
+        "media_url": "https://i.ytimg.com/vi/xubCNuj7P9Q/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=xubCNuj7P9Q"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Rammed earth wall",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "How to Build a Rammed Earth Wall \u2014 Sustainable Earth Construction",
+        "platform": "youtube",
+        "tags": "Rammed Earth, Rammed Earth Wall, Earth Construction, Soil Stabilisation, Sustainable Walls, Natural Building",
+        "media_url": "https://i.ytimg.com/vi/9ofQfbKOfJw/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=9ofQfbKOfJw"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Marble flooring",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Polished Natural Grey Marble Flooring Slabs with Bookmatched Veining",
+        "platform": "unsplash",
+        "tags": "Marble, Granite, Natural Stone, Vitrified Tiles, Flooring, Countertop Materials, Surface Materials",
+        "media_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+        "source_url": "https://unsplash.com/photos/marble-floor-texture-polished"
+      },
+      {
+        "rank": 2,
+        "title": "Luxury Spa Bathroom with Honed Natural Marble & Concealed Sanitaryware",
+        "platform": "unsplash",
+        "tags": "Bathrooms, Interior Design, Marble, Sanitaryware, Wall Cladding, Luxury Interiors, Plumbing",
+        "media_url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
+        "source_url": "https://unsplash.com/photos/modern-luxury-bathroom-interior"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Wood-look tiles",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Wood-Look Vitrified Porcelain Plank Tiles Floor Installation & Levelling",
+        "platform": "youtube",
+        "tags": "Wood-Look Tiles, Porcelain Tiles, Vitrified Tiles, Flooring, Plank Tiles, Tile Levelling, Timber Grain Finish",
+        "media_url": "https://i.ytimg.com/vi/DKgVVyjv8_E/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=DKgVVyjv8_E"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Screws and bolts",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Screws and Bolts, Nails and Anchors | Fasteners Explained for Construction",
+        "platform": "youtube",
+        "tags": "Screws, Bolts, Fasteners, Wall Anchors, Chemical Anchors, Construction Hardware, IS 1367",
+        "media_url": "https://i.ytimg.com/vi/zIGz8STM-fI/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=zIGz8STM-fI"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Electrical switches and switchboards",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Latest Modular Electrical Switch Boards & Smart Switches for Modern Houses",
+        "platform": "youtube",
+        "tags": "Electrical Switches, Switchboards, Modular Switches, Distribution Boards, Smart Home Wiring, IS 3854",
+        "media_url": "https://i.ytimg.com/vi/O68tr8FmM2g/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=O68tr8FmM2g"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Exterior lighting",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Exterior Facade Architectural Lighting & Linear Grazing Illumination",
+        "platform": "youtube",
+        "tags": "Exterior Lighting, Facade Lighting, Architectural Illumination, Outdoor Wall Washers, DMX Linear Lights, Landscape Lighting",
+        "media_url": "https://i.ytimg.com/vi/tRM-JUCiDCY/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=tRM-JUCiDCY"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Rainwater drainage",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Precast Concrete U Channel Drain - Channels Laying at Site",
+        "platform": "youtube",
+        "tags": "precast_concrete, drainage_channels, u_drain, civil_construction",
+        "media_url": "https://i.ytimg.com/vi/8kVGXsTD-4g/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=8kVGXsTD-4g"
+      },
+      {
+        "rank": 2,
+        "title": "Heavy-Duty Precast Concrete Stormwater Drainage Channels & Slabs",
+        "platform": "youtube",
+        "tags": "Drainage Channels, Stormwater Management, Precast Concrete Slabs, Civil Construction, Road Drainage, IS 12592",
+        "media_url": "https://i.ytimg.com/vi/h5a8X7j9w1c/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=h5a8X7j9w1c"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Garden waterfall",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Natural Stone Garden Waterfall & Backyard Koi Pond Water Feature",
+        "platform": "youtube",
+        "tags": "Garden Waterfall, Natural Stone Boulders, Pond Liner, Submersible Pump, Water Feature, Outdoor Waterfall",
+        "media_url": "https://i.ytimg.com/vi/7uC_b9N5_pQ/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=7uC_b9N5_pQ"
+      },
+      {
+        "rank": 2,
+        "title": "Natural Granite Boulder Waterfall & Garden Pond Construction",
+        "platform": "youtube",
+        "tags": "Garden Waterfalls, Garden Ponds, Natural-Looking Water Features, Outdoor Fountains, Landscape Design, Waterproofing",
+        "media_url": "https://i.ytimg.com/vi/0kF5Y9L3gGg/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=0kF5Y9L3gGg"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "House renovation before and after",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Kitchen Renovation & Modular Cabinet Transformation Walkthrough",
+        "platform": "youtube",
+        "tags": "Kitchen Renovation, Before-and-After, Furniture Makeovers, Budget-Friendly Improvements, Storage Solutions",
+        "media_url": "https://i.ytimg.com/vi/K4CoNkB6L5M/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=K4CoNkB6L5M"
+      },
+      {
+        "rank": 2,
+        "title": "Before and After Compact Bathroom Renovation & Tile Replacement",
+        "platform": "youtube",
+        "tags": "Bathroom Renovation, Before-and-After, Tile Replacement, Small-Space Redesign, Waterproofing, Plumbing",
+        "media_url": "https://i.ytimg.com/vi/huXKnI8EASA/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=huXKnI8EASA"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Kerala traditional house",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Traditional Kerala Nalukettu Courtyard House with Timber Nadumuttam",
+        "platform": "wikimedia",
+        "tags": "Kerala Architecture, Nalukettu, Nadumuttam Courtyard, Mangalore Clay Roof Tiles, Malabar Teak Wood, Vernacular House",
+        "media_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kerala_traditional_house.jpg/1200px-Kerala_traditional_house.jpg",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Kerala_traditional_house.jpg"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Modern tropical architecture",
+    "count": 2,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Tropical Residential Facade with Integrated Planters",
+        "platform": "unsplash",
+        "tags": "Tropical Modernism, Balcony Planters, White Render, Facade Greenery",
+        "media_url": "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80",
+        "source_url": "https://unsplash.com/photos/white-concrete-building-with-green-plants-abkEA88PYcM"
+      },
+      {
+        "rank": 2,
+        "title": "Laurie Baker Cost-Effective Architecture & Exposed Brickwork Philosophy",
+        "platform": "youtube",
+        "tags": "Laurie Baker, Exposed Brick, Cost-Effective Architecture, Rat-Trap Bond, Jaali",
+        "media_url": "https://i.ytimg.com/vi/VfG8kZ9v3e0/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=VfG8kZ9v3e0"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Small bathroom design",
+    "count": 4,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Small bathroom design | Luxury bathroom design #bathroomdesign #bathroomdecor #bathroomrenovation",
+        "platform": "youtube",
+        "tags": "YouTube Walkthrough, Installation Technique, Small bathroom design",
+        "media_url": "https://i.ytimg.com/vi/zeB_7GcZIds/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/shorts/zeB_7GcZIds"
+      },
+      {
+        "rank": 2,
+        "title": "Small bathroom design  | House design idea | bathroom design #house #shorts",
+        "platform": "youtube",
+        "tags": "YouTube Walkthrough, Installation Technique, Small bathroom design",
+        "media_url": "https://i.ytimg.com/vi/3MbmrA6cpek/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/shorts/3MbmrA6cpek"
+      },
+      {
+        "rank": 3,
+        "title": "Bathroom Design Secrets: Correct vs Wrong Toilet Placement",
+        "platform": "youtube",
+        "tags": "YouTube Walkthrough, Installation Technique, Small bathroom design",
+        "media_url": "https://i.ytimg.com/vi/A1tae2KfOTk/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/shorts/A1tae2KfOTk"
+      },
+      {
+        "rank": 4,
+        "title": "Before and After Compact Bathroom Renovation & Tile Replacement",
+        "platform": "youtube",
+        "tags": "Bathroom Renovation, Before-and-After, Tile Replacement, Small-Space Redesign, Waterproofing, Plumbing",
+        "media_url": "https://i.ytimg.com/vi/huXKnI8EASA/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=huXKnI8EASA"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Kitchen storage",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Kitchen Renovation & Modular Cabinet Transformation Walkthrough",
+        "platform": "youtube",
+        "tags": "Kitchen Renovation, Before-and-After, Furniture Makeovers, Budget-Friendly Improvements, Storage Solutions",
+        "media_url": "https://i.ytimg.com/vi/K4CoNkB6L5M/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=K4CoNkB6L5M"
+      }
+    ],
+    "duplicates": []
+  },
+  {
+    "query": "Construction site walkthrough",
+    "count": 1,
+    "items": [
+      {
+        "rank": 1,
+        "title": "Building Construction Process Step by Step | Site Engineering Walkthrough",
+        "platform": "youtube",
+        "tags": "Construction Site Walkthrough, Civil Engineering, Building Construction, Foundation to Finish, RCC Frame, Shuttering",
+        "media_url": "https://i.ytimg.com/vi/knxad2OOd8k/hqdefault.jpg",
+        "source_url": "https://www.youtube.com/watch?v=knxad2OOd8k"
+      }
+    ],
+    "duplicates": []
+  }
+]

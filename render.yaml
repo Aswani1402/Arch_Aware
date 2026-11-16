@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: nivora-backend
+    runtime: python
+    plan: starter
+    rootDir: .
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    disk:
+      name: nivora-sqlite-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PROJECT_NAME
+        value: Nivora
+      - key: PYTHON_VERSION
+        value: "3.11.11"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DISCOVERY_GUARD_SALT
+        generateValue: true
+      - key: DEMO_MODE
+        value: "false"
+      - key: DATABASE_URL
+        value: sqlite:////var/data/architect_ai.db
+      - key: SQLITE_SEED_DB_PATH
+        value: backend/seed_catalogue.sqlite
+      - key: NIVORA_CORS_ORIGINS
+        sync: false # Set to live frontend origin(s), e.g. https://nivora-frontend.onrender.com
+      - key: TRUSTED_PROXIES
+        sync: false # Optional comma-separated/JSON proxy CIDRs if forwarding client IPs behind LB
+      - key: SOCIALCRAWL_API_KEY
+        sync: false # Powers Pinterest, Instagram, YouTube (SocialCrawl), Reddit & Google Shopping
+      - key: GOOGLE_PLACES_API_KEY
+        sync: false
+      - key: GOOGLE_CUSTOM_SEARCH_API_KEY
+        sync: false
+      - key: GOOGLE_CUSTOM_SEARCH_CX
+        sync: false # Required for Google Search CSE adapter (otherwise reports NOT_CONFIGURED)
+      - key: GEMINI_API_KEY
+        sync: false
+
+  - type: web
+    name: nivora-frontend
+    runtime: node
+    plan: starter
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start -- -p $PORT
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        sync: false # Set to live backend URL + /api before frontend build, e.g. https://nivora-backend.onrender.com/api

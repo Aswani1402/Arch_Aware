@@ -1,0 +1,2617 @@
+{
+  "architectural_references": {
+    "count": 504,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "source_platform",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "source_url",
+        "type": "VARCHAR(1000)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "creator_name",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "creator_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "thumbnail_url",
+        "type": "VARCHAR(1000)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "media_url",
+        "type": "VARCHAR(1000)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "video_embed_id",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "category_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "material_tags",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "location_context",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "retrieval_method",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "content_availability_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "inspiration_image_url",
+        "type": "VARCHAR(1000)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "inspiration_source_url",
+        "type": "VARCHAR(1000)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "manufacturer_product_image_url",
+        "type": "VARCHAR(1000)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "manufacturer_product_url",
+        "type": "VARCHAR(1000)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "manufacturer_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "product_match_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "last_checked_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "country",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": "'India'",
+        "pk": 0
+      },
+      {
+        "name": "region",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "architectural_style",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "project_type",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": "'Residential'",
+        "pk": 0
+      },
+      {
+        "name": "architecture_era",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": "'Contemporary'",
+        "pk": 0
+      },
+      {
+        "name": "architect_name",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "content_type",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": "'architectural_project'",
+        "pk": 0
+      },
+      {
+        "name": "video_duration",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "is_short",
+        "type": "BOOLEAN",
+        "notnull": false,
+        "default": "'False'",
+        "pk": 0
+      },
+      {
+        "name": "image_attribution",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "source_domain",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "colors_and_finishes",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "external_source_id",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "search_keyword",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "date_collected",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "manufacturers",
+        "from": "manufacturer_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "material_categories",
+        "from": "category_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_architectural_references_slug",
+        "unique": true
+      },
+      {
+        "name": "ix_architectural_references_category_id",
+        "unique": false
+      },
+      {
+        "name": "ix_architectural_references_verification_status",
+        "unique": false
+      },
+      {
+        "name": "ix_architectural_references_id",
+        "unique": false
+      },
+      {
+        "name": "ix_architectural_references_manufacturer_id",
+        "unique": false
+      },
+      {
+        "name": "ix_architectural_references_product_match_status",
+        "unique": false
+      },
+      {
+        "name": "ix_architectural_references_title",
+        "unique": false
+      },
+      {
+        "name": "ix_architectural_references_source_platform",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE architectural_references (\n\tid INTEGER NOT NULL, \n\ttitle VARCHAR(255) NOT NULL, \n\tslug VARCHAR(255) NOT NULL, \n\tsource_platform VARCHAR(50) NOT NULL, \n\tsource_url VARCHAR(1000) NOT NULL, \n\tcreator_name VARCHAR(255), \n\tcreator_url VARCHAR(500), \n\tthumbnail_url VARCHAR(1000), \n\tmedia_url VARCHAR(1000), \n\tvideo_embed_id VARCHAR(100), \n\tcategory_id INTEGER, \n\tmaterial_tags TEXT, \n\tlocation_context VARCHAR(255), \n\tverification_status VARCHAR(50), \n\tdescription TEXT, \n\tretrieval_method VARCHAR(50), \n\tcontent_availability_status VARCHAR(50), \n\tinspiration_image_url VARCHAR(1000), \n\tinspiration_source_url VARCHAR(1000), \n\tmanufacturer_product_image_url VARCHAR(1000), \n\tmanufacturer_product_url VARCHAR(1000), \n\tmanufacturer_id INTEGER, \n\tproduct_match_status VARCHAR(50), \n\tlast_checked_at DATETIME, \n\tcreated_at DATETIME, country VARCHAR(100) DEFAULT 'India', region VARCHAR(100), architectural_style VARCHAR(100), project_type VARCHAR(100) DEFAULT 'Residential', architecture_era VARCHAR(100) DEFAULT 'Contemporary', architect_name VARCHAR(255), content_type VARCHAR(50) DEFAULT 'architectural_project', video_duration VARCHAR(50), is_short BOOLEAN DEFAULT 'False', image_attribution VARCHAR(500), source_domain VARCHAR(100), colors_and_finishes VARCHAR(255), external_source_id VARCHAR(255), search_keyword VARCHAR(255), date_collected VARCHAR(50), \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(category_id) REFERENCES material_categories (id), \n\tFOREIGN KEY(manufacturer_id) REFERENCES manufacturers (id)\n)"
+  },
+  "catalogue_categories": {
+    "count": 10,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "explorer_category_slug",
+        "type": "VARCHAR(150)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "explorer_category_name",
+        "type": "VARCHAR(150)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "display_order",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_catalogue_categories_slug",
+        "unique": true
+      },
+      {
+        "name": "ix_catalogue_categories_name",
+        "unique": true
+      },
+      {
+        "name": "ix_catalogue_categories_explorer_category_slug",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_categories_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE catalogue_categories (\n\tid INTEGER NOT NULL, \n\tname VARCHAR(150) NOT NULL, \n\tslug VARCHAR(150) NOT NULL, \n\texplorer_category_slug VARCHAR(150), \n\texplorer_category_name VARCHAR(150), \n\tdescription TEXT, \n\tdisplay_order INTEGER, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id)\n)"
+  },
+  "catalogue_import_runs": {
+    "count": 2,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "source_filename",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "file_sha256",
+        "type": "VARCHAR(64)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "total_csv_rows",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "inserted_rows",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "updated_rows",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "skipped_rows",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "categories_count",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "subcategories_count",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "distinct_materials_count",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "notes",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "imported_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_catalogue_import_runs_id",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_import_runs_file_sha256",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE catalogue_import_runs (\n\tid INTEGER NOT NULL, \n\tsource_filename VARCHAR(255) NOT NULL, \n\tfile_sha256 VARCHAR(64) NOT NULL, \n\ttotal_csv_rows INTEGER, \n\tinserted_rows INTEGER, \n\tupdated_rows INTEGER, \n\tskipped_rows INTEGER, \n\tcategories_count INTEGER, \n\tsubcategories_count INTEGER, \n\tdistinct_materials_count INTEGER, \n\tstatus VARCHAR(50), \n\tnotes TEXT, \n\timported_at DATETIME, \n\tPRIMARY KEY (id)\n)"
+  },
+  "catalogue_materials": {
+    "count": 6319,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "category_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "subcategory_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "normalized_name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "source_row_number",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "source_dataset",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "is_active",
+        "type": "BOOLEAN",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "catalogue_subcategories",
+        "from": "subcategory_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "catalogue_categories",
+        "from": "category_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_catalogue_materials_name",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_materials_id",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_materials_slug",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_materials_category_id",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_materials_normalized_name",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_materials_subcategory_id",
+        "unique": false
+      },
+      {
+        "name": "sqlite_autoindex_catalogue_materials_1",
+        "unique": true
+      }
+    ],
+    "sql": "CREATE TABLE catalogue_materials (\n\tid INTEGER NOT NULL, \n\tcategory_id INTEGER NOT NULL, \n\tsubcategory_id INTEGER NOT NULL, \n\tname VARCHAR(255) NOT NULL, \n\tslug VARCHAR(255) NOT NULL, \n\tnormalized_name VARCHAR(255) NOT NULL, \n\tsource_row_number INTEGER, \n\tsource_dataset VARCHAR(255), \n\tis_active BOOLEAN, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tCONSTRAINT uq_catalogue_material_subcat_name UNIQUE (subcategory_id, name), \n\tFOREIGN KEY(category_id) REFERENCES catalogue_categories (id), \n\tFOREIGN KEY(subcategory_id) REFERENCES catalogue_subcategories (id)\n)"
+  },
+  "catalogue_subcategories": {
+    "count": 184,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "category_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(200)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(200)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "category_subcategory_key",
+        "type": "VARCHAR(350)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "catalogue_categories",
+        "from": "category_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_catalogue_subcategories_slug",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_subcategories_category_id",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_subcategories_category_subcategory_key",
+        "unique": true
+      },
+      {
+        "name": "ix_catalogue_subcategories_name",
+        "unique": false
+      },
+      {
+        "name": "ix_catalogue_subcategories_id",
+        "unique": false
+      },
+      {
+        "name": "sqlite_autoindex_catalogue_subcategories_1",
+        "unique": true
+      }
+    ],
+    "sql": "CREATE TABLE catalogue_subcategories (\n\tid INTEGER NOT NULL, \n\tcategory_id INTEGER NOT NULL, \n\tname VARCHAR(200) NOT NULL, \n\tslug VARCHAR(200) NOT NULL, \n\tcategory_subcategory_key VARCHAR(350) NOT NULL, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tCONSTRAINT uq_catalogue_subcat_cat_name UNIQUE (category_id, name), \n\tFOREIGN KEY(category_id) REFERENCES catalogue_categories (id)\n)"
+  },
+  "custom_keywords": {
+    "count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "keyword",
+        "type": "VARCHAR(200)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "category_name",
+        "type": "VARCHAR(150)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "is_followed",
+        "type": "BOOLEAN",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_custom_keywords_id",
+        "unique": false
+      },
+      {
+        "name": "ix_custom_keywords_keyword",
+        "unique": true
+      }
+    ],
+    "sql": "CREATE TABLE custom_keywords (\n\tid INTEGER NOT NULL, \n\tkeyword VARCHAR(200) NOT NULL, \n\tcategory_name VARCHAR(150), \n\tis_followed BOOLEAN, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id)\n)"
+  },
+  "daily_collection_records": {
+    "count": 14,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "collection_date",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "source",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "category",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "keyword",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "requested_quantity",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "actual_quantity",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "error_details",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "completion_timestamp",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_daily_collection_records_id",
+        "unique": false
+      },
+      {
+        "name": "ix_daily_collection_records_status",
+        "unique": false
+      },
+      {
+        "name": "ix_daily_collection_records_collection_date",
+        "unique": false
+      },
+      {
+        "name": "ix_daily_collection_records_category",
+        "unique": false
+      },
+      {
+        "name": "ix_daily_collection_records_source",
+        "unique": false
+      },
+      {
+        "name": "ix_daily_collection_records_keyword",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE daily_collection_records (\n\tid INTEGER NOT NULL, \n\tcollection_date VARCHAR(50) NOT NULL, \n\tsource VARCHAR(50) NOT NULL, \n\tcategory VARCHAR(100), \n\tkeyword VARCHAR(255) NOT NULL, \n\trequested_quantity INTEGER, \n\tactual_quantity INTEGER, \n\tstatus VARCHAR(50), \n\terror_details TEXT, \n\tcompletion_timestamp DATETIME, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id)\n)"
+  },
+  "inspiration_materials": {
+    "count": 1119,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "reference_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "category_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "category_slug",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "material_category",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "element_location",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "identification_type",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "confidence_score",
+        "type": "FLOAT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "detail_image_url",
+        "type": "VARCHAR(1000)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "notes",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "product_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "compatible_alternatives",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "products",
+        "from": "product_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "material_categories",
+        "from": "category_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "architectural_references",
+        "from": "reference_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_inspiration_materials_reference_id",
+        "unique": false
+      },
+      {
+        "name": "ix_inspiration_materials_category_id",
+        "unique": false
+      },
+      {
+        "name": "ix_inspiration_materials_category_slug",
+        "unique": false
+      },
+      {
+        "name": "ix_inspiration_materials_name",
+        "unique": false
+      },
+      {
+        "name": "ix_inspiration_materials_product_id",
+        "unique": false
+      },
+      {
+        "name": "ix_inspiration_materials_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE inspiration_materials (\n\tid INTEGER NOT NULL, \n\treference_id INTEGER NOT NULL, \n\tname VARCHAR(255) NOT NULL, \n\tcategory_id INTEGER, \n\tcategory_slug VARCHAR(100), \n\tmaterial_category VARCHAR(100) NOT NULL, \n\telement_location VARCHAR(255) NOT NULL, \n\tidentification_type VARCHAR(50), \n\tverification_status VARCHAR(50), \n\tconfidence_score FLOAT, \n\tdetail_image_url VARCHAR(1000), \n\tnotes TEXT, \n\tproduct_id INTEGER, \n\tcompatible_alternatives TEXT, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(reference_id) REFERENCES architectural_references (id), \n\tFOREIGN KEY(category_id) REFERENCES material_categories (id), \n\tFOREIGN KEY(product_id) REFERENCES products (id)\n)"
+  },
+  "manufacturers": {
+    "count": 20,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "company_name",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "country",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "official_website",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "official_catalog_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "official_product_page_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "official_video_channel_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "logo_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "contact_info",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "last_verified_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "source_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "unverified_notes",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_manufacturers_name",
+        "unique": false
+      },
+      {
+        "name": "ix_manufacturers_id",
+        "unique": false
+      },
+      {
+        "name": "ix_manufacturers_country",
+        "unique": false
+      },
+      {
+        "name": "ix_manufacturers_slug",
+        "unique": true
+      }
+    ],
+    "sql": "CREATE TABLE manufacturers (\n\tid INTEGER NOT NULL, \n\tname VARCHAR(255) NOT NULL, \n\tcompany_name VARCHAR(255), \n\tslug VARCHAR(255) NOT NULL, \n\tcountry VARCHAR(100), \n\tofficial_website VARCHAR(500), \n\tofficial_catalog_url VARCHAR(500), \n\tofficial_product_page_url VARCHAR(500), \n\tofficial_video_channel_url VARCHAR(500), \n\tdescription TEXT, \n\tlogo_url VARCHAR(500), \n\tcontact_info TEXT, \n\tverification_status VARCHAR(50), \n\tlast_verified_at DATETIME, \n\tsource_url VARCHAR(500), \n\tunverified_notes TEXT, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id)\n)"
+  },
+  "material_categories": {
+    "count": 56,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "image_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "section_code",
+        "type": "VARCHAR(10)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "section_name",
+        "type": "VARCHAR(150)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "typical_applications",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "subcategories",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "standards_compliance",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_material_categories_name",
+        "unique": true
+      },
+      {
+        "name": "ix_material_categories_slug",
+        "unique": true
+      },
+      {
+        "name": "ix_material_categories_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE material_categories (\n\tid INTEGER NOT NULL, \n\tname VARCHAR(100) NOT NULL, \n\tslug VARCHAR(100) NOT NULL, \n\tdescription TEXT, \n\timage_url VARCHAR(500), section_code VARCHAR(10), section_name VARCHAR(150), typical_applications TEXT, subcategories TEXT, standards_compliance TEXT, \n\tPRIMARY KEY (id)\n)"
+  },
+  "products": {
+    "count": 21,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "manufacturer_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "category_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "sku_code",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "product_type",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "material_type",
+        "type": "VARCHAR(150)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "material_composition",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "finish",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "color",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "intended_use",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "dimensions",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "thickness",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "installation_requirements",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "specs",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "official_product_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "official_catalog_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "country_of_manufacture",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "image_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "data_source",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "last_checked_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "material_categories",
+        "from": "category_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "manufacturers",
+        "from": "manufacturer_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_products_name",
+        "unique": false
+      },
+      {
+        "name": "ix_products_manufacturer_id",
+        "unique": false
+      },
+      {
+        "name": "ix_products_verification_status",
+        "unique": false
+      },
+      {
+        "name": "ix_products_slug",
+        "unique": true
+      },
+      {
+        "name": "ix_products_category_id",
+        "unique": false
+      },
+      {
+        "name": "ix_products_material_type",
+        "unique": false
+      },
+      {
+        "name": "ix_products_sku_code",
+        "unique": false
+      },
+      {
+        "name": "ix_products_id",
+        "unique": false
+      },
+      {
+        "name": "ix_products_product_type",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE products (\n\tid INTEGER NOT NULL, \n\tmanufacturer_id INTEGER, \n\tcategory_id INTEGER, \n\tname VARCHAR(255) NOT NULL, \n\tslug VARCHAR(255) NOT NULL, \n\tsku_code VARCHAR(100), \n\tproduct_type VARCHAR(100), \n\tmaterial_type VARCHAR(150), \n\tmaterial_composition TEXT, \n\tfinish VARCHAR(100), \n\tcolor VARCHAR(100), \n\tintended_use VARCHAR(255), \n\tdimensions VARCHAR(100), \n\tthickness VARCHAR(50), \n\tinstallation_requirements TEXT, \n\tspecs TEXT, \n\tofficial_product_url VARCHAR(500), \n\tofficial_catalog_url VARCHAR(500), \n\tcountry_of_manufacture VARCHAR(100), \n\timage_url VARCHAR(500), \n\tdata_source VARCHAR(100), \n\tverification_status VARCHAR(50), \n\tlast_checked_at DATETIME, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(manufacturer_id) REFERENCES manufacturers (id), \n\tFOREIGN KEY(category_id) REFERENCES material_categories (id)\n)"
+  },
+  "quotation_requests": {
+    "count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "user_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "product_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "supplier_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "quantity",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "dimensions",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "project_location",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "city",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "state",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "pin_code",
+        "type": "VARCHAR(20)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "delivery_urgency",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "additional_notes",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "suppliers",
+        "from": "supplier_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "products",
+        "from": "product_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "users",
+        "from": "user_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_quotation_requests_user_id",
+        "unique": false
+      },
+      {
+        "name": "ix_quotation_requests_id",
+        "unique": false
+      },
+      {
+        "name": "ix_quotation_requests_supplier_id",
+        "unique": false
+      },
+      {
+        "name": "ix_quotation_requests_product_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE quotation_requests (\n\tid INTEGER NOT NULL, \n\tuser_id INTEGER NOT NULL, \n\tproduct_id INTEGER NOT NULL, \n\tsupplier_id INTEGER NOT NULL, \n\tquantity VARCHAR(100) NOT NULL, \n\tdimensions VARCHAR(100), \n\tproject_location VARCHAR(255) NOT NULL, \n\tcity VARCHAR(100) NOT NULL, \n\tstate VARCHAR(100) NOT NULL, \n\tpin_code VARCHAR(20), \n\tdelivery_urgency VARCHAR(50), \n\tadditional_notes TEXT, \n\tstatus VARCHAR(50), \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(user_id) REFERENCES users (id), \n\tFOREIGN KEY(product_id) REFERENCES products (id), \n\tFOREIGN KEY(supplier_id) REFERENCES suppliers (id)\n)"
+  },
+  "quotation_responses": {
+    "count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "quotation_request_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "supplier_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "quoted_price",
+        "type": "FLOAT",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "currency",
+        "type": "VARCHAR(10)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "estimated_delivery_days",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "delivery_terms",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "response_message",
+        "type": "TEXT",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "suppliers",
+        "from": "supplier_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "quotation_requests",
+        "from": "quotation_request_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_quotation_responses_quotation_request_id",
+        "unique": false
+      },
+      {
+        "name": "ix_quotation_responses_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE quotation_responses (\n\tid INTEGER NOT NULL, \n\tquotation_request_id INTEGER NOT NULL, \n\tsupplier_id INTEGER NOT NULL, \n\tquoted_price FLOAT NOT NULL, \n\tcurrency VARCHAR(10), \n\testimated_delivery_days INTEGER, \n\tdelivery_terms TEXT, \n\tresponse_message TEXT NOT NULL, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(quotation_request_id) REFERENCES quotation_requests (id), \n\tFOREIGN KEY(supplier_id) REFERENCES suppliers (id)\n)"
+  },
+  "reference_product_matches": {
+    "count": 10,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "reference_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "product_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "match_type",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "match_confidence",
+        "type": "FLOAT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "evidence_notes",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "products",
+        "from": "product_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "architectural_references",
+        "from": "reference_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_reference_product_matches_id",
+        "unique": false
+      },
+      {
+        "name": "ix_reference_product_matches_product_id",
+        "unique": false
+      },
+      {
+        "name": "ix_reference_product_matches_reference_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE reference_product_matches (\n\tid INTEGER NOT NULL, \n\treference_id INTEGER NOT NULL, \n\tproduct_id INTEGER NOT NULL, \n\tmatch_type VARCHAR(50), \n\tmatch_confidence FLOAT, \n\tevidence_notes TEXT, \n\tverification_status VARCHAR(50), \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(reference_id) REFERENCES architectural_references (id), \n\tFOREIGN KEY(product_id) REFERENCES products (id)\n)"
+  },
+  "saved_items": {
+    "count": 2,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "user_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "item_type",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "reference_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "product_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "supplier_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "project_collection",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "suppliers",
+        "from": "supplier_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "products",
+        "from": "product_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "architectural_references",
+        "from": "reference_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "users",
+        "from": "user_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_saved_items_id",
+        "unique": false
+      },
+      {
+        "name": "ix_saved_items_user_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE saved_items (\n\tid INTEGER NOT NULL, \n\tuser_id INTEGER NOT NULL, \n\titem_type VARCHAR(50) NOT NULL, \n\treference_id INTEGER, \n\tproduct_id INTEGER, \n\tsupplier_id INTEGER, \n\tproject_collection VARCHAR(100), \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(user_id) REFERENCES users (id), \n\tFOREIGN KEY(reference_id) REFERENCES architectural_references (id), \n\tFOREIGN KEY(product_id) REFERENCES products (id), \n\tFOREIGN KEY(supplier_id) REFERENCES suppliers (id)\n)"
+  },
+  "source_connectors": {
+    "count": 5,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "platform",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "is_active",
+        "type": "BOOLEAN",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "sync_frequency_minutes",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "last_synced_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "total_items_fetched",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "config_json",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_source_connectors_id",
+        "unique": false
+      },
+      {
+        "name": "sqlite_autoindex_source_connectors_1",
+        "unique": true
+      }
+    ],
+    "sql": "CREATE TABLE source_connectors (\n\tid INTEGER NOT NULL, \n\tname VARCHAR(100) NOT NULL, \n\tplatform VARCHAR(50) NOT NULL, \n\tis_active BOOLEAN, \n\tsync_frequency_minutes INTEGER, \n\tlast_synced_at DATETIME, \n\tstatus VARCHAR(50), \n\ttotal_items_fetched INTEGER, \n\tconfig_json TEXT, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id), \n\tUNIQUE (platform)\n)"
+  },
+  "source_sync_logs": {
+    "count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "connector_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "items_ingested",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "error_message",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "timestamp",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "source_connectors",
+        "from": "connector_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_source_sync_logs_connector_id",
+        "unique": false
+      },
+      {
+        "name": "ix_source_sync_logs_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE source_sync_logs (\n\tid INTEGER NOT NULL, \n\tconnector_id INTEGER NOT NULL, \n\tstatus VARCHAR(50) NOT NULL, \n\titems_ingested INTEGER, \n\terror_message TEXT, \n\ttimestamp DATETIME, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(connector_id) REFERENCES source_connectors (id)\n)"
+  },
+  "supplier_products": {
+    "count": 24,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "supplier_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "product_id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "match_type",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "supplier_product_code",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "price",
+        "type": "FLOAT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "currency",
+        "type": "VARCHAR(10)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "price_unit",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "availability_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "stock_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "stock_confirmed_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "available_quantity",
+        "type": "FLOAT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "min_order_quantity",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "delivery_scope",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "estimated_lead_time_days",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "listing_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "last_confirmed_date",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "last_updated_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "notes",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "products",
+        "from": "product_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      },
+      {
+        "target_table": "suppliers",
+        "from": "supplier_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_supplier_products_id",
+        "unique": false
+      },
+      {
+        "name": "ix_supplier_products_product_id",
+        "unique": false
+      },
+      {
+        "name": "ix_supplier_products_supplier_id",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE supplier_products (\n\tid INTEGER NOT NULL, \n\tsupplier_id INTEGER NOT NULL, \n\tproduct_id INTEGER NOT NULL, \n\tmatch_type VARCHAR(50), \n\tsupplier_product_code VARCHAR(100), \n\tprice FLOAT, \n\tcurrency VARCHAR(10), \n\tprice_unit VARCHAR(50), \n\tavailability_status VARCHAR(50), \n\tstock_status VARCHAR(50), \n\tstock_confirmed_at DATETIME, \n\tavailable_quantity FLOAT, \n\tmin_order_quantity VARCHAR(100), \n\tdelivery_scope VARCHAR(50), \n\testimated_lead_time_days INTEGER, \n\tlisting_url VARCHAR(500), \n\tverification_status VARCHAR(50), \n\tlast_confirmed_date DATETIME, \n\tlast_updated_at DATETIME, \n\tnotes TEXT, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(supplier_id) REFERENCES suppliers (id), \n\tFOREIGN KEY(product_id) REFERENCES products (id)\n)"
+  },
+  "suppliers": {
+    "count": 78,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "user_id",
+        "type": "INTEGER",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "business_type",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "contact_person",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "address",
+        "type": "VARCHAR(500)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "city",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "district",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "state",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "pin_code",
+        "type": "VARCHAR(20)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "country",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "latitude",
+        "type": "FLOAT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "longitude",
+        "type": "FLOAT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "phone",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "email",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "website",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "google_maps_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "google_place_id",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "gstin",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "brands_distributed",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "delivery_areas",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_method",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "verification_notes",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "is_potential",
+        "type": "BOOLEAN",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "delivery_radius_km",
+        "type": "FLOAT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "last_updated_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "whatsapp",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "instagram_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "materials_sold",
+        "type": "TEXT",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "target_table": "users",
+        "from": "user_id",
+        "to": "id",
+        "on_update": "NO ACTION",
+        "on_delete": "NO ACTION"
+      }
+    ],
+    "indices": [
+      {
+        "name": "ix_suppliers_name",
+        "unique": false
+      },
+      {
+        "name": "ix_suppliers_district",
+        "unique": false
+      },
+      {
+        "name": "ix_suppliers_country",
+        "unique": false
+      },
+      {
+        "name": "ix_suppliers_state",
+        "unique": false
+      },
+      {
+        "name": "ix_suppliers_id",
+        "unique": false
+      },
+      {
+        "name": "ix_suppliers_slug",
+        "unique": true
+      },
+      {
+        "name": "ix_suppliers_verification_status",
+        "unique": false
+      },
+      {
+        "name": "ix_suppliers_pin_code",
+        "unique": false
+      },
+      {
+        "name": "ix_suppliers_city",
+        "unique": false
+      }
+    ],
+    "sql": "CREATE TABLE suppliers (\n\tid INTEGER NOT NULL, \n\tuser_id INTEGER, \n\tname VARCHAR(255) NOT NULL, \n\tslug VARCHAR(255) NOT NULL, \n\tbusiness_type VARCHAR(100), \n\tcontact_person VARCHAR(255), \n\taddress VARCHAR(500) NOT NULL, \n\tcity VARCHAR(100) NOT NULL, \n\tdistrict VARCHAR(100), \n\tstate VARCHAR(100) NOT NULL, \n\tpin_code VARCHAR(20), \n\tcountry VARCHAR(100), \n\tlatitude FLOAT, \n\tlongitude FLOAT, \n\tphone VARCHAR(50), \n\temail VARCHAR(255), \n\twebsite VARCHAR(500), \n\tgoogle_maps_url VARCHAR(500), \n\tgoogle_place_id VARCHAR(255), \n\tgstin VARCHAR(50), \n\tbrands_distributed TEXT, \n\tdelivery_areas TEXT, \n\tverification_status VARCHAR(50), \n\tverification_method VARCHAR(100), \n\tverification_notes TEXT, \n\tis_potential BOOLEAN, \n\tdelivery_radius_km FLOAT, \n\tlast_updated_at DATETIME, \n\tcreated_at DATETIME, whatsapp VARCHAR(50), instagram_url VARCHAR(500), materials_sold TEXT, \n\tPRIMARY KEY (id), \n\tFOREIGN KEY(user_id) REFERENCES users (id)\n)"
+  },
+  "users": {
+    "count": 3,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "default": null,
+        "pk": 1
+      },
+      {
+        "name": "email",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "hashed_password",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "full_name",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "role",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "is_active",
+        "type": "BOOLEAN",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "default": null,
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [],
+    "indices": [
+      {
+        "name": "ix_users_id",
+        "unique": false
+      },
+      {
+        "name": "ix_users_email",
+        "unique": true
+      }
+    ],
+    "sql": "CREATE TABLE users (\n\tid INTEGER NOT NULL, \n\temail VARCHAR(255) NOT NULL, \n\thashed_password VARCHAR(255) NOT NULL, \n\tfull_name VARCHAR(255), \n\trole VARCHAR(50), \n\tis_active BOOLEAN, \n\tcreated_at DATETIME, \n\tPRIMARY KEY (id)\n)"
+  }
+}

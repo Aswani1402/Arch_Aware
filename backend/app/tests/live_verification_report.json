@@ -1,0 +1,93 @@
+{
+  "dry_run": {
+    "reels_success": true,
+    "reels_credits": 0,
+    "profiles_success": true,
+    "profiles_credits": 0,
+    "profile_success": true,
+    "profile_credits": 0
+  },
+  "reels_live": {
+    "success": true,
+    "items_count": 12,
+    "credits_used": null,
+    "has_more": false,
+    "next_cursor": false,
+    "cached": false,
+    "sample_reel": {
+      "title": "AI story about how anyone can meet their soulmate \u2014 in a vas",
+      "creator_name": "@nataliia_0526",
+      "source_platform": "instagram",
+      "source_label": "Instagram",
+      "image_url": true,
+      "video_url": true,
+      "source_url": "https://www.instagram.com/reel/DQzRyhEDS4X/",
+      "engagement": null
+    }
+  },
+  "profiles_live": {
+    "success": true,
+    "items_count": 20,
+    "credits_used": 1,
+    "has_more": true,
+    "next_cursor": false,
+    "samples": [
+      {
+        "username": "diachok.architects",
+        "full_name": "Boutique interior & architectural design studio",
+        "classification": "Architect",
+        "category": null,
+        "profile_url": "https://www.instagram.com/diachok.architects/",
+        "follower_count": null
+      },
+      {
+        "username": "studiomilne",
+        "full_name": "Interior Designer / Interior Architect. Walthamstow, London.",
+        "classification": "Interior Designer",
+        "category": null,
+        "profile_url": "https://www.instagram.com/studiomilne/",
+        "follower_count": null
+      },
+      {
+        "username": "janshi.studio",
+        "full_name": "Urvashi Mulani | Interior Design | Architect",
+        "classification": "Interior Designer",
+        "category": null,
+        "profile_url": "https://www.instagram.com/janshi.studio/",
+        "follower_count": null
+      }
+    ]
+  },
+  "profile_live": {
+    "success": true,
+    "handle": "diachok.architects",
+    "credits_used": 1,
+    "data": {
+      "id": "instagram-profile-diachok.architects",
+      "username": "diachok.architects",
+      "full_name": "Boutique interior & architectural design studio",
+      "biography": "Vlad & Karina Diachok\nCreating spaces for the best expression of life!\nGlobal design practice based in Warsaw",
+      "profile_pic_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.2885-19/448682708_1697387951017540_828472469505880157_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gEtUfgwfI_feJ-RGA7s4671T1A3VwC50bUa4KqTEitEzlC-2R_pnwtDXjHtFdgoRPk&_nc_ohc=frQi6Ro1wT0Q7kNvwFFP6OX&_nc_gid=nrOgsDEvZ7QRN0rA1sqR3A&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=GNRavhpEzt3twwcGAF2wFlNSU38LbkULAAAB0j-ccb7-5&oh=00_AQS-bUE3tr5bMWKbbr0V7mq89-fkrtqNtLM-AP7X7SPIIw&oe=6AEBA370&_nc_sid=10d13b",
+      "external_url": "http://diachokarchitects.com",
+      "profile_url": "https://www.instagram.com/diachok.architects/",
+      "category": null,
+      "classification": "Architect",
+      "is_verified": false,
+      "follower_count": 156198,
+      "following_count": 91,
+      "media_count": 612,
+      "is_business": false,
+      "source_platform": "instagram",
+      "source_label": "Instagram"
+    }
+  },
+  "cache_test": {
+    "is_cached": true,
+    "credits_used": 0,
+    "matches_count": true
+  },
+  "nonexistent_profile": {
+    "returned_none_on_404": true,
+    "result": null
+  }
+}
