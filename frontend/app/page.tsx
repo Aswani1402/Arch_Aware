@@ -242,7 +242,16 @@ function HomeFeedContent() {
       setSourceFilter(sourceParam as SourceFilter);
       setPage(1);
     }
-  }, [searchParams, setKeywordExplorerOpen, activeKeyword]);
+    const itemParam = searchParams.get('item');
+    if (itemParam && references.length > 0) {
+      const targetId = Number(itemParam);
+      const foundIdx = references.findIndex(r => r.id === targetId);
+      if (foundIdx !== -1 && (!reelModalOpen || activeReelIndex !== foundIdx)) {
+        setActiveReelIndex(foundIdx);
+        setReelModalOpen(true);
+      }
+    }
+  }, [searchParams, setKeywordExplorerOpen, activeKeyword, references, reelModalOpen, activeReelIndex]);
 
   // Fetch feed items combining local curated DB (/api/feed) and live unified discovery (/api/discovery/search)
   const loadFeed = useCallback(async (
