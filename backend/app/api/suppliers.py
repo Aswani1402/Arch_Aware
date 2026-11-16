@@ -164,6 +164,7 @@ def register_supplier(reg: SupplierRegister, db: Session = Depends(get_db)):
         gstin=reg.gstin,
         brands_distributed=reg.brands_distributed,
         delivery_areas=reg.delivery_areas,
+        materials_sold=reg.materials_sold,
         verification_status="PENDING_REVIEW",  # New supplier registrations require admin review
         verification_method="manual_admin_review",
         is_potential=False,
@@ -172,6 +173,21 @@ def register_supplier(reg: SupplierRegister, db: Session = Depends(get_db)):
     db.add(sup)
     db.commit()
     db.refresh(sup)
+
+    # Stage 12: Supplier-entered materials become supplier_declared evidence rows
+    if reg.materials_sold and reg.materials_sold.strip():
+        from app.models.models import SupplierMaterialEvidence
+        for mat in [m.strip() for m in reg.materials_sold.replace(";", ",").split(",") if m.strip()]:
+            ev = SupplierMaterialEvidence(
+                supplier_id=sup.id,
+                evidence_type="supplier_declared",
+                evidence_text=mat,
+                strength=0.7
+            )
+            db.add(ev)
+        db.commit()
+        db.refresh(sup)
+
     return sup
 
 @router.post("/{supplier_id}/products")
