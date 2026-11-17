@@ -265,7 +265,7 @@ export default function SavedPage() {
               Sign in to view your saved collection
             </h3>
             <p className="text-xs text-stone-400">
-              Your saved architectural inspiration, specifications, and supplier contacts are linked to your MATERIQ account.
+              Your saved architectural inspiration, specifications, and supplier contacts are linked to your Arch_Aware account.
             </p>
             <Link
               href="/login"

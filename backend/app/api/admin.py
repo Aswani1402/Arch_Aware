@@ -332,7 +332,7 @@ def get_daily_collection_status_endpoint(
     db: Session = Depends(get_db)
 ):
     """
-    Returns the status of the 9:00 AM IST automated data collection system,
+    Returns the status of the 6:00 AM IST automated data collection system,
     including the next run time, today's summary, and last completed job.
     """
     from app.services.daily_collection_service import get_collection_status_summary
@@ -347,7 +347,7 @@ def trigger_daily_collection_endpoint(
 ):
     """
     Explicit Administrator trigger to run the daily collection job on-demand
-    without waiting for 9:00 AM IST. Normal users browsing or refreshing never trigger this.
+    without waiting for 6:00 AM IST. Normal users browsing or refreshing never trigger this.
     """
     from app.services.daily_collection_service import execute_daily_collection_task
     # Trigger synchronously or with budget limit

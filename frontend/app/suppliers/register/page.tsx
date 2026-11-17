@@ -78,7 +78,7 @@ export default function SupplierRegisterPage() {
               Thank you, <strong className="text-arch-charcoal">{submittedSupplier.name}</strong>. Your profile has been created with status <span className="font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">PENDING REVIEW</span>.
             </p>
             <p className="text-xs text-stone-500 max-w-sm mx-auto leading-relaxed">
-              In accordance with MATERIQ verification standards, an architectural curator reviews trade credentials before marking a vendor as verified.
+              In accordance with Arch_Aware verification standards, an architectural curator reviews trade credentials before marking a vendor as verified.
             </p>
             <div className="pt-4 flex justify-center gap-3">
               <Link

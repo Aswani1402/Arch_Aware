@@ -18,6 +18,8 @@ export const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
   const {
     keywordExplorerOpen,
+    setKeywordExplorerOpen,
+    openKeywordExplorer,
     savedDrawerOpen,
     openSavedInspiration,
     savedInspirationCount,
@@ -57,18 +59,22 @@ export const Navbar: React.FC = () => {
           {/* Desktop Navigation Items: Explore, Vendors, Saved */}
           <nav className="hidden lg:flex items-center gap-2">
             {/* 1. Explore */}
-            <Link
-              href="/"
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-body-base font-medium transition-all ${
-                pathname === '/' && !keywordExplorerOpen
+            <button
+              type="button"
+              onClick={openKeywordExplorer}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-body-base font-medium transition-all cursor-pointer ${
+                keywordExplorerOpen
+                  ? 'bg-arch-terracotta/10 text-arch-terracotta font-semibold shadow-xs'
+                  : pathname === '/'
                   ? 'bg-stone-100 dark:bg-arch-dark-surface text-arch-charcoal dark:text-stone-100 font-semibold shadow-xs'
                   : 'text-arch-charcoal dark:text-arch-dark-text hover:bg-stone-100 dark:hover:bg-arch-dark-surface'
               }`}
-              title="Explore architectural inspiration"
+              title="Explore material catalogue (Category, Subcategory, Materials)"
+              aria-label="Explore material catalogue"
             >
               <Compass className="w-4 h-4 text-arch-terracotta dark:text-arch-dark-terracotta" />
               <span>Explore</span>
-            </Link>
+            </button>
 
             {/* 2. Vendors */}
             <Link
@@ -166,17 +172,20 @@ export const Navbar: React.FC = () => {
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 border-t border-arch-border dark:border-arch-dark-border space-y-2 animate-in fade-in duration-150">
-            <Link
-              href="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-body-base font-medium text-arch-charcoal dark:text-arch-dark-text bg-stone-50 dark:bg-arch-dark-surface"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openKeywordExplorer();
+              }}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-body-base font-medium text-arch-charcoal dark:text-arch-dark-text bg-stone-50 dark:bg-arch-dark-surface text-left cursor-pointer"
             >
               <span className="flex items-center gap-2.5">
                 <Compass className="w-4 h-4 text-arch-terracotta" />
                 Explore
               </span>
-              <span className="text-secondary text-arch-muted">Inspiration</span>
-            </Link>
+              <span className="text-secondary text-arch-muted">Material Catalogue</span>
+            </button>
 
             <Link
               href="/sourcing"

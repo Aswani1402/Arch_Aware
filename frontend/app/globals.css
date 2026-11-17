@@ -71,6 +71,48 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   background: #525663;
 }
 
+/* Distinct visible vertical scrollbars for Material Explorer 3-column view */
+.column-scrollbar {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #C4C0B5 #F4F3EE;
+}
+
+html.dark .column-scrollbar {
+  scrollbar-color: #525663 #18191E;
+}
+
+.column-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.column-scrollbar::-webkit-scrollbar-track {
+  background: #F4F3EE;
+  border-radius: 4px;
+}
+
+html.dark .column-scrollbar::-webkit-scrollbar-track {
+  background: #18191E;
+}
+
+.column-scrollbar::-webkit-scrollbar-thumb {
+  background: #C4C0B5;
+  border-radius: 4px;
+}
+
+html.dark .column-scrollbar::-webkit-scrollbar-thumb {
+  background: #525663;
+}
+
+.column-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #A6A194;
+}
+
+html.dark .column-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6E7382;
+}
+
 /* Glass effect */
 .glass-panel {
   background: rgba(255, 255, 255, 0.88);

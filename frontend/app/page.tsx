@@ -139,6 +139,148 @@ function interleaveByProvider(items: Reference[]): Reference[] {
   return result;
 }
 
+interface QuickMaterialCategory {
+  id: string;
+  name: string;
+  shortLabel: string;
+  specifications: Array<{
+    name: string;
+    subcategory: string;
+  }>;
+}
+
+const QUICK_CATALOGUE_CATEGORIES: QuickMaterialCategory[] = [
+  {
+    id: 'masonry',
+    name: 'Masonry & Wall Systems',
+    shortLabel: 'Masonry & Bricks',
+    specifications: [
+      { name: 'Red Clay Bricks', subcategory: 'Bricks & Blocks' },
+      { name: 'Wire Cut Bricks', subcategory: 'Bricks & Blocks' },
+      { name: 'Fly Ash Bricks', subcategory: 'Bricks & Blocks' },
+      { name: 'AAC Blocks', subcategory: 'Bricks & Blocks' },
+      { name: 'Exposed Brick Facade', subcategory: 'Wall Systems' },
+      { name: 'Terracotta Jali Bricks', subcategory: 'Decorative Screens' },
+      { name: 'Concrete Hollow Blocks', subcategory: 'Bricks & Blocks' },
+    ],
+  },
+  {
+    id: 'structural',
+    name: 'Civil & Structural',
+    shortLabel: 'Civil & Structural',
+    specifications: [
+      { name: 'TMT Steel Rebar', subcategory: 'Steel Reinforcement' },
+      { name: 'RCC Slab & Beams', subcategory: 'Concrete Systems' },
+      { name: 'Ready Mix Concrete', subcategory: 'Concrete Systems' },
+      { name: 'Portland Pozzolana Cement', subcategory: 'Cement & Binders' },
+      { name: 'Structural Steel I-Beams', subcategory: 'Structural Steel' },
+      { name: 'Precast Concrete Slabs', subcategory: 'Precast Elements' },
+    ],
+  },
+  {
+    id: 'roofing',
+    name: 'Roofing & Cladding',
+    shortLabel: 'Roofing & Cladding',
+    specifications: [
+      { name: 'Mangalore Clay Roof Tiles', subcategory: 'Roof Tiles' },
+      { name: 'Terracotta Wall Cladding', subcategory: 'Exterior Cladding' },
+      { name: 'Metal Standing Seam Roof', subcategory: 'Metal Roofing' },
+      { name: 'Corten Steel Panels', subcategory: 'Facade Panels' },
+      { name: 'Exterior Stone Cladding', subcategory: 'Stone Cladding' },
+      { name: 'HPL Facade Panels', subcategory: 'Facade Panels' },
+    ],
+  },
+  {
+    id: 'flooring',
+    name: 'Flooring & Paving',
+    shortLabel: 'Flooring & Paving',
+    specifications: [
+      { name: 'Kota Stone Flooring', subcategory: 'Natural Stone' },
+      { name: 'Italian Marble Slabs', subcategory: 'Natural Stone' },
+      { name: 'Granite Flooring Tiles', subcategory: 'Natural Stone' },
+      { name: 'Vitrified Floor Tiles', subcategory: 'Ceramic & Vitrified' },
+      { name: 'Hardwood Wooden Flooring', subcategory: 'Timber Flooring' },
+      { name: 'Terrazzo Flooring', subcategory: 'Cast In-Situ' },
+      { name: 'Cobblestone Pavers', subcategory: 'Outdoor Paving' },
+    ],
+  },
+  {
+    id: 'doors_windows',
+    name: 'Doors, Windows & Glazing',
+    shortLabel: 'Doors & Windows',
+    specifications: [
+      { name: 'Teak Wood Main Doors', subcategory: 'Timber Doors' },
+      { name: 'UPVC Sliding Windows', subcategory: 'UPVC Fenestration' },
+      { name: 'Aluminium Slim Frame Glazing', subcategory: 'Aluminium Fenestration' },
+      { name: 'Toughened Glass Panels', subcategory: 'Architectural Glazing' },
+      { name: 'Flush Doors', subcategory: 'Internal Doors' },
+      { name: 'Acoustic Double Glazing', subcategory: 'Specialty Glazing' },
+    ],
+  },
+  {
+    id: 'interior',
+    name: 'Interior Finishes & Millwork',
+    shortLabel: 'Interior & Millwork',
+    specifications: [
+      { name: 'Staircase Design & Railings', subcategory: 'Stairs & Railings' },
+      { name: 'Gypsum Board False Ceiling', subcategory: 'Ceiling Systems' },
+      { name: 'Natural Wood Veneer', subcategory: 'Wood Panels' },
+      { name: 'Modular Kitchen Hardware', subcategory: 'Cabinetry' },
+      { name: 'Fluted Wall Panels', subcategory: 'Wall Finishes' },
+      { name: 'Acoustic Wall Panels', subcategory: 'Acoustic Treatments' },
+    ],
+  },
+  {
+    id: 'mep',
+    name: 'MEP & HVAC',
+    shortLabel: 'MEP & Plumbing',
+    specifications: [
+      { name: 'Rainwater Harvesting Tank', subcategory: 'Water Conservation' },
+      { name: 'CPVC Plumbing Pipes', subcategory: 'Plumbing & Drainage' },
+      { name: 'Underground Water Storage Sump', subcategory: 'Water Tanks' },
+      { name: 'Solar Water Heating Systems', subcategory: 'Solar Equipment' },
+      { name: 'Submersible Water Pumps', subcategory: 'Pumping Equipment' },
+      { name: 'Concealed Electrical Conduits', subcategory: 'Electrical Systems' },
+    ],
+  },
+  {
+    id: 'landscape',
+    name: 'Landscape & Hardscape',
+    shortLabel: 'Landscape',
+    specifications: [
+      { name: 'Natural Stone Pavers', subcategory: 'Hardscape Paving' },
+      { name: 'Pergola Structures', subcategory: 'Outdoor Structures' },
+      { name: 'Vertical Garden Systems', subcategory: 'Living Walls' },
+      { name: 'Granite Curb Stones', subcategory: 'Edging & Curbs' },
+      { name: 'Outdoor Composite Decking', subcategory: 'Decking' },
+    ],
+  },
+  {
+    id: 'paints',
+    name: 'Paints, Coatings & Waterproofing',
+    shortLabel: 'Paints & Waterproofing',
+    specifications: [
+      { name: 'Textured Exterior Paint', subcategory: 'Exterior Coatings' },
+      { name: 'Elastomeric Waterproof Coating', subcategory: 'Waterproofing' },
+      { name: 'Epoxy Floor Coatings', subcategory: 'Specialty Finishes' },
+      { name: 'Lime Plaster & Stucco', subcategory: 'Traditional Plasters' },
+      { name: 'Damp Proof Course Membrane', subcategory: 'Damp Proofing' },
+    ],
+  },
+  {
+    id: 'machinery',
+    name: 'Machinery, Tools & Equipment',
+    shortLabel: 'Machinery & Tools',
+    specifications: [
+      { name: 'Concrete Mixer Machine', subcategory: 'Site Machinery' },
+      { name: 'Modular Steel Scaffolding', subcategory: 'Scaffolding' },
+      { name: 'Power Drills & Cutters', subcategory: 'Power Tools' },
+      { name: 'Screws & Fasteners', subcategory: 'Fasteners & Fixings' },
+      { name: 'Laser Level Measuring Tool', subcategory: 'Survey & Measuring' },
+    ],
+  },
+];
+
 function HomeFeedContent() {
   const searchParams = useSearchParams();
   const { location } = useAuth();
@@ -162,6 +304,34 @@ function HomeFeedContent() {
   const [activeKeyword, setActiveKeyword] = useState<string>("");
   const [activeCategory, setActiveCategory] = useState<string>("");
   const [activeSubcategory, setActiveSubcategory] = useState<string>("");
+  const [quickCategory, setQuickCategory] = useState<string>("all");
+
+  // Specifications displayed in the quick horizontal scrollbar
+  const currentSpecifications = useMemo(() => {
+    if (quickCategory === 'all') {
+      return [
+        { name: 'Red Clay Bricks', category: 'Masonry & Wall Systems', subcategory: 'Bricks & Blocks' },
+        { name: 'RCC Slab & Beams', category: 'Civil & Structural', subcategory: 'Concrete Systems' },
+        { name: 'Rainwater Harvesting Tank', category: 'MEP & HVAC', subcategory: 'Water Conservation' },
+        { name: 'Staircase Design & Railings', category: 'Interior Finishes & Millwork', subcategory: 'Stairs & Railings' },
+        { name: 'Kota Stone Flooring', category: 'Flooring & Paving', subcategory: 'Natural Stone' },
+        { name: 'Teak Wood Main Doors', category: 'Doors, Windows & Glazing', subcategory: 'Timber Doors' },
+        { name: 'Mangalore Clay Roof Tiles', category: 'Roofing & Cladding', subcategory: 'Roof Tiles' },
+        { name: 'AAC Blocks', category: 'Masonry & Wall Systems', subcategory: 'Bricks & Blocks' },
+        { name: 'TMT Steel Rebar', category: 'Civil & Structural', subcategory: 'Steel Reinforcement' },
+        { name: 'Italian Marble Slabs', category: 'Flooring & Paving', subcategory: 'Natural Stone' },
+        { name: 'Textured Exterior Paint', category: 'Paints, Coatings & Waterproofing', subcategory: 'Exterior Coatings' },
+        { name: 'Screws & Fasteners', category: 'Machinery, Tools & Equipment', subcategory: 'Fasteners & Fixings' },
+      ];
+    }
+    const found = QUICK_CATALOGUE_CATEGORIES.find(c => c.id === quickCategory);
+    if (!found) return [];
+    return found.specifications.map(s => ({
+      name: s.name,
+      category: found.name,
+      subcategory: s.subcategory,
+    }));
+  }, [quickCategory]);
 
   // Modals and Drawers
   const [activeDrawerReference, setActiveDrawerReference] = useState<Reference | null>(null);
@@ -273,7 +443,25 @@ function HomeFeedContent() {
       const platformParam = activeFilter === 'all' ? undefined : (activeFilter === 'shopping' ? 'google_shopping' : activeFilter);
       const discoverySources = mapSourceFilterToDiscovery(activeFilter);
 
-      const shouldRunDiscovery = Boolean(q) && Boolean(discoverySources);
+      const shouldRunDiscovery = Boolean(discoverySources);
+
+      // When no keyword is selected, rotate through diverse architecture tour / construction queries for live discovery
+      const DEFAULT_HOME_QUERIES = [
+        "house tour architecture design India",
+        "modern residential architecture material construction India",
+        "interior design material finish house walkthrough",
+        "exterior facade cladding brick stone architecture",
+        "rainwater harvesting tank construction details",
+        "staircase design materials residential project",
+        "building construction slab pour and materials",
+        "flooring tiles marble granite installation India",
+      ];
+      const rotatedDefaultQuery = DEFAULT_HOME_QUERIES[Math.floor(Date.now() / 300000) % DEFAULT_HOME_QUERIES.length];
+
+      // When q is provided: search strictly for that specific material.
+      // When q is empty: getFeed returns all materials across DB, discoverySearch queries rotating architecture tours.
+      const feedSearchQuery = q || undefined;
+      const discoverySearchQuery = q || rotatedDefaultQuery;
 
       let feedRes: FeedResponse | null = null;
       let discoveryRes: any = null;
@@ -285,11 +473,11 @@ function HomeFeedContent() {
           getFeed({
             page: pageNum,
             page_size: 30,
-            q: q || undefined,
+            q: feedSearchQuery,
             platform: platformParam,
           }),
             discoverySearch({
-              q,
+              q: discoverySearchQuery,
               sources: discoverySources,
               tab: 'all',
               page: pageNum,
@@ -313,7 +501,7 @@ function HomeFeedContent() {
           feedRes = await getFeed({
             page: pageNum,
             page_size: 30,
-            q: q || undefined,
+            q: feedSearchQuery,
             platform: platformParam,
           });
         } catch (err) {
@@ -583,6 +771,87 @@ function HomeFeedContent() {
             </Link>
           </div>
 
+        </div>
+      </section>
+
+      {/* 2.5 QUICK MATERIAL & SPECIFICATION EXPLORER (Homepage catalogue chips) */}
+      <section className="w-full bg-stone-50/90 dark:bg-stone-900/60 border-b border-arch-border/40 dark:border-arch-dark-border/40 px-4 sm:px-6 lg:px-8 py-2">
+        <div className="max-w-7xl mx-auto space-y-1.5">
+          {/* Row A: Category Tabs */}
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-0.5">
+            <button
+              onClick={() => {
+                setQuickCategory("all");
+                if (activeKeyword) handleClearKeyword();
+              }}
+              type="button"
+              className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                quickCategory === 'all' && !activeKeyword
+                  ? 'bg-arch-terracotta text-white shadow-xs'
+                  : 'bg-white dark:bg-arch-dark-surface border border-arch-border/60 dark:border-arch-dark-border/60 text-arch-muted dark:text-arch-dark-muted hover:text-arch-charcoal dark:hover:text-stone-200'
+              }`}
+            >
+              All Materials
+            </button>
+            {QUICK_CATALOGUE_CATEGORIES.map((cat) => {
+              const isSelected = quickCategory === cat.id || activeCategory === cat.name;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setQuickCategory(cat.id)}
+                  type="button"
+                  className={`px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                    isSelected
+                      ? 'bg-arch-charcoal text-white dark:bg-stone-200 dark:text-arch-dark-bg font-semibold shadow-xs'
+                      : 'bg-white dark:bg-arch-dark-surface border border-arch-border/60 dark:border-arch-dark-border/60 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'
+                  }`}
+                >
+                  {cat.shortLabel}
+                </button>
+              );
+            })}
+            <button
+              onClick={() => setKeywordExplorerOpen(true)}
+              type="button"
+              className="px-2.5 py-1 rounded-lg text-xs font-semibold text-arch-terracotta hover:underline whitespace-nowrap cursor-pointer shrink-0 ml-auto"
+            >
+              Explore all 6,319 materials →
+            </button>
+          </div>
+
+          {/* Row B: Material & Specification Chips */}
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-0.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-arch-muted dark:text-arch-dark-muted shrink-0 mr-1">
+              Specifications:
+            </span>
+            {currentSpecifications.map((spec) => {
+              const isPillActive = activeKeyword.toLowerCase() === spec.name.toLowerCase();
+              return (
+                <button
+                  key={spec.name}
+                  onClick={() => {
+                    if (isPillActive) {
+                      handleClearKeyword();
+                    } else {
+                      handleSelectKeyword(spec.name, spec.category, spec.category, spec.subcategory);
+                    }
+                  }}
+                  type="button"
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs transition-all cursor-pointer whitespace-nowrap ${
+                    isPillActive
+                      ? 'bg-arch-terracotta text-white font-semibold shadow-xs ring-2 ring-arch-terracotta/30'
+                      : 'bg-white dark:bg-arch-dark-surface border border-arch-border/70 dark:border-arch-dark-border/70 text-arch-charcoal dark:text-stone-200 hover:border-arch-terracotta/60'
+                  }`}
+                  title={`View content strictly for ${spec.name}`}
+                >
+                  <span>{spec.name}</span>
+                  {isPillActive ? (
+                    <X className="w-3 h-3 ml-0.5 opacity-80 hover:opacity-100" />
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 

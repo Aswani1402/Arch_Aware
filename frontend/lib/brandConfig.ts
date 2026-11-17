@@ -14,12 +14,12 @@ export interface BrandConfig {
 }
 
 export const BRAND: BrandConfig = {
-  // Brand name: MATERIQ
-  name: "MATERIQ",
-  shortName: "MATERIQ",
-  tagline: "Architectural Inspiration & Material Specification",
+  // Brand name: Arch_Aware
+  name: "Arch_Aware",
+  shortName: "Arch_Aware",
+  tagline: "Architecture Inspiration & Material Intelligence",
   subTagline: "Visual Discovery & Verified Sourcing",
-  logoLetter: "M",
+  logoLetter: "A",
   sourceLabels: {
     pinterest: "Pinterest",
     instagram: "Instagram", // Clean name: Instagram (images & videos)

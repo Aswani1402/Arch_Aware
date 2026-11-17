@@ -15,13 +15,13 @@ export default function PinterestInspirationPage() {
             <Link
               href="/"
               className="p-1.5 rounded-lg bg-stone-900 text-stone-400 hover:text-white hover:bg-stone-850 transition-colors"
-              title="Return to MATERIQ Home"
+              title="Return to Arch_Aware Home"
             >
               <ArrowLeft className="w-4 h-4" />
             </Link>
 
             <span className="font-serif text-sm sm:text-base font-bold tracking-tight text-white uppercase">
-              MATERIQ
+              Arch_Aware
             </span>
 
             <span className="text-stone-600">/</span>

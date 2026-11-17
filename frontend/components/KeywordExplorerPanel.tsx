@@ -88,9 +88,9 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
     });
   }, []);
 
-  // Load catalogue tree on first open
+  // Preload catalogue tree in background on mount so opening is instant
   useEffect(() => {
-    if (isOpen && groups.length === 0) {
+    if (groups.length === 0) {
       setLoading(true);
       getUnifiedKeywordExplorer()
         .then((data) => {
@@ -122,7 +122,7 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
         })
         .finally(() => setLoading(false));
     }
-  }, [isOpen, groups.length]);
+  }, [groups.length]);
 
   // Load materials when catalogue category/subcategory changes
   useEffect(() => {
@@ -168,6 +168,16 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
     } catch {}
     finally {
       setCatalogueMaterialsLoadingMore(false);
+    }
+  };
+
+  // Infinite scroll listener for material list column
+  const handleMaterialsScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    if (el.scrollHeight - el.scrollTop - el.clientHeight < 150) {
+      if (!catalogueMaterialsLoading && !catalogueMaterialsLoadingMore && catalogueMaterials.length < catalogueMaterialsTotal) {
+        handleLoadMoreMaterials();
+      }
     }
   };
 
@@ -358,13 +368,16 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
               onKeyDown={(e) => handleTypeAhead(e, catalogueTree.categories, catListRef)}
               className="flex flex-col h-full overflow-hidden bg-stone-50/50 dark:bg-arch-dark-surface/40 focus:outline-hidden"
             >
-              <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200 flex items-center justify-between shrink-0">
-                <span>Categories</span>
-                <span className="text-xs text-arch-muted dark:text-arch-dark-muted font-normal">
+              <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200 flex items-center justify-between shrink-0 bg-stone-100/60 dark:bg-stone-900/60">
+                <span className="font-bold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-arch-terracotta" />
+                  <span>Category</span>
+                </span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-stone-200/80 dark:bg-stone-800 text-arch-charcoal dark:text-stone-300 font-semibold">
                   {catalogueTree.total_categories}
                 </span>
               </div>
-              <div ref={catListRef} className="flex-1 overflow-y-auto p-2 space-y-1">
+              <div ref={catListRef} className="flex-1 column-scrollbar p-2 space-y-1">
                 {catalogueTree.categories.map((cat) => {
                   const isSelected = cat.id === activeCatalogueCategory?.id;
                   return (
@@ -375,8 +388,10 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
                         setSelectedCatalogueCatId(cat.id);
                         const firstSub = cat.subcategories?.[0];
                         setSelectedCatalogueSubSlug(firstSub ? firstSub.slug : null);
+                        subListRef.current?.scrollTo({ top: 0 });
+                        matListRef.current?.scrollTo({ top: 0 });
                       }}
-                      className={`w-full px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between group ${
+                      className={`w-full px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between group cursor-pointer ${
                         isSelected
                           ? 'bg-arch-terracotta/10 text-arch-terracotta font-semibold shadow-2xs'
                           : 'text-arch-charcoal dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-arch-dark-surface'
@@ -400,18 +415,24 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
               onKeyDown={(e) => handleTypeAhead(e, activeCatalogueCategory?.subcategories || [], subListRef)}
               className="flex flex-col h-full overflow-hidden bg-stone-50/20 dark:bg-arch-dark-surface/20 focus:outline-hidden"
             >
-              <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200 flex items-center justify-between shrink-0">
-                <span>Subcategories</span>
-                <span className="text-xs text-arch-muted dark:text-arch-dark-muted font-normal">
+              <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200 flex items-center justify-between shrink-0 bg-stone-100/60 dark:bg-stone-900/60">
+                <span className="font-bold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" />
+                  <span>Subcategory</span>
+                </span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-stone-200/80 dark:bg-stone-800 text-arch-charcoal dark:text-stone-300 font-semibold">
                   {activeCatalogueCategory?.subcategories.length || 0}
                 </span>
               </div>
-              <div ref={subListRef} className="flex-1 overflow-y-auto p-2 space-y-1">
+              <div ref={subListRef} className="flex-1 column-scrollbar p-2 space-y-1">
                 {/* All Subcategories Option */}
                 <button
                   type="button"
-                  onClick={() => setSelectedCatalogueSubSlug(null)}
-                  className={`w-full px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between ${
+                  onClick={() => {
+                    setSelectedCatalogueSubSlug(null);
+                    matListRef.current?.scrollTo({ top: 0 });
+                  }}
+                  className={`w-full px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between cursor-pointer ${
                     selectedCatalogueSubSlug === null
                       ? 'bg-arch-charcoal text-white dark:bg-stone-100 dark:text-arch-dark-bg font-semibold shadow-xs'
                       : 'text-arch-charcoal dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-arch-dark-surface'
@@ -431,8 +452,11 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
                     <button
                       key={sub.id}
                       type="button"
-                      onClick={() => setSelectedCatalogueSubSlug(sub.slug)}
-                      className={`w-full px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between ${
+                      onClick={() => {
+                        setSelectedCatalogueSubSlug(sub.slug);
+                        matListRef.current?.scrollTo({ top: 0 });
+                      }}
+                      className={`w-full px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between cursor-pointer ${
                         isSelected
                           ? 'bg-arch-terracotta/10 text-arch-terracotta font-semibold shadow-2xs'
                           : 'text-arch-charcoal dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-arch-dark-surface'
@@ -456,14 +480,21 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
               onKeyDown={(e) => handleTypeAhead(e, catalogueMaterials.map(m => ({ name: m.material })), matListRef)}
               className="flex flex-col h-full overflow-hidden bg-white dark:bg-arch-dark-card focus:outline-hidden"
             >
-              <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200 flex items-center justify-between shrink-0">
-                <span>Materials</span>
-                <span className="text-xs text-arch-muted dark:text-arch-dark-muted font-normal">
+              <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200 flex items-center justify-between shrink-0 bg-stone-100/60 dark:bg-stone-900/60">
+                <span className="font-bold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span>Material List</span>
+                </span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-stone-200/80 dark:bg-stone-800 text-arch-charcoal dark:text-stone-300 font-semibold">
                   {catalogueMaterialsTotal} items
                 </span>
               </div>
 
-              <div ref={matListRef} className="flex-1 overflow-y-auto p-2 space-y-1">
+              <div
+                ref={matListRef}
+                onScroll={handleMaterialsScroll}
+                className="flex-1 column-scrollbar p-2 space-y-1"
+              >
                 {catalogueMaterialsLoading ? (
                   <div className="py-12 flex flex-col items-center justify-center text-arch-muted">
                     <div className="w-6 h-6 border-2 border-arch-terracotta border-t-transparent rounded-full animate-spin mb-2" />
@@ -520,7 +551,7 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
               <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200">
                 Design Groups ({groups.length})
               </div>
-              <div className="flex-1 overflow-y-auto p-2 space-y-1">
+              <div className="flex-1 column-scrollbar p-2 space-y-1">
                 {groups.map((grp) => (
                   <button
                     key={grp.id}
@@ -548,7 +579,7 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
               <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200">
                 Subcategories ({activeTaxonomyGroup?.subcategories?.length || 0})
               </div>
-              <div className="flex-1 overflow-y-auto p-2 space-y-1">
+              <div className="flex-1 column-scrollbar p-2 space-y-1">
                 {activeTaxonomyGroup?.subcategories?.map((subName: string, sIdx: number) => (
                   <button
                     key={sIdx}
@@ -570,7 +601,7 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
               <div className="px-4 py-2.5 border-b border-arch-border dark:border-arch-dark-border text-secondary font-semibold text-arch-charcoal dark:text-stone-200">
                 Materials &amp; Terms ({activeTaxonomyGroup?.keywords?.length || 0})
               </div>
-              <div className="flex-1 overflow-y-auto p-2 space-y-1">
+              <div className="flex-1 column-scrollbar p-2 space-y-1">
                 {activeTaxonomyGroup?.keywords?.map((kw: string, kwIdx: number) => (
                   <button
                     key={kwIdx}

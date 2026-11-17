@@ -35,14 +35,14 @@ async def lifespan(app: FastAPI):
     if not is_testing:
         # Startup: ensure tables and seed data exist
         init_db()
-        # Launch daily 9:00 AM IST automated data collection scheduler in background thread
+        # Launch daily 6:00 AM IST automated data collection scheduler in background thread
         from app.services.daily_collection_service import start_daily_collection_scheduler
         start_daily_collection_scheduler()
     yield
 
 app = FastAPI(
-    title="Nivora API",
-    description="Nivora Architectural Inspiration, Material Discovery & Sourcing Platform API",
+    title="Arch_Aware API",
+    description="Arch_Aware — Architecture Inspiration, Material Intelligence & Supplier Discovery Platform API",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -93,7 +93,7 @@ app.include_router(discovery_router, prefix=api_prefix)
 def health_check():
     return {
         "status": "healthy",
-        "service": "Nivora API",
+        "service": "Arch_Aware API",
         "version": "1.0.0",
         "demo_mode": settings.DEMO_MODE
     }

@@ -10,7 +10,7 @@ _DEFAULT_DB_PATH = os.path.join(_BACKEND_DIR, "architect_ai.db").replace("\\", "
 _ENV_FILES = (os.path.join(_BACKEND_DIR, ".env"), os.path.join(_ROOT_DIR, ".env"), ".env")
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "MATERIQ"
+    PROJECT_NAME: str = "Arch_Aware"
     API_V1_STR: str = "/api"
     SECRET_KEY: str = "architect-ai-super-secret-dev-key-change-in-prod-2026"
     ALGORITHM: str = "HS256"
