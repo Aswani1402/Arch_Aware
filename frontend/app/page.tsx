@@ -798,7 +798,13 @@ function HomeFeedContent() {
               return (
                 <button
                   key={cat.id}
-                  onClick={() => setQuickCategory(cat.id)}
+                  onClick={() => {
+                    setQuickCategory(cat.id);
+                    if (cat.specifications && cat.specifications.length > 0) {
+                      const firstSpec = cat.specifications[0];
+                      handleSelectKeyword(firstSpec.name, cat.name, cat.name, firstSpec.subcategory);
+                    }
+                  }}
                   type="button"
                   className={`px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                     isSelected

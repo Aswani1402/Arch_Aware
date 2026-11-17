@@ -67,7 +67,7 @@ _COLLECTION_RUNNING = False
 # Target counts per material per day
 # -----------------------------------------------------------------
 TARGET_CONTENT_PER_MATERIAL = 50       # inspiration items (images/videos/posts)
-TARGET_VENDORS_PER_MATERIAL = 15       # suppliers / Google Business places
+TARGET_VENDORS_PER_MATERIAL = 20       # suppliers / Google Business places (guarantee 20 per material)
 MATERIALS_PER_DAILY_BATCH = 100        # how many unique materials to sweep in one 6AM run
                                         # (6,319 / 100 ≈ 63 nights for full coverage)
 MAX_DAILY_API_CALLS = 500              # hard credit cap per run (each call fetches ~10-25 items)
@@ -353,6 +353,14 @@ def collect_content_for_material(
     sc_ok = is_socialcrawl_configured()
 
     # -- CONTENT COLLECTION (Instagram, Pinterest, YouTube, Reddit) --
+    from app.services.social_vocabulary_service import get_social_search_terms, get_supplier_search_queries
+    soc = get_social_search_terms(material_name, category_name, subcategory_name)
+    clean_mat = soc["clean_noun"]
+    insta_q = soc["instagram_queries"][0] if soc["instagram_queries"] else f"{clean_mat} architecture"
+    pin_q = soc["pinterest_queries"][0] if soc["pinterest_queries"] else f"{clean_mat} architecture"
+    yt_q = soc["youtube_queries"][0] if soc["youtube_queries"] else f"{clean_mat} construction installation"
+    reddit_q = soc["reddit_queries"][0] if soc["reddit_queries"] else f"{clean_mat} material review"
+
     per_source = max(2, target_content // len(CONTENT_SOURCES))
 
     for source in CONTENT_SOURCES:
@@ -362,9 +370,8 @@ def collect_content_for_material(
             items = []
 
             if source == "instagram" and sc_ok:
-                # Architecture tour / material-specific searches
                 res = search_instagram_reels(
-                    query=f"{material_name} construction material architecture",
+                    query=insta_q,
                     max_pages=2,
                     dry_run=False
                 )
@@ -374,7 +381,7 @@ def collect_content_for_material(
                 try:
                     from app.services.pinterest_service import search_pinterest_page
                     res = search_pinterest_page(
-                        query=f"{material_name} {subcategory_name} architecture",
+                        query=pin_q,
                         trim=False
                     )
                     raw_pins = res.get("items", [])
@@ -398,15 +405,15 @@ def collect_content_for_material(
 
             elif source == "youtube" and sc_ok:
                 res = search_youtube(
-                    query=f"{material_name} architecture construction",
-                    max_pages=1,
+                    query=yt_q,
+                    max_pages=2,
                     dry_run=False
                 )
                 items = res.get("items", [])
 
             elif source == "reddit" and sc_ok:
                 res = search_reddit(
-                    query=f"{material_name} building material review",
+                    query=reddit_q,
                     max_pages=1,
                     dry_run=False
                 )
@@ -447,9 +454,12 @@ def collect_content_for_material(
     # -- VENDOR COLLECTION (Google Business / Google Places / SocialCrawl) --
     if new_vendors < target_vendors:
         try:
+            sup_queries = get_supplier_search_queries(material_name)
+            primary_sup_q = sup_queries[0]["query"] if sup_queries else f"{clean_mat} suppliers dealers manufacturers India"
+
             if sc_ok:
                 res = search_google_businesses(
-                    query=f"{material_name} supplier dealer manufacturer India",
+                    query=primary_sup_q,
                     location="India",
                     dry_run=False
                 )
@@ -457,38 +467,41 @@ def collect_content_for_material(
                     if save_supplier_lead(db, biz, material_name):
                         new_vendors += 1
 
-            # Also try Google Places API if configured
+            # Also query Google Places across geographic tiers if more vendors needed
             if new_vendors < target_vendors:
                 places_key = settings.get_places_api_key()
                 if places_key:
                     try:
                         import requests as _req
                         import urllib.parse as _up
-                        q = f"{material_name} supplier dealer India"
-                        encoded_q = _up.quote_plus(q)
-                        url = (
-                            "https://maps.googleapis.com/maps/api/place/textsearch/json"
-                            f"?query={encoded_q}&key={places_key}&language=en"
-                        )
-                        gp_resp = _req.get(url, timeout=10)
-                        if gp_resp.status_code == 200:
-                            gp_data = gp_resp.json()
-                            for place in gp_data.get("results", []):
-                                if new_vendors >= target_vendors:
-                                    break
-                                biz_data = {
-                                    "name": place.get("name"),
-                                    "address": place.get("formatted_address"),
-                                    "city": "India",
-                                    "state": "India",
-                                    "phone": place.get("formatted_phone_number"),
-                                    "website": place.get("website"),
-                                    "google_maps_url": f"https://www.google.com/maps/place/?q=place_id:{place.get('place_id', '')}",
-                                    "verified": place.get("business_status") == "OPERATIONAL",
-                                    "category": place.get("types", [None])[0],
-                                }
-                                if save_supplier_lead(db, biz_data, material_name):
-                                    new_vendors += 1
+                        for sq in sup_queries:
+                            if new_vendors >= target_vendors:
+                                break
+                            q = sq["query"]
+                            encoded_q = _up.quote_plus(q)
+                            url = (
+                                "https://maps.googleapis.com/maps/api/place/textsearch/json"
+                                f"?query={encoded_q}&key={places_key}&language=en"
+                            )
+                            gp_resp = _req.get(url, timeout=10)
+                            if gp_resp.status_code == 200:
+                                gp_data = gp_resp.json()
+                                for place in gp_data.get("results", []):
+                                    if new_vendors >= target_vendors:
+                                        break
+                                    biz_data = {
+                                        "name": place.get("name"),
+                                        "address": place.get("formatted_address"),
+                                        "city": place.get("formatted_address", "").split(",")[-3].strip() if len(place.get("formatted_address", "").split(",")) >= 3 else "India",
+                                        "state": place.get("formatted_address", "").split(",")[-2].strip() if len(place.get("formatted_address", "").split(",")) >= 2 else "India",
+                                        "phone": place.get("formatted_phone_number"),
+                                        "website": place.get("website"),
+                                        "google_maps_url": f"https://www.google.com/maps/place/?q=place_id:{place.get('place_id', '')}",
+                                        "verified": place.get("business_status") == "OPERATIONAL",
+                                        "category": place.get("types", [None])[0],
+                                    }
+                                    if save_supplier_lead(db, biz_data, material_name):
+                                        new_vendors += 1
                     except Exception as gp_e:
                         logger.debug(f"Google Places error for '{material_name}': {gp_e}")
 

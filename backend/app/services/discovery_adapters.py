@@ -257,16 +257,11 @@ class PinterestAdapter(BaseSourceAdapter):
         return is_socialcrawl_configured()
 
     def build_queries(self, query: str, taxonomy_context: Optional[Dict[str, Any]] = None) -> List[str]:
-        clean = query.strip()
-        if not clean:
-            return ["architectural design inspiration"]
-        return [
-            f"{clean} architecture",
-            f"{clean} wall design",
-            f"{clean} construction inspiration",
-            f"{clean} house projects",
-            f"{clean} architectural design",
-        ]
+        from app.services.social_vocabulary_service import get_social_search_terms
+        cat = (taxonomy_context.get("category") if taxonomy_context else "") or ""
+        sub = (taxonomy_context.get("subcategory") if taxonomy_context else "") or ""
+        soc = get_social_search_terms(query, cat, sub)
+        return soc["pinterest_queries"]
 
     def fetch(
         self,
@@ -370,8 +365,8 @@ class PinterestAdapter(BaseSourceAdapter):
                         norm_item.relevant_tabs = determine_relevant_discovery_tabs(norm_item)
                         results.append(norm_item)
 
-                    if not raw_items:
-                        status = SourceStatusEnum.EMPTY
+            if not raw_items:
+                status = SourceStatusEnum.EMPTY
             elif raw_res is None or (isinstance(raw_res, (list, dict)) and not raw_res):
                 status = SourceStatusEnum.EMPTY
             else:
@@ -428,15 +423,11 @@ class InstagramAdapter(BaseSourceAdapter):
         return is_socialcrawl_configured()
 
     def build_queries(self, query: str, taxonomy_context: Optional[Dict[str, Any]] = None) -> List[str]:
-        clean = query.strip()
-        if not clean:
-            return ["architectural design walkthrough"]
-        return [
-            f"{clean} architecture design",
-            f"{clean} construction projects",
-            f"{clean} design walkthrough",
-            f"{clean} architectural reel",
-        ]
+        from app.services.social_vocabulary_service import get_social_search_terms
+        cat = (taxonomy_context.get("category") if taxonomy_context else "") or ""
+        sub = (taxonomy_context.get("subcategory") if taxonomy_context else "") or ""
+        soc = get_social_search_terms(query, cat, sub)
+        return soc["instagram_queries"]
 
     def fetch(
         self,
@@ -480,76 +471,93 @@ class InstagramAdapter(BaseSourceAdapter):
             raw_res = search_instagram_reels(
                 query=primary_query,
                 cursor=cursor,
-                max_pages=1,
+                max_pages=2,
                 dry_run=dry_run
             )
+            raw_items = []
             if raw_res and isinstance(raw_res, dict):
                 if raw_res.get("error"):
                     status, error_code, error_msg = classify_adapter_exception(Exception(str(raw_res["error"])), "INSTAGRAM_API_ERROR")
                 else:
-                    raw_items = raw_res.get("items", [])
+                    raw_items = list(raw_res.get("items", []))
                     has_more = bool(raw_res.get("has_more", False))
                     next_cursor = raw_res.get("next_cursor")
 
-                    for item in raw_items:
-                        reel_id = str(item.get("reel_id") or item.get("id") or "")
-                        shortcode = item.get("shortcode") or reel_id
-                        src_url = item.get("source_url") or (f"https://www.instagram.com/reel/{shortcode}/" if shortcode else "")
-                        canon_url = f"https://www.instagram.com/reel/{shortcode}/" if shortcode else src_url
+            # Fallback to secondary social query if primary yielded < 8 items
+            if len(raw_items) < 8 and len(queries) > 1 and not dry_run:
+                try:
+                    sec_res = search_instagram_reels(
+                        query=queries[1],
+                        max_pages=1,
+                        dry_run=False
+                    )
+                    if sec_res and isinstance(sec_res, dict) and sec_res.get("items"):
+                        raw_items.extend(sec_res["items"])
+                except Exception:
+                    pass
 
-                        caption = item.get("caption") or ""
-                        title = caption.split("\n")[0][:120].strip() or f"{query.title()} Architectural Reel"
+            for item in raw_items:
+                reel_id = str(item.get("reel_id") or item.get("id") or "")
+                shortcode = item.get("shortcode") or reel_id
+                src_url = item.get("source_url") or (f"https://www.instagram.com/reel/{shortcode}/" if shortcode else "")
+                canon_url = f"https://www.instagram.com/reel/{shortcode}/" if shortcode else src_url
 
-                        # Infer classification from caption
-                        caption_lower = caption.lower()
-                        if any(w in caption_lower for w in ["progress", "under construction", "site work", "laying", "casting"]):
-                            role = DiscoveryClassificationEnum.WORK_IN_PROGRESS
-                            meta_domain = MetadataClassificationEnum.CONSTRUCTION_PROGRESS
-                        elif any(w in caption_lower for w in ["completed", "handover", "walkthrough", "finished project"]):
-                            role = DiscoveryClassificationEnum.COMPLETED_PROJECT
-                            meta_domain = MetadataClassificationEnum.ARCHITECTURAL_PROJECT
-                        else:
-                            role = DiscoveryClassificationEnum.INSPIRATION
-                            meta_domain = MetadataClassificationEnum.INTERIOR_DESIGN
+                caption = item.get("description") or item.get("caption") or ""
+                title = item.get("title") or (caption.split("\n")[0][:120].strip() if caption else f"{query.title()} Architectural Reel")
 
-                        norm_item = NormalizedDiscoveryResult(
-                            source=self.source_name,
-                            source_result_id=shortcode or reel_id or None,
-                            original_url=src_url,
-                            canonical_url=canon_url,
-                            title=title,
-                            description=caption,
-                            image_url=item.get("thumbnail_url"),
-                            thumbnail_url=item.get("thumbnail_url"),
-                            video_url=item.get("video_url"),
-                            creator_name=item.get("creator_name") or item.get("creator_handle"),
-                            creator_url=item.get("creator_url") or (f"https://www.instagram.com/{item.get('creator_handle')}/" if item.get("creator_handle") else None),
-                            published_at=item.get("date_posted"),
-                            retrieved_at=datetime.utcnow().isoformat(),
-                            # Classification
-                            content_type="architectural_reel",
-                            discovery_classification=role,
-                            metadata_classification=meta_domain,
-                            # Taxonomy
-                            category=taxonomy_context.get("category") if taxonomy_context else None,
-                            subcategory=taxonomy_context.get("subcategory") if taxonomy_context else None,
-                            item=taxonomy_context.get("item") if taxonomy_context else None,
-                            source_attribution="Instagram Reel",
-                            discovery_query=primary_query,
-                            verification_status="UNVERIFIED",
-                            provenance=ProvenanceEnum.LIVE_DISCOVERY,
-                            media_status=MediaStatusEnum.MEDIA_READY if (item.get("thumbnail_url") or item.get("video_url")) else MediaStatusEnum.MEDIA_UNUSABLE,
-                            source_metadata={
-                                "likes_count": item.get("likes_count"),
-                                "views_count": item.get("views_count"),
-                                "comments_count": item.get("comments_count")
-                            }
-                        )
-                        norm_item.relevant_tabs = determine_relevant_discovery_tabs(norm_item)
-                        results.append(norm_item)
+                # Infer classification from caption
+                caption_lower = caption.lower()
+                if any(w in caption_lower for w in ["progress", "under construction", "site work", "laying", "casting"]):
+                    role = DiscoveryClassificationEnum.WORK_IN_PROGRESS
+                    meta_domain = MetadataClassificationEnum.CONSTRUCTION_PROGRESS
+                elif any(w in caption_lower for w in ["completed", "handover", "walkthrough", "finished project"]):
+                    role = DiscoveryClassificationEnum.COMPLETED_PROJECT
+                    meta_domain = MetadataClassificationEnum.ARCHITECTURAL_PROJECT
+                else:
+                    role = DiscoveryClassificationEnum.INSPIRATION
+                    meta_domain = MetadataClassificationEnum.INTERIOR_DESIGN
 
-                    if not raw_items:
-                        status = SourceStatusEnum.EMPTY
+                creator_handle = item.get("creator_username") or item.get("creator_handle") or ""
+                creator_name = item.get("creator_name") or (f"@{creator_handle}" if creator_handle else "Instagram Creator")
+
+                norm_item = NormalizedDiscoveryResult(
+                    source=self.source_name,
+                    source_result_id=shortcode or reel_id or None,
+                    original_url=src_url,
+                    canonical_url=canon_url,
+                    title=title,
+                    description=caption,
+                    image_url=item.get("thumbnail_url") or item.get("image_url"),
+                    thumbnail_url=item.get("thumbnail_url") or item.get("image_url"),
+                    video_url=item.get("video_url") or item.get("media_url"),
+                    creator_name=creator_name,
+                    creator_url=item.get("creator_url") or (f"https://www.instagram.com/{creator_handle}/" if creator_handle else None),
+                    published_at=item.get("published_at") or item.get("date_posted"),
+                    retrieved_at=datetime.utcnow().isoformat(),
+                    # Classification
+                    content_type="architectural_reel",
+                    discovery_classification=role,
+                    metadata_classification=meta_domain,
+                    # Taxonomy
+                    category=taxonomy_context.get("category") if taxonomy_context else None,
+                    subcategory=taxonomy_context.get("subcategory") if taxonomy_context else None,
+                    item=taxonomy_context.get("item") if taxonomy_context else None,
+                    source_attribution="Instagram Reel",
+                    discovery_query=primary_query,
+                    verification_status="UNVERIFIED",
+                    provenance=ProvenanceEnum.LIVE_DISCOVERY,
+                    media_status=MediaStatusEnum.MEDIA_READY if (item.get("thumbnail_url") or item.get("video_url") or item.get("image_url")) else MediaStatusEnum.MEDIA_UNUSABLE,
+                    source_metadata={
+                        "likes_count": item.get("likes") or item.get("likes_count"),
+                        "views_count": item.get("views") or item.get("views_count"),
+                        "comments_count": item.get("comments") or item.get("comments_count")
+                    }
+                )
+                norm_item.relevant_tabs = determine_relevant_discovery_tabs(norm_item)
+                results.append(norm_item)
+
+            if not raw_items:
+                status = SourceStatusEnum.EMPTY
             elif raw_res is None or (isinstance(raw_res, (list, dict)) and not raw_res):
                 status = SourceStatusEnum.EMPTY
             else:
@@ -606,17 +614,11 @@ class YouTubeAdapter(BaseSourceAdapter):
         return is_socialcrawl_configured()
 
     def build_queries(self, query: str, taxonomy_context: Optional[Dict[str, Any]] = None) -> List[str]:
-        clean = query.strip()
-        if not clean:
-            return ["architectural walkthrough house tour"]
-        return [
-            f"{clean} construction",
-            f"{clean} installation",
-            f"{clean} manufacturing",
-            f"{clean} comparison",
-            f"{clean} building projects",
-            f"{clean} architectural project walkthrough",
-        ]
+        from app.services.social_vocabulary_service import get_social_search_terms
+        cat = (taxonomy_context.get("category") if taxonomy_context else "") or ""
+        sub = (taxonomy_context.get("subcategory") if taxonomy_context else "") or ""
+        soc = get_social_search_terms(query, cat, sub)
+        return soc["youtube_queries"]
 
     def fetch(
         self,
@@ -728,8 +730,8 @@ class YouTubeAdapter(BaseSourceAdapter):
                         norm_item.relevant_tabs = determine_relevant_discovery_tabs(norm_item)
                         results.append(norm_item)
 
-                    if not raw_items:
-                        status = SourceStatusEnum.EMPTY
+            if not raw_items:
+                status = SourceStatusEnum.EMPTY
             elif raw_res is None or (isinstance(raw_res, (list, dict)) and not raw_res):
                 status = SourceStatusEnum.EMPTY
             else:
@@ -786,17 +788,11 @@ class RedditAdapter(BaseSourceAdapter):
         return is_socialcrawl_configured()
 
     def build_queries(self, query: str, taxonomy_context: Optional[Dict[str, Any]] = None) -> List[str]:
-        clean = query.strip()
-        if not clean:
-            return ["architecture materials construction discussion"]
-        return [
-            f"{clean} comparisons and construction discussions",
-            f"{clean} architecture materials discussion",
-            f"{clean} cost durability experience",
-            f"{clean} cost review",
-            f"{clean} architecture materials review",
-            f"{clean} construction details review",
-        ]
+        from app.services.social_vocabulary_service import get_social_search_terms
+        cat = (taxonomy_context.get("category") if taxonomy_context else "") or ""
+        sub = (taxonomy_context.get("subcategory") if taxonomy_context else "") or ""
+        soc = get_social_search_terms(query, cat, sub)
+        return soc["reddit_queries"]
 
     def fetch(
         self,
@@ -924,8 +920,8 @@ class RedditAdapter(BaseSourceAdapter):
                         norm_item.relevant_tabs = determine_relevant_discovery_tabs(norm_item)
                         results.append(norm_item)
 
-                    if not raw_items:
-                        status = SourceStatusEnum.EMPTY
+            if not raw_items:
+                status = SourceStatusEnum.EMPTY
             elif raw_res is None or (isinstance(raw_res, (list, dict)) and not raw_res):
                 status = SourceStatusEnum.EMPTY
             else:
@@ -1424,8 +1420,8 @@ class GoogleShoppingAdapter(BaseSourceAdapter):
                         norm_item.relevant_tabs = determine_relevant_discovery_tabs(norm_item)
                         results.append(norm_item)
 
-                    if not raw_items:
-                        status = SourceStatusEnum.EMPTY
+            if not raw_items:
+                status = SourceStatusEnum.EMPTY
             elif raw_res is None or (isinstance(raw_res, (list, dict)) and not raw_res):
                 status = SourceStatusEnum.EMPTY
             else:

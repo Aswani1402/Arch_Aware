@@ -66,7 +66,7 @@ class GooglePlacesService:
             }
             body: Dict[str, Any] = {
                 "textQuery": search_query,
-                "maxResultCount": 10
+                "maxResultCount": 20
             }
             if page_token:
                 body["pageToken"] = page_token
@@ -167,7 +167,7 @@ class GooglePlacesService:
                     legacy_status = data.get("status")
                     if legacy_status == "OK":
                         results = []
-                        for item in data.get("results", [])[:10]:
+                        for item in data.get("results", [])[:20]:
                             geom = item.get("geometry", {}).get("location", {})
                             name = item.get("name")
                             addr = item.get("formatted_address")

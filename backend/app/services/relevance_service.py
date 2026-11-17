@@ -168,9 +168,11 @@ class LayeredQueryMatcher:
         if not passed_gate_0:
             return InspirationRelevanceTierEnum.TIER_5_REJECTED, gate_reason
 
-        # Check for generic parent noun queries (must abstain to Tier 4)
+        # Check for generic parent noun queries (e.g. flooring, doors, tiles) - allow contextual match if in metadata
         if q_norm in GENERIC_PARENT_NOUNS:
-            return InspirationRelevanceTierEnum.TIER_4_AMBIGUOUS, f"Generic parent query '{query}' requires sub-type disambiguation"
+            if q_norm in title_norm or q_norm in tags_norm or q_norm in desc_norm:
+                return InspirationRelevanceTierEnum.TIER_1_EXACT, f"Generic parent query '{query}' matched in candidate metadata"
+            return InspirationRelevanceTierEnum.TIER_3_CONTEXTUAL, f"Broad parent category query '{query}'"
 
         # Check for conditional / unconfirmed alias queries
         if q_norm in CONDITIONAL_OR_AMBIGUOUS_ALIASES:
