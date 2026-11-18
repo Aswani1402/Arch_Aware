@@ -125,11 +125,12 @@ The platform is architected to run out of the box in **Permitted Demo Mode** wit
 
 | Integration | Environment Variable | Purpose | Fallback Behavior When Missing |
 |---|---|---|---|
-| **YouTube Data API v3** | `YOUTUBE_API_KEY` | Real-time YouTube architectural video search | Loads curated architectural walkthroughs with genuine YouTube video embeds |
+| **SocialCrawl Discovery API** | `SOCIALCRAWL_API_KEY` | Live unified discovery across Pinterest, Instagram Reels, YouTube, Reddit, Google Shopping & Twitter/X | Curated architectural database with genuine high-resolution references |
+| **YouTube Data API v3** | `YOUTUBE_API_KEY` | Direct YouTube architectural video search fallback | Loads curated architectural walkthroughs with genuine YouTube video embeds |
 | **Reddit API** | `REDDIT_CLIENT_ID`<br>`REDDIT_CLIENT_SECRET` | Live ingestion from `r/architecture` & `r/InteriorDesign` | Ingests curated community discussions preserving author attribution & permalinks |
-| **Pinterest API** | `PINTEREST_API_KEY` | Ingestion of architectural pins & boards | User-submitted reference URLs with preview metadata |
+| **Pinterest API** | `PINTEREST_API_KEY` | Ingestion of architectural pins & boards | Curated architectural pinboards and user reference URLs |
 | **Instagram Graph API** | `INSTAGRAM_APP_ID` | Ingestion from architectural studio profiles | Curated references preserving creator handles and URLs |
-| **Google Maps Platform** | `GOOGLE_MAPS_API_KEY` | Google Places business discovery & Places Autocomplete | Built-in architectural hub geocoder covering Kochi, Calicut, Trivandrum, Bengaluru, Chennai, Mumbai, Delhi |
+| **Google Maps / Places** | `GOOGLE_PLACES_API_KEY`<br>`CUSTOM_SEARCH_API_KEY` | Google Places trade yard discovery & architectural image search | Built-in architectural hub geocoder covering Kochi, Calicut, Trivandrum, Bengaluru, Chennai, Mumbai, Delhi |
 
 ---
 
