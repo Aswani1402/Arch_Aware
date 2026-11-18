@@ -25,19 +25,26 @@ from app.api.discovery import router as discovery_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    import sys, os
+    import sys, os, logging
+    logger = logging.getLogger("architect_ai.main")
     is_testing = (
         "pytest" in sys.modules
         or "_pytest" in sys.modules
         or bool(os.environ.get("PYTEST_CURRENT_TEST"))
         or os.environ.get("TESTING") == "1"
     )
+    is_serverless = bool(os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
     if not is_testing:
-        # Startup: ensure tables and seed data exist
+        # Startup: ensure tables and seed data exist safely
         init_db()
-        # Launch daily 6:00 AM IST automated data collection scheduler in background thread
-        from app.services.daily_collection_service import start_daily_collection_scheduler
-        start_daily_collection_scheduler()
+
+        # Launch daily 6:00 AM IST automated data collection scheduler only on persistent servers
+        if not is_serverless:
+            try:
+                from app.services.daily_collection_service import start_daily_collection_scheduler
+                start_daily_collection_scheduler()
+            except Exception as exc:
+                logger.warning("[Main] Scheduler startup skipped: %s", exc)
     yield
 
 app = FastAPI(

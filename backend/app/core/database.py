@@ -1,6 +1,8 @@
 import logging
 import os
+import shutil
 import sqlite3
+import tempfile
 from typing import Optional, Tuple
 from sqlalchemy import create_engine, event
 from sqlalchemy.ext.declarative import declarative_base
@@ -246,6 +248,52 @@ connect_args = {}
 db_url = settings.DATABASE_URL
 if db_url.startswith("sqlite:///."):
     db_url = f"sqlite:///{_DEFAULT_DB_PATH}"
+
+# Vercel / AWS Lambda Serverless support:
+# Serverless deployment roots (/var/task) are strictly read-only.
+# Automatically stage bundled SQLite database into writable /tmp storage.
+is_serverless = bool(os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
+if is_serverless and db_url.startswith("sqlite"):
+    tmp_db_dir = tempfile.gettempdir()
+    tmp_db_path = os.path.join(tmp_db_dir, "architect_ai.db")
+
+    # Do not overwrite an already initialized temporary database on every request
+    valid_tmp, _ = _validate_sqlite_file(tmp_db_path)
+    if not valid_tmp:
+        src_candidates = [
+            os.path.join(_BACKEND_DIR, "seed_catalogue.sqlite"),
+            os.path.join(_ROOT_DIR, "seed_catalogue.sqlite"),
+            os.path.join(_ROOT_DIR, "backend", "seed_catalogue.sqlite"),
+            _DEFAULT_DB_PATH,
+            os.path.join(_BACKEND_DIR, "architect_ai.db"),
+            "backend/seed_catalogue.sqlite",
+            "seed_catalogue.sqlite",
+        ]
+        src_db = None
+        for cand in src_candidates:
+            if cand and os.path.exists(cand):
+                try:
+                    if os.path.getsize(cand) > 1000:
+                        src_db = os.path.normpath(os.path.abspath(cand))
+                        break
+                except OSError:
+                    continue
+
+        if not src_db:
+            logger.error("[DB] Serverless SQLite staging failed: unable to locate valid seed database")
+            raise RuntimeError(
+                f"Serverless SQLite staging failed: unable to locate valid seed database among candidates: {src_candidates}"
+            )
+
+        try:
+            shutil.copyfile(src_db, tmp_db_path)
+            logger.info("[DB] Staged serverless SQLite database to writable /tmp: %s -> %s", src_db, tmp_db_path)
+        except Exception as exc:
+            logger.error("[DB] Failed staging SQLite to /tmp (%s -> %s): %s", src_db, tmp_db_path, exc)
+            raise RuntimeError(f"Serverless SQLite staging copy failed: {exc}") from exc
+
+    norm_tmp = tmp_db_path.replace("\\", "/")
+    db_url = f"sqlite:///{norm_tmp}"
 
 if db_url.startswith("sqlite"):
     _ensure_sqlite_persistent_target(db_url)

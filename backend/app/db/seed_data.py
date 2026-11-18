@@ -980,10 +980,40 @@ def seed_database(db: Session, force: bool = False):
         db.query(User).delete()
         db.commit()
 
+    # 1. Independent check and insertion for each required demo user
+    demo_users = [
+        ("admin@architect.ai", "adminpassword123", "Chief Architectural Curator", "admin"),
+        ("architect@studio.com", "password123", "Aswini Ayappan (Studio Principal)", "user"),
+        ("supplier@malabarpaints.com", "supplier123", "George Mathew (Malabar Paints & Architectural Coatings)", "supplier"),
+    ]
+    for email, pwd, name, role in demo_users:
+        if not db.query(User).filter_by(email=email).first():
+            db.add(User(
+                email=email,
+                hashed_password=get_password_hash(pwd),
+                full_name=name,
+                role=role,
+                is_active=True
+            ))
+    db.flush()
+
+    # 2. Check if core catalogue data is already present (e.g. staged from seed_catalogue.sqlite)
+    has_catalogue = (
+        db.query(ArchitecturalReference).first() is not None
+        and db.query(MaterialCategory).first() is not None
+    )
+    has_nagercoil = db.query(Supplier).filter_by(city="Nagercoil").first() is not None
+
+    if not force and has_catalogue:
+        # Preserve existing catalogue without duplicating categories, manufacturers, products, or references
+        if not has_nagercoil:
+            ensure_nagercoil_and_taxonomy(db)
+        db.commit()
+        return
+
     # Check if already seeded with modern schema & full material data
     has_admin = db.query(User).filter_by(email="admin@architect.ai").first() is not None
     has_materials = db.query(InspirationMaterial).first() is not None
-    has_nagercoil = db.query(Supplier).filter_by(city="Nagercoil").first() is not None
 
     if not force and has_admin and has_materials and has_nagercoil:
         return
@@ -1017,29 +1047,16 @@ def seed_database(db: Session, force: bool = False):
 
     print("Seeding Architect AI with authentic global and Indian architectural references & supplier tiers...")
 
-    # 1. Users
-    admin_user = User(
-        email="admin@architect.ai",
-        hashed_password=get_password_hash("adminpassword123"),
-        full_name="Chief Architectural Curator",
-        role="admin",
-        is_active=True
-    )
-    architect_user = User(
-        email="architect@studio.com",
-        hashed_password=get_password_hash("password123"),
-        full_name="Aswini Ayappan (Studio Principal)",
-        role="user",
-        is_active=True
-    )
-    supplier_user = User(
-        email="supplier@malabarpaints.com",
-        hashed_password=get_password_hash("supplier123"),
-        full_name="George Mathew (Malabar Paints & Architectural Coatings)",
-        role="supplier",
-        is_active=True
-    )
-    db.add_all([admin_user, architect_user, supplier_user])
+    # Re-verify admin user in legacy seed branch if missing
+    for email, pwd, name, role in demo_users:
+        if not db.query(User).filter_by(email=email).first():
+            db.add(User(
+                email=email,
+                hashed_password=get_password_hash(pwd),
+                full_name=name,
+                role=role,
+                is_active=True
+            ))
     db.flush()
 
     # 2. Complete 14 Architectural Taxonomy Categories (Sections A through N)
