@@ -1,15 +1,35 @@
-const _rawApiUrl = (process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api").replace(/\/+$/, "");
-const API_BASE = _rawApiUrl.endsWith("/api") ? _rawApiUrl : `${_rawApiUrl}/api`;
+/**
+ * Dynamic API Base URL Resolution:
+ * 1. Server-side (SSR / Server Components): Reads process.env.BACKEND_URL injected by Vercel
+ *    service binding, with fallback to NEXT_PUBLIC_API_URL or local dev.
+ * 2. Client-side (Browser): Defaults to same-origin relative `/api` routed to the backend service
+ *    via Vercel rewrites (or uses NEXT_PUBLIC_API_URL if explicitly pointing to a separate host).
+ */
+export function getApiBaseUrl(): string {
+  if (typeof window === "undefined") {
+    const serverUrl = process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+    const clean = serverUrl.replace(/\/+$/, "");
+    return clean.endsWith("/api") ? clean : `${clean}/api`;
+  }
+
+  if (process.env.NEXT_PUBLIC_API_URL && !process.env.NEXT_PUBLIC_API_URL.startsWith("/")) {
+    const clean = process.env.NEXT_PUBLIC_API_URL.replace(/\/+$/, "");
+    return clean.endsWith("/api") ? clean : `${clean}/api`;
+  }
+
+  return "/api";
+}
+
+const API_BASE = getApiBaseUrl();
 
 if (typeof window !== "undefined" && process.env.NODE_ENV === "production") {
   if (
-    !process.env.NEXT_PUBLIC_API_URL ||
-    process.env.NEXT_PUBLIC_API_URL.includes("localhost") ||
-    process.env.NEXT_PUBLIC_API_URL.includes("127.0.0.1")
+    process.env.NEXT_PUBLIC_API_URL &&
+    (process.env.NEXT_PUBLIC_API_URL.includes("localhost") || process.env.NEXT_PUBLIC_API_URL.includes("127.0.0.1"))
   ) {
     console.warn(
-      "[NIVORA CONFIG WARNING] NEXT_PUBLIC_API_URL is missing or pointing to localhost in production. " +
-      "Configure NEXT_PUBLIC_API_URL in the Render dashboard to point to your live backend service before building."
+      "[ARCH_AWARE CONFIG WARNING] NEXT_PUBLIC_API_URL is pointing to localhost in production. " +
+      "Under Vercel multi-service routing, leave NEXT_PUBLIC_API_URL empty to use same-origin /api routing."
     );
   }
 }
@@ -48,6 +68,7 @@ export const hasAuthToken = (): boolean => Boolean(getValidAuthToken());
 
 export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const token = getValidAuthToken();
+  const apiBase = getApiBaseUrl();
   
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
@@ -58,7 +79,7 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const res = await fetch(`${API_BASE}${endpoint}`, {
+  const res = await fetch(`${apiBase}${endpoint}`, {
     ...options,
     headers,
   });

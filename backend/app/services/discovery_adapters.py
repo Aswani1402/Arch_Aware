@@ -662,7 +662,7 @@ class YouTubeAdapter(BaseSourceAdapter):
             raw_res = search_youtube(
                 query=primary_query,
                 cursor=cursor,
-                max_pages=1,
+                max_pages=2,
                 dry_run=dry_run
             )
             if raw_res and isinstance(raw_res, dict):
@@ -836,7 +836,7 @@ class RedditAdapter(BaseSourceAdapter):
             raw_res = search_reddit(
                 query=primary_query,
                 cursor=cursor,
-                max_pages=1,
+                max_pages=2,
                 dry_run=dry_run
             )
             if raw_res and isinstance(raw_res, dict):
@@ -1204,36 +1204,24 @@ class GoogleShoppingAdapter(BaseSourceAdapter):
         return is_socialcrawl_configured()
 
     def build_queries(self, query: str, taxonomy_context: Optional[Dict[str, Any]] = None) -> List[str]:
-        clean = query.strip()
+        from app.services.social_vocabulary_service import get_social_search_terms, clean_catalogue_term
+        clean = clean_catalogue_term(query)
         if not clean:
-            return ["architectural materials products"]
-        
+            clean = "architectural building materials"
+
+        cat = (taxonomy_context.get("category") if taxonomy_context else "") or ""
+        sub = (taxonomy_context.get("subcategory") if taxonomy_context else "") or ""
+        soc = get_social_search_terms(clean, cat, sub)
         exclusions = "-wallpaper -sticker -toy -lego -puzzle -3d-panel -poster -shirt"
-        
-        # Query synthesis for ALL 6,319 materials:
-        # material name + one short context word from its subcategory (max 4 words).
-        # Selecting Fly Ash Bricks must never silently become Concrete Blocks.
-        sub = ""
-        if taxonomy_context:
-            sub = taxonomy_context.get("subcategory") or taxonomy_context.get("filter_subcategory") or ""
-        
-        clean_words = clean.split()
-        synthesized = clean
-        if len(clean_words) < 4 and sub:
-            stopwords = {"and", "&", "the", "for", "with", "all", "other", "general"}
-            sub_words = [w.strip() for w in re.split(r"[\s,/]+", sub.lower()) if len(w) >= 3 and w not in stopwords]
-            clean_lower_set = {w.lower() for w in clean_words}
-            for sw in sub_words:
-                if sw not in clean_lower_set:
-                    cand = f"{clean} {sw}"
-                    if len(cand.split()) <= 4:
-                        synthesized = cand
-                        break
+
+        shop_queries = soc.get("google_shopping_queries", [])
+        primary = shop_queries[0] if shop_queries else f"{clean} buy price India"
 
         queries = [
-            f"{synthesized} {exclusions}".strip(),
-            f"{clean} products {exclusions}".strip(),
-            f"{synthesized}".strip(),
+            f"{primary} {exclusions}".strip(),
+            f"{clean} wholesale price {exclusions}".strip(),
+            primary,
+            f"{clean} price India",
             clean
         ]
         
@@ -1485,61 +1473,23 @@ class GooglePlacesAdapter(BaseSourceAdapter):
         return svc.is_configured()
 
     def build_queries(self, query: str, taxonomy_context: Optional[Dict[str, Any]] = None) -> List[str]:
-        clean = query.strip()
+        from app.services.social_vocabulary_service import clean_catalogue_term, get_supplier_search_queries
+        clean = clean_catalogue_term(query)
         if not clean:
             clean = "building materials"
-        
+
         city = taxonomy_context.get("city") if taxonomy_context else None
+        district = taxonomy_context.get("district") if taxonomy_context else None
         state = taxonomy_context.get("state") if taxonomy_context else None
-        loc_parts = [p.strip() for p in [city, state] if p and p.strip()]
-        loc_str = ", ".join(loc_parts)
-        
-        clean_lower = clean.lower()
-        queries = []
-        if any(term in clean_lower for term in ["brick", "block", "laterite", "porotherm", "wirecut", "masonry", "cseb"]):
-            if loc_str:
-                queries.append(f"{clean} suppliers in {loc_str}")
-                queries.append(f"{clean} dealers and manufacturers in {loc_str}")
-                queries.append(f"{clean} manufacturers and distributors in {loc_str}")
-            else:
-                queries.append(f"{clean} suppliers")
-                queries.append(f"{clean} dealers and manufacturers")
-        elif any(term in clean_lower for term in ["steel", "tmt", "rebar"]):
-            if loc_str:
-                queries.append(f"{clean} distributors and dealers in {loc_str}")
-                queries.append(f"{clean} steel dealers in {loc_str}")
-            else:
-                queries.append(f"{clean} distributors and dealers")
-                queries.append(f"{clean} steel dealers")
-        elif any(term in clean_lower for term in ["cement", "mortar", "concrete"]):
-            if loc_str:
-                queries.append(f"{clean} dealers and manufacturers in {loc_str}")
-                queries.append(f"{clean} suppliers in {loc_str}")
-            else:
-                queries.append(f"{clean} dealers and manufacturers")
-                queries.append(f"{clean} suppliers")
-        elif any(term in clean_lower for term in ["paint", "coating", "finish"]):
-            if loc_str:
-                queries.append(f"{clean} suppliers in {loc_str}")
-                queries.append(f"{clean} dealers in {loc_str}")
-            else:
-                queries.append(f"{clean} suppliers")
-                queries.append(f"{clean} dealers")
-        elif any(term in clean_lower for term in ["window", "door", "glass", "aluminium", "aluminum", "upvc"]):
-            if loc_str:
-                queries.append(f"{clean} manufacturers and dealers in {loc_str}")
-                queries.append(f"{clean} fabricators in {loc_str}")
-            else:
-                queries.append(f"{clean} manufacturers and dealers")
-                queries.append(f"{clean} fabricators")
-        else:
-            if loc_str:
-                queries.append(f"{clean} suppliers in {loc_str}")
-                queries.append(f"{clean} dealers and distributors in {loc_str}")
-            else:
-                queries.append(f"{clean} suppliers")
-                queries.append(f"{clean} dealers and distributors")
-        return queries
+
+        supplier_queries = get_supplier_search_queries(
+            material_name=clean,
+            city=city,
+            district=district,
+            state=state
+        )
+
+        return [sq["query"] for sq in supplier_queries]
 
     def fetch(
         self,

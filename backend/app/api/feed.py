@@ -226,11 +226,16 @@ async def get_feed(
                     ArchitecturalReference.material_tags.ilike(a_term),
                 ])
 
-        # Core material noun matching (only along with query keywords, avoids broad word-level spam)
+        # Core material noun matching (covers all catalogue families)
         core_nouns = [
             "brick", "bricks", "block", "blocks", "stone", "marble", "granite",
-            "tile", "tiles", "door", "doors", "panel", "panels", "pipe", "pipes",
-            "fitting", "fittings", "paint", "paver", "pavers", "curtain wall", "closet"
+            "tile", "tiles", "door", "doors", "window", "windows", "glass",
+            "panel", "panels", "pipe", "pipes", "fitting", "fittings", "paint",
+            "paints", "waterproof", "waterproofing", "paver", "pavers", "mixer",
+            "machine", "machinery", "drill", "scaffold", "scaffolding", "crane",
+            "excavator", "tool", "tools", "screw", "screws", "fastener", "fasteners",
+            "steel", "rebar", "cement", "tank", "sump", "pump", "timber", "wood",
+            "curtain wall", "closet", "roof", "roofing", "cladding"
         ]
         found_cn = None
         for cn in core_nouns:
