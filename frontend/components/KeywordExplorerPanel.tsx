@@ -251,7 +251,7 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
                 {explorerMode === 'catalogue' ? 'Physical Material Catalogue' : 'Design Taxonomy Explorer'}
               </h2>
               <span className="text-xs text-arch-muted dark:text-arch-dark-muted mt-0.5 block">
-                {explorerMode === 'catalogue' ? '10 Categories &middot; 184 Subcategories &middot; 6,319 Materials' : '14 Architectural Classifications'}
+                {explorerMode === 'catalogue' ? `10 Categories · 184 Subcategories · ${catalogueTree?.total_materials ? catalogueTree.total_materials.toLocaleString() : '7,184'} Materials` : '14 Architectural Classifications'}
               </span>
             </div>
           </div>
@@ -289,7 +289,7 @@ export const KeywordExplorerPanel: React.FC<KeywordExplorerPanelProps> = ({
                       explorerMode === 'catalogue' ? 'text-arch-terracotta font-semibold' : ''
                     }`}
                   >
-                    <span>Physical Construction (6,319)</span>
+                    <span>Physical Construction ({catalogueTree?.total_materials ? catalogueTree.total_materials.toLocaleString() : '7,184'})</span>
                     {explorerMode === 'catalogue' && <Check className="w-4 h-4" />}
                   </button>
                   <button

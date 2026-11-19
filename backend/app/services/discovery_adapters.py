@@ -966,6 +966,180 @@ class RedditAdapter(BaseSourceAdapter):
 
 
 # ==============================================================================
+# 4b. TWITTER / X ADAPTER (SocialCrawl Search Tweets)
+# ==============================================================================
+
+class TwitterAdapter(BaseSourceAdapter):
+    def __init__(self):
+        super().__init__("x")
+
+    def is_configured(self) -> bool:
+        from app.services.socialcrawl_service import is_socialcrawl_configured
+        return is_socialcrawl_configured()
+
+    def build_queries(self, query: str, taxonomy_context: Optional[Dict[str, Any]] = None) -> List[str]:
+        from app.services.social_vocabulary_service import get_social_search_terms
+        cat = (taxonomy_context.get("category") if taxonomy_context else "") or ""
+        sub = (taxonomy_context.get("subcategory") if taxonomy_context else "") or ""
+        soc = get_social_search_terms(query, cat, sub)
+        return soc.get("twitter_queries") or [
+            f"{query} architecture design",
+            f"{query} architectural details",
+            f"{query} contemporary architectural project",
+        ]
+
+    def fetch(
+        self,
+        query: str,
+        cursor: Optional[str] = None,
+        limit: int = 50,
+        dry_run: bool = False,
+        taxonomy_context: Optional[Dict[str, Any]] = None
+    ) -> Tuple[List[NormalizedDiscoveryResult], SourceStatusReport, SourceExecutionMetrics]:
+        start_time = time.time()
+        queries = self.build_queries(query, taxonomy_context)
+        primary_query = queries[0]
+
+        if not self.is_configured():
+            duration_ms = (time.time() - start_time) * 1000
+            status_report = SourceStatusReport(
+                source_name=self.source_name,
+                status=SourceStatusEnum.NOT_CONFIGURED,
+                requested=True,
+                error_message="SOCIALCRAWL_API_KEY environment variable is missing for Twitter/X.",
+                duration_ms=duration_ms
+            )
+            metrics = SourceExecutionMetrics(
+                source_name=self.source_name,
+                requested_result_count=limit,
+                status=SourceStatusEnum.NOT_CONFIGURED,
+                error_message="Twitter/X API not configured.",
+                duration_ms=duration_ms
+            )
+            return [], status_report, metrics
+
+        from app.services.socialcrawl_service import search_twitter
+        results: List[NormalizedDiscoveryResult] = []
+        has_more = False
+        next_cursor: Optional[str] = None
+        error_code: Optional[str] = None
+        error_msg: Optional[str] = None
+        status = SourceStatusEnum.SUCCESS
+
+        try:
+            raw_res = search_twitter(
+                query=primary_query,
+                cursor=cursor,
+                max_pages=2,
+                dry_run=dry_run
+            )
+            if raw_res and isinstance(raw_res, dict):
+                if raw_res.get("error"):
+                    status, error_code, error_msg = classify_adapter_exception(Exception(str(raw_res["error"])), "TWITTER_API_ERROR")
+                else:
+                    raw_items = raw_res.get("items", [])
+                    has_more = bool(raw_res.get("has_more", False))
+                    next_cursor = raw_res.get("next_cursor")
+
+                    for item in raw_items:
+                        tweet_id = str(item.get("tweet_id") or item.get("id") or "")
+                        src_url = item.get("source_url") or (f"https://x.com/i/status/{tweet_id}" if tweet_id else "https://x.com")
+                        title = item.get("title") or f"{query.title()} on X"
+                        desc = item.get("description") or title
+
+                        img_candidate = item.get("image_url") or item.get("thumbnail_url") or item.get("media_url")
+                        img_str = img_candidate if (isinstance(img_candidate, str) and img_candidate.startswith("http")) else None
+
+                        thumb_candidate = item.get("thumbnail_url") or item.get("image_url") or item.get("media_url")
+                        thumb_str = thumb_candidate if (isinstance(thumb_candidate, str) and thumb_candidate.startswith("http")) else img_str
+
+                        author_name = item.get("creator_name") or "X Creator"
+                        author_url = item.get("creator_url") or (f"https://x.com/{item.get('creator_username')}" if item.get("creator_username") else None)
+                        pub_at = str(item.get("published_at") or "") or None
+
+                        norm_item = NormalizedDiscoveryResult(
+                            source=self.source_name,
+                            source_result_id=tweet_id or None,
+                            original_url=src_url,
+                            canonical_url=src_url,
+                            title=title,
+                            description=desc,
+                            image_url=img_str,
+                            thumbnail_url=thumb_str,
+                            creator_name=author_name,
+                            creator_url=author_url,
+                            published_at=pub_at,
+                            retrieved_at=datetime.utcnow().isoformat(),
+                            content_type="architectural_project",
+                            discovery_classification=DiscoveryClassificationEnum.INSPIRATION,
+                            metadata_classification=MetadataClassificationEnum.ARCHITECTURAL_PROJECT,
+                            category=taxonomy_context.get("category") if taxonomy_context else None,
+                            subcategory=taxonomy_context.get("subcategory") if taxonomy_context else None,
+                            item=taxonomy_context.get("item") if taxonomy_context else None,
+                            source_attribution="X (Twitter)",
+                            discovery_query=primary_query,
+                            verification_status="COMMUNITY_REVIEW",
+                            provenance=ProvenanceEnum.LIVE_DISCOVERY,
+                            media_status=MediaStatusEnum.MEDIA_READY if img_str else MediaStatusEnum.TEXT_DISCUSSION,
+                            source_metadata={
+                                "likes": item.get("likes") or 0,
+                                "retweets": item.get("retweets") or 0,
+                                "replies": item.get("replies") or 0,
+                                "views": item.get("views"),
+                            }
+                        )
+                        norm_item.relevant_tabs = determine_relevant_discovery_tabs(norm_item)
+                        results.append(norm_item)
+
+            if not raw_items:
+                status = SourceStatusEnum.EMPTY
+            elif raw_res is None or (isinstance(raw_res, (list, dict)) and not raw_res):
+                status = SourceStatusEnum.EMPTY
+            else:
+                status = SourceStatusEnum.FAILED
+                error_code = "MALFORMED_UPSTREAM_RESPONSE"
+                error_msg = f"Unexpected upstream response format: expected dict, received {type(raw_res).__name__}."
+
+        except Exception as e:
+            logger.error(f"[TwitterAdapter] Execution error: {e}")
+            status, error_code, error_msg = classify_adapter_exception(e, "TWITTER_ADAPTER_ERROR")
+
+        duration_ms = (time.time() - start_time) * 1000
+        status_report = SourceStatusReport(
+            source_name=self.source_name,
+            status=status,
+            requested=True,
+            result_count=len(results),
+            unique_result_count=len(results),
+            pages_fetched=1 if status != SourceStatusEnum.FAILED else 0,
+            has_more=has_more,
+            next_page_token=next_cursor,
+            error_code=error_code,
+            error_message=error_msg,
+            duration_ms=duration_ms
+        )
+        metrics = SourceExecutionMetrics(
+            source_name=self.source_name,
+            requested_result_count=limit,
+            returned_result_count=len(results),
+            unique_result_count=len(results),
+            duplicate_count=0,
+            pages_fetched=1 if status != SourceStatusEnum.FAILED else 0,
+            pagination_availability=has_more,
+            request_count=1,
+            cache_hit=False,
+            duration_ms=duration_ms,
+            status=status,
+            error_code=error_code,
+            error_message=error_msg
+        )
+        return results[:limit], status_report, metrics
+
+
+XAdapter = TwitterAdapter
+
+
+# ==============================================================================
 # 5. GOOGLE SEARCH ADAPTER (General Web Text Search Contract)
 # ==============================================================================
 

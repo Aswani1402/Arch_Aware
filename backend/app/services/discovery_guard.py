@@ -40,6 +40,7 @@ Architectural Design & Safety Invariants:
 
 import time
 import os
+import sys
 import hashlib
 import logging
 import threading
@@ -180,9 +181,9 @@ class DiscoveryRequestGuard:
         window_seconds: int = 3600,     # 1 hour window
         salt: Optional[str] = None
     ):
-        self.user_rate_limit = user_rate_limit
-        self.anon_rate_limit = anon_rate_limit
-        self.window_seconds = window_seconds
+        self.user_rate_limit = int(os.environ.get("DISCOVERY_USER_RATE_LIMIT", user_rate_limit))
+        self.anon_rate_limit = int(os.environ.get("DISCOVERY_ANON_RATE_LIMIT", anon_rate_limit))
+        self.window_seconds = int(os.environ.get("DISCOVERY_RATE_WINDOW_SECONDS", window_seconds))
         self._salt = salt or os.environ.get("DISCOVERY_GUARD_SALT") or "nivora_guard_secret_salt_2026"
         # Mapping: client_identifier -> deque of request timestamps
         self._request_history: Dict[str, deque] = {}
@@ -241,6 +242,10 @@ class DiscoveryRequestGuard:
             is_authenticated=is_authenticated
         )
         limit = self.user_rate_limit if is_auth else self.anon_rate_limit
+        # Allow extra headroom for local developer manual testing on loopback interface (disabled under pytest)
+        is_testing = bool(os.environ.get("PYTEST_CURRENT_TEST") or os.environ.get("TESTING") or "pytest" in sys.modules)
+        if not is_auth and not is_testing and client_ip in ("127.0.0.1", "::1", "localhost"):
+            limit = max(limit, int(os.environ.get("DISCOVERY_DEV_ANON_LIMIT", 120)))
         now = time.time()
         cutoff = now - self.window_seconds
 
@@ -345,13 +350,13 @@ class ProviderBudgetManager:
         "google_search": 0,       # 0 credit (Custom Search API or unconfigured)
         "google_shopping": 5,     # 5 credits per SocialCrawl product search
         "google_places": 0,       # 0 credit (direct Google Places Platform API)
-        "x": 0,                   # Disabled source
-        "twitter": 0,             # Disabled source
+        "x": 1,                   # 1 credit per SocialCrawl page (/v1/twitter/search/tweets)
+        "twitter": 1,             # 1 credit per SocialCrawl page (/v1/twitter/search/tweets)
     }
 
     def __init__(
         self,
-        max_sources_per_request: int = 7,
+        max_sources_per_request: int = 8,
         max_expansions_per_source: int = 3,
         max_pagination_depth: int = 2,
         max_credits_per_request: int = 20,

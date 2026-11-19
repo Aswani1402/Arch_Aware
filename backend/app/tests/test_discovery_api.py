@@ -113,9 +113,29 @@ def test_discovery_search_post_and_partial_success_isolation(client, user_header
     async def mock_yt_fail(*args, **kwargs):
         raise RuntimeError("Upstream 502 error")
 
+    async def mock_x_disabled(*args, **kwargs):
+        rep = SourceStatusReport(
+            source_name="x",
+            status=SourceStatusEnum.DISABLED,
+            requested=True,
+            results_returned=0,
+            duration_ms=0.0,
+            error_message="Source disabled for partial isolation test",
+        )
+        mets = SourceExecutionMetrics(
+            source_name="x",
+            requested_result_count=0,
+            collected_count=0,
+            unique_count=0,
+            status=SourceStatusEnum.DISABLED,
+            duration_ms=0.0,
+        )
+        return ([], rep, mets)
+
     with (
         patch.object(search_orchestration_service.adapters["pinterest"], "fetch_async", side_effect=mock_pin_ok),
         patch.object(search_orchestration_service.adapters["youtube"], "fetch_async", side_effect=mock_yt_fail),
+        patch.object(search_orchestration_service.adapters["x"], "fetch_async", side_effect=mock_x_disabled),
     ):
         res = client.post(
             "/api/discovery/search",

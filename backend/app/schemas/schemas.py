@@ -86,7 +86,7 @@ class ManufacturerCreate(ManufacturerBase):
 class ManufacturerOut(ManufacturerBase):
     id: int
     last_verified_at: Optional[datetime] = None
-    created_at: datetime
+    created_at: Optional[datetime] = None
     products_count: Optional[int] = 0
 
     class Config:
@@ -243,7 +243,7 @@ class SupplierOut(SupplierBase):
     match_explanation: Optional[str] = None
     category_name: Optional[str] = None
     last_updated_at: Optional[datetime] = None
-    created_at: datetime
+    created_at: Optional[datetime] = None
 
     class Config:
         from_attributes = True
@@ -337,7 +337,7 @@ class ReferenceOut(ReferenceBase):
     category_id: Optional[int] = None
     category_name: Optional[str] = None
     matched_products_count: int = 0
-    created_at: datetime
+    created_at: Optional[datetime] = None
 
     class Config:
         from_attributes = True

@@ -58,6 +58,7 @@ from app.services.discovery_adapters import (
     InstagramAdapter,
     YouTubeAdapter,
     RedditAdapter,
+    TwitterAdapter,
     GoogleSearchAdapter,
     GoogleShoppingAdapter,
     GooglePlacesAdapter,
@@ -279,6 +280,8 @@ class SearchOrchestrationService:
             "instagram": InstagramAdapter(),
             "youtube": YouTubeAdapter(),
             "reddit": RedditAdapter(),
+            "x": TwitterAdapter(),
+            "twitter": TwitterAdapter(),
             "google_search": GoogleSearchAdapter(),
             "google_shopping": GoogleShoppingAdapter(),
             "google_places": GooglePlacesAdapter(),
@@ -292,6 +295,8 @@ class SearchOrchestrationService:
             "youtube": "youtube",
             "yt": "youtube",
             "reddit": "reddit",
+            "x": "x",
+            "twitter": "x",
             "google_search": "google_search",
             "web": "google_search",
             "google_shopping": "google_shopping",
@@ -1133,7 +1138,7 @@ class SearchOrchestrationService:
             ]
             executable_budget_sources = [
                 c_src for c_src in budget_sources
-                if c_src not in ("x", "twitter") and c_src in self.adapters
+                if c_src in self.adapters
             ]
             if len(budget_sources) > provider_budget_manager.max_sources_per_request:
                 budget_ok, budget_reason, projected_credits = provider_budget_manager.check_budget(
@@ -1167,26 +1172,6 @@ class SearchOrchestrationService:
         for raw_src in active_sources:
             src_norm = raw_src.lower().strip()
             canon_src = self.source_alias_map.get(src_norm, src_norm)
-
-            # Check if source is explicitly disabled (e.g. x / twitter)
-            if canon_src in ("x", "twitter"):
-                source_statuses[canon_src] = SourceStatusReport(
-                    source_name=canon_src,
-                    status=SourceStatusEnum.DISABLED,
-                    requested=True,
-                    error_code="SOURCE_DISABLED",
-                    error_message="X/Twitter integration is disabled for Phase 5B.",
-                    duration_ms=0.0
-                )
-                source_metrics[canon_src] = SourceExecutionMetrics(
-                    source_name=canon_src,
-                    requested_result_count=target_per_source,
-                    status=SourceStatusEnum.DISABLED,
-                    error_code="SOURCE_DISABLED",
-                    error_message="X/Twitter integration is disabled.",
-                    duration_ms=0.0
-                )
-                continue
 
             adapter = self.adapters.get(canon_src)
             if not adapter:
@@ -1351,7 +1336,7 @@ class SearchOrchestrationService:
             ]
             executable_budget_sources = [
                 c_src for c_src in budget_sources
-                if c_src not in ("x", "twitter") and c_src in self.adapters
+                if c_src in self.adapters
             ]
             if len(budget_sources) > provider_budget_manager.max_sources_per_request:
                 budget_ok, budget_reason, projected_credits = provider_budget_manager.check_budget(
@@ -1388,25 +1373,6 @@ class SearchOrchestrationService:
         for raw_src in active_sources:
             src_norm = raw_src.lower().strip()
             canon_src = self.source_alias_map.get(src_norm, src_norm)
-
-            if canon_src in ("x", "twitter"):
-                source_statuses[canon_src] = SourceStatusReport(
-                    source_name=canon_src,
-                    status=SourceStatusEnum.DISABLED,
-                    requested=True,
-                    error_code="SOURCE_DISABLED",
-                    error_message="X/Twitter integration is disabled for Phase 5B.",
-                    duration_ms=0.0
-                )
-                source_metrics[canon_src] = SourceExecutionMetrics(
-                    source_name=canon_src,
-                    requested_result_count=target_per_source,
-                    status=SourceStatusEnum.DISABLED,
-                    error_code="SOURCE_DISABLED",
-                    error_message="X/Twitter integration is disabled.",
-                    duration_ms=0.0
-                )
-                continue
 
             adapter = self.adapters.get(canon_src)
             if not adapter:
@@ -1507,7 +1473,7 @@ class SearchOrchestrationService:
         # Execute all tasks concurrently
         if tasks_to_run:
             try:
-                results = await asyncio.gather(*tasks_to_run, return_exceptions=False)
+                results = await asyncio.gather(*tasks_to_run, return_exceptions=True)
             except asyncio.CancelledError:
                 for t in tasks_to_run:
                     if not t.done():
@@ -1517,7 +1483,11 @@ class SearchOrchestrationService:
                     provider_budget_manager.release_credits(projected_credits)
                 raise
 
-            for c_src, items, status_rep, mets in results:
+            for res in results:
+                if isinstance(res, Exception):
+                    logger.warning("[Orchestrator] Adapter execution failed: %s", res)
+                    continue
+                c_src, items, status_rep, mets = res
                 source_statuses[c_src] = status_rep
                 source_metrics[c_src] = mets
                 source_buckets[c_src] = items

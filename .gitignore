@@ -16,6 +16,7 @@ venv/
 *.sqlite3
 !backend/seed_catalogue.sqlite
 
+
 # Database backup files
 *.backup*
 *.pre

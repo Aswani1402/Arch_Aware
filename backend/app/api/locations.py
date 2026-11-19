@@ -165,6 +165,7 @@ async def search_google_places_suppliers(
         material_type=search_term,
         lat=lat,
         lon=lon,
+        city=city,
         radius_km=radius_km
     )
     result["query"] = search_term

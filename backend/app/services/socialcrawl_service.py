@@ -26,7 +26,7 @@ YOUTUBE_TIMEOUT = 15
 REDDIT_TIMEOUT = 22
 GOOGLE_BUSINESS_TIMEOUT = 54
 GOOGLE_SHOPPING_TIMEOUT = 60
-TWITTER_TIMEOUT = 80
+TWITTER_TIMEOUT = 15  # /v1/twitter/search/tweets (measured p99 latency x 1.5)
 
 MAX_PAGES = 10
 
@@ -43,8 +43,8 @@ CREDIT_COSTS: Dict[str, str] = {
     "reddit": "1 credit per page",
     "google_business": "5 credits per call",
     "google_shopping": "1 credit per call (product lookup), 5 credits per call (product search)",
-    "twitter": "5 credits per call",
-    "x": "5 credits per call",
+    "twitter": "1 credit per page",
+    "x": "1 credit per page",
 }
 
 # In-memory cache for search responses: cache_key -> (timestamp, response_data)
@@ -862,7 +862,7 @@ def normalize_reddit_post(raw: Dict[str, Any]) -> Dict[str, Any]:
 
 def normalize_twitter_post(raw: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Normalizes a SocialCrawl Twitter (X) AI-Search item into standard format.
+    Normalizes a SocialCrawl Twitter (X) Search Tweets item into standard format.
     Enforces honest attribution, actual media/links.
     """
     if not isinstance(raw, dict):
@@ -871,14 +871,17 @@ def normalize_twitter_post(raw: Dict[str, Any]) -> Dict[str, Any]:
     if not isinstance(post, dict):
         post = {}
     content = post.get("content") or {} if isinstance(post, dict) else {}
-    author = post.get("author") or {} if isinstance(post, dict) else {}
+    author = post.get("author") or post.get("user") or raw.get("user") or {}
+    if not isinstance(author, dict):
+        author = {}
     engagement = post.get("engagement") or {} if isinstance(post, dict) else {}
     ext = post.get("ext") or {} if isinstance(post, dict) else {}
     computed = raw.get("computed") or {} if isinstance(raw, dict) else {}
 
-    tweet_id = str(post.get("id") or "")
-    author_username = author.get("username") or author.get("screen_name") or ""
-    url = post.get("url") or (
+    tweet_id = str(post.get("id") or post.get("id_str") or raw.get("id") or "")
+    author_username = author.get("username") or author.get("screen_name") or author.get("handle") or ""
+    author_username = str(author_username).lstrip("@").strip()
+    url = post.get("url") or raw.get("url") or (
         f"https://x.com/{author_username}/status/{tweet_id}"
         if tweet_id and author_username
         else (f"https://x.com/i/status/{tweet_id}" if tweet_id else "https://x.com")
@@ -890,6 +893,7 @@ def normalize_twitter_post(raw: Dict[str, Any]) -> Dict[str, Any]:
     elif not isinstance(media_urls, list):
         media_urls = []
 
+    # Check photos in ext or entities
     photos = ext.get("photos") or []
     if isinstance(photos, list):
         for p in photos:
@@ -898,14 +902,24 @@ def normalize_twitter_post(raw: Dict[str, Any]) -> Dict[str, Any]:
             elif isinstance(p, dict) and p.get("url") and p.get("url") not in media_urls:
                 media_urls.append(p.get("url"))
 
-    media_url = media_urls[0] if media_urls else None
-    thumbnail_url = content.get("thumbnail_url") or media_url
+    entities_media = post.get("entities", {}).get("media") or raw.get("entities", {}).get("media") or []
+    if isinstance(entities_media, list):
+        for m in entities_media:
+            if isinstance(m, dict) and m.get("media_url_https") and m.get("media_url_https") not in media_urls:
+                media_urls.append(m["media_url_https"])
 
-    text = content.get("text") or post.get("text") or ""
+    media_url = media_urls[0] if media_urls else None
+    thumbnail_url = content.get("thumbnail_url") or post.get("thumbnail_url") or media_url
+
+    text = content.get("text") or post.get("text") or post.get("full_text") or raw.get("text") or ""
     title = text.strip().split("\n")[0][:120] if text.strip() else "X Architectural Design"
 
     rel_obj = computed.get("relevance") if isinstance(computed, dict) else None
     relevance_score = rel_obj.get("p") if isinstance(rel_obj, dict) else None
+
+    likes_count = engagement.get("likes") or engagement.get("favorites") or post.get("favorite_count") or 0
+    retweets_count = engagement.get("retweets") or engagement.get("reposts") or post.get("retweet_count") or 0
+    replies_count = engagement.get("replies") or engagement.get("comments") or post.get("reply_count") or 0
 
     return {
         "id": f"x-{tweet_id or abs(hash(url))}",
@@ -916,22 +930,22 @@ def normalize_twitter_post(raw: Dict[str, Any]) -> Dict[str, Any]:
         "thumbnail_url": thumbnail_url,
         "media_url": media_url,
         "source_url": url,
-        "creator_name": f"@{author_username}" if author_username else (author.get("display_name") or "X Creator"),
+        "creator_name": f"@{author_username}" if author_username else (author.get("display_name") or author.get("name") or "X Creator"),
         "creator_username": author_username,
         "creator_url": f"https://x.com/{author_username}" if author_username else None,
-        "creator_avatar": author.get("avatar_url") or author.get("profile_image_url"),
+        "creator_avatar": author.get("avatar_url") or author.get("profile_image_url") or author.get("profile_image_url_https"),
         "is_video": False,
-        "likes": engagement.get("likes") or engagement.get("favorites"),
-        "retweets": engagement.get("retweets") or engagement.get("reposts"),
-        "replies": engagement.get("replies") or engagement.get("comments"),
-        "views": engagement.get("views"),
+        "likes": likes_count,
+        "retweets": retweets_count,
+        "replies": replies_count,
+        "views": engagement.get("views") or post.get("views_count"),
         "source_platform": "x",
         "source_label": "X (Twitter)",
         "attribution_notice": "X architectural reference via SocialCrawl.",
         "verification_status": "COMMUNITY_REVIEW",
         "content_type": "architectural_project",
         "relevance_score": relevance_score,
-        "published_at": post.get("published_at"),
+        "published_at": post.get("published_at") or post.get("created_at") or raw.get("created_at"),
     }
 
 
@@ -1765,24 +1779,28 @@ def search_google_shopping(
 
 
 # ============================================================
-# 5b. TWITTER (X) AI SEARCH
-# GET /v1/twitter/ai-search
+# 5. TWITTER (X) SEARCH TWEETS
+# GET /v1/twitter/search/tweets
 #
-# Metering: 5 credits per call. Cache hits are free and failed calls refunded.
-# Timeout: 80 seconds.
+# Metering: holds 1 credit per page up front and refunds what the call does not use.
+# Cache hits are free and failed calls are refunded.
+# Timeout: 15 seconds.
 # ============================================================
 
-def search_twitter_ai(
+def search_twitter(
     query: str = ARCHITECTURE_QUERY,
+    max_pages: int = MAX_PAGES,
     cursor: Optional[str] = None,
     dry_run: bool = False
 ) -> Any:
     """
-    Search Twitter/X via SocialCrawl GET /v1/twitter/ai-search.
-    Supports dry-run price checking, caching, and idempotency key.
+    Search architectural inspiration, materials, and projects on X (Twitter)
+    via SocialCrawl GET /v1/twitter/search/tweets.
+    Holds 1 credit per page up front and refunds unused.
+    Supports dry-run price checking (dry_run=1), pagination, and in-memory caching.
     """
     clean_query = query.strip()
-    cache_key = f"twitter:{clean_query}:{cursor}:{dry_run}"
+    cache_key = f"twitter_tweets:{clean_query}:{cursor}:{max_pages}:{dry_run}"
 
     if not dry_run and cache_key in _SOCIALCRAWL_CACHE:
         ts, data = _SOCIALCRAWL_CACHE[cache_key]
@@ -1802,7 +1820,7 @@ def search_twitter_ai(
 
     if dry_run or DRY_RUN:
         body = socialcrawl(
-            endpoint="twitter/ai-search",
+            endpoint="twitter/search/tweets",
             params=params,
             timeout=TWITTER_TIMEOUT
         )
@@ -1816,24 +1834,53 @@ def search_twitter_ai(
             "request_id": body.get("request_id") if body else None,
         }
 
-    body = socialcrawl(
-        endpoint="twitter/ai-search",
-        params=params,
-        timeout=TWITTER_TIMEOUT
-    )
-    if body is None:
-        return {
+    # If single cursor requested, fetch single page
+    if cursor or max_pages == 1:
+        body = socialcrawl(
+            endpoint="twitter/search/tweets",
+            params=params,
+            timeout=TWITTER_TIMEOUT
+        )
+        if body is None:
+            return {
+                "success": True,
+                "dry_run": False,
+                "query": clean_query,
+                "platform": "x",
+                "total_items": 0,
+                "items": [],
+                "has_more": False,
+                "next_cursor": None,
+            }
+        data = body.get("data") or {}
+        raw_items = data.get("items") or (data if isinstance(data, list) else [])
+        pagination = body.get("pagination") or {}
+        normalized_items = [normalize_twitter_post(item) for item in raw_items]
+        result = {
             "success": True,
             "dry_run": False,
             "query": clean_query,
             "platform": "x",
-            "total_items": 0,
-            "items": [],
-            "has_more": False,
+            "total_items": len(normalized_items),
+            "items": normalized_items,
+            "has_more": bool(pagination.get("has_more")),
+            "next_cursor": pagination.get("next_cursor"),
+            "credits_used": body.get("credits_used", 1),
+            "credits_remaining": body.get("credits_remaining"),
+            "request_id": body.get("request_id"),
         }
+        if not dry_run and not DRY_RUN:
+            _SOCIALCRAWL_CACHE[cache_key] = (time.time(), result)
+        return result
 
-    data = body.get("data") or {}
-    raw_items = data.get("items") or data.get("posts") or (data if isinstance(data, list) else [])
+    # Paginated multi-page crawl (up to max_pages)
+    raw_items = paginated_search(
+        endpoint="twitter/search/tweets",
+        params=params,
+        timeout=TWITTER_TIMEOUT,
+        max_pages=max_pages
+    )
+
     normalized_items = [normalize_twitter_post(item) for item in raw_items]
 
     result = {
@@ -1843,17 +1890,17 @@ def search_twitter_ai(
         "platform": "x",
         "total_items": len(normalized_items),
         "items": normalized_items,
-        "has_more": bool(body.get("pagination", {}).get("has_more")),
-        "cursor": body.get("pagination", {}).get("next_cursor"),
-        "credits_used": body.get("credits_used", 5),
-        "credits_remaining": body.get("credits_remaining"),
-        "request_id": body.get("request_id"),
+        "has_more": len(normalized_items) >= 15,
+        "credits_used": 1,
     }
 
     if not dry_run and not DRY_RUN:
         _SOCIALCRAWL_CACHE[cache_key] = (time.time(), result)
 
     return result
+
+# Backward compatibility alias
+search_twitter_ai = search_twitter
 
 
 
@@ -1926,8 +1973,9 @@ def search_all_sources(
     if "x" in selected_sources or "twitter" in selected_sources:
         searches.append((
             "x",
-            lambda: search_twitter_ai(
+            lambda: search_twitter(
                 query=query,
+                max_pages=max_pages,
                 dry_run=dry_run
             )
         ))

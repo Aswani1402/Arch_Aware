@@ -40,5 +40,11 @@ def auto_migrate():
                             alter_sql = f"ALTER TABLE {table.name} ADD COLUMN {col.name} {col_type}{default_clause}"
                             print(f"[AutoMigrate] Applying schema update: {alter_sql}")
                             conn.execute(text(alter_sql))
+
+            # Backfill any legacy records missing created_at timestamps
+            if "architectural_references" in existing_tables:
+                conn.execute(text("UPDATE architectural_references SET created_at = CURRENT_TIMESTAMP WHERE created_at IS NULL"))
+            if "suppliers" in existing_tables:
+                conn.execute(text("UPDATE suppliers SET created_at = CURRENT_TIMESTAMP WHERE created_at IS NULL"))
     except Exception as e:
         print(f"[AutoMigrate] Error during schema auto-migration: {e}")

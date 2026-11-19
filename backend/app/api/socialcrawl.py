@@ -13,6 +13,7 @@ from app.services.socialcrawl_service import (
     generate_focused_instagram_queries,
     search_youtube,
     search_reddit,
+    search_twitter,
     search_twitter_ai,
     search_google_business,
     search_google_shopping,
@@ -57,7 +58,8 @@ def get_socialcrawl_status():
             "instagram_profile": "https://www.socialcrawl.dev/v1/instagram/profile",
             "youtube": "https://www.socialcrawl.dev/v1/youtube/search",
             "reddit": "https://www.socialcrawl.dev/v1/reddit/search",
-            "x": "https://www.socialcrawl.dev/v1/twitter/ai-search",
+            "x": "https://www.socialcrawl.dev/v1/twitter/search/tweets",
+            "twitter": "https://www.socialcrawl.dev/v1/twitter/search/tweets",
             "google_business": "https://www.socialcrawl.dev/v1/google/business/search",
             "google_shopping": "https://www.socialcrawl.dev/v1/google_shopping/product",
         },
@@ -319,14 +321,16 @@ def get_reddit_discussions(
 
 
 @router.get("/twitter")
+@router.get("/x")
 def get_twitter_posts(
     query: str = Query(..., min_length=1, max_length=300, description="Architectural search term"),
     cursor: Optional[str] = Query(None, description="Cursor for pagination"),
     dry_run: Optional[bool] = Query(False, description="Dry-run price check without charging credits")
 ):
     """
-    Search architectural inspiration and design releases on X (Twitter) via SocialCrawl AI-Search.
-    Cost: 5 credits per call. Cache hits are free and failed calls refunded.
+    Search architectural inspiration, materials, and design releases on X (Twitter)
+    via SocialCrawl GET /v1/twitter/search/tweets.
+    Cost: 1 credit per page. Cache hits are free and failed calls refunded.
     """
     clean_query = query.strip()
     if not clean_query:
@@ -339,7 +343,7 @@ def get_twitter_posts(
         )
 
     try:
-        return search_twitter_ai(
+        return search_twitter(
             query=clean_query,
             cursor=cursor,
             dry_run=bool(dry_run)

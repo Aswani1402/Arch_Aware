@@ -792,6 +792,13 @@ def get_social_search_terms(
     shop_queries += active_category_profile.get("shopping", [])
     vendor_terms += active_category_profile.get("vendor_types", [])
 
+    x_queries = [
+        f"{base_noun} architecture design",
+        f"{base_noun} architectural details",
+        f"{base_noun} contemporary architectural project",
+        f"{base_noun} building material design",
+    ]
+
     return {
         "raw_material": raw_material,
         "clean_noun": base_noun,
@@ -800,6 +807,8 @@ def get_social_search_terms(
         "pinterest_queries": list(dict.fromkeys(pin_queries))[:4],
         "reddit_queries": list(dict.fromkeys(red_queries))[:3],
         "google_shopping_queries": list(dict.fromkeys(shop_queries))[:4],
+        "twitter_queries": list(dict.fromkeys(x_queries))[:4],
+        "x_queries": list(dict.fromkeys(x_queries))[:4],
         "vendor_terms": list(dict.fromkeys(vendor_terms))[:4],
     }
 

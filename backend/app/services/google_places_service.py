@@ -32,8 +32,12 @@ class GooglePlacesService:
         mat_lower = (material_type or "").lower()
         location_label = city or (f"{lat},{lon}" if lat is not None and lon is not None else "nearby")
 
-        # Build material-specific vendor queries (kilns, factories, distributors, stockists)
-        if any(term in mat_lower for term in ["brick", "wirecut", "laterite", "porotherm", "aac block", "masonry", "cseb", "clay"]):
+        # Build material-specific vendor queries (kilns, factories, distributors, stockists, rentals)
+        if any(term in mat_lower for term in ["jcb", "machinery", "machine", "excavator", "rock breaker", "earthmover", "crane", "tool", "scaffold", "drill", "fastener", "screw"]):
+            search_query = f"{material_type} equipment rental contractors dealers hire in {location_label}".strip()
+        elif any(term in mat_lower for term in ["door", "window", "glazing", "glass", "upvc", "wood", "timber", "fenestration"]):
+            search_query = f"{material_type} manufacturers dealers showroom workshop in {location_label}".strip()
+        elif any(term in mat_lower for term in ["brick", "wirecut", "laterite", "porotherm", "aac block", "masonry", "cseb", "clay"]):
             search_query = f"{material_type} manufacturer factory kiln dealer wholesale supplier in {location_label}".strip()
         elif any(term in mat_lower for term in ["steel", "tmt", "rebar", "cement", "pipe"]):
             search_query = f"{material_type} authorized distributor stockist dealer in {location_label}".strip()
@@ -97,6 +101,8 @@ class GooglePlacesService:
                         if lat is not None and lon is not None and plat is not None and plon is not None:
                             from app.services.distance_service import calculate_haversine_distance
                             dist_km = calculate_haversine_distance(lat, lon, plat, plon)
+                            if dist_km > radius_km:
+                                continue
 
                         # Extract phone & clean WhatsApp if valid mobile
                         phone = p.get("nationalPhoneNumber") or p.get("internationalPhoneNumber")

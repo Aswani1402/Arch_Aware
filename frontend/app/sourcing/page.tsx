@@ -271,9 +271,10 @@ function SourcingContent() {
               }}
               className="w-full px-3 py-2.5 rounded-xl border border-arch-border text-xs bg-stone-50 font-medium outline-none focus:ring-1 focus:ring-arch-terracotta"
             >
-              <option value="25">Initial: 25 km Radius</option>
-              <option value="50">Initial: 50 km Radius</option>
-              <option value="100">Initial: 100 km Radius</option>
+              <option value="10">Radius: 10 km (Immediate Local)</option>
+              <option value="15">Radius: 15 km (Local District)</option>
+              <option value="20">Radius: 20 km (Expanded Metro)</option>
+              <option value="25">Radius: 25 km (Regional Corridor)</option>
             </select>
 
             <button

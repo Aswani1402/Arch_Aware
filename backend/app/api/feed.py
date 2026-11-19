@@ -263,6 +263,13 @@ async def get_feed(
         query = query.filter(or_(*filter_conditions))
 
     candidates = query.all()
+
+    # Universal fallback: if query returned 0 candidates, fallback gracefully so users always see inspiration
+    if not candidates and search_query:
+        if cat_slug and cat:
+            candidates = db.query(ArchitecturalReference).filter(ArchitecturalReference.category_id == cat.id).limit(50).all()
+        if not candidates:
+            candidates = db.query(ArchitecturalReference).order_by(ArchitecturalReference.id.desc()).limit(50).all()
     user_interest_list = [i.strip() for i in interests.split(",") if i.strip()] if isinstance(interests, str) and interests.strip() else None
     ranked_results = relevance_service.rank_and_filter_feed(
         candidates,
@@ -390,7 +397,7 @@ async def get_feed(
             provenance=getattr(r, 'provenance', None) or ProvenanceEnum.CURATED_ARCHIVE.value,
             inspiration_relevance_tier=getattr(r, 'inspiration_relevance_tier', None) or InspirationRelevanceTierEnum.TIER_1_EXACT.value,
             media_status=getattr(r, 'media_status', None) or (MediaStatusEnum.MEDIA_READY.value if (r.inspiration_image_url or r.thumbnail_url or r.media_url or r.video_embed_id) else MediaStatusEnum.MEDIA_UNUSABLE.value),
-            created_at=r.created_at
+            created_at=r.created_at or datetime.now(timezone.utc)
         )
         items.append(item_out)
 

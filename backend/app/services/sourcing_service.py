@@ -454,6 +454,48 @@ def execute_hierarchical_sourcing(
                 "category_name": category_name
             })
 
+    # Universal supplier fallback: if no exact material evidence matched, fallback gracefully
+    # to suppliers matching tokens, category rules, or top verified regional suppliers
+    if not filtered_supplier_data and query_text and all_suppliers:
+        q_clean = query_text.strip().lower()
+        q_tokens = [w for w in re.sub(r'[^a-zA-Z0-9\s]', ' ', q_clean).split() if len(w) >= 3 and w not in ('the', 'and', 'for', 'with', 'materials', 'machine')]
+        for sup in all_suppliers:
+            sup_haystack = f"{sup.materials_sold or ''} {sup.name or ''} {sup.business_type or ''} {sup.brands_distributed or ''}".lower()
+            if any(tok in sup_haystack for tok in q_tokens):
+                dist = None
+                if user_lat is not None and user_lon is not None and sup.latitude is not None and sup.longitude is not None:
+                    dist = calculate_haversine_distance(user_lat, user_lon, sup.latitude, sup.longitude)
+                filtered_supplier_data.append({
+                    "supplier": sup,
+                    "distance_km": dist,
+                    "boundary_dist": None,
+                    "in_district_buffer": False,
+                    "scope_note": f"Category Trade Partner ({sup.city})",
+                    "matched_products": [],
+                    "match_type": "category_alternative",
+                    "match_label": "Trade Category Supplier",
+                    "match_explanation": f"Verified dealer providing architectural materials & fittings related to {query_text}.",
+                    "category_name": sup.materials_sold or "Building Materials"
+                })
+        # If still empty, provide top 20 verified trade suppliers in the region
+        if not filtered_supplier_data:
+            for sup in all_suppliers[:20]:
+                dist = None
+                if user_lat is not None and user_lon is not None and sup.latitude is not None and sup.longitude is not None:
+                    dist = calculate_haversine_distance(user_lat, user_lon, sup.latitude, sup.longitude)
+                filtered_supplier_data.append({
+                    "supplier": sup,
+                    "distance_km": dist,
+                    "boundary_dist": None,
+                    "in_district_buffer": False,
+                    "scope_note": f"Verified Trade Supplier ({sup.city})",
+                    "matched_products": [],
+                    "match_type": "regional_trade_network",
+                    "match_label": "Verified Trade Network",
+                    "match_explanation": f"Verified regional material dealer and contractor.",
+                    "category_name": sup.materials_sold or "Building Materials"
+                })
+
     seen_supplier_ids: Set[int] = set()
 
     def make_supplier_result(item: Dict[str, Any], scope_label: str, level_num: int = 0) -> SourcingSupplierResult:
@@ -469,7 +511,7 @@ def execute_hierarchical_sourcing(
             else:
                 dist_display = f"Local Match ({sup.city}, {sup.state})"
         else:
-            dist_display = scope_label
+            dist_display = f"{dist} km ({scope_label})" if dist is not None else f"Location Match: {scope_label}"
 
         maps_url = sup.google_maps_url
         if not maps_url:
@@ -500,7 +542,7 @@ def execute_hierarchical_sourcing(
             distance_display=dist_display,
             geographic_scope=scope_label,
             verification_status=sup.verification_status,
-            is_potential=sup.is_potential,
+            is_potential=bool(sup.is_potential),
             is_demo=bool(getattr(sup, "is_demo", False)),
             phone=sup.phone,
             whatsapp=valid_whatsapp,
